@@ -46,6 +46,10 @@ if post.file?
     errors << "post: structured author must be an Organization"
   end
   errors << "post: missing visible sources" unless html.include?('id="sources"')
+  %w[analogy daily-life learning principles nalja-view summary].each do |id|
+    errors << "post: missing section anchor ##{id}" unless html.include?("id=\"#{id}\"")
+  end
+  errors << "post: raw Kramdown attribute syntax is visible" if html.include?("{:#")
 else
   errors << "missing archive/why-analogy-matters/index.html"
 end

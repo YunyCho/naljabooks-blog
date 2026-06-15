@@ -531,7 +531,9 @@ a.eyebrow {
 }
 
 .article-meta dt {
+  flex: 0 0 auto;
   color: var(--muted);
+  white-space: nowrap;
 }
 
 .article-meta dd {
@@ -801,7 +803,7 @@ a.eyebrow {
 
   .article-meta {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .method-note,
