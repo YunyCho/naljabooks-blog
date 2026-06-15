@@ -10,6 +10,19 @@ author:
   type: Organization
 category: "유추와 문해력"
 tags: ["유추력", "문해력", "지적장애"]
+toc:
+  - id: analogy
+    title: "유추력이란"
+  - id: daily-life
+    title: "일상 학습과 선택"
+  - id: learning
+    title: "학습에서 고려할 점"
+  - id: principles
+    title: "설계 원칙"
+  - id: nalja-view
+    title: "날자꾸러미의 적용"
+  - id: summary
+    title: "핵심 요약"
 sources:
   - title: "Defining Criteria for Intellectual Disability"
     organization: "American Association on Intellectual and Developmental Disabilities"

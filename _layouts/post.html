@@ -29,17 +29,16 @@ layout: default
   </header>
 
   <div class="article-layout page-shell">
-    <aside class="table-of-contents" aria-labelledby="toc-title">
-      <p id="toc-title" class="toc-title">이 글의 순서</p>
-      <ol>
-        <li><a href="#analogy">유추력이란</a></li>
-        <li><a href="#daily-life">일상 학습과 선택</a></li>
-        <li><a href="#learning">학습에서 고려할 점</a></li>
-        <li><a href="#principles">설계 원칙</a></li>
-        <li><a href="#nalja-view">날자꾸러미의 적용</a></li>
-        <li><a href="#summary">핵심 요약</a></li>
-      </ol>
-    </aside>
+    {% if page.toc and page.toc.size > 0 %}
+      <aside class="table-of-contents" aria-labelledby="toc-title">
+        <p id="toc-title" class="toc-title">이 글의 순서</p>
+        <ol>
+          {% for item in page.toc %}
+            <li><a href="#{{ item.id }}">{{ item.title }}</a></li>
+          {% endfor %}
+        </ol>
+      </aside>
+    {% endif %}
 
     <div class="article-main reading-shell">
       <div class="article-body">
