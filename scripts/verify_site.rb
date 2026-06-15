@@ -17,6 +17,19 @@ EXPECTED = %w[
   llms.txt
 ].freeze
 
+POSTS = {
+  "archive/why-analogy-matters/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "지적장애인에게 왜 유추력이 필요할까?",
+    anchors: %w[analogy daily-life learning principles nalja-view summary]
+  },
+  "archive/ai-must-benefit-people-with-intellectual-disabilities/index.html" => {
+    author: "도서출판 날자 대표 조윤영",
+    required_text: "AI는 지적장애인의 이해와 선택, 참여를 넓혀야 한다",
+    anchors: %w[mothers-question declaration practical-benefits decision-boundary principles risks nalja-promise]
+  }
+}.freeze
+
 errors = []
 
 EXPECTED.each do |path|
@@ -37,21 +50,31 @@ Dir.glob(SITE.join("**/*.html")).sort.each do |file|
   errors << "#{relative}: root-relative path bypasses baseurl: #{unsafe_path}" if unsafe_path
 end
 
-post = SITE.join("archive/why-analogy-matters/index.html")
-if post.file?
+POSTS.each do |path, expectations|
+  post = SITE.join(path)
+  unless post.file?
+    errors << "missing #{path}"
+    next
+  end
+
   html = post.read
   blog_posting_count = html.scan('"@type":"BlogPosting"').length
-  errors << "post: expected one BlogPosting JSON-LD, found #{blog_posting_count}" unless blog_posting_count == 1
+  unless blog_posting_count == 1
+    errors << "#{path}: expected one BlogPosting JSON-LD, found #{blog_posting_count}"
+  end
   unless html.include?('"author":{"@type":"Organization"')
-    errors << "post: structured author must be an Organization"
+    errors << "#{path}: structured author must be an Organization"
   end
-  errors << "post: missing visible sources" unless html.include?('id="sources"')
-  %w[analogy daily-life learning principles nalja-view summary].each do |id|
-    errors << "post: missing section anchor ##{id}" unless html.include?("id=\"#{id}\"")
+  errors << "#{path}: missing visible author" unless html.include?(expectations[:author])
+  errors << "#{path}: missing required article text" unless html.include?(expectations[:required_text])
+  errors << "#{path}: missing visible sources" unless html.include?('id="sources"')
+
+  expectations[:anchors].each do |id|
+    errors << "#{path}: missing section anchor ##{id}" unless html.include?("id=\"#{id}\"")
+    errors << "#{path}: missing TOC link ##{id}" unless html.include?("href=\"##{id}\"")
   end
-  errors << "post: raw Kramdown attribute syntax is visible" if html.include?("{:#")
-else
-  errors << "missing archive/why-analogy-matters/index.html"
+
+  errors << "#{path}: raw Kramdown attribute syntax is visible" if html.include?("{:#")
 end
 
 source_files = Dir.glob(
