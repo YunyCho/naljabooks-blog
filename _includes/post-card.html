@@ -1,0 +1,11 @@
+{% assign card_characters = include.post.content | strip_html | strip_newlines | size %}
+{% assign card_reading_time = card_characters | divided_by: 500 | plus: 1 %}
+<article class="post-card">
+  <p class="eyebrow">{{ include.post.category }}</p>
+  <h3><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h3>
+  <p>{{ include.post.description }}</p>
+  <div class="post-card-meta">
+    <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%Y.%m.%d" }}</time>
+    <span>약 {{ card_reading_time }}분</span>
+  </div>
+</article>

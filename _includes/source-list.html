@@ -1,0 +1,12 @@
+<section class="sources" aria-labelledby="sources">
+  <h2 id="sources">출처</h2>
+  <p class="source-intro">본문의 정의와 교육적 설명을 검토할 때 참고한 원문입니다.</p>
+  <ol>
+    {% for source in include.sources %}
+      <li id="source-{{ forloop.index }}">
+        <a href="{{ source.url }}" rel="noopener noreferrer">{{ source.title }}</a>
+        <span>{{ source.organization }}, {{ source.year }}</span>
+      </li>
+    {% endfor %}
+  </ol>
+</section>

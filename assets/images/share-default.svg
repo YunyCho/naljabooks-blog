@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">날자 아카이브</title>
+  <desc id="desc">배움과 선택을 잇는 연구와 실천의 기록</desc>
+  <rect width="1200" height="630" fill="#f7f0e5"/>
+  <rect x="70" y="70" width="1060" height="490" rx="56" fill="#e9652e"/>
+  <circle cx="1000" cy="180" r="68" fill="#f7c66f"/>
+  <path d="M988 143c40 28 47 63 20 103" fill="none" stroke="#4a2b20" stroke-width="16" stroke-linecap="round"/>
+  <text x="140" y="285" fill="#fffaf3" font-family="Arial, Apple SD Gothic Neo, sans-serif" font-size="92" font-weight="700">날자 아카이브</text>
+  <text x="145" y="375" fill="#fff1df" font-family="Arial, Apple SD Gothic Neo, sans-serif" font-size="38">배움과 선택을 잇는 연구와 실천의 기록</text>
+  <text x="145" y="475" fill="#4a2b20" font-family="Arial, Apple SD Gothic Neo, sans-serif" font-size="26" font-weight="700">NALJA BOOKS · NALJA PACKAGE</text>
+</svg>
