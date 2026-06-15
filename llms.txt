@@ -1,0 +1,15 @@
+---
+layout: null
+---
+# 날자 아카이브
+
+> 도서출판 날자와 날자꾸러미가 발달장애인의 배움, 문해력, 유추와 일상 적용을 연구하고 기록하는 한국어 전문 글 아카이브입니다.
+
+- Home: {{ '/' | absolute_url }}
+- About: {{ '/about/' | absolute_url }}
+- Editorial and correction policy: {{ '/methodology/' | absolute_url }}
+- Questions: {{ '/questions/' | absolute_url }}
+- RSS feed: {{ '/feed.xml' | absolute_url }}
+- First article: {{ '/archive/why-analogy-matters/' | absolute_url }}
+
+각 글의 주장과 설명은 화면에 표시된 작성일, 수정일, 출처 목록과 함께 읽어 주세요. 회사와 제품의 공식 정보는 https://naljabooks.com 을 기준으로 확인해 주세요.
