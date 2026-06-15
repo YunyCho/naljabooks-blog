@@ -39,12 +39,21 @@ author:
   type: Organization
 category: "유추와 문해력"
 tags: ["유추력", "문해력"]
+toc:
+  - id: "section-id"
+    title: "목차에 표시할 제목"
 sources:
   - title: "원문 제목"
     organization: "저자 또는 발행기관"
     year: 2026
     url: "https://doi.org/원문-식별자"
 ---
+```
+
+목차를 사용할 때는 본문의 제목에 같은 ID를 지정합니다.
+
+```markdown
+## 본문 제목 {#section-id}
 ```
 
 수치와 연구 주장은 확인 가능한 원문과 연결합니다. 일반 교육 정보와 날자꾸러미의 제품·설계 관점을 구분하고, 효과를 보장하는 표현은 사용하지 않습니다.

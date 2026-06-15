@@ -509,6 +509,7 @@ a.eyebrow {
 .article-header h1 {
   margin-bottom: 24px;
   font-size: clamp(44px, 7vw, 72px);
+  overflow-wrap: anywhere;
 }
 
 .article-deck {
@@ -604,6 +605,20 @@ a.eyebrow {
 
 .article-body strong {
   color: #2f1d17;
+}
+
+.article-body blockquote {
+  margin: 42px 0;
+  padding: 28px 32px;
+  background: var(--apricot);
+  border-left: 6px solid var(--orange-dark);
+  border-radius: 0 22px 22px 0;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.article-body blockquote p:last-child {
+  margin-bottom: 0;
 }
 
 .sources {
@@ -784,7 +799,7 @@ a.eyebrow {
   .page-hero h1,
   .not-found h1,
   .article-header h1 {
-    font-size: 43px;
+    font-size: clamp(34px, 11vw, 43px);
   }
 
   .prose,
@@ -795,6 +810,11 @@ a.eyebrow {
   .prose h2,
   .article-body h2 {
     font-size: 30px;
+  }
+
+  .article-body blockquote {
+    padding: 22px 24px;
+    font-size: 19px;
   }
 
   .numbered-sections section {
