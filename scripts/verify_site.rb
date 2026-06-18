@@ -32,6 +32,14 @@ POSTS = {
 
 errors = []
 
+pinned_posts = Dir.glob(ROOT.join("_posts/*")).select do |file|
+  front_matter = File.read(file)[/\A---\s*\n(.*?)\n---\s*(?:\n|\z)/m, 1].to_s
+  front_matter.match?(/^pinned:\s*true\s*$/)
+end
+unless pinned_posts.length == 1
+  errors << "posts: expected exactly one pinned declaration, found #{pinned_posts.length}"
+end
+
 EXPECTED.each do |path|
   errors << "missing #{path}" unless SITE.join(path).file?
 end
@@ -53,6 +61,23 @@ end
 home = SITE.join("index.html")
 if home.file?
   html = home.read
+  declaration_path = "/naljabooks-blog/archive/ai-must-benefit-people-with-intellectual-disabilities/"
+  featured_story = html[%r{<article class="featured-story">.*?</article>}m].to_s
+  story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
+
+  unless featured_story.include?(declaration_path)
+    errors << "index.html: pinned declaration is not in the featured story"
+  end
+  unless featured_story.include?("고정 선언문")
+    errors << "index.html: pinned declaration badge is missing"
+  end
+  unless html.scan(%(href="#{declaration_path}")).length == 1
+    errors << "index.html: pinned declaration must appear exactly once"
+  end
+  unless story_list.include?("지적장애인에게 왜 유추력이 필요할까?")
+    errors << "index.html: regular post is missing from the right story list"
+  end
+
   {
     "editorial hero" => 'class="home-hero"',
     "connected learning illustration" => "home-learning-scenes.webp",
