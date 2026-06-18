@@ -66,6 +66,11 @@ if home.file?
   if html.match?(%r{<input[^>]+type=["']email["']})
     errors << "index.html: newsletter input is out of scope"
   end
+  errors << "index.html: missing Nalkku logo" unless html.include?("nalkku-logo.svg")
+  errors << "index.html: obsolete hero kicker" if html.include?("배움과 선택을 잇는 기록")
+  if html.include?("보호자와 교사, 복지 현장의 실무자가 함께 읽을 수 있는 말로 핵심부터 설명합니다.")
+    errors << "index.html: redundant hero sentence"
+  end
 end
 
 POSTS.each do |path, expectations|
@@ -104,6 +109,13 @@ source_files.each do |file|
 
   relative = Pathname.new(file).relative_path_from(ROOT)
   errors << "#{relative}: placeholder text"
+end
+
+PUBLIC_COPY_FILES = %w[_config.yml index.html about.md llms.txt].freeze
+PUBLIC_COPY_FILES.each do |path|
+  if ROOT.join(path).read.include?("발달장애인")
+    errors << "#{path}: public terminology must use 지적장애인"
+  end
 end
 
 if errors.empty?
