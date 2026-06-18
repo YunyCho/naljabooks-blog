@@ -21,7 +21,9 @@ description: "지적장애인의 배움과 일상 적용을 이해하기 쉽게 
     <h2>새로 쓴 글</h2>
     <p>한 가지 질문을 충분히 이해할 수 있도록 정의, 사례, 출처를 함께 정리합니다.</p>
   </header>
-  {% assign featured_post = site.posts.first %}
+  {% assign pinned_posts = site.posts | where: "pinned", true %}
+  {% assign featured_post = pinned_posts.first %}
+  {% assign regular_posts = site.posts | where_exp: "post", "post.pinned != true" %}
   {% if featured_post %}
     <div class="home-story-layout">
       <article class="featured-story">
@@ -30,12 +32,12 @@ description: "지적장애인의 배움과 일상 적용을 이해하기 쉽게 
         <p>{{ featured_post.description }}</p>
         <div class="story-meta">
           <time datetime="{{ featured_post.date | date_to_xmlschema }}">{{ featured_post.date | date: "%Y.%m.%d" }}</time>
-          <span>최신 기록</span>
+          <span>고정 선언문</span>
         </div>
       </article>
-      {% if site.posts.size > 1 %}
+      {% if regular_posts.size > 0 %}
         <div class="story-list" aria-label="이어지는 글">
-          {% for post in site.posts offset:1 %}
+          {% for post in regular_posts %}
             <article class="story-list-item">
               <p class="story-category">{{ post.category }}</p>
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
