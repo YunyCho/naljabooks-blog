@@ -204,10 +204,10 @@ if english_essay.file?
     "Open Graph title" => 'property="og:title" content="At the Edge of Intelligence, We Find What It Means to Be Human."',
     "Open Graph description" => 'property="og:description" content="In the Age of AGI, What My Son Will Teach Humanity"',
     "Open Graph URL" => %(property="og:url" content="#{english_essay_url}"),
-    "published time" => 'property="article:published_time" content="2026-06-19T00:00:00+09:00"',
+    "published time" => 'property="article:published_time" content="2026-06-19T08:00:00+09:00"',
     "canonical URL" => %(rel="canonical" href="#{english_essay_url}"),
-    "JSON-LD dateModified" => '"dateModified":"2026-06-19T00:00:00+09:00"',
-    "JSON-LD datePublished" => '"datePublished":"2026-06-19T00:00:00+09:00"',
+    "JSON-LD dateModified" => '"dateModified":"2026-06-19T08:00:00+09:00"',
+    "JSON-LD datePublished" => '"datePublished":"2026-06-19T08:00:00+09:00"',
     "JSON-LD mainEntityOfPage" => %("@id":"#{english_essay_url}"),
     "source essay" => "https://naljabooks.substack.com/p/at-the-edge-of-intelligence-we-find"
   }.each do |label, marker|
