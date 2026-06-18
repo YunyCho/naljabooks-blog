@@ -39,6 +39,10 @@ end
 unless pinned_posts.length == 1
   errors << "posts: expected exactly one pinned declaration, found #{pinned_posts.length}"
 end
+expected_pinned_post = ROOT.join("_posts/2026-06-15-ai-must-benefit-people-with-intellectual-disabilities.md")
+if pinned_posts.length == 1 && Pathname.new(pinned_posts.first) != expected_pinned_post
+  errors << "posts: pinned declaration must be #{expected_pinned_post.relative_path_from(ROOT)}"
+end
 
 EXPECTED.each do |path|
   errors << "missing #{path}" unless SITE.join(path).file?
