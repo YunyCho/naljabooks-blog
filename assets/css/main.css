@@ -1016,8 +1016,6 @@ a.eyebrow {
   }
 
   .site-nav .nav-external {
-    flex-basis: max-content;
-    margin-right: 100%;
     padding: 5px 10px;
   }
 
