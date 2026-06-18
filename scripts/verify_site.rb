@@ -215,6 +215,10 @@ if english_essay.file?
   end
 
   article_body = html[%r{<div class="article-body">.*?</div>}m].to_s
+  paragraph_count = article_body.scan(%r{<p>}).length
+  if paragraph_count < 180
+    errors << "#{english_essay_path}: expected complete essay body, found #{paragraph_count} paragraphs"
+  end
   {
     "prologue opening" => "It was a summer day.",
     "final signature" => "At the beginning of the Nalza Project",
