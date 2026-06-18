@@ -50,6 +50,24 @@ Dir.glob(SITE.join("**/*.html")).sort.each do |file|
   errors << "#{relative}: root-relative path bypasses baseurl: #{unsafe_path}" if unsafe_path
 end
 
+home = SITE.join("index.html")
+if home.file?
+  html = home.read
+  {
+    "editorial hero" => 'class="home-hero"',
+    "connected learning illustration" => "home-learning-scenes.webp",
+    "featured latest post" => 'class="featured-story"',
+    "topic icon" => 'class="topic-icon"',
+    "editorial principle" => 'class="home-principle"',
+    "latest posts CTA" => 'href="#recent-posts"'
+  }.each do |label, marker|
+    errors << "index.html: missing #{label}" unless html.include?(marker)
+  end
+  if html.match?(%r{<input[^>]+type=["']email["']})
+    errors << "index.html: newsletter input is out of scope"
+  end
+end
+
 POSTS.each do |path, expectations|
   post = SITE.join(path)
   unless post.file?
