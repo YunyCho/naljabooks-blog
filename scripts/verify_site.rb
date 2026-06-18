@@ -67,6 +67,13 @@ if home.file?
     errors << "index.html: newsletter input is out of scope"
   end
   errors << "index.html: missing Nalkku logo" unless html.include?("nalkku-logo.svg")
+  expected_home_title = "AI 시대, 지적장애인의 배움과 일상"
+  errors << "index.html: missing refreshed page title" unless html.include?("<title>#{expected_home_title} | 날자 아카이브</title>")
+  errors << "index.html: missing refreshed Open Graph title" unless html.include?(%(property="og:title" content="#{expected_home_title}"))
+  errors << "index.html: missing refreshed Twitter title" unless html.include?(%(property="twitter:title" content="#{expected_home_title}"))
+  errors << "index.html: header tagline must be removed" if html.match?(%r{<small>[^<]*</small>})
+  errors << "index.html: hero headline changed unexpectedly" unless html.include?("배운 것이") && html.include?("삶으로 이어지도록")
+  errors << "index.html: obsolete public tagline" if html.include?("배움과 선택을 잇는 연구와 실천의 기록")
   errors << "index.html: obsolete hero kicker" if html.include?("배움과 선택을 잇는 기록")
   if html.include?("보호자와 교사, 복지 현장의 실무자가 함께 읽을 수 있는 말로 핵심부터 설명합니다.")
     errors << "index.html: redundant hero sentence"
@@ -112,6 +119,10 @@ source_files.each do |file|
 end
 
 PUBLIC_COPY_FILES = %w[_config.yml index.html about.md llms.txt].freeze
+share_image = ROOT.join("assets/images/share-default.svg").read
+errors << "share-default.svg: missing refreshed title" unless share_image.include?("AI 시대, 지적장애인의 배움과 일상")
+errors << "share-default.svg: obsolete tagline" if share_image.include?("배움과 선택을 잇는 연구와 실천의 기록")
+
 PUBLIC_COPY_FILES.each do |path|
   if ROOT.join(path).read.include?("발달장애인")
     errors << "#{path}: public terminology must use 지적장애인"
