@@ -9,7 +9,7 @@ Publish the user's Substack essay as one complete English article in the Nalja A
 - Source post: `https://substack.com/home/post/p-188469570`
 - Public title: `At the Edge of Intelligence, We Find What It Means to Be Human.`
 - Subtitle/description: `In the Age of AGI, What My Son Will Teach Humanity`
-- Display author: `NaljaBook`
+- Display author: `조윤영`
 
 ## Publication Shape
 
@@ -23,6 +23,7 @@ The stable URL slug is:
 
 - Keep the English prose, quotations, section order, and decorative `◆ ◆ ◆` separators.
 - Do not translate, summarize, or add new claims to the body.
+- Add the authorship note `Originally written in Korean and translated into English by the author.` before the contents. This note describes the work's provenance and is not part of the source essay.
 - Replace public-prose uses of `developmental disability`, `developmental disabilities`, and `people with developmental disabilities` with the corresponding `intellectual disability` wording. This is the only editorial terminology change.
 - Keep the final signature text from the source essay.
 - Do not copy Substack calls to subscribe, like, comment, share, or view profiles.
@@ -32,12 +33,12 @@ The stable URL slug is:
 Use the repository's existing `layout: post` schema with:
 
 - publication and modification date `2026-06-19`
-- author object whose visible name is `NaljaBook`
+- author object whose visible name is `조윤영` and whose structured-data type is `Person`
 - English title and description
 - category `AI and Human Dignity`
 - English tags for AGI, intellectual disability, humanity, analogy, and Nalja Project
 - a table of contents for Prologue, Chapters 1–5, and Epilogue
-- one structured source linking back to the Substack original
+- one structured publication link labeled `First published on Substack`, pointing to the Substack edition without implying that Substack is the author or an external source
 - `lang: en`
 
 Update the default layout so a post-level language overrides the site-wide Korean language: `page.lang | default: site.lang | default: 'ko-KR'`. Existing Korean pages remain unchanged.
@@ -52,11 +53,12 @@ Extend generated-site verification before implementation. Verify:
 
 - the English page exists at its canonical URL
 - title, description, Open Graph fields, publication date, JSON-LD, author, and `lang="en"` are correct
+- the visible byline and JSON-LD author identify `조윤영`, and the authorship note is present
 - all seven TOC anchors are present
 - the body contains the prologue lead and final signature
 - subscription/interface text from Substack is absent
 - `developmental disabilit` is absent from public article prose
-- the Substack source link is visible
+- the `First published on Substack` link is visible
 - the homepage still pins the declaration and places the essay first on the right
 - sitemap and feed contain the essay URL
 - production build, site verifier, pinned-home integration verifier, and diff check pass
