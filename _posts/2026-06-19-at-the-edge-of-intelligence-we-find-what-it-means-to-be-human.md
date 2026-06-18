@@ -6,9 +6,9 @@ description: "In the Age of AGI, What My Son Will Teach Humanity"
 date: 2026-06-19 08:00:00 +0900
 updated: 2026-06-19 08:00:00 +0900
 author:
-  name: "NaljaBook"
-  url: "https://naljabooks.substack.com"
-  type: Organization
+  name: "조윤영"
+  url: "https://naljabooks.com"
+  type: Person
 category: "AI and Human Dignity"
 tags: ["AGI", "intellectual disability", "humanity", "analogy", "Nalja Project"]
 toc:
@@ -27,11 +27,13 @@ toc:
   - id: epilogue
     title: "Epilogue · Dreaming of a Cognitive Rehabilitation Center"
 sources:
-  - title: "Original Substack essay"
-    organization: "NaljaBook"
+  - title: "First published on Substack"
+    organization: "NaljaBooks"
     year: 2026
     url: "https://naljabooks.substack.com/p/at-the-edge-of-intelligence-we-find"
 ---
+
+*Originally written in Korean and translated into English by the author.*
 
 ## Contents
 
