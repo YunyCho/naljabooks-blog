@@ -19,7 +19,8 @@ EXPECTED = %w[
 
 POSTS = {
   "archive/at-the-edge-of-intelligence-we-find-what-it-means-to-be-human/index.html" => {
-    author: "NaljaBook",
+    author: "조윤영",
+    author_type: "Person",
     required_text: "At the edge of intelligence, we will at last discover the heart.",
     anchors: %w[prologue chapter-1 chapter-2 chapter-3 chapter-4 chapter-5 epilogue],
     source_count: 1
@@ -142,8 +143,9 @@ POSTS.each do |path, expectations|
   unless blog_posting_count == 1
     errors << "#{path}: expected one BlogPosting JSON-LD, found #{blog_posting_count}"
   end
-  unless html.include?('"author":{"@type":"Organization"')
-    errors << "#{path}: structured author must be an Organization"
+  author_type = expectations.fetch(:author_type, "Organization")
+  unless html.include?(%("author":{"@type":"#{author_type}"))
+    errors << "#{path}: structured author must be a #{author_type}"
   end
   errors << "#{path}: missing visible author" unless html.include?(expectations[:author])
   errors << "#{path}: missing required article text" unless html.include?(expectations[:required_text])
@@ -209,10 +211,13 @@ if english_essay.file?
     "JSON-LD dateModified" => '"dateModified":"2026-06-19T08:00:00+09:00"',
     "JSON-LD datePublished" => '"datePublished":"2026-06-19T08:00:00+09:00"',
     "JSON-LD mainEntityOfPage" => %("@id":"#{english_essay_url}"),
-    "source essay" => "https://naljabooks.substack.com/p/at-the-edge-of-intelligence-we-find"
+    "authorship note" => "Originally written in Korean and translated into English by the author.",
+    "first publication link" => "First published on Substack"
   }.each do |label, marker|
     errors << "#{english_essay_path}: missing #{label}" unless html.include?(marker)
   end
+  errors << "#{english_essay_path}: obsolete account-name byline remains" if html.include?(">NaljaBook<")
+  errors << "#{english_essay_path}: Substack is mislabeled as an external source" if html.include?("Original Substack essay")
 
   article_body = html[%r{<div class="article-body">.*?</div>}m].to_s
   paragraph_count = article_body.scan(%r{<p>}).length

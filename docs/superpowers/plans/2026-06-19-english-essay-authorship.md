@@ -36,7 +36,7 @@ Replace the hard-coded Organization assertion inside `POSTS.each` with:
 
 ```ruby
   author_type = expectations.fetch(:author_type, "Organization")
-  unless html.include?(%Q{"author":{"@type":"#{author_type}"})
+  unless html.include?(%("author":{"@type":"#{author_type}"))
     errors << "#{path}: structured author must be a #{author_type}"
   end
 ```
