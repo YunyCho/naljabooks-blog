@@ -117,21 +117,13 @@ h3 {
   text-decoration: none;
 }
 
-.site-brand strong,
-.site-brand small {
+.site-brand strong {
   display: block;
 }
 
 .site-brand strong {
   font-size: 18px;
   line-height: 1.2;
-}
-
-.site-brand small {
-  margin-top: 3px;
-  color: var(--muted);
-  font-size: 11px;
-  letter-spacing: -0.02em;
 }
 
 .brand-logo {
@@ -999,10 +991,6 @@ a.eyebrow {
 
   .page-shell {
     width: min(100% - 40px, 1160px);
-  }
-
-  .site-brand small {
-    display: none;
   }
 
   .brand-logo {
