@@ -18,6 +18,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/why-easy-text-alone-is-not-enough/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "쉬운 글은 꼭 필요하지만 충분하지 않다",
+    anchors: %w[summary easy-text comprehension activities adulthood repetition nalja-view conclusion],
+    source_count: 4
+  },
   "archive/why-analogy-matters/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인에게 왜 유추력이 필요할까?",
@@ -68,6 +74,11 @@ if home.file?
   declaration_path = "/naljabooks-blog/archive/ai-must-benefit-people-with-intellectual-disabilities/"
   featured_story = html[%r{<article class="featured-story">.*?</article>}m].to_s
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
+  first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
+
+  unless first_regular_story&.include?("쉬운 글만으로 충분하지 않은 이유")
+    errors << "index.html: easy-text article is not the newest regular story"
+  end
 
   unless featured_story.include?(declaration_path)
     errors << "index.html: pinned declaration is not in the featured story"
@@ -133,7 +144,43 @@ POSTS.each do |path, expectations|
     errors << "#{path}: missing TOC link ##{id}" unless html.include?("href=\"##{id}\"")
   end
 
+  if expectations[:source_count]
+    source_count = html.scan(%r{id="source-\d+"}).length
+    unless source_count == expectations[:source_count]
+      errors << "#{path}: expected #{expectations[:source_count]} sources, found #{source_count}"
+    end
+  end
+
   errors << "#{path}: raw Kramdown attribute syntax is visible" if html.include?("{:#")
+end
+
+easy_text_path = "archive/why-easy-text-alone-is-not-enough/index.html"
+easy_text_url = "https://yunycho.github.io/naljabooks-blog/archive/why-easy-text-alone-is-not-enough/"
+easy_text_post = SITE.join(easy_text_path)
+
+if easy_text_post.file?
+  html = easy_text_post.read
+  {
+    "Open Graph title" => 'property="og:title" content="쉬운 글만으로 충분하지 않은 이유"',
+    "Open Graph description" => 'property="og:description"',
+    "Open Graph URL" => %(property="og:url" content="#{easy_text_url}"),
+    "published time" => 'property="article:published_time" content="2026-06-19T00:00:00+09:00"',
+    "canonical URL" => %(rel="canonical" href="#{easy_text_url}"),
+    "JSON-LD dateModified" => '"dateModified":"2026-06-19T00:00:00+09:00"',
+    "JSON-LD datePublished" => '"datePublished":"2026-06-19T00:00:00+09:00"',
+    "JSON-LD mainEntityOfPage" => %("@id":"#{easy_text_url}")
+  }.each do |label, marker|
+    errors << "#{easy_text_path}: missing #{label}" unless html.include?(marker)
+  end
+  article_body = html[%r{<div class="article-body">.*?</div>}m]
+  if article_body&.include?("발달장애")
+    errors << "#{easy_text_path}: public article prose must use 지적장애인"
+  end
+end
+
+%w[sitemap.xml feed.xml].each do |path|
+  next unless SITE.join(path).file?
+  errors << "#{path}: missing easy-text article" unless SITE.join(path).read.include?(easy_text_url)
 end
 
 source_files = Dir.glob(
@@ -155,6 +202,14 @@ errors << "share-default.svg: obsolete tagline" if share_image.include?("배움�
 PUBLIC_COPY_FILES.each do |path|
   if ROOT.join(path).read.include?("발달장애인")
     errors << "#{path}: public terminology must use 지적장애인"
+  end
+end
+
+EASY_TEXT_SOURCE = "_posts/2026-06-19-why-easy-text-alone-is-not-enough.md"
+if ROOT.join(EASY_TEXT_SOURCE).file?
+  source_body = ROOT.join(EASY_TEXT_SOURCE).read.sub(%r{\A---.*?---}m, "")
+  if source_body.include?("발달장애")
+    errors << "#{EASY_TEXT_SOURCE}: public article prose must use 지적장애인"
   end
 end
 
