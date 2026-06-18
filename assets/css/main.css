@@ -134,16 +134,10 @@ h3 {
   letter-spacing: -0.02em;
 }
 
-.brand-mark {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  color: var(--orange-dark);
-  background: transparent;
-  border: 1px solid var(--orange);
-  border-radius: 50%;
-  font-weight: 800;
+.brand-logo {
+  width: 52px;
+  height: 40px;
+  object-fit: contain;
 }
 
 .site-nav {
@@ -1009,6 +1003,11 @@ a.eyebrow {
 
   .site-brand small {
     display: none;
+  }
+
+  .brand-logo {
+    width: 46px;
+    height: 35px;
   }
 
   .site-nav {
