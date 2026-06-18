@@ -18,6 +18,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/at-the-edge-of-intelligence-we-find-what-it-means-to-be-human/index.html" => {
+    author: "NaljaBook",
+    required_text: "At the edge of intelligence, we will at last discover the heart.",
+    anchors: %w[prologue chapter-1 chapter-2 chapter-3 chapter-4 chapter-5 epilogue],
+    source_count: 1
+  },
   "archive/why-easy-text-alone-is-not-enough/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "쉬운 글은 꼭 필요하지만 충분하지 않다",
@@ -76,8 +82,11 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("쉬운 글만으로 충분하지 않은 이유")
-    errors << "index.html: easy-text article is not the newest regular story"
+  unless first_regular_story&.include?("At the Edge of Intelligence, We Find What It Means to Be Human.")
+    errors << "index.html: English essay is not the newest regular story"
+  end
+  unless story_list.include?("쉬운 글만으로 충분하지 않은 이유")
+    errors << "index.html: easy-text article is missing from the right story list"
   end
 
   unless featured_story.include?(declaration_path)
@@ -181,6 +190,44 @@ end
 %w[sitemap.xml feed.xml].each do |path|
   next unless SITE.join(path).file?
   errors << "#{path}: missing easy-text article" unless SITE.join(path).read.include?(easy_text_url)
+end
+
+english_essay_path = "archive/at-the-edge-of-intelligence-we-find-what-it-means-to-be-human/index.html"
+english_essay_url = "https://yunycho.github.io/naljabooks-blog/archive/at-the-edge-of-intelligence-we-find-what-it-means-to-be-human/"
+english_essay = SITE.join(english_essay_path)
+
+if english_essay.file?
+  html = english_essay.read
+  {
+    "English document language" => '<html lang="en">',
+    "Open Graph title" => 'property="og:title" content="At the Edge of Intelligence, We Find What It Means to Be Human."',
+    "Open Graph description" => 'property="og:description" content="In the Age of AGI, What My Son Will Teach Humanity"',
+    "Open Graph URL" => %(property="og:url" content="#{english_essay_url}"),
+    "published time" => 'property="article:published_time" content="2026-06-19T00:00:00+09:00"',
+    "canonical URL" => %(rel="canonical" href="#{english_essay_url}"),
+    "JSON-LD dateModified" => '"dateModified":"2026-06-19T00:00:00+09:00"',
+    "JSON-LD datePublished" => '"datePublished":"2026-06-19T00:00:00+09:00"',
+    "JSON-LD mainEntityOfPage" => %("@id":"#{english_essay_url}"),
+    "source essay" => "https://naljabooks.substack.com/p/at-the-edge-of-intelligence-we-find"
+  }.each do |label, marker|
+    errors << "#{english_essay_path}: missing #{label}" unless html.include?(marker)
+  end
+
+  article_body = html[%r{<div class="article-body">.*?</div>}m].to_s
+  {
+    "prologue opening" => "It was a summer day.",
+    "final signature" => "At the beginning of the Nalza Project",
+    "intellectual-disability terminology" => "people with intellectual disabilities"
+  }.each do |label, marker|
+    errors << "#{english_essay_path}: missing #{label}" unless article_body.include?(marker)
+  end
+  errors << "#{english_essay_path}: developmental-disability terminology remains" if article_body.match?(/developmental disabilit/i)
+  errors << "#{english_essay_path}: Substack subscription prompt leaked into article" if article_body.include?("Thanks for reading NaljaBooks's Substack!")
+end
+
+%w[sitemap.xml feed.xml].each do |path|
+  next unless SITE.join(path).file?
+  errors << "#{path}: missing English essay" unless SITE.join(path).read.include?(english_essay_url)
 end
 
 source_files = Dir.glob(
