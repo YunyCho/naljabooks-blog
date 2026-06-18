@@ -18,6 +18,7 @@ bundle exec jekyll serve
 ```bash
 JEKYLL_ENV=production bundle exec jekyll build --trace
 ruby scripts/verify_site.rb
+ruby scripts/verify_pinned_home.rb
 ```
 
 검증 스크립트는 초기 페이지와 글, title, description, canonical, `BlogPosting` 구조화 데이터, sitemap, RSS, robots, llms 파일과 `baseurl` 적용을 확인합니다.
