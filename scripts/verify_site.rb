@@ -61,6 +61,13 @@ EXPECTED.each do |path|
   errors << "missing #{path}" unless SITE.join(path).file?
 end
 
+published_drafts = Dir.glob(SITE.join("naver-drafts/**/*"), File::FNM_DOTMATCH).reject do |path|
+  %w[. ..].include?(File.basename(path))
+end
+unless published_drafts.empty?
+  errors << "naver-drafts: review files must be excluded from the public site"
+end
+
 Dir.glob(SITE.join("**/*.html")).sort.each do |file|
   html = File.read(file)
   relative = Pathname.new(file).relative_path_from(SITE)
