@@ -93,6 +93,14 @@ jobs:
             echo
             while IFS= read -r path; do echo "- \`$path\`"; done < "$RUNNER_TEMP/generated-drafts.txt"
             echo
+            echo "## 원문"
+            echo
+            while IFS= read -r path; do
+              source_path="$(ruby -e 'require "yaml"; puts YAML.safe_load_file(ARGV[0]).fetch("source_path")' "$path")"
+              source_url="$(ruby -e 'require "yaml"; puts YAML.safe_load_file(ARGV[0]).fetch("source_url")' "$path")"
+              echo "- \`$source_path\` — $source_url"
+            done < "$RUNNER_TEMP/generated-drafts.txt"
+            echo
             echo "이 PR은 네이버에 글을 게시하지 않습니다. 검수 후 병합하고 복사 영역을 네이버 편집기에 직접 붙여 넣어 주세요."
             echo
             echo "## 검수 체크리스트"
