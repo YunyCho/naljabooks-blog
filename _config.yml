@@ -38,6 +38,7 @@ defaults:
       category: "유추와 문해력"
 exclude:
   - docs
+  - naver-drafts
   - scripts
   - README.md
   - Gemfile
