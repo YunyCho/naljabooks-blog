@@ -45,7 +45,9 @@ layout: default
         {{ content }}
       </div>
 
-      {% include source-list.html sources=page.sources %}
+      {% if page.sources and page.sources.size > 0 %}
+        {% include source-list.html sources=page.sources %}
+      {% endif %}
 
       <aside class="method-note">
         <h2>이 글을 작성한 기준</h2>

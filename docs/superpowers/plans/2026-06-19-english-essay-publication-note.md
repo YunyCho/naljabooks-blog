@@ -44,8 +44,10 @@
 
 **Files:**
 - Modify: `_posts/2026-06-19-at-the-edge-of-intelligence-we-find-what-it-means-to-be-human.md`
+- Modify: `_layouts/post.html`
 
 - [ ] Delete the complete `sources:` block.
+- [ ] Wrap the shared source include in `{% if page.sources and page.sources.size > 0 %}` so posts with sources retain the section and posts without sources render none.
 - [ ] Replace the current note with:
 
 ```markdown

@@ -26,14 +26,9 @@ toc:
     title: "Chapter 5 · Humanity’s North Star"
   - id: epilogue
     title: "Epilogue · Dreaming of a Cognitive Rehabilitation Center"
-sources:
-  - title: "First published on Substack"
-    organization: "NaljaBooks"
-    year: 2026
-    url: "https://naljabooks.substack.com/p/at-the-edge-of-intelligence-we-find"
 ---
 
-*Originally written in Korean and translated into English by the author.*
+*Originally written in Korean and translated into English by the author. Also published on [Substack](https://naljabooks.substack.com/p/at-the-edge-of-intelligence-we-find).*
 
 ## Contents
 
