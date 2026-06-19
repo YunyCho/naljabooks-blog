@@ -1,0 +1,116 @@
+name: Create Naver blog draft
+
+on:
+  push:
+    branches: [main]
+    paths: ["_posts/**"]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: naver-draft-automation
+  cancel-in-progress: false
+
+jobs:
+  create-draft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Run draft generator tests
+        run: ruby -Itest -e 'Dir["test/**/*_test.rb"].sort.each { |file| require File.expand_path(file) }'
+
+      - name: Find new posts
+        id: posts
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: |
+          ruby scripts/list_new_posts.rb "$BEFORE_SHA" "$AFTER_SHA" > "$RUNNER_TEMP/new-posts.txt"
+          if [[ -s "$RUNNER_TEMP/new-posts.txt" ]]; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generate review drafts
+        if: steps.posts.outputs.found == 'true'
+        run: |
+          ruby scripts/generate_naver_drafts.rb \
+            --paths-file "$RUNNER_TEMP/new-posts.txt" \
+            --source-commit "$GITHUB_SHA"
+
+      - name: Detect generated files
+        if: steps.posts.outputs.found == 'true'
+        id: drafts
+        run: |
+          git status --porcelain -- naver-drafts
+          if [[ -n "$(git status --porcelain -- naver-drafts)" ]]; then
+            echo "created=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "created=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit generated drafts
+        if: steps.drafts.outputs.created == 'true'
+        id: commit
+        run: |
+          branch="automation/naver-draft-${GITHUB_SHA::7}"
+          git ls-files --others --exclude-standard -- naver-drafts > "$RUNNER_TEMP/generated-drafts.txt"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+
+          if git ls-remote --exit-code --heads origin "$branch" > /dev/null 2>&1; then
+            echo "Automation branch already exists; reusing it."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add -- naver-drafts
+          git commit -m "chore: create Naver review draft"
+          git push origin "HEAD:refs/heads/$branch"
+
+      - name: Open review pull request
+        if: steps.drafts.outputs.created == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.commit.outputs.branch }}
+        run: |
+          {
+            echo "## 생성된 네이버 블로그 초안"
+            echo
+            while IFS= read -r path; do echo "- \`$path\`"; done < "$RUNNER_TEMP/generated-drafts.txt"
+            echo
+            echo "이 PR은 네이버에 글을 게시하지 않습니다. 검수 후 병합하고 복사 영역을 네이버 편집기에 직접 붙여 넣어 주세요."
+            echo
+            echo "## 검수 체크리스트"
+            echo
+            echo "- [ ] 제목과 본문 의미가 원문과 같습니다."
+            echo "- [ ] 문단과 소제목이 읽기 좋습니다."
+            echo "- [ ] 링크와 이미지 URL이 올바릅니다."
+            echo "- [ ] 해시태그가 적절합니다."
+            echo "- [ ] 네이버 미리보기에서 최종 레이아웃을 확인했습니다."
+          } > "$RUNNER_TEMP/naver-pr.md"
+
+          existing="$(gh pr list --head "$BRANCH" --state open --json url --jq '.[0].url')"
+          if [[ -n "$existing" ]]; then
+            echo "$existing"
+          else
+            gh pr create \
+              --base main \
+              --head "$BRANCH" \
+              --title "네이버 블로그 초안 검수" \
+              --body-file "$RUNNER_TEMP/naver-pr.md"
+          fi
