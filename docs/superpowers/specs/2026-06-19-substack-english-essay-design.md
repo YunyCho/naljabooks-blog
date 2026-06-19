@@ -23,7 +23,7 @@ The stable URL slug is:
 
 - Keep the English prose, quotations, section order, and decorative `◆ ◆ ◆` separators.
 - Do not translate, summarize, or add new claims to the body.
-- Add the authorship note `Originally written in Korean and translated into English by the author.` before the contents. This note describes the work's provenance and is not part of the source essay.
+- Add the note `Originally written in Korean and translated into English by the author. Also published on Substack.` before the contents. Link only the word `Substack` to the author's Substack edition. This note describes authorship and parallel publication; it is not a source citation.
 - Replace public-prose uses of `developmental disability`, `developmental disabilities`, and `people with developmental disabilities` with the corresponding `intellectual disability` wording. This is the only editorial terminology change.
 - Keep the final signature text from the source essay.
 - Do not copy Substack calls to subscribe, like, comment, share, or view profiles.
@@ -38,7 +38,7 @@ Use the repository's existing `layout: post` schema with:
 - category `AI and Human Dignity`
 - English tags for AGI, intellectual disability, humanity, analogy, and Nalja Project
 - a table of contents for Prologue, Chapters 1–5, and Epilogue
-- one structured publication link labeled `First published on Substack`, pointing to the Substack edition without implying that Substack is the author or an external source
+- no `sources` front matter and no rendered source section
 - `lang: en`
 
 Update the default layout so a post-level language overrides the site-wide Korean language: `page.lang | default: site.lang | default: 'ko-KR'`. Existing Korean pages remain unchanged.
@@ -53,12 +53,13 @@ Extend generated-site verification before implementation. Verify:
 
 - the English page exists at its canonical URL
 - title, description, Open Graph fields, publication date, JSON-LD, author, and `lang="en"` are correct
-- the visible byline and JSON-LD author identify `조윤영`, and the authorship note is present
+- the visible byline and JSON-LD author identify `조윤영`, and the linked authorship/parallel-publication note is present
 - all seven TOC anchors are present
 - the body contains the prologue lead and final signature
 - subscription/interface text from Substack is absent
 - `developmental disabilit` is absent from public article prose
-- the `First published on Substack` link is visible
+- the word `Substack` in the note links to the author's Substack edition
+- no source section, source-list item, `First published on Substack` label, or `Original Substack essay` label is rendered
 - the homepage still pins the declaration and places the essay first on the right
 - sitemap and feed contain the essay URL
 - production build, site verifier, pinned-home integration verifier, and diff check pass
