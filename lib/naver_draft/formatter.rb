@@ -49,7 +49,8 @@ module NaverDraft
       body
         .gsub(IMAGE) { "이미지: #{Regexp.last_match(1)} (#{image_url(Regexp.last_match(2), source_url)})" }
         .gsub(LINK) { "#{Regexp.last_match(1)} (#{Regexp.last_match(2)})" }
-        .gsub(/^(\s*#+\s+.*?)\s+\{#[A-Za-z0-9_-]+\}\s*$/, "\\1")
+        .gsub(/^([ \t]*#+[ \t]+.*?)[ \t]+\{#[A-Za-z0-9_-]+\}[ \t]*$/, "\\1")
+        .gsub(/^[ \t]*[#]{1,6}[ \t]+(.+?)[ \t]*$/, "\\1")
         .gsub(/\*\*([^*\n]+)\*\*/, "\\1")
         .gsub(/__([^_\n]+)__/, "\\1")
         .gsub(/(?<!\*)\*([^*\n]+)\*(?!\*)/, "\\1")

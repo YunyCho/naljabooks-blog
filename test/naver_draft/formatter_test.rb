@@ -24,6 +24,10 @@ class FormatterTest < Minitest::Test
 
         - 첫 번째
         - 두 번째
+
+        ## 다음 활동 {#next}
+
+        다음 문장입니다.
       MARKDOWN
       post = NaverDraft::Post.load(root, "_posts/2026-06-19-sample.md")
       draft = NaverDraft::Formatter.new(
@@ -33,7 +37,10 @@ class FormatterTest < Minitest::Test
       assert_includes draft, 'source_path: "_posts/2026-06-19-sample.md"'
       assert_includes draft, 'source_url: "https://yunycho.github.io/naljabooks-blog/archive/sample/"'
       assert_includes draft, "source_commit: \"abc1234\""
-      assert_includes draft, "## 이해 활동\n"
+      assert_includes draft, "## 본문\n\n이해 활동\n\n중요한 문장"
+      refute_includes draft, "## 이해 활동"
+      assert_includes draft, "- 두 번째\n\n다음 활동\n\n다음 문장입니다."
+      refute_includes draft, "## 다음 활동"
       refute_includes draft, "{#activity}"
       assert_includes draft, "중요한 문장과 관련 자료 (https://example.org/read)"
       assert_includes draft, "이미지: 학습 장면 (https://yunycho.github.io/naljabooks-blog/assets/images/scene.webp)"
