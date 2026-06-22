@@ -18,6 +18,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/ten-unspoken-senses-of-nalkku-learners/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    requires_sources: false,
+    required_text: "나도 배우고 싶지만, 부담스럽지 않게 내 방식으로 시작하고 싶다",
+    anchors: %w[can-start age-respect ask-me-first my-choice my-story everyday-life visible-traces gentle-connection begin-again something-for-me conditions-for-learning]
+  },
   "archive/at-the-edge-of-intelligence-we-find-what-it-means-to-be-human/index.html" => {
     author: "조윤영",
     author_type: "Person",
@@ -91,8 +97,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("At the Edge of Intelligence, We Find What It Means to Be Human.")
-    errors << "index.html: English essay is not the newest regular story"
+  unless first_regular_story&.include?("날꾸 학습자가 원하지만 말하지 못한 열 가지 감각")
+    errors << "index.html: unspoken learner senses article is not the newest regular story"
   end
   unless story_list.include?("쉬운 글만으로 충분하지 않은 이유")
     errors << "index.html: easy-text article is missing from the right story list"

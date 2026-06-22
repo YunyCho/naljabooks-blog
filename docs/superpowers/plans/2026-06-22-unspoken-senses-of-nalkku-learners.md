@@ -13,6 +13,7 @@
 ## File Structure
 
 - Create `_posts/2026-06-22-ten-unspoken-senses-of-nalkku-learners.md`: canonical Korean article with metadata, table of contents, ten numbered principles, and conclusion.
+- Modify `scripts/verify_site.rb`: register the new post's publication contract and update the newest regular-story expectation.
 - Modify this plan: mark execution steps complete as evidence is produced.
 
 ### Task 1: Create the article
@@ -20,17 +21,17 @@
 **Files:**
 - Create: `_posts/2026-06-22-ten-unspoken-senses-of-nalkku-learners.md`
 
-- [ ] **Step 1: Confirm the post does not exist yet**
+- [x] **Step 1: Confirm the post does not exist yet**
 
 Run `test ! -e _posts/2026-06-22-ten-unspoken-senses-of-nalkku-learners.md`.
 
 Expected: exit status 0.
 
-- [ ] **Step 2: Write the post**
+- [x] **Step 2: Write the post**
 
 Create the file with the approved title, dates, author, category, tags, eleven-entry table of contents, opening statement, ten numbered sections in the approved order, and a conclusion framing the senses as conditions for entering, continuing, and returning to learning.
 
-- [ ] **Step 3: Check all required sections and metadata**
+- [x] **Step 3: Check all required sections and metadata**
 
 Run:
 
@@ -43,29 +44,30 @@ Expected: `article coverage: ok`.
 ### Task 2: Validate the publication build
 
 **Files:**
+- Modify: `scripts/verify_site.rb`
 - Test: `scripts/verify_site.rb`
 - Test: `scripts/verify_pinned_home.rb`
 - Test: `test/naver_draft/*_test.rb`
 
-- [ ] **Step 1: Run the Ruby test suite**
+- [x] **Step 1: Run the Ruby test suite**
 
 Run `ruby -Itest -e 'Dir["test/**/*_test.rb"].sort.each { |file| require File.expand_path(file) }'`.
 
 Expected: all tests report 0 failures and 0 errors.
 
-- [ ] **Step 2: Build the production site**
+- [x] **Step 2: Build the production site**
 
 Run `JEKYLL_ENV=production bundle exec jekyll build --trace`.
 
 Expected: exit status 0 and the post renders under `_site/archive/ten-unspoken-senses-of-nalkku-learners/`.
 
-- [ ] **Step 3: Run repository verifiers**
+- [x] **Step 3: Run repository verifiers**
 
 Run `ruby scripts/verify_site.rb` and `ruby scripts/verify_pinned_home.rb`.
 
 Expected: both commands exit with status 0 and print success messages.
 
-- [ ] **Step 4: Review the final diff**
+- [x] **Step 4: Review the final diff**
 
 Run `git diff --check` and review the post and plan diffs.
 
