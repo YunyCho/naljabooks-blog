@@ -51,7 +51,11 @@ layout: default
 
       <aside class="method-note">
         <h2>이 글을 작성한 기준</h2>
-        <p>일반 교육 정보와 날자꾸러미의 관점을 구분하고, 확인 가능한 원문을 출처로 연결했습니다.</p>
+        {% if page.sources and page.sources.size > 0 %}
+          <p>일반 교육 정보와 날자꾸러미의 관점을 구분하고, 확인 가능한 원문을 출처로 연결했습니다.</p>
+        {% else %}
+          <p>이 글은 글쓴이의 관점과 경험을 바탕으로 작성했습니다. 일반 정보와 날자꾸러미의 설명을 구분합니다.</p>
+        {% endif %}
         <a href="{{ '/methodology/' | relative_url }}">자료와 정정 원칙 보기</a>
       </aside>
 

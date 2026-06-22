@@ -167,6 +167,13 @@ POSTS.each do |path, expectations|
   elsif html.include?('id="sources"')
     errors << "#{path}: source section must not be rendered"
   end
+  if expectations.fetch(:requires_sources, true)
+    unless html.include?("확인 가능한 원문을 출처로 연결했습니다")
+      errors << "#{path}: sourced method note is missing"
+    end
+  elsif !html.include?("글쓴이의 관점과 경험을 바탕으로 작성했습니다")
+    errors << "#{path}: perspective method note is missing"
+  end
 
   expectations[:anchors].each do |id|
     errors << "#{path}: missing section anchor ##{id}" unless html.include?("id=\"#{id}\"")
