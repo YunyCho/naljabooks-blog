@@ -18,6 +18,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/easy-information-and-reading-comprehension/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "쉬운 정보와 읽기이해는 같지 않다",
+    anchors: %w[summary easy-information comprehension-process necessary-not-sufficient next-step distinction conclusion],
+    source_count: 4
+  },
   "archive/ten-unspoken-senses-of-nalkku-learners/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     requires_sources: false,
@@ -97,8 +103,11 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("날꾸 학습자가 원하지만 말하지 못한 열 가지 감각")
-    errors << "index.html: unspoken learner senses article is not the newest regular story"
+  unless first_regular_story&.include?("쉬운 정보와 읽기이해는 같은가")
+    errors << "index.html: easy-information article is not the newest regular story"
+  end
+  unless story_list.include?("날꾸 학습자가 원하지만 말하지 못한 열 가지 감각")
+    errors << "index.html: unspoken learner senses article is missing from the right story list"
   end
   unless story_list.include?("쉬운 글만으로 충분하지 않은 이유")
     errors << "index.html: easy-text article is missing from the right story list"
@@ -193,6 +202,7 @@ end
 easy_text_path = "archive/why-easy-text-alone-is-not-enough/index.html"
 easy_text_url = "https://yunycho.github.io/naljabooks-blog/archive/why-easy-text-alone-is-not-enough/"
 easy_text_post = SITE.join(easy_text_path)
+easy_information_url = "https://yunycho.github.io/naljabooks-blog/archive/easy-information-and-reading-comprehension/"
 
 if easy_text_post.file?
   html = easy_text_post.read
@@ -217,6 +227,7 @@ end
 %w[sitemap.xml feed.xml].each do |path|
   next unless SITE.join(path).file?
   errors << "#{path}: missing easy-text article" unless SITE.join(path).read.include?(easy_text_url)
+  errors << "#{path}: missing easy-information article" unless SITE.join(path).read.include?(easy_information_url)
 end
 
 english_essay_path = "archive/at-the-edge-of-intelligence-we-find-what-it-means-to-be-human/index.html"
