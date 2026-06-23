@@ -90,16 +90,16 @@ begin
     unless story_list_items.fetch(1, "").include?(FIXTURES[1][:title])
       errors << "index.html: older fixture post is not second in the story list"
     end
-    unless story_list.include?(ANALOGY_TITLE)
-      errors << "index.html: existing analogy post is missing from the story list"
-    end
     older_fixture_position = story_list.index(FIXTURES[1][:title])
-    analogy_position = story_list.index(ANALOGY_TITLE)
-    if older_fixture_position && analogy_position && analogy_position <= older_fixture_position
-      errors << "index.html: analogy post must follow both fixture posts"
+    latest_article_position = story_list.index("쉬운 정보와 읽기이해는 같은가")
+    if older_fixture_position && latest_article_position && latest_article_position <= older_fixture_position
+      errors << "index.html: latest real article must follow both fixture posts"
     end
-    unless story_list_items.length == non_pinned_source_posts
-      errors << "index.html: expected #{non_pinned_source_posts} regular story items, found #{story_list_items.length}"
+    if story_list.include?(ANALOGY_TITLE)
+      errors << "index.html: older regular post must not appear in the limited home list"
+    end
+    unless story_list_items.length == 4
+      errors << "index.html: expected 4 regular story items, found #{story_list_items.length}"
     end
     unless story_list_hrefs.length == story_list_items.length
       errors << "index.html: every story list item must include a post href"

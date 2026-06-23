@@ -37,13 +37,14 @@ description: "지적장애인의 배움과 일상 적용을 이해하기 쉽게 
       </article>
       {% if regular_posts.size > 0 %}
         <div class="story-list" aria-label="이어지는 글">
-          {% for post in regular_posts %}
+          {% for post in regular_posts limit: 4 %}
             <article class="story-list-item">
               <p class="story-category">{{ post.category }}</p>
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
               <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
             </article>
           {% endfor %}
+          <a class="story-list-more" href="{{ '/archive/' | relative_url }}">전체 글 보기<span aria-hidden="true"> →</span></a>
         </div>
       {% endif %}
     </div>

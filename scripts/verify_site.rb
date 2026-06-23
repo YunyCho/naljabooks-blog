@@ -7,6 +7,7 @@ SITE = ROOT.join("_site")
 BASEURL = "/naljabooks-blog"
 EXPECTED = %w[
   index.html
+  archive/index.html
   about/index.html
   methodology/index.html
   questions/index.html
@@ -112,6 +113,13 @@ if home.file?
   unless story_list.include?("쉬운 글만으로 충분하지 않은 이유")
     errors << "index.html: easy-text article is missing from the right story list"
   end
+  story_list_items = story_list.scan(%r{<article class="story-list-item">.*?</article>}m)
+  unless story_list_items.length == 4
+    errors << "index.html: expected exactly 4 latest regular stories, found #{story_list_items.length}"
+  end
+  unless html.include?(%(/naljabooks-blog/archive/">전체 글 보기))
+    errors << "index.html: missing full archive link"
+  end
 
   unless featured_story.include?(declaration_path)
     errors << "index.html: pinned declaration is not in the featured story"
@@ -122,8 +130,8 @@ if home.file?
   unless html.scan(%(href="#{declaration_path}")).length == 1
     errors << "index.html: pinned declaration must appear exactly once"
   end
-  unless story_list.include?("지적장애인에게 왜 유추력이 필요할까?")
-    errors << "index.html: regular post is missing from the right story list"
+  if story_list.include?("지적장애인에게 왜 유추력이 필요할까?")
+    errors << "index.html: story list must show only latest 4 regular posts"
   end
 
   {
@@ -150,6 +158,25 @@ if home.file?
   errors << "index.html: obsolete hero kicker" if html.include?("배움과 선택을 잇는 기록")
   if html.include?("보호자와 교사, 복지 현장의 실무자가 함께 읽을 수 있는 말로 핵심부터 설명합니다.")
     errors << "index.html: redundant hero sentence"
+  end
+end
+
+archive = SITE.join("archive/index.html")
+if archive.file?
+  html = archive.read
+  {
+    "archive heading" => "전체 글",
+    "pinned declaration" => "AI must benefit people with intellectual disabilities",
+    "latest article" => "쉬운 정보와 읽기이해는 같은가",
+    "old regular article" => "지적장애인에게 왜 유추력이 필요할까?",
+    "home link" => "/naljabooks-blog/"
+  }.each do |label, marker|
+    errors << "archive/index.html: missing #{label}" unless html.include?(marker)
+  end
+  post_links = html.scan(%r{<article class="archive-list-item">}).length
+  expected_posts = Dir.glob(ROOT.join("_posts/*")).length
+  unless post_links == expected_posts
+    errors << "archive/index.html: expected #{expected_posts} posts, found #{post_links}"
   end
 end
 
