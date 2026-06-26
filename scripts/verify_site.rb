@@ -19,6 +19,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/analogy-learning-and-transfer-to-daily-life/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "유추 학습은 일상생활 전이를 돕는 중요한 방법이다",
+    anchors: %w[summary transfer-goal analogy-bridge easy-text-limits varied-examples expression transfer-design conclusion],
+    source_count: 4
+  },
   "archive/easy-information-and-reading-comprehension/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "쉬운 정보와 읽기이해는 같지 않다",
@@ -104,14 +110,14 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("쉬운 정보와 읽기이해는 같은가")
-    errors << "index.html: easy-information article is not the newest regular story"
+  unless first_regular_story&.include?("유추 학습은 일상생활 전이에 어떻게 연결되는가")
+    errors << "index.html: analogy transfer article is not the newest regular story"
+  end
+  unless story_list.include?("쉬운 정보와 읽기이해는 같은가")
+    errors << "index.html: easy-information article is missing from the right story list"
   end
   unless story_list.include?("날꾸 학습자가 원하지만 말하지 못한 열 가지 감각")
     errors << "index.html: unspoken learner senses article is missing from the right story list"
-  end
-  unless story_list.include?("쉬운 글만으로 충분하지 않은 이유")
-    errors << "index.html: easy-text article is missing from the right story list"
   end
   story_list_items = story_list.scan(%r{<article class="story-list-item">.*?</article>}m)
   unless story_list_items.length == 4
@@ -130,7 +136,7 @@ if home.file?
   unless html.scan(%(href="#{declaration_path}")).length == 1
     errors << "index.html: pinned declaration must appear exactly once"
   end
-  if story_list.include?("지적장애인에게 왜 유추력이 필요할까?")
+  if story_list.include?("쉬운 글만으로 충분하지 않은 이유")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
 
@@ -167,7 +173,8 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "쉬운 정보와 읽기이해는 같은가",
+    "latest article" => "유추 학습은 일상생활 전이에 어떻게 연결되는가",
+    "previous article" => "쉬운 정보와 읽기이해는 같은가",
     "old regular article" => "지적장애인에게 왜 유추력이 필요할까?",
     "home link" => "/naljabooks-blog/"
   }.each do |label, marker|
@@ -230,6 +237,8 @@ easy_text_path = "archive/why-easy-text-alone-is-not-enough/index.html"
 easy_text_url = "https://yunycho.github.io/naljabooks-blog/archive/why-easy-text-alone-is-not-enough/"
 easy_text_post = SITE.join(easy_text_path)
 easy_information_url = "https://yunycho.github.io/naljabooks-blog/archive/easy-information-and-reading-comprehension/"
+analogy_transfer_path = "archive/analogy-learning-and-transfer-to-daily-life/index.html"
+analogy_transfer_url = "https://yunycho.github.io/naljabooks-blog/archive/analogy-learning-and-transfer-to-daily-life/"
 
 if easy_text_post.file?
   html = easy_text_post.read
@@ -255,6 +264,27 @@ end
   next unless SITE.join(path).file?
   errors << "#{path}: missing easy-text article" unless SITE.join(path).read.include?(easy_text_url)
   errors << "#{path}: missing easy-information article" unless SITE.join(path).read.include?(easy_information_url)
+  errors << "#{path}: missing analogy transfer article" unless SITE.join(path).read.include?(analogy_transfer_url)
+end
+
+analogy_transfer_post = SITE.join(analogy_transfer_path)
+if analogy_transfer_post.file?
+  html = analogy_transfer_post.read
+  {
+    "Open Graph title" => 'property="og:title" content="유추 학습은 일상생활 전이에 어떻게 연결되는가"',
+    "Open Graph URL" => %(property="og:url" content="#{analogy_transfer_url}"),
+    "published time" => 'property="article:published_time" content="2026-06-26T00:00:00+09:00"',
+    "canonical URL" => %(rel="canonical" href="#{analogy_transfer_url}"),
+    "JSON-LD dateModified" => '"dateModified":"2026-06-26T00:00:00+09:00"',
+    "JSON-LD datePublished" => '"datePublished":"2026-06-26T00:00:00+09:00"',
+    "JSON-LD mainEntityOfPage" => %("@id":"#{analogy_transfer_url}")
+  }.each do |label, marker|
+    errors << "#{analogy_transfer_path}: missing #{label}" unless html.include?(marker)
+  end
+  article_body = html[%r{<div class="article-body">.*?</div>}m]
+  if article_body&.include?("발달장애")
+    errors << "#{analogy_transfer_path}: public article prose must use 지적장애인"
+  end
 end
 
 english_essay_path = "archive/at-the-edge-of-intelligence-we-find-what-it-means-to-be-human/index.html"
