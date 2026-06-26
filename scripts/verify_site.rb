@@ -11,6 +11,7 @@ EXPECTED = %w[
   about/index.html
   methodology/index.html
   questions/index.html
+  topics/index.html
   404.html
   sitemap.xml
   feed.xml
@@ -145,6 +146,7 @@ if home.file?
     "connected learning illustration" => "home-learning-scenes.webp",
     "featured latest post" => 'class="featured-story"',
     "topic icon" => 'class="topic-icon"',
+    "topic search guide" => 'href="/naljabooks-blog/topics/"',
     "editorial principle" => 'class="home-principle"',
     "latest posts CTA" => 'href="#recent-posts"'
   }.each do |label, marker|
@@ -164,6 +166,28 @@ if home.file?
   errors << "index.html: obsolete hero kicker" if html.include?("배움과 선택을 잇는 기록")
   if html.include?("보호자와 교사, 복지 현장의 실무자가 함께 읽을 수 있는 말로 핵심부터 설명합니다.")
     errors << "index.html: redundant hero sentence"
+  end
+end
+
+topics = SITE.join("topics/index.html")
+if topics.file?
+  html = topics.read
+  {
+    "topics heading" => "지적장애인의 배움과 권리를 찾는 검색어 안내",
+    "learning rights query" => "지적장애 학습권",
+    "AI era query" => "AI 시대 지적장애인",
+    "literacy query" => "지적장애 문해력",
+    "analogy query" => "유추 학습 지적장애",
+    "easy information query" => "쉬운 정보 읽기이해",
+    "Nalkku explanation" => "날자꾸러미는 이 질문들을 실제 학습 활동으로 연결하는 프로그램",
+    "analogy transfer link" => "/naljabooks-blog/archive/analogy-learning-and-transfer-to-daily-life/",
+    "easy information link" => "/naljabooks-blog/archive/easy-information-and-reading-comprehension/",
+    "AI declaration link" => "/naljabooks-blog/archive/ai-must-benefit-people-with-intellectual-disabilities/"
+  }.each do |label, marker|
+    errors << "topics/index.html: missing #{label}" unless html.include?(marker)
+  end
+  if html.include?("발달장애인")
+    errors << "topics/index.html: public terminology must center 지적장애인"
   end
 end
 
