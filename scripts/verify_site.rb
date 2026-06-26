@@ -20,6 +20,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/learning-rights-and-literacy-support-for-intellectual-disabilities/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "지적장애인의 학습권은 배울 기회를 넘어 이해하고 표현하고 선택할 권리와 연결된다",
+    anchors: %w[summary right-to-learn literacy-rights easy-information limits daily-use nalkku-design conclusion],
+    source_count: 4
+  },
   "archive/analogy-learning-and-transfer-to-daily-life/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "유추 학습은 일상생활 전이를 돕는 중요한 방법이다",
@@ -114,8 +120,11 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("유추 학습은 일상생활 전이에 어떻게 연결되는가")
-    errors << "index.html: analogy transfer article is not the newest regular story"
+  unless first_regular_story&.include?("지적장애인의 학습권은 문해력 지원에서 시작된다")
+    errors << "index.html: learning rights article is not the newest regular story"
+  end
+  unless story_list.include?("유추 학습은 일상생활 전이에 어떻게 연결되는가")
+    errors << "index.html: analogy transfer article is missing from the right story list"
   end
   unless story_list.include?("쉬운 정보와 읽기이해는 같은가")
     errors << "index.html: easy-information article is missing from the right story list"
@@ -178,6 +187,7 @@ if topics.file?
   {
     "topics heading" => "지적장애인의 배움과 권리를 찾는 검색어 안내",
     "learning rights query" => "지적장애 학습권",
+    "learning rights article link" => "/naljabooks-blog/archive/learning-rights-and-literacy-support-for-intellectual-disabilities/",
     "AI era query" => "AI 시대 지적장애인",
     "literacy query" => "지적장애 문해력",
     "analogy query" => "유추 학습 지적장애",
@@ -200,8 +210,8 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "유추 학습은 일상생활 전이에 어떻게 연결되는가",
-    "previous article" => "쉬운 정보와 읽기이해는 같은가",
+    "latest article" => "지적장애인의 학습권은 문해력 지원에서 시작된다",
+    "previous article" => "유추 학습은 일상생활 전이에 어떻게 연결되는가",
     "old regular article" => "지적장애인에게 왜 유추력이 필요할까?",
     "home link" => "/naljabooks-blog/"
   }.each do |label, marker|
@@ -266,6 +276,7 @@ easy_text_post = SITE.join(easy_text_path)
 easy_information_url = "https://yunycho.github.io/naljabooks-blog/archive/easy-information-and-reading-comprehension/"
 analogy_transfer_path = "archive/analogy-learning-and-transfer-to-daily-life/index.html"
 analogy_transfer_url = "https://yunycho.github.io/naljabooks-blog/archive/analogy-learning-and-transfer-to-daily-life/"
+learning_rights_url = "https://yunycho.github.io/naljabooks-blog/archive/learning-rights-and-literacy-support-for-intellectual-disabilities/"
 
 if easy_text_post.file?
   html = easy_text_post.read
@@ -292,6 +303,20 @@ end
   errors << "#{path}: missing easy-text article" unless SITE.join(path).read.include?(easy_text_url)
   errors << "#{path}: missing easy-information article" unless SITE.join(path).read.include?(easy_information_url)
   errors << "#{path}: missing analogy transfer article" unless SITE.join(path).read.include?(analogy_transfer_url)
+  errors << "#{path}: missing learning-rights article" unless SITE.join(path).read.include?(learning_rights_url)
+end
+
+robots = SITE.join("robots.txt")
+if robots.file?
+  robots_text = robots.read
+  {
+    "Bingbot" => "User-agent: Bingbot",
+    "OAI-SearchBot" => "User-agent: OAI-SearchBot",
+    "GPTBot" => "User-agent: GPTBot",
+    "PerplexityBot" => "User-agent: PerplexityBot"
+  }.each do |label, marker|
+    errors << "robots.txt: missing explicit #{label} allowance" unless robots_text.include?(marker)
+  end
 end
 
 analogy_transfer_post = SITE.join(analogy_transfer_path)
