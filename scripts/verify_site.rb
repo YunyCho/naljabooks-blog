@@ -106,6 +106,9 @@ home = SITE.join("index.html")
 if home.file?
   html = home.read
   errors << 'index.html: site language changed from Korean' unless html.include?('<html lang="ko-KR">')
+  unless html.include?('name="google-site-verification" content="abnm5XbuGrXdD1fXgNHPSBJBbVW61VxotldMEjCxJpc"')
+    errors << "index.html: missing Google Search Console verification tag"
+  end
   declaration_path = "/naljabooks-blog/archive/ai-must-benefit-people-with-intellectual-disabilities/"
   featured_story = html[%r{<article class="featured-story">.*?</article>}m].to_s
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
