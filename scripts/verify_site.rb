@@ -20,6 +20,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/why-quality-of-life-matters-more-than-correct-answer-rate/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "정답률은 중요하지만 충분하지 않다",
+    anchors: %w[summary score-limits literacy-change quality-of-life self-determination observation nalkku-outcomes conclusion],
+    source_count: 4
+  },
   "archive/learning-rights-and-literacy-support-for-intellectual-disabilities/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인의 학습권은 배울 기회를 넘어 이해하고 표현하고 선택할 권리와 연결된다",
@@ -120,8 +126,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인의 학습권은 문해력 지원에서 시작된다")
-    errors << "index.html: learning rights article is not the newest regular story"
+  unless first_regular_story&.include?("정답률보다 삶의 질 변화를 성과로 보는 이유")
+    errors << "index.html: quality-of-life article is not the newest regular story"
   end
   unless story_list.include?("유추 학습은 일상생활 전이에 어떻게 연결되는가")
     errors << "index.html: analogy transfer article is missing from the right story list"
@@ -129,8 +135,8 @@ if home.file?
   unless story_list.include?("쉬운 정보와 읽기이해는 같은가")
     errors << "index.html: easy-information article is missing from the right story list"
   end
-  unless story_list.include?("날꾸 학습자가 원하지만 말하지 못한 열 가지 감각")
-    errors << "index.html: unspoken learner senses article is missing from the right story list"
+  unless story_list.include?("지적장애인의 학습권은 문해력 지원에서 시작된다")
+    errors << "index.html: learning rights article is missing from the right story list"
   end
   story_list_items = story_list.scan(%r{<article class="story-list-item">.*?</article>}m)
   unless story_list_items.length == 4
@@ -149,7 +155,7 @@ if home.file?
   unless html.scan(%(href="#{declaration_path}")).length == 1
     errors << "index.html: pinned declaration must appear exactly once"
   end
-  if story_list.include?("쉬운 글만으로 충분하지 않은 이유")
+  if story_list.include?("날꾸 학습자가 원하지만 말하지 못한 열 가지 감각")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
 
@@ -195,6 +201,7 @@ if topics.file?
     "Nalkku explanation" => "날자꾸러미는 이 질문들을 실제 학습 활동으로 연결하는 프로그램",
     "analogy transfer link" => "/naljabooks-blog/archive/analogy-learning-and-transfer-to-daily-life/",
     "easy information link" => "/naljabooks-blog/archive/easy-information-and-reading-comprehension/",
+    "quality-of-life article link" => "/naljabooks-blog/archive/why-quality-of-life-matters-more-than-correct-answer-rate/",
     "AI declaration link" => "/naljabooks-blog/archive/ai-must-benefit-people-with-intellectual-disabilities/"
   }.each do |label, marker|
     errors << "topics/index.html: missing #{label}" unless html.include?(marker)
@@ -210,8 +217,8 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "지적장애인의 학습권은 문해력 지원에서 시작된다",
-    "previous article" => "유추 학습은 일상생활 전이에 어떻게 연결되는가",
+    "latest article" => "정답률보다 삶의 질 변화를 성과로 보는 이유",
+    "previous article" => "지적장애인의 학습권은 문해력 지원에서 시작된다",
     "old regular article" => "지적장애인에게 왜 유추력이 필요할까?",
     "home link" => "/naljabooks-blog/"
   }.each do |label, marker|
@@ -277,6 +284,8 @@ easy_information_url = "https://yunycho.github.io/naljabooks-blog/archive/easy-i
 analogy_transfer_path = "archive/analogy-learning-and-transfer-to-daily-life/index.html"
 analogy_transfer_url = "https://yunycho.github.io/naljabooks-blog/archive/analogy-learning-and-transfer-to-daily-life/"
 learning_rights_url = "https://yunycho.github.io/naljabooks-blog/archive/learning-rights-and-literacy-support-for-intellectual-disabilities/"
+quality_of_life_path = "archive/why-quality-of-life-matters-more-than-correct-answer-rate/index.html"
+quality_of_life_url = "https://yunycho.github.io/naljabooks-blog/archive/why-quality-of-life-matters-more-than-correct-answer-rate/"
 
 if easy_text_post.file?
   html = easy_text_post.read
@@ -304,6 +313,27 @@ end
   errors << "#{path}: missing easy-information article" unless SITE.join(path).read.include?(easy_information_url)
   errors << "#{path}: missing analogy transfer article" unless SITE.join(path).read.include?(analogy_transfer_url)
   errors << "#{path}: missing learning-rights article" unless SITE.join(path).read.include?(learning_rights_url)
+  errors << "#{path}: missing quality-of-life article" unless SITE.join(path).read.include?(quality_of_life_url)
+end
+
+quality_of_life_post = SITE.join(quality_of_life_path)
+if quality_of_life_post.file?
+  html = quality_of_life_post.read
+  {
+    "Open Graph title" => 'property="og:title" content="정답률보다 삶의 질 변화를 성과로 보는 이유"',
+    "Open Graph URL" => %(property="og:url" content="#{quality_of_life_url}"),
+    "published time" => 'property="article:published_time" content="2026-06-30T00:00:00+09:00"',
+    "canonical URL" => %(rel="canonical" href="#{quality_of_life_url}"),
+    "JSON-LD dateModified" => '"dateModified":"2026-06-30T00:00:00+09:00"',
+    "JSON-LD datePublished" => '"datePublished":"2026-06-30T00:00:00+09:00"',
+    "JSON-LD mainEntityOfPage" => %("@id":"#{quality_of_life_url}")
+  }.each do |label, marker|
+    errors << "#{quality_of_life_path}: missing #{label}" unless html.include?(marker)
+  end
+  article_body = html[%r{<div class="article-body">.*?</div>}m]
+  if article_body&.include?("발달장애")
+    errors << "#{quality_of_life_path}: public article prose must use 지적장애인"
+  end
 end
 
 robots = SITE.join("robots.txt")

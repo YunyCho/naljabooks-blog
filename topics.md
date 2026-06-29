@@ -17,6 +17,7 @@ permalink: /topics/
     <p>지적장애 학습권은 배울 기회가 있는가를 넘어, 이해할 수 있는 자료와 자기 삶에 적용할 수 있는 활동이 함께 제공되는가를 묻는 질문입니다. 학습권은 정보 접근, 문해력 지원, 자기결정권과 연결됩니다.</p>
     <ul class="article-link-list">
       <li><a href="{{ '/archive/learning-rights-and-literacy-support-for-intellectual-disabilities/' | relative_url }}">지적장애인의 학습권은 문해력 지원에서 시작된다</a><span>학습권을 문해력, 쉬운 정보, 자기결정과 연결하는 기둥글</span></li>
+      <li><a href="{{ '/archive/why-quality-of-life-matters-more-than-correct-answer-rate/' | relative_url }}">정답률보다 삶의 질 변화를 성과로 보는 이유</a><span>문해력 성과를 자기결정과 일상 참여로 넓혀 보는 기둥글</span></li>
       <li><a href="{{ '/archive/ai-must-benefit-people-with-intellectual-disabilities/' | relative_url }}">AI must benefit people with intellectual disabilities</a><span>기술과 권리의 기준을 먼저 세우는 선언문</span></li>
       <li><a href="{{ '/archive/easy-information-and-reading-comprehension/' | relative_url }}">쉬운 정보와 읽기이해는 같은가</a><span>접근 가능한 자료와 실제 이해의 차이</span></li>
     </ul>
