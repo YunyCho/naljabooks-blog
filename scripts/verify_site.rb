@@ -20,6 +20,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/ai-era-transition-and-intellectual-disability-open-research/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "AI 전환이 모든 사람에게 같은 속도, 같은 방향으로 오지 않는다",
+    anchors: %w[summary problem international-trends sdt cognitive-justice inclusive-roadmap executive-function data-self-advocacy learning-evidence korea-policy findings nalkku-view references],
+    source_count: 8
+  },
   "archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "AI는 지적장애인의 학습을 대신하는 존재가 아니라",
@@ -132,11 +138,11 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("AI는 지적장애인의 학습을 어떻게 도울 수 있는가")
-    errors << "index.html: AI learning-support article is not the newest regular story"
+  unless first_regular_story&.include?("AI 시대 전환과 지적장애인: 위험·기회·설계 원칙")
+    errors << "index.html: AI-era open research article is not the newest regular story"
   end
-  unless story_list.include?("유추 학습은 일상생활 전이에 어떻게 연결되는가")
-    errors << "index.html: analogy transfer article is missing from the right story list"
+  unless story_list.include?("AI는 지적장애인의 학습을 어떻게 도울 수 있는가")
+    errors << "index.html: AI learning-support article is missing from the right story list"
   end
   unless story_list.include?("지적장애인의 학습권은 문해력 지원에서 시작된다")
     errors << "index.html: learning-rights article is missing from the right story list"
@@ -161,7 +167,7 @@ if home.file?
   unless html.scan(%(href="#{declaration_path}")).length == 1
     errors << "index.html: pinned declaration must appear exactly once"
   end
-  if story_list.include?("날꾸 학습자가 원하지만 말하지 못한 열 가지 감각")
+  if story_list.include?("유추 학습은 일상생활 전이에 어떻게 연결되는가")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
 
@@ -209,7 +215,8 @@ if topics.file?
     "easy information link" => "/naljabooks-blog/archive/easy-information-and-reading-comprehension/",
     "quality-of-life article link" => "/naljabooks-blog/archive/why-quality-of-life-matters-more-than-correct-answer-rate/",
     "AI declaration link" => "/naljabooks-blog/archive/ai-must-benefit-people-with-intellectual-disabilities/",
-    "AI learning-support article link" => "/naljabooks-blog/archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/"
+    "AI learning-support article link" => "/naljabooks-blog/archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/",
+    "AI-era open research link" => "/naljabooks-blog/archive/ai-era-transition-and-intellectual-disability-open-research/"
   }.each do |label, marker|
     errors << "topics/index.html: missing #{label}" unless html.include?(marker)
   end
@@ -224,8 +231,8 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "AI는 지적장애인의 학습을 어떻게 도울 수 있는가",
-    "previous article" => "정답률보다 삶의 질 변화를 성과로 보는 이유",
+    "latest article" => "AI 시대 전환과 지적장애인: 위험·기회·설계 원칙",
+    "previous article" => "AI는 지적장애인의 학습을 어떻게 도울 수 있는가",
     "old regular article" => "지적장애인에게 왜 유추력이 필요할까?",
     "home link" => "/naljabooks-blog/"
   }.each do |label, marker|
@@ -295,6 +302,8 @@ quality_of_life_path = "archive/why-quality-of-life-matters-more-than-correct-an
 quality_of_life_url = "https://yunycho.github.io/naljabooks-blog/archive/why-quality-of-life-matters-more-than-correct-answer-rate/"
 ai_learning_support_path = "archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/index.html"
 ai_learning_support_url = "https://yunycho.github.io/naljabooks-blog/archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/"
+ai_era_research_path = "archive/ai-era-transition-and-intellectual-disability-open-research/index.html"
+ai_era_research_url = "https://yunycho.github.io/naljabooks-blog/archive/ai-era-transition-and-intellectual-disability-open-research/"
 
 if easy_text_post.file?
   html = easy_text_post.read
@@ -324,6 +333,23 @@ end
   errors << "#{path}: missing learning-rights article" unless SITE.join(path).read.include?(learning_rights_url)
   errors << "#{path}: missing quality-of-life article" unless SITE.join(path).read.include?(quality_of_life_url)
   errors << "#{path}: missing AI learning-support article" unless SITE.join(path).read.include?(ai_learning_support_url)
+  errors << "#{path}: missing AI-era open research article" unless SITE.join(path).read.include?(ai_era_research_url)
+end
+
+ai_era_research_post = SITE.join(ai_era_research_path)
+if ai_era_research_post.file?
+  html = ai_era_research_post.read
+  {
+    "Open Graph title" => 'property="og:title" content="AI 시대 전환과 지적장애인: 위험·기회·설계 원칙"',
+    "Open Graph URL" => %(property="og:url" content="#{ai_era_research_url}"),
+    "published time" => 'property="article:published_time" content="2026-07-03T16:55:00+09:00"',
+    "canonical URL" => %(rel="canonical" href="#{ai_era_research_url}"),
+    "JSON-LD dateModified" => '"dateModified":"2026-07-03T16:55:00+09:00"',
+    "JSON-LD datePublished" => '"datePublished":"2026-07-03T16:55:00+09:00"',
+    "JSON-LD mainEntityOfPage" => %("@id":"#{ai_era_research_url}")
+  }.each do |label, marker|
+    errors << "#{ai_era_research_path}: missing #{label}" unless html.include?(marker)
+  end
 end
 
 ai_learning_support_post = SITE.join(ai_learning_support_path)

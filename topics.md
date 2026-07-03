@@ -29,6 +29,7 @@ permalink: /topics/
     <p>AI 시대 지적장애인에게 필요한 것은 자동화된 판단이 아니라, 이해와 선택을 넓히는 설명, 확인, 표현 지원입니다. AI는 당사자의 권리와 존엄을 해치지 않는 방식으로 쓰여야 합니다.</p>
     <ul class="article-link-list">
       <li><a href="{{ '/archive/ai-must-benefit-people-with-intellectual-disabilities/' | relative_url }}">AI must benefit people with intellectual disabilities</a><span>AI가 지적장애인에게 혜택이 되기 위한 원칙</span></li>
+      <li><a href="{{ '/archive/ai-era-transition-and-intellectual-disability-open-research/' | relative_url }}">AI 시대 전환과 지적장애인: 위험·기회·설계 원칙</a><span>국제 연구와 한국 정책을 연결한 장문 오픈 리서치</span></li>
       <li><a href="{{ '/archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/' | relative_url }}">AI는 지적장애인의 학습을 어떻게 도울 수 있는가</a><span>개별화 자료, 반복 연습, 표현 지원에 AI를 쓰는 기준</span></li>
       <li><a href="{{ '/archive/at-the-edge-of-intelligence-we-find-what-it-means-to-be-human/' | relative_url }}">At the Edge of Intelligence, We Find What It Means to Be Human.</a><span>AI 시대 인간다움과 존엄에 관한 에세이</span></li>
     </ul>
