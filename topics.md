@@ -32,6 +32,7 @@ permalink: /topics/
       <li><a href="{{ '/archive/ai-era-transition-and-intellectual-disability-open-research/' | relative_url }}">AI 시대 전환과 지적장애인: 위험·기회·설계 원칙</a><span>국제 연구와 한국 정책을 연결한 장문 오픈 리서치</span></li>
       <li><a href="{{ '/archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/' | relative_url }}">AI는 지적장애인의 학습을 어떻게 도울 수 있는가</a><span>개별화 자료, 반복 연습, 표현 지원에 AI를 쓰는 기준</span></li>
       <li><a href="{{ '/archive/why-human-review-is-needed-for-ai-learning-materials/' | relative_url }}">AI 교육자료를 사람이 검토해야 하는 이유</a><span>AI 교육자료 검토와 쉬운 정보 품질 관리 기준</span></li>
+      <li><a href="{{ '/archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/' | relative_url }}">날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유</a><span>AI-아날로그 융합 학습과 날자꾸러미 운영 원칙</span></li>
       <li><a href="{{ '/archive/at-the-edge-of-intelligence-we-find-what-it-means-to-be-human/' | relative_url }}">At the Edge of Intelligence, We Find What It Means to Be Human.</a><span>AI 시대 인간다움과 존엄에 관한 에세이</span></li>
     </ul>
   </section>
@@ -70,6 +71,9 @@ permalink: /topics/
     <span>06</span>
     <h2>날자꾸러미는 이 질문들을 어떻게 다루나요?</h2>
     <p>날자꾸러미는 이 질문들을 실제 학습 활동으로 연결하는 프로그램입니다. 유추 질문, 읽기와 쓰기, 자기 경험 기록, 루틴 활동, AI 피드백을 함께 다루되, 모든 설명은 지적장애 청소년·성인의 이해와 선택을 넓히는 방향으로 검토합니다.</p>
+    <ul class="article-link-list">
+      <li><a href="{{ '/archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/' | relative_url }}">날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유</a><span>기술은 설계를 돕고 종이는 배움을 생활 속 기록으로 남긴다는 설명</span></li>
+    </ul>
     <p>도서출판 날자의 제품 구성과 구독 안내는 <a href="https://naljabooks.com">공식 웹사이트</a>에서 확인할 수 있습니다.</p>
   </section>
 </div>

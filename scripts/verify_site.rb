@@ -38,6 +38,12 @@ POSTS = {
     anchors: %w[summary ai-errors easy-looking-text adult-respect life-context risk human-review conclusion],
     source_count: 4
   },
+  "archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유는",
+    anchors: %w[summary ai-design paper-pace human-context expression-record support-loop human-centered conclusion],
+    source_count: 4
+  },
   "archive/why-quality-of-life-matters-more-than-correct-answer-rate/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "정답률은 중요하지만 충분하지 않다",
@@ -144,8 +150,11 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("AI 교육자료를 사람이 검토해야 하는 이유")
-    errors << "index.html: human-reviewed AI learning materials article is not the newest regular story"
+  unless first_regular_story&.include?("날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유")
+    errors << "index.html: AI and paper learning materials article is not the newest regular story"
+  end
+  unless story_list.include?("날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유")
+    errors << "index.html: AI and paper learning materials article is missing from the right story list"
   end
   unless story_list.include?("AI 시대 전환과 지적장애인: 위험·기회·설계 원칙")
     errors << "index.html: AI-era open research article is missing from the right story list"
@@ -156,8 +165,8 @@ if home.file?
   unless story_list.include?("AI는 지적장애인의 학습을 어떻게 도울 수 있는가")
     errors << "index.html: AI learning-support article is missing from the right story list"
   end
-  unless story_list.include?("정답률보다 삶의 질 변화를 성과로 보는 이유")
-    errors << "index.html: quality-of-life article is missing from the right story list"
+  if story_list.include?("정답률보다 삶의 질 변화를 성과로 보는 이유")
+    errors << "index.html: story list must show only latest 4 regular posts"
   end
   story_list_items = story_list.scan(%r{<article class="story-list-item">.*?</article>}m)
   unless story_list_items.length == 4
@@ -226,7 +235,8 @@ if topics.file?
     "AI declaration link" => "/naljabooks-blog/archive/ai-must-benefit-people-with-intellectual-disabilities/",
     "AI learning-support article link" => "/naljabooks-blog/archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/",
     "AI-era open research link" => "/naljabooks-blog/archive/ai-era-transition-and-intellectual-disability-open-research/",
-    "human-reviewed AI learning materials link" => "/naljabooks-blog/archive/why-human-review-is-needed-for-ai-learning-materials/"
+    "human-reviewed AI learning materials link" => "/naljabooks-blog/archive/why-human-review-is-needed-for-ai-learning-materials/",
+    "AI and paper learning materials link" => "/naljabooks-blog/archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/"
   }.each do |label, marker|
     errors << "topics/index.html: missing #{label}" unless html.include?(marker)
   end
@@ -241,8 +251,8 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "AI 교육자료를 사람이 검토해야 하는 이유",
-    "previous article" => "AI 시대 전환과 지적장애인: 위험·기회·설계 원칙",
+    "latest article" => "날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유",
+    "previous article" => "AI 교육자료를 사람이 검토해야 하는 이유",
     "old regular article" => "지적장애인에게 왜 유추력이 필요할까?",
     "home link" => "/naljabooks-blog/"
   }.each do |label, marker|
@@ -316,6 +326,8 @@ ai_era_research_path = "archive/ai-era-transition-and-intellectual-disability-op
 ai_era_research_url = "https://yunycho.github.io/naljabooks-blog/archive/ai-era-transition-and-intellectual-disability-open-research/"
 human_review_ai_path = "archive/why-human-review-is-needed-for-ai-learning-materials/index.html"
 human_review_ai_url = "https://yunycho.github.io/naljabooks-blog/archive/why-human-review-is-needed-for-ai-learning-materials/"
+ai_paper_path = "archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/index.html"
+ai_paper_url = "https://yunycho.github.io/naljabooks-blog/archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/"
 
 if easy_text_post.file?
   html = easy_text_post.read
@@ -337,16 +349,46 @@ if easy_text_post.file?
   end
 end
 
-%w[sitemap.xml feed.xml].each do |path|
-  next unless SITE.join(path).file?
-  errors << "#{path}: missing easy-text article" unless SITE.join(path).read.include?(easy_text_url)
-  errors << "#{path}: missing easy-information article" unless SITE.join(path).read.include?(easy_information_url)
-  errors << "#{path}: missing analogy transfer article" unless SITE.join(path).read.include?(analogy_transfer_url)
-  errors << "#{path}: missing learning-rights article" unless SITE.join(path).read.include?(learning_rights_url)
-  errors << "#{path}: missing quality-of-life article" unless SITE.join(path).read.include?(quality_of_life_url)
-  errors << "#{path}: missing AI learning-support article" unless SITE.join(path).read.include?(ai_learning_support_url)
-  errors << "#{path}: missing AI-era open research article" unless SITE.join(path).read.include?(ai_era_research_url)
-  errors << "#{path}: missing human-reviewed AI learning materials article" unless SITE.join(path).read.include?(human_review_ai_url)
+sitemap = SITE.join("sitemap.xml")
+if sitemap.file?
+  sitemap_text = sitemap.read
+  errors << "sitemap.xml: missing easy-text article" unless sitemap_text.include?(easy_text_url)
+  errors << "sitemap.xml: missing easy-information article" unless sitemap_text.include?(easy_information_url)
+  errors << "sitemap.xml: missing analogy transfer article" unless sitemap_text.include?(analogy_transfer_url)
+  errors << "sitemap.xml: missing learning-rights article" unless sitemap_text.include?(learning_rights_url)
+  errors << "sitemap.xml: missing quality-of-life article" unless sitemap_text.include?(quality_of_life_url)
+  errors << "sitemap.xml: missing AI learning-support article" unless sitemap_text.include?(ai_learning_support_url)
+  errors << "sitemap.xml: missing AI-era open research article" unless sitemap_text.include?(ai_era_research_url)
+  errors << "sitemap.xml: missing human-reviewed AI learning materials article" unless sitemap_text.include?(human_review_ai_url)
+  errors << "sitemap.xml: missing AI and paper learning materials article" unless sitemap_text.include?(ai_paper_url)
+end
+
+feed = SITE.join("feed.xml")
+if feed.file?
+  feed_text = feed.read
+  errors << "feed.xml: missing AI and paper learning materials article" unless feed_text.include?(ai_paper_url)
+  errors << "feed.xml: missing human-reviewed AI learning materials article" unless feed_text.include?(human_review_ai_url)
+  errors << "feed.xml: missing AI-era open research article" unless feed_text.include?(ai_era_research_url)
+end
+
+ai_paper_post = SITE.join(ai_paper_path)
+if ai_paper_post.file?
+  html = ai_paper_post.read
+  {
+    "Open Graph title" => 'property="og:title" content="날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유"',
+    "Open Graph URL" => %(property="og:url" content="#{ai_paper_url}"),
+    "published time" => 'property="article:published_time" content="2026-07-10T00:00:00+09:00"',
+    "canonical URL" => %(rel="canonical" href="#{ai_paper_url}"),
+    "JSON-LD dateModified" => '"dateModified":"2026-07-10T00:00:00+09:00"',
+    "JSON-LD datePublished" => '"datePublished":"2026-07-10T00:00:00+09:00"',
+    "JSON-LD mainEntityOfPage" => %("@id":"#{ai_paper_url}")
+  }.each do |label, marker|
+    errors << "#{ai_paper_path}: missing #{label}" unless html.include?(marker)
+  end
+  article_body = html[%r{<div class="article-body">.*?</div>}m]
+  if article_body&.include?("발달장애")
+    errors << "#{ai_paper_path}: public article prose must use 지적장애인"
+  end
 end
 
 human_review_ai_post = SITE.join(human_review_ai_path)
