@@ -20,6 +20,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "경도 지적장애 청소년·성인의 문해력 지원은 학업 보충이 아니다",
+    anchors: %w[summary hidden-difficulty rights adulthood self-determination daily-literacy explicit-support conclusion],
+    source_count: 4
+  },
   "archive/ai-era-transition-and-intellectual-disability-open-research/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "AI 전환이 모든 사람에게 같은 속도, 같은 방향으로 오지 않는다",
@@ -150,8 +156,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유")
-    errors << "index.html: AI and paper learning materials article is not the newest regular story"
+  unless first_regular_story&.include?("경도 지적장애 청소년·성인의 문해력 지원은 왜 필요한가")
+    errors << "index.html: mild intellectual disability literacy article is not the newest regular story"
   end
   unless story_list.include?("날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유")
     errors << "index.html: AI and paper learning materials article is missing from the right story list"
@@ -162,8 +168,8 @@ if home.file?
   unless story_list.include?("AI 교육자료를 사람이 검토해야 하는 이유")
     errors << "index.html: human-reviewed AI learning materials article is missing from the right story list"
   end
-  unless story_list.include?("AI는 지적장애인의 학습을 어떻게 도울 수 있는가")
-    errors << "index.html: AI learning-support article is missing from the right story list"
+  if story_list.include?("AI는 지적장애인의 학습을 어떻게 도울 수 있는가")
+    errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("정답률보다 삶의 질 변화를 성과로 보는 이유")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -236,7 +242,8 @@ if topics.file?
     "AI learning-support article link" => "/naljabooks-blog/archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/",
     "AI-era open research link" => "/naljabooks-blog/archive/ai-era-transition-and-intellectual-disability-open-research/",
     "human-reviewed AI learning materials link" => "/naljabooks-blog/archive/why-human-review-is-needed-for-ai-learning-materials/",
-    "AI and paper learning materials link" => "/naljabooks-blog/archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/"
+    "AI and paper learning materials link" => "/naljabooks-blog/archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/",
+    "mild intellectual disability literacy link" => "/naljabooks-blog/archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/"
   }.each do |label, marker|
     errors << "topics/index.html: missing #{label}" unless html.include?(marker)
   end
@@ -251,8 +258,8 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유",
-    "previous article" => "AI 교육자료를 사람이 검토해야 하는 이유",
+    "latest article" => "경도 지적장애 청소년·성인의 문해력 지원은 왜 필요한가",
+    "previous article" => "날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유",
     "old regular article" => "지적장애인에게 왜 유추력이 필요할까?",
     "home link" => "/naljabooks-blog/"
   }.each do |label, marker|
@@ -328,6 +335,8 @@ human_review_ai_path = "archive/why-human-review-is-needed-for-ai-learning-mater
 human_review_ai_url = "https://yunycho.github.io/naljabooks-blog/archive/why-human-review-is-needed-for-ai-learning-materials/"
 ai_paper_path = "archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/index.html"
 ai_paper_url = "https://yunycho.github.io/naljabooks-blog/archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/"
+literacy_support_path = "archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/index.html"
+literacy_support_url = "https://yunycho.github.io/naljabooks-blog/archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/"
 
 if easy_text_post.file?
   html = easy_text_post.read
@@ -361,14 +370,36 @@ if sitemap.file?
   errors << "sitemap.xml: missing AI-era open research article" unless sitemap_text.include?(ai_era_research_url)
   errors << "sitemap.xml: missing human-reviewed AI learning materials article" unless sitemap_text.include?(human_review_ai_url)
   errors << "sitemap.xml: missing AI and paper learning materials article" unless sitemap_text.include?(ai_paper_url)
+  errors << "sitemap.xml: missing mild intellectual disability literacy article" unless sitemap_text.include?(literacy_support_url)
 end
 
 feed = SITE.join("feed.xml")
 if feed.file?
   feed_text = feed.read
+  errors << "feed.xml: missing mild intellectual disability literacy article" unless feed_text.include?(literacy_support_url)
   errors << "feed.xml: missing AI and paper learning materials article" unless feed_text.include?(ai_paper_url)
   errors << "feed.xml: missing human-reviewed AI learning materials article" unless feed_text.include?(human_review_ai_url)
   errors << "feed.xml: missing AI-era open research article" unless feed_text.include?(ai_era_research_url)
+end
+
+literacy_support_post = SITE.join(literacy_support_path)
+if literacy_support_post.file?
+  html = literacy_support_post.read
+  {
+    "Open Graph title" => 'property="og:title" content="경도 지적장애 청소년·성인의 문해력 지원은 왜 필요한가"',
+    "Open Graph URL" => %(property="og:url" content="#{literacy_support_url}"),
+    "published time" => 'property="article:published_time" content="2026-07-14T00:00:00+09:00"',
+    "canonical URL" => %(rel="canonical" href="#{literacy_support_url}"),
+    "JSON-LD dateModified" => '"dateModified":"2026-07-14T00:00:00+09:00"',
+    "JSON-LD datePublished" => '"datePublished":"2026-07-14T00:00:00+09:00"',
+    "JSON-LD mainEntityOfPage" => %("@id":"#{literacy_support_url}")
+  }.each do |label, marker|
+    errors << "#{literacy_support_path}: missing #{label}" unless html.include?(marker)
+  end
+  article_body = html[%r{<div class="article-body">.*?</div>}m]
+  if article_body&.include?("발달장애")
+    errors << "#{literacy_support_path}: public article prose must use 지적장애인"
+  end
 end
 
 ai_paper_post = SITE.join(ai_paper_path)
@@ -540,9 +571,8 @@ if english_essay.file?
   errors << "#{english_essay_path}: Substack subscription prompt leaked into article" if article_body.include?("Thanks for reading NaljaBooks's Substack!")
 end
 
-%w[sitemap.xml feed.xml].each do |path|
-  next unless SITE.join(path).file?
-  errors << "#{path}: missing English essay" unless SITE.join(path).read.include?(english_essay_url)
+if sitemap.file?
+  errors << "sitemap.xml: missing English essay" unless sitemap.read.include?(english_essay_url)
 end
 
 source_files = Dir.glob(

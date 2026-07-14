@@ -42,6 +42,7 @@ permalink: /topics/
     <h2>지적장애 문해력</h2>
     <p>지적장애 문해력은 글자를 읽는 능력만 뜻하지 않습니다. 글의 의미를 파악하고, 자기 경험과 연결하고, 필요한 선택과 행동으로 옮기는 과정까지 포함합니다.</p>
     <ul class="article-link-list">
+      <li><a href="{{ '/archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/' | relative_url }}">경도 지적장애 청소년·성인의 문해력 지원은 왜 필요한가</a><span>문해력을 자기결정, 권리 접근, 성인기 일상 참여와 연결하는 기둥글</span></li>
       <li><a href="{{ '/archive/easy-information-and-reading-comprehension/' | relative_url }}">쉬운 정보와 읽기이해는 같은가</a><span>읽기이해를 쉬운 정보와 구분하는 글</span></li>
       <li><a href="{{ '/archive/why-easy-text-alone-is-not-enough/' | relative_url }}">쉬운 글만으로 충분하지 않은 이유</a><span>쉬운 글 다음에 필요한 활동 설계</span></li>
     </ul>
