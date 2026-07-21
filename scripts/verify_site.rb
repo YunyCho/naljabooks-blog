@@ -20,6 +20,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "지적장애인이 질문에 짧게 답하거나 바로 말하지 못하면",
+    anchors: %w[summary expression-not-all communication-layers question-format wait-options self-determination nalkku-support conclusion],
+    source_count: 4
+  },
   "archive/reading-rights-and-literacy-support-for-intellectual-disabilities/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인 독서권과 문해력 지원은 연결되어 있지만 같은 말은 아니다",
@@ -162,8 +168,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인 독서권과 문해력 지원의 차이")
-    errors << "index.html: reading-rights article is not the newest regular story"
+  unless first_regular_story&.include?("말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유")
+    errors << "index.html: expression-support article is not the newest regular story"
   end
   unless story_list.include?("날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유")
     errors << "index.html: AI and paper learning materials article is missing from the right story list"
@@ -171,8 +177,11 @@ if home.file?
   unless story_list.include?("경도 지적장애 청소년·성인의 문해력 지원은 왜 필요한가")
     errors << "index.html: mild intellectual disability literacy article is missing from the right story list"
   end
-  unless story_list.include?("AI 교육자료를 사람이 검토해야 하는 이유")
-    errors << "index.html: human-reviewed AI learning materials article is missing from the right story list"
+  unless story_list.include?("지적장애인 독서권과 문해력 지원의 차이")
+    errors << "index.html: reading-rights article is missing from the right story list"
+  end
+  if story_list.include?("AI 교육자료를 사람이 검토해야 하는 이유")
+    errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("AI 시대 전환과 지적장애인: 위험·기회·설계 원칙")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -253,7 +262,8 @@ if topics.file?
     "human-reviewed AI learning materials link" => "/naljabooks-blog/archive/why-human-review-is-needed-for-ai-learning-materials/",
     "AI and paper learning materials link" => "/naljabooks-blog/archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/",
     "mild intellectual disability literacy link" => "/naljabooks-blog/archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/",
-    "reading-rights literacy link" => "/naljabooks-blog/archive/reading-rights-and-literacy-support-for-intellectual-disabilities/"
+    "reading-rights literacy link" => "/naljabooks-blog/archive/reading-rights-and-literacy-support-for-intellectual-disabilities/",
+    "expression-support literacy link" => "/naljabooks-blog/archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/"
   }.each do |label, marker|
     errors << "topics/index.html: missing #{label}" unless html.include?(marker)
   end
@@ -268,8 +278,8 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "지적장애인 독서권과 문해력 지원의 차이",
-    "previous article" => "경도 지적장애 청소년·성인의 문해력 지원은 왜 필요한가",
+    "latest article" => "말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유",
+    "previous article" => "지적장애인 독서권과 문해력 지원의 차이",
     "old regular article" => "지적장애인에게 왜 유추력이 필요할까?",
     "home link" => "/naljabooks-blog/"
   }.each do |label, marker|
@@ -349,6 +359,8 @@ literacy_support_path = "archive/why-literacy-support-is-needed-for-mild-intelle
 literacy_support_url = "https://yunycho.github.io/naljabooks-blog/archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/"
 reading_rights_path = "archive/reading-rights-and-literacy-support-for-intellectual-disabilities/index.html"
 reading_rights_url = "https://yunycho.github.io/naljabooks-blog/archive/reading-rights-and-literacy-support-for-intellectual-disabilities/"
+expression_support_path = "archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/index.html"
+expression_support_url = "https://yunycho.github.io/naljabooks-blog/archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/"
 
 if easy_text_post.file?
   html = easy_text_post.read
@@ -384,16 +396,39 @@ if sitemap.file?
   errors << "sitemap.xml: missing AI and paper learning materials article" unless sitemap_text.include?(ai_paper_url)
   errors << "sitemap.xml: missing mild intellectual disability literacy article" unless sitemap_text.include?(literacy_support_url)
   errors << "sitemap.xml: missing reading-rights article" unless sitemap_text.include?(reading_rights_url)
+  errors << "sitemap.xml: missing expression-support article" unless sitemap_text.include?(expression_support_url)
 end
 
 feed = SITE.join("feed.xml")
 if feed.file?
   feed_text = feed.read
+  errors << "feed.xml: missing expression-support article" unless feed_text.include?(expression_support_url)
   errors << "feed.xml: missing reading-rights article" unless feed_text.include?(reading_rights_url)
   errors << "feed.xml: missing mild intellectual disability literacy article" unless feed_text.include?(literacy_support_url)
   errors << "feed.xml: missing AI and paper learning materials article" unless feed_text.include?(ai_paper_url)
   errors << "feed.xml: missing human-reviewed AI learning materials article" unless feed_text.include?(human_review_ai_url)
   errors << "feed.xml: missing AI-era open research article" unless feed_text.include?(ai_era_research_url)
+end
+
+expression_support_post = SITE.join(expression_support_path)
+if expression_support_post.file?
+  html = expression_support_post.read
+  {
+    "Open Graph title" => 'property="og:title" content="말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유"',
+    "Open Graph description" => 'property="og:description" content="지적장애인의 표현 언어와 읽기이해는 같은 수준으로 드러나지 않을 수 있습니다. 말로 나온 답만으로 이해 능력을 단정하지 않고 표현 지원과 기다림이 필요한 이유를 설명합니다."',
+    "Open Graph URL" => %(property="og:url" content="#{expression_support_url}"),
+    "published time" => 'property="article:published_time" content="2026-07-21T00:00:00+09:00"',
+    "canonical URL" => %(rel="canonical" href="#{expression_support_url}"),
+    "JSON-LD dateModified" => '"dateModified":"2026-07-21T00:00:00+09:00"',
+    "JSON-LD datePublished" => '"datePublished":"2026-07-21T00:00:00+09:00"',
+    "JSON-LD mainEntityOfPage" => %("@id":"#{expression_support_url}")
+  }.each do |label, marker|
+    errors << "#{expression_support_path}: missing #{label}" unless html.include?(marker)
+  end
+  article_body = html[%r{<div class="article-body">.*?</div>}m]
+  if article_body&.include?("발달장애")
+    errors << "#{expression_support_path}: public article prose must use 지적장애인"
+  end
 end
 
 reading_rights_post = SITE.join(reading_rights_path)
