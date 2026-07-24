@@ -20,6 +20,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/when-yes-is-not-informed-agreement/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "지적장애인이 “예”라고 답했다고 해서 언제나 충분히 이해하고 자유롭게 선택한 것은 아니다",
+    anchors: %w[summary yes-is-not-consent acquiescence power-difference checking-choice refusal-change self-determination conclusion],
+    source_count: 4
+  },
   "archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인이 질문에 짧게 답하거나 바로 말하지 못하면",
@@ -168,11 +174,11 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유")
-    errors << "index.html: expression-support article is not the newest regular story"
+  unless first_regular_story&.include?("지적장애인의 “예”는 언제 진짜 동의가 아닌가")
+    errors << "index.html: informed-agreement article is not the newest regular story"
   end
-  unless story_list.include?("날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유")
-    errors << "index.html: AI and paper learning materials article is missing from the right story list"
+  unless story_list.include?("말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유")
+    errors << "index.html: expression-support article is missing from the right story list"
   end
   unless story_list.include?("경도 지적장애 청소년·성인의 문해력 지원은 왜 필요한가")
     errors << "index.html: mild intellectual disability literacy article is missing from the right story list"
@@ -190,6 +196,9 @@ if home.file?
     errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("정답률보다 삶의 질 변화를 성과로 보는 이유")
+    errors << "index.html: story list must show only latest 4 regular posts"
+  end
+  if story_list.include?("날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
   story_list_items = story_list.scan(%r{<article class="story-list-item">.*?</article>}m)
@@ -263,7 +272,8 @@ if topics.file?
     "AI and paper learning materials link" => "/naljabooks-blog/archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/",
     "mild intellectual disability literacy link" => "/naljabooks-blog/archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/",
     "reading-rights literacy link" => "/naljabooks-blog/archive/reading-rights-and-literacy-support-for-intellectual-disabilities/",
-    "expression-support literacy link" => "/naljabooks-blog/archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/"
+    "expression-support literacy link" => "/naljabooks-blog/archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/",
+    "informed-agreement literacy link" => "/naljabooks-blog/archive/when-yes-is-not-informed-agreement/"
   }.each do |label, marker|
     errors << "topics/index.html: missing #{label}" unless html.include?(marker)
   end
@@ -278,7 +288,7 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유",
+    "latest article" => "지적장애인의 “예”는 언제 진짜 동의가 아닌가",
     "previous article" => "지적장애인 독서권과 문해력 지원의 차이",
     "old regular article" => "지적장애인에게 왜 유추력이 필요할까?",
     "home link" => "/naljabooks-blog/"
@@ -361,6 +371,8 @@ reading_rights_path = "archive/reading-rights-and-literacy-support-for-intellect
 reading_rights_url = "https://yunycho.github.io/naljabooks-blog/archive/reading-rights-and-literacy-support-for-intellectual-disabilities/"
 expression_support_path = "archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/index.html"
 expression_support_url = "https://yunycho.github.io/naljabooks-blog/archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/"
+informed_agreement_path = "archive/when-yes-is-not-informed-agreement/index.html"
+informed_agreement_url = "https://yunycho.github.io/naljabooks-blog/archive/when-yes-is-not-informed-agreement/"
 
 if easy_text_post.file?
   html = easy_text_post.read
@@ -397,17 +409,40 @@ if sitemap.file?
   errors << "sitemap.xml: missing mild intellectual disability literacy article" unless sitemap_text.include?(literacy_support_url)
   errors << "sitemap.xml: missing reading-rights article" unless sitemap_text.include?(reading_rights_url)
   errors << "sitemap.xml: missing expression-support article" unless sitemap_text.include?(expression_support_url)
+  errors << "sitemap.xml: missing informed-agreement article" unless sitemap_text.include?(informed_agreement_url)
 end
 
 feed = SITE.join("feed.xml")
 if feed.file?
   feed_text = feed.read
   errors << "feed.xml: missing expression-support article" unless feed_text.include?(expression_support_url)
+  errors << "feed.xml: missing informed-agreement article" unless feed_text.include?(informed_agreement_url)
   errors << "feed.xml: missing reading-rights article" unless feed_text.include?(reading_rights_url)
   errors << "feed.xml: missing mild intellectual disability literacy article" unless feed_text.include?(literacy_support_url)
   errors << "feed.xml: missing AI and paper learning materials article" unless feed_text.include?(ai_paper_url)
   errors << "feed.xml: missing human-reviewed AI learning materials article" unless feed_text.include?(human_review_ai_url)
   errors << "feed.xml: missing AI-era open research article" unless feed_text.include?(ai_era_research_url)
+end
+
+informed_agreement_post = SITE.join(informed_agreement_path)
+if informed_agreement_post.file?
+  html = informed_agreement_post.read
+  {
+    "Open Graph title" => 'property="og:title" content="지적장애인의 “예”는 언제 진짜 동의가 아닌가"',
+    "Open Graph description" => 'property="og:description" content="지적장애인이 질문에 “예”라고 답했더라도 충분히 이해하고 선택한 동의인지 확인해야 합니다. 묵종을 줄이는 질문 방식과 자기결정 지원 원칙을 설명합니다."',
+    "Open Graph URL" => %(property="og:url" content="#{informed_agreement_url}"),
+    "published time" => 'property="article:published_time" content="2026-07-24T00:00:00+09:00"',
+    "canonical URL" => %(rel="canonical" href="#{informed_agreement_url}"),
+    "JSON-LD dateModified" => '"dateModified":"2026-07-24T00:00:00+09:00"',
+    "JSON-LD datePublished" => '"datePublished":"2026-07-24T00:00:00+09:00"',
+    "JSON-LD mainEntityOfPage" => %("@id":"#{informed_agreement_url}")
+  }.each do |label, marker|
+    errors << "#{informed_agreement_path}: missing #{label}" unless html.include?(marker)
+  end
+  article_body = html[%r{<div class="article-body">.*?</div>}m]
+  if article_body&.include?("발달장애")
+    errors << "#{informed_agreement_path}: public article prose must use 지적장애인"
+  end
 end
 
 expression_support_post = SITE.join(expression_support_path)
