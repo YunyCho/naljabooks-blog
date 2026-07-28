@@ -20,6 +20,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/private-speech-is-not-just-problem-behavior/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "지적장애인이 혼잣말을 하면 주변에서는 이상행동이나 고쳐야 할 습관으로 보기 쉽다",
+    anchors: %w[summary self-talk self-instruction emotion-context not-diagnosis changed-pattern nalkku-support conclusion],
+    source_count: 4
+  },
   "archive/when-yes-is-not-informed-agreement/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인이 “예”라고 답했다고 해서 언제나 충분히 이해하고 자유롭게 선택한 것은 아니다",
@@ -174,14 +180,17 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인의 “예”는 언제 진짜 동의가 아닌가")
-    errors << "index.html: informed-agreement article is not the newest regular story"
+  unless first_regular_story&.include?("지적장애인의 혼잣말을 문제행동으로만 보면 놓치는 것")
+    errors << "index.html: private-speech article is not the newest regular story"
+  end
+  unless story_list.include?("지적장애인의 “예”는 언제 진짜 동의가 아닌가")
+    errors << "index.html: informed-agreement article is missing from the right story list"
   end
   unless story_list.include?("말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유")
     errors << "index.html: expression-support article is missing from the right story list"
   end
-  unless story_list.include?("경도 지적장애 청소년·성인의 문해력 지원은 왜 필요한가")
-    errors << "index.html: mild intellectual disability literacy article is missing from the right story list"
+  if story_list.include?("경도 지적장애 청소년·성인의 문해력 지원은 왜 필요한가")
+    errors << "index.html: story list must show only latest 4 regular posts"
   end
   unless story_list.include?("지적장애인 독서권과 문해력 지원의 차이")
     errors << "index.html: reading-rights article is missing from the right story list"
@@ -288,7 +297,7 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "지적장애인의 “예”는 언제 진짜 동의가 아닌가",
+    "latest article" => "지적장애인의 혼잣말을 문제행동으로만 보면 놓치는 것",
     "previous article" => "지적장애인 독서권과 문해력 지원의 차이",
     "old regular article" => "지적장애인에게 왜 유추력이 필요할까?",
     "home link" => "/naljabooks-blog/"
@@ -373,6 +382,22 @@ expression_support_path = "archive/expression-does-not-define-understanding-for-
 expression_support_url = "https://yunycho.github.io/naljabooks-blog/archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/"
 informed_agreement_path = "archive/when-yes-is-not-informed-agreement/index.html"
 informed_agreement_url = "https://yunycho.github.io/naljabooks-blog/archive/when-yes-is-not-informed-agreement/"
+private_speech_path = "archive/private-speech-is-not-just-problem-behavior/index.html"
+private_speech_url = "https://yunycho.github.io/naljabooks-blog/archive/private-speech-is-not-just-problem-behavior/"
+
+private_speech_post = SITE.join(private_speech_path)
+if private_speech_post.file?
+  html = private_speech_post.read
+  {
+    "Open Graph URL" => %(property="og:url" content="#{private_speech_url}"),
+    "published time" => 'property="article:published_time" content="2026-07-28T00:00:00+09:00"',
+    "canonical URL" => %(rel="canonical" href="#{private_speech_url}"),
+    "JSON-LD dateModified" => '"dateModified":"2026-07-28T00:00:00+09:00"',
+    "JSON-LD datePublished" => '"datePublished":"2026-07-28T00:00:00+09:00"'
+  }.each do |label, marker|
+    errors << "#{private_speech_path}: missing #{label}" unless html.include?(marker)
+  end
+end
 
 if easy_text_post.file?
   html = easy_text_post.read
@@ -410,6 +435,7 @@ if sitemap.file?
   errors << "sitemap.xml: missing reading-rights article" unless sitemap_text.include?(reading_rights_url)
   errors << "sitemap.xml: missing expression-support article" unless sitemap_text.include?(expression_support_url)
   errors << "sitemap.xml: missing informed-agreement article" unless sitemap_text.include?(informed_agreement_url)
+  errors << "sitemap.xml: missing private-speech article" unless sitemap_text.include?(private_speech_url)
 end
 
 feed = SITE.join("feed.xml")
@@ -417,6 +443,7 @@ if feed.file?
   feed_text = feed.read
   errors << "feed.xml: missing expression-support article" unless feed_text.include?(expression_support_url)
   errors << "feed.xml: missing informed-agreement article" unless feed_text.include?(informed_agreement_url)
+  errors << "feed.xml: missing private-speech article" unless feed_text.include?(private_speech_url)
   errors << "feed.xml: missing reading-rights article" unless feed_text.include?(reading_rights_url)
   errors << "feed.xml: missing mild intellectual disability literacy article" unless feed_text.include?(literacy_support_url)
   errors << "feed.xml: missing AI and paper learning materials article" unless feed_text.include?(ai_paper_url)
