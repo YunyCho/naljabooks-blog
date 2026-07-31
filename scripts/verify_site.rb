@@ -20,6 +20,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "지적장애인이 갑자기 활동을 거부하거나 화를 내고 자신을 때리면 장애 특성이나 문제행동으로 기록되기 쉽다",
+    anchors: %w[summary behavior-signal pain-expression sensory-conditions diagnostic-overshadowing check-order contextual-record conclusion],
+    source_count: 4
+  },
   "archive/private-speech-is-not-just-problem-behavior/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인이 혼잣말을 하면 주변에서는 이상행동이나 고쳐야 할 습관으로 보기 쉽다",
@@ -180,8 +186,11 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인의 혼잣말을 문제행동으로만 보면 놓치는 것")
-    errors << "index.html: private-speech article is not the newest regular story"
+  unless first_regular_story&.include?("지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때")
+    errors << "index.html: pain-and-sensory article is not the newest regular story"
+  end
+  unless story_list.include?("지적장애인의 혼잣말을 문제행동으로만 보면 놓치는 것")
+    errors << "index.html: private-speech article is missing from the right story list"
   end
   unless story_list.include?("지적장애인의 “예”는 언제 진짜 동의가 아닌가")
     errors << "index.html: informed-agreement article is missing from the right story list"
@@ -192,8 +201,8 @@ if home.file?
   if story_list.include?("경도 지적장애 청소년·성인의 문해력 지원은 왜 필요한가")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
-  unless story_list.include?("지적장애인 독서권과 문해력 지원의 차이")
-    errors << "index.html: reading-rights article is missing from the right story list"
+  if story_list.include?("지적장애인 독서권과 문해력 지원의 차이")
+    errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("AI 교육자료를 사람이 검토해야 하는 이유")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -282,7 +291,8 @@ if topics.file?
     "mild intellectual disability literacy link" => "/naljabooks-blog/archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/",
     "reading-rights literacy link" => "/naljabooks-blog/archive/reading-rights-and-literacy-support-for-intellectual-disabilities/",
     "expression-support literacy link" => "/naljabooks-blog/archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/",
-    "informed-agreement literacy link" => "/naljabooks-blog/archive/when-yes-is-not-informed-agreement/"
+    "informed-agreement literacy link" => "/naljabooks-blog/archive/when-yes-is-not-informed-agreement/",
+    "pain-and-sensory literacy link" => "/naljabooks-blog/archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/"
   }.each do |label, marker|
     errors << "topics/index.html: missing #{label}" unless html.include?(marker)
   end
@@ -297,7 +307,7 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "지적장애인의 혼잣말을 문제행동으로만 보면 놓치는 것",
+    "latest article" => "지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때",
     "previous article" => "지적장애인 독서권과 문해력 지원의 차이",
     "old regular article" => "지적장애인에게 왜 유추력이 필요할까?",
     "home link" => "/naljabooks-blog/"
@@ -384,6 +394,29 @@ informed_agreement_path = "archive/when-yes-is-not-informed-agreement/index.html
 informed_agreement_url = "https://yunycho.github.io/naljabooks-blog/archive/when-yes-is-not-informed-agreement/"
 private_speech_path = "archive/private-speech-is-not-just-problem-behavior/index.html"
 private_speech_url = "https://yunycho.github.io/naljabooks-blog/archive/private-speech-is-not-just-problem-behavior/"
+pain_and_sensory_path = "archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/index.html"
+pain_and_sensory_url = "https://yunycho.github.io/naljabooks-blog/archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/"
+
+pain_and_sensory_post = SITE.join(pain_and_sensory_path)
+if pain_and_sensory_post.file?
+  html = pain_and_sensory_post.read
+  {
+    "Open Graph title" => 'property="og:title" content="지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때"',
+    "Open Graph description" => 'property="og:description" content="지적장애인의 행동 변화 뒤에는 통증, 청각·시각 문제나 불편한 환경이 있을 수 있습니다. 장애 탓으로 단정하기 전에 직접 묻고 점검할 순서를 설명합니다."',
+    "Open Graph URL" => %(property="og:url" content="#{pain_and_sensory_url}"),
+    "published time" => 'property="article:published_time" content="2026-07-31T00:00:00+09:00"',
+    "canonical URL" => %(rel="canonical" href="#{pain_and_sensory_url}"),
+    "JSON-LD dateModified" => '"dateModified":"2026-07-31T00:00:00+09:00"',
+    "JSON-LD datePublished" => '"datePublished":"2026-07-31T00:00:00+09:00"',
+    "JSON-LD mainEntityOfPage" => %("@id":"#{pain_and_sensory_url}")
+  }.each do |label, marker|
+    errors << "#{pain_and_sensory_path}: missing #{label}" unless html.include?(marker)
+  end
+  article_body = html[%r{<div class="article-body">.*?</div>}m]
+  if article_body&.include?("발달장애")
+    errors << "#{pain_and_sensory_path}: public article prose must use 지적장애인"
+  end
+end
 
 private_speech_post = SITE.join(private_speech_path)
 if private_speech_post.file?
@@ -436,6 +469,7 @@ if sitemap.file?
   errors << "sitemap.xml: missing expression-support article" unless sitemap_text.include?(expression_support_url)
   errors << "sitemap.xml: missing informed-agreement article" unless sitemap_text.include?(informed_agreement_url)
   errors << "sitemap.xml: missing private-speech article" unless sitemap_text.include?(private_speech_url)
+  errors << "sitemap.xml: missing pain-and-sensory article" unless sitemap_text.include?(pain_and_sensory_url)
 end
 
 feed = SITE.join("feed.xml")
@@ -444,6 +478,7 @@ if feed.file?
   errors << "feed.xml: missing expression-support article" unless feed_text.include?(expression_support_url)
   errors << "feed.xml: missing informed-agreement article" unless feed_text.include?(informed_agreement_url)
   errors << "feed.xml: missing private-speech article" unless feed_text.include?(private_speech_url)
+  errors << "feed.xml: missing pain-and-sensory article" unless feed_text.include?(pain_and_sensory_url)
   errors << "feed.xml: missing reading-rights article" unless feed_text.include?(reading_rights_url)
   errors << "feed.xml: missing mild intellectual disability literacy article" unless feed_text.include?(literacy_support_url)
   errors << "feed.xml: missing AI and paper learning materials article" unless feed_text.include?(ai_paper_url)
