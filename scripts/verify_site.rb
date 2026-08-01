@@ -146,6 +146,7 @@ POSTS = {
 SEO_PILLARS = {
   "_posts/2026-08-01-how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities.md" => {
     primary_query: "성인 지적장애인 평생교육 프로그램",
+    bridge_queries: ["발달장애인 평생교육", "성인 발달장애 학습", "발달장애 평생교육 프로그램"],
     related_urls: %w[
       /archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/
       /archive/why-analogy-matters/
@@ -154,6 +155,7 @@ SEO_PILLARS = {
   },
   "_posts/2026-07-14-why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults.md" => {
     primary_query: "경도 지적장애 문해력 교육",
+    bridge_queries: ["발달장애 문해력 교육", "발달장애 학습", "성인 발달장애 학습"],
     related_urls: %w[
       /archive/easy-information-and-reading-comprehension/
       /archive/learning-rights-and-literacy-support-for-intellectual-disabilities/
@@ -162,6 +164,7 @@ SEO_PILLARS = {
   },
   "_posts/2026-06-15-why-analogy-matters.md" => {
     primary_query: "지적장애인 유추 학습",
+    bridge_queries: ["발달장애 학습", "발달장애 성장", "발달장애 유추 학습"],
     related_urls: %w[
       /archive/analogy-learning-and-transfer-to-daily-life/
       /archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/
@@ -170,6 +173,7 @@ SEO_PILLARS = {
   },
   "_posts/2026-06-23-easy-information-and-reading-comprehension.md" => {
     primary_query: "지적장애인 쉬운 정보",
+    bridge_queries: ["발달장애인 쉬운 정보", "발달장애 읽기 자료", "발달장애 문해력"],
     related_urls: %w[
       /archive/why-easy-text-alone-is-not-enough/
       /archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/
@@ -178,6 +182,7 @@ SEO_PILLARS = {
   },
   "_posts/2026-07-03-how-ai-can-support-learning-for-people-with-intellectual-disabilities.md" => {
     primary_query: "특수교육 AI",
+    bridge_queries: ["발달장애 AI 교육", "발달장애 AI 학습", "발달장애 특수교육 AI"],
     related_urls: %w[
       /archive/why-human-review-is-needed-for-ai-learning-materials/
       /archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/
@@ -201,6 +206,7 @@ SEO_PILLARS.each do |relative_path, expected|
   data = YAML.safe_load(front_matter, permitted_classes: [Date], aliases: true) || {}
   seo = data.fetch("seo", {})
   primary_query = expected.fetch(:primary_query)
+  bridge_queries = expected.fetch(:bridge_queries)
   intro = body.split(/^##\s/, 2).first.to_s
 
   errors << "#{relative_path}: seo.primary_query must be #{primary_query.inspect}" unless seo["primary_query"] == primary_query
@@ -210,6 +216,9 @@ SEO_PILLARS.each do |relative_path, expected|
   unless seo["secondary_queries"].is_a?(Array) && seo["secondary_queries"].length >= 2
     errors << "#{relative_path}: seo.secondary_queries must include at least two queries"
   end
+  unless seo["bridge_queries"] == bridge_queries
+    errors << "#{relative_path}: seo.bridge_queries must be #{bridge_queries.inspect}"
+  end
 
   {
     "title" => data["title"].to_s,
@@ -218,6 +227,15 @@ SEO_PILLARS.each do |relative_path, expected|
     "intro" => intro
   }.each do |field, value|
     errors << "#{relative_path}: #{field} must include primary query #{primary_query.inspect}" unless value.include?(primary_query)
+  end
+
+  bridge_queries.each do |query|
+    errors << "#{relative_path}: tags must include bridge query #{query.inspect}" unless Array(data["tags"]).include?(query)
+    errors << "#{relative_path}: intro must include bridge query #{query.inspect}" unless intro.include?(query)
+  end
+  errors << "#{relative_path}: description must connect the developmental-disability bridge" unless data["description"].to_s.include?("발달장애")
+  unless intro.include?("지적장애인과 자폐성장애인") && intro.include?("넓은")
+    errors << "#{relative_path}: intro must explain that 발달장애 is broader than the article's 지적장애 scope"
   end
 
   related_urls = Array(data["related_posts"]).filter_map { |item| item.is_a?(Hash) ? item["url"] : nil }
@@ -238,6 +256,9 @@ SEO_PILLARS.each do |relative_path, expected|
     errors << "#{built_post.relative_path_from(SITE)}: rendered h1 must include #{primary_query.inspect}" unless html.match?(%r{<h1>[^<]*#{Regexp.escape(primary_query)}[^<]*</h1>})
     errors << "#{built_post.relative_path_from(SITE)}: missing related-reading navigation" unless html.include?('class="related-reading"')
     errors << "#{built_post.relative_path_from(SITE)}: revised JSON-LD dateModified must be 2026-08-01" unless html.include?('"dateModified":"2026-08-01T00:00:00+09:00"')
+    bridge_queries.each do |query|
+      errors << "#{built_post.relative_path_from(SITE)}: missing rendered bridge query #{query.inspect}" unless html.include?(query)
+    end
     expected.fetch(:related_urls).each do |url|
       rendered_url = "#{BASEURL}#{url}"
       errors << "#{built_post.relative_path_from(SITE)}: missing rendered related link #{rendered_url}" unless html.include?(%(href="#{rendered_url}"))
@@ -383,7 +404,7 @@ topics = SITE.join("topics/index.html")
 if topics.file?
   html = topics.read
   {
-    "topics heading" => "지적장애인의 배움과 권리를 찾는 검색어 안내",
+    "topics heading" => "발달장애 학습과 성장: 지적장애인의 배움과 권리 안내",
     "learning rights query" => "지적장애 학습권",
     "learning rights article link" => "/naljabooks-blog/archive/learning-rights-and-literacy-support-for-intellectual-disabilities/",
     "AI era query" => "AI 시대 지적장애인",
@@ -404,12 +425,13 @@ if topics.file?
     "expression-support literacy link" => "/naljabooks-blog/archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/",
     "informed-agreement literacy link" => "/naljabooks-blog/archive/when-yes-is-not-informed-agreement/",
     "pain-and-sensory literacy link" => "/naljabooks-blog/archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/",
-    "Nalkku lifelong-learning pillar link" => "/naljabooks-blog/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/"
+    "Nalkku lifelong-learning pillar link" => "/naljabooks-blog/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/",
+    "developmental learning hub" => "발달장애 학습과 성장",
+    "developmental scope" => "지적장애인과 자폐성장애인 등을 포괄하는 넓은 범주",
+    "developmental literacy query" => "발달장애 문해력 교육",
+    "developmental AI query" => "발달장애 AI 교육"
   }.each do |label, marker|
     errors << "topics/index.html: missing #{label}" unless html.include?(marker)
-  end
-  if html.include?("발달장애인")
-    errors << "topics/index.html: public terminology must center 지적장애인"
   end
 end
 
@@ -516,7 +538,7 @@ if nalkku_lifelong_post.file?
   html = nalkku_lifelong_post.read
   {
     "Open Graph title" => 'property="og:title" content="성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가"',
-    "Open Graph description" => 'property="og:description" content="성인 지적장애인 평생교육 프로그램을 찾는 기관과 가족을 위해 문해력·유추·자기표현·일상 전이를 잇는 날자꾸러미의 구성과 운영 원칙을 소개합니다."',
+    "Open Graph description" => 'property="og:description" content="성인 지적장애인 평생교육 프로그램과 발달장애인 평생교육을 찾는 기관과 가족을 위해 문해력·유추·자기표현·일상 전이를 잇는 날자꾸러미의 구성과 운영 원칙을 소개합니다."',
     "Open Graph URL" => %(property="og:url" content="#{nalkku_lifelong_url}"),
     "published time" => 'property="article:published_time" content="2026-08-01T00:00:00+09:00"',
     "canonical URL" => %(rel="canonical" href="#{nalkku_lifelong_url}"),
@@ -525,10 +547,6 @@ if nalkku_lifelong_post.file?
     "JSON-LD mainEntityOfPage" => %("@id":"#{nalkku_lifelong_url}")
   }.each do |label, marker|
     errors << "#{nalkku_lifelong_path}: missing #{label}" unless html.include?(marker)
-  end
-  article_body = html[%r{<div class="article-body">.*?</div>}m]
-  if article_body&.include?("발달장애")
-    errors << "#{nalkku_lifelong_path}: public article prose must use 지적장애인"
   end
 end
 
@@ -700,10 +718,6 @@ if literacy_support_post.file?
   }.each do |label, marker|
     errors << "#{literacy_support_path}: missing #{label}" unless html.include?(marker)
   end
-  article_body = html[%r{<div class="article-body">.*?</div>}m]
-  if article_body&.include?("발달장애")
-    errors << "#{literacy_support_path}: public article prose must use 지적장애인"
-  end
 end
 
 ai_paper_post = SITE.join(ai_paper_path)
@@ -775,10 +789,6 @@ if ai_learning_support_post.file?
     "JSON-LD mainEntityOfPage" => %("@id":"#{ai_learning_support_url}")
   }.each do |label, marker|
     errors << "#{ai_learning_support_path}: missing #{label}" unless html.include?(marker)
-  end
-  article_body = html[%r{<div class="article-body">.*?</div>}m]
-  if article_body&.include?("발달장애")
-    errors << "#{ai_learning_support_path}: public article prose must use 지적장애인"
   end
 end
 
