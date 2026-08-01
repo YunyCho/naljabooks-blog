@@ -1,20 +1,35 @@
 ---
 layout: post
-title: "쉬운 정보와 읽기이해는 같은가"
-description: "쉬운 정보는 접근성을 높이는 중요한 출발점이지만, 읽기이해는 독자가 의미를 구성하고 자기 상황에 적용하는 더 넓은 과정입니다."
+title: "지적장애인 쉬운 정보, 읽기이해와 무엇이 다른가"
+description: "지적장애인 쉬운 정보는 접근성을 높이는 출발점입니다. 쉬운 자료 제작과 독자가 의미를 이해하고 자기 상황에 적용하도록 돕는 문해력 지원의 차이를 설명합니다."
 date: 2026-06-23
-updated: 2026-06-23
+updated: 2026-08-01
+last_modified_at: 2026-08-01
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "문해력과 쉬운 정보"
-tags: ["쉬운 정보", "읽기이해", "문해력", "지적장애", "접근성"]
+tags: ["지적장애인 쉬운 정보", "쉬운 정보", "읽기이해", "문해력", "지적장애", "접근성"]
+seo:
+  primary_query: "지적장애인 쉬운 정보"
+  search_intent: "지적장애인을 위한 쉬운 정보의 기준과 읽기이해 지원의 차이를 찾는다."
+  secondary_queries: ["지적장애인 읽기 쉬운 자료", "지적장애인 알기 쉬운 정보", "쉬운 정보 읽기이해"]
+related_posts:
+  - title: "쉬운 글만으로 충분하지 않은 이유"
+    url: "/archive/why-easy-text-alone-is-not-enough/"
+    description: "쉬운 글 다음에 필요한 질문·표현·적용 활동"
+  - title: "경도 지적장애 문해력 교육, 청소년·성인에게 왜 필요한가"
+    url: "/archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/"
+    description: "읽기이해를 자기결정과 일상 참여로 연결하는 지원"
+  - title: "지적장애인 독서권과 문해력 지원의 차이"
+    url: "/archive/reading-rights-and-literacy-support-for-intellectual-disabilities/"
+    description: "책에 접근할 권리와 이해·표현·생활 사용을 돕는 과정"
 toc:
   - id: summary
     title: "핵심 요약"
   - id: easy-information
-    title: "쉬운 정보는 접근 가능성을 높인다"
+    title: "지적장애인 쉬운 정보는 접근 가능성을 높인다"
   - id: comprehension-process
     title: "읽기이해는 의미를 만드는 과정이다"
   - id: necessary-not-sufficient
@@ -40,7 +55,7 @@ sources:
     url: "https://rua.ua.es/bitstream/10045/37801/3/2014_Fajardo_etal_JARID.pdf"
 ---
 
-쉬운 정보와 읽기이해는 같지 않다. 쉬운 정보는 글을 더 접근 가능하게 만드는 방식이고, 읽기이해는 독자가 그 글의 의미를 파악하고 자기 경험과 연결하는 과정이다. 쉬운 정보는 매우 중요하지만, 쉬운 정보만으로 이해가 자동으로 보장되지는 않는다.
+지적장애인 쉬운 정보와 읽기이해는 같지 않다. 쉬운 정보는 글을 더 접근 가능하게 만드는 방식이고, 읽기이해는 독자가 그 글의 의미를 파악하고 자기 경험과 연결하는 과정이다. 쉬운 정보는 매우 중요하지만, 쉬운 정보만으로 이해가 자동으로 보장되지는 않는다.
 
 ## 핵심 요약 {#summary}
 
@@ -49,7 +64,7 @@ sources:
 - 쉬운 정보는 읽기이해의 조건을 좋게 만들지만, 이해 자체를 대신하지는 않는다.
 - 지적장애인을 위한 문해력 지원은 쉬운 정보 제작과 이해 활동 설계를 함께 포함해야 한다.
 
-## 쉬운 정보는 접근 가능성을 높인다 {#easy-information}
+## 지적장애인 쉬운 정보는 접근 가능성을 높인다 {#easy-information}
 
 쉬운 정보는 복잡한 정보를 더 단순한 단어와 짧은 문장, 명확한 구성, 보조 이미지로 바꾸는 작업이다. 지적장애인을 위한 안내서, 공공정보, 건강정보, 직업정보에서 이런 방식이 많이 사용된다. 이는 정보 접근권을 넓히는 중요한 실천이다.[1](#source-1)
 

@@ -1,20 +1,35 @@
 ---
 layout: post
-title: "AI는 지적장애인의 학습을 어떻게 도울 수 있는가"
-description: "AI 교육은 지적장애인의 개별화 학습자료, 반복 연습, 표현 지원과 접근성을 보완할 수 있지만 사람의 검토와 책임이 필요합니다."
+title: "특수교육 AI, 지적장애인의 학습을 어떻게 도울 수 있는가"
+description: "특수교육 AI를 지적장애인의 개별화 학습자료, 반복 연습과 표현 지원에 활용하는 방법과 교사·지원자의 검토 및 책임 원칙을 설명합니다."
 date: 2026-07-03
-updated: 2026-07-03
+updated: 2026-08-01
+last_modified_at: 2026-08-01
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "배움과 일상"
-tags: ["AI 교육", "지적장애", "학습지원", "접근성", "표현 지원", "날자꾸러미"]
+tags: ["특수교육 AI", "AI 교육", "지적장애", "학습지원", "접근성", "표현 지원", "날자꾸러미"]
+seo:
+  primary_query: "특수교육 AI"
+  search_intent: "교사와 지원자가 AI를 특수교육 학습자료와 개별화 지원에 안전하게 쓰는 방법을 찾는다."
+  secondary_queries: ["지적장애 AI 교육", "AI 특수교육 학습자료", "특수교육 인공지능 활용"]
+related_posts:
+  - title: "AI 교육자료를 사람이 검토해야 하는 이유"
+    url: "/archive/why-human-review-is-needed-for-ai-learning-materials/"
+    description: "AI가 만든 자료의 오류·난이도·성인 감수성을 검토하는 기준"
+  - title: "날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유"
+    url: "/archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/"
+    description: "AI 설계와 종이 활동을 사람 중심 지원으로 연결하는 구조"
+  - title: "AI 시대 전환과 지적장애인: 위험·기회·설계 원칙"
+    url: "/archive/ai-era-transition-and-intellectual-disability-open-research/"
+    description: "AI 전환의 권리·정책·교육 원칙을 다룬 장문 연구"
 toc:
   - id: summary
     title: "핵심 요약"
   - id: personalized-materials
-    title: "개별화 자료 제작"
+    title: "특수교육 AI와 개별화 자료 제작"
   - id: repeated-practice
     title: "반복 연습"
   - id: expression-support
@@ -42,7 +57,7 @@ sources:
     url: "https://arxiv.org/abs/2510.00691"
 ---
 
-AI는 지적장애인의 학습을 대신하는 존재가 아니라, 더 개인화되고 반복 가능한 학습 환경을 만드는 보조 도구가 될 수 있다. 특수교육 AI와 지적장애 AI 교육을 찾는 현장에서 중요한 것은 기술 자체보다 학습자의 이해와 선택이다. 날자꾸러미는 AI를 자료 난이도 조절, 반복 질문, 표현 지원, 활동 기록에 활용하되, 배운 것이 삶으로 이어지도록 사람의 검토와 현장 조정을 함께 둔다.
+특수교육 AI는 지적장애인의 학습을 대신하는 존재가 아니라, 더 개인화되고 반복 가능한 학습 환경을 만드는 보조 도구가 될 수 있다. 특수교육 AI와 지적장애 AI 교육을 찾는 현장에서 중요한 것은 기술 자체보다 학습자의 이해와 선택이다. 날자꾸러미는 AI를 자료 난이도 조절, 반복 질문, 표현 지원, 활동 기록에 활용하되, 배운 것이 삶으로 이어지도록 사람의 검토와 현장 조정을 함께 둔다.
 
 ## 핵심 요약 {#summary}
 
@@ -51,7 +66,7 @@ AI는 지적장애인의 학습을 대신하는 존재가 아니라, 더 개인�
 - 지적장애 학습지원에서 AI는 사람의 관계와 판단을 대체할 수 없다.
 - 좋은 AI 활용은 자동화보다 검토, 조정, 기록, 책임 구조가 중요하다.
 
-## AI는 개별화 자료 제작을 빠르게 도울 수 있다 {#personalized-materials}
+## 특수교육 AI는 개별화 자료 제작을 빠르게 도울 수 있다 {#personalized-materials}
 
 지적장애 청소년·성인은 이해 수준, 관심사, 경험, 말투, 읽기 속도가 서로 다르다. 같은 쉬운 글이라도 어떤 사람에게는 쉽고 어떤 사람에게는 여전히 어렵다. AI는 같은 주제를 여러 난이도, 여러 예시, 여러 문장 길이로 바꾸는 작업을 빠르게 도울 수 있다. 다양한 표현 방식과 참여 수단을 제공하는 보편적 학습설계의 관점도 개인에게 맞는 접근 경로가 필요하다는 점을 뒷받침한다.[1](#source-1)
 

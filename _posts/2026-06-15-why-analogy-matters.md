@@ -1,18 +1,33 @@
 ---
 layout: post
-title: "지적장애인에게 왜 유추력이 필요할까?"
-description: "유추력이 무엇인지, 지적장애인의 일상 학습과 선택에 어떤 관련이 있는지, 교육 활동을 설계할 때 무엇을 지켜야 하는지 설명합니다."
+title: "지적장애인 유추 학습, 왜 필요하고 어떻게 가르칠까?"
+description: "지적장애인 유추 학습의 뜻과 필요성, 일상생활 전이와 선택에 연결하는 질문법, 교육 활동을 설계할 때 지켜야 할 원칙을 설명합니다."
 date: 2026-06-15
-updated: 2026-06-15
+updated: 2026-08-01
+last_modified_at: 2026-08-01
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "유추와 문해력"
-tags: ["유추력", "문해력", "지적장애"]
+tags: ["지적장애인 유추 학습", "유추력", "문해력", "지적장애", "일상 전이"]
+seo:
+  primary_query: "지적장애인 유추 학습"
+  search_intent: "유추의 뜻과 필요성, 지적장애인에게 실제로 가르치는 방법을 찾는다."
+  secondary_queries: ["지적장애 유추력", "지적장애인 유추 추론", "유추 학습 일상생활 전이"]
+related_posts:
+  - title: "유추 학습은 일상생활 전이에 어떻게 연결되는가"
+    url: "/archive/analogy-learning-and-transfer-to-daily-life/"
+    description: "배운 원리를 새로운 상황에 옮기는 전이 설계"
+  - title: "성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가"
+    url: "/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/"
+    description: "유추를 문해력·자기표현·생활 적용과 잇는 월간 구조"
+  - title: "경도 지적장애 문해력 교육, 청소년·성인에게 왜 필요한가"
+    url: "/archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/"
+    description: "읽기이해와 표현을 생활 속 선택으로 연결하는 지원"
 toc:
   - id: analogy
-    title: "유추력이란"
+    title: "지적장애인 유추 학습이란"
   - id: daily-life
     title: "일상 학습과 선택"
   - id: learning
@@ -41,11 +56,11 @@ sources:
     year: 2013
     url: "https://doi.org/10.1080/00461520.2013.775712"
 ---
-유추력은 **한 상황에서 발견한 관계를 다른 상황에도 연결해 보는 힘**입니다. 같은 것을 외우는 데서 멈추지 않고, “이때 이렇게 되었으니 비슷한 저때에는 어떻게 해 볼 수 있을까?”를 생각하는 과정입니다.
+지적장애인 유추 학습은 **한 상황에서 발견한 관계를 다른 상황에도 연결해 보는 힘**을 기르는 과정입니다. 같은 것을 외우는 데서 멈추지 않고, “이때 이렇게 되었으니 비슷한 저때에는 어떻게 해 볼 수 있을까?”를 생각하고 표현하도록 돕습니다.
 
 지적장애인의 교육에서 유추력이 중요한 이유는 특정 문제를 잘 푸는 것 자체보다, 배운 원리와 전략을 새로운 사람·장소·과제에 적용하는 일이 일상생활과 연결되기 때문입니다. 다만 유추 훈련 하나가 모든 사람의 일상 기능을 높인다고 단정할 직접 근거는 충분하지 않습니다. 사람마다 경험과 지원 요구가 다르므로 구체적인 맥락에서 개별적으로 가르치고 확인해야 합니다.
 
-## 유추력이란 {#analogy}
+## 지적장애인 유추 학습이란 {#analogy}
 
 유추는 겉모습이 똑같은 두 대상을 찾는 활동과 다릅니다. 중요한 것은 대상 사이의 **관계**입니다.
 

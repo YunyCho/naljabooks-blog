@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
 require "pathname"
+require "date"
+require "yaml"
 
 ROOT = Pathname.new(__dir__).join("..").expand_path
 SITE = ROOT.join("_site")
@@ -22,7 +24,7 @@ EXPECTED = %w[
 POSTS = {
   "archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
-    required_text: "성인 지적장애인 평생교육은 학교에서 배운 내용을 반복하는 데서 끝나지 않는다",
+    required_text: "성인 지적장애인 평생교육 프로그램은 학교에서 배운 내용을 반복하는 데서 끝나지 않아야 한다",
     anchors: %w[summary lifelong-learning nalkku-definition learning-cycle learning-tools levels-and-udl ai-and-paper outcomes honest-boundaries conclusion],
     source_count: 4
   },
@@ -58,7 +60,7 @@ POSTS = {
   },
   "archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
-    required_text: "경도 지적장애 청소년·성인의 문해력 지원은 학업 보충이 아니다",
+    required_text: "경도 지적장애 문해력 교육은 청소년·성인의 학업 보충만을 뜻하지 않는다",
     anchors: %w[summary hidden-difficulty rights adulthood self-determination daily-literacy explicit-support conclusion],
     source_count: 4
   },
@@ -70,7 +72,7 @@ POSTS = {
   },
   "archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
-    required_text: "AI는 지적장애인의 학습을 대신하는 존재가 아니라",
+    required_text: "특수교육 AI는 지적장애인의 학습을 대신하는 존재가 아니라",
     anchors: %w[summary personalized-materials repeated-practice expression-support accessibility human-role limitations conclusion],
     source_count: 4
   },
@@ -106,7 +108,7 @@ POSTS = {
   },
   "archive/easy-information-and-reading-comprehension/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
-    required_text: "쉬운 정보와 읽기이해는 같지 않다",
+    required_text: "지적장애인 쉬운 정보와 읽기이해는 같지 않다",
     anchors: %w[summary easy-information comprehension-process necessary-not-sufficient next-step distinction conclusion],
     source_count: 4
   },
@@ -131,7 +133,7 @@ POSTS = {
   },
   "archive/why-analogy-matters/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
-    required_text: "지적장애인에게 왜 유추력이 필요할까?",
+    required_text: "지적장애인 유추 학습은",
     anchors: %w[analogy daily-life learning principles nalja-view summary]
   },
   "archive/ai-must-benefit-people-with-intellectual-disabilities/index.html" => {
@@ -141,7 +143,107 @@ POSTS = {
   }
 }.freeze
 
+SEO_PILLARS = {
+  "_posts/2026-08-01-how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities.md" => {
+    primary_query: "성인 지적장애인 평생교육 프로그램",
+    related_urls: %w[
+      /archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/
+      /archive/why-analogy-matters/
+      /archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/
+    ]
+  },
+  "_posts/2026-07-14-why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults.md" => {
+    primary_query: "경도 지적장애 문해력 교육",
+    related_urls: %w[
+      /archive/easy-information-and-reading-comprehension/
+      /archive/learning-rights-and-literacy-support-for-intellectual-disabilities/
+      /archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/
+    ]
+  },
+  "_posts/2026-06-15-why-analogy-matters.md" => {
+    primary_query: "지적장애인 유추 학습",
+    related_urls: %w[
+      /archive/analogy-learning-and-transfer-to-daily-life/
+      /archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/
+      /archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/
+    ]
+  },
+  "_posts/2026-06-23-easy-information-and-reading-comprehension.md" => {
+    primary_query: "지적장애인 쉬운 정보",
+    related_urls: %w[
+      /archive/why-easy-text-alone-is-not-enough/
+      /archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/
+      /archive/reading-rights-and-literacy-support-for-intellectual-disabilities/
+    ]
+  },
+  "_posts/2026-07-03-how-ai-can-support-learning-for-people-with-intellectual-disabilities.md" => {
+    primary_query: "특수교육 AI",
+    related_urls: %w[
+      /archive/why-human-review-is-needed-for-ai-learning-materials/
+      /archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/
+      /archive/ai-era-transition-and-intellectual-disability-open-research/
+    ]
+  }
+}.freeze
+
 errors = []
+
+SEO_PILLARS.each do |relative_path, expected|
+  source = ROOT.join(relative_path)
+  unless source.file?
+    errors << "#{relative_path}: missing SEO pillar source"
+    next
+  end
+
+  raw = source.read
+  front_matter = raw[/\A---\s*\n(.*?)\n---\s*(?:\n|\z)/m, 1].to_s
+  body = raw.sub(/\A---\s*\n.*?\n---\s*(?:\n|\z)/m, "")
+  data = YAML.safe_load(front_matter, permitted_classes: [Date], aliases: true) || {}
+  seo = data.fetch("seo", {})
+  primary_query = expected.fetch(:primary_query)
+  intro = body.split(/^##\s/, 2).first.to_s
+
+  errors << "#{relative_path}: seo.primary_query must be #{primary_query.inspect}" unless seo["primary_query"] == primary_query
+  if seo["search_intent"].to_s.strip.empty?
+    errors << "#{relative_path}: missing seo.search_intent"
+  end
+  unless seo["secondary_queries"].is_a?(Array) && seo["secondary_queries"].length >= 2
+    errors << "#{relative_path}: seo.secondary_queries must include at least two queries"
+  end
+
+  {
+    "title" => data["title"].to_s,
+    "description" => data["description"].to_s,
+    "tags" => Array(data["tags"]).join(" "),
+    "intro" => intro
+  }.each do |field, value|
+    errors << "#{relative_path}: #{field} must include primary query #{primary_query.inspect}" unless value.include?(primary_query)
+  end
+
+  related_urls = Array(data["related_posts"]).filter_map { |item| item.is_a?(Hash) ? item["url"] : nil }
+  expected.fetch(:related_urls).each do |url|
+    errors << "#{relative_path}: missing related post #{url}" unless related_urls.include?(url)
+  end
+  unless data["updated"] == Date.new(2026, 8, 1)
+    errors << "#{relative_path}: updated must be 2026-08-01 for this SEO revision"
+  end
+  unless data["last_modified_at"] == Date.new(2026, 8, 1)
+    errors << "#{relative_path}: last_modified_at must be 2026-08-01 for search metadata"
+  end
+
+  slug = File.basename(relative_path, ".md").sub(/^\d{4}-\d{2}-\d{2}-/, "")
+  built_post = SITE.join("archive", slug, "index.html")
+  if built_post.file?
+    html = built_post.read
+    errors << "#{built_post.relative_path_from(SITE)}: rendered h1 must include #{primary_query.inspect}" unless html.match?(%r{<h1>[^<]*#{Regexp.escape(primary_query)}[^<]*</h1>})
+    errors << "#{built_post.relative_path_from(SITE)}: missing related-reading navigation" unless html.include?('class="related-reading"')
+    errors << "#{built_post.relative_path_from(SITE)}: revised JSON-LD dateModified must be 2026-08-01" unless html.include?('"dateModified":"2026-08-01T00:00:00+09:00"')
+    expected.fetch(:related_urls).each do |url|
+      rendered_url = "#{BASEURL}#{url}"
+      errors << "#{built_post.relative_path_from(SITE)}: missing rendered related link #{rendered_url}" unless html.include?(%(href="#{rendered_url}"))
+    end
+  end
+end
 
 pinned_posts = Dir.glob(ROOT.join("_posts/*")).select do |file|
   front_matter = File.read(file)[/\A---\s*\n(.*?)\n---\s*(?:\n|\z)/m, 1].to_s
@@ -192,7 +294,7 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("성인 지적장애인 평생교육, 날자꾸러미는 어떻게 설계하는가")
+  unless first_regular_story&.include?("성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가")
     errors << "index.html: Nalkku lifelong-learning article is not the newest regular story"
   end
   unless story_list.include?("지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때")
@@ -207,7 +309,7 @@ if home.file?
   if story_list.include?("말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
-  if story_list.include?("경도 지적장애 청소년·성인의 문해력 지원은 왜 필요한가")
+  if story_list.include?("경도 지적장애 문해력 교육, 청소년·성인에게 왜 필요한가")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("지적장애인 독서권과 문해력 지원의 차이")
@@ -219,7 +321,7 @@ if home.file?
   if story_list.include?("AI 시대 전환과 지적장애인: 위험·기회·설계 원칙")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
-  if story_list.include?("AI는 지적장애인의 학습을 어떻게 도울 수 있는가")
+  if story_list.include?("특수교육 AI, 지적장애인의 학습을 어떻게 도울 수 있는가")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("정답률보다 삶의 질 변화를 성과로 보는 이유")
@@ -317,9 +419,9 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "성인 지적장애인 평생교육, 날자꾸러미는 어떻게 설계하는가",
+    "latest article" => "성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가",
     "previous article" => "지적장애인 독서권과 문해력 지원의 차이",
-    "old regular article" => "지적장애인에게 왜 유추력이 필요할까?",
+    "old regular article" => "지적장애인 유추 학습, 왜 필요하고 어떻게 가르칠까?",
     "home link" => "/naljabooks-blog/"
   }.each do |label, marker|
     errors << "archive/index.html: missing #{label}" unless html.include?(marker)
@@ -413,8 +515,8 @@ nalkku_lifelong_post = SITE.join(nalkku_lifelong_path)
 if nalkku_lifelong_post.file?
   html = nalkku_lifelong_post.read
   {
-    "Open Graph title" => 'property="og:title" content="성인 지적장애인 평생교육, 날자꾸러미는 어떻게 설계하는가"',
-    "Open Graph description" => 'property="og:description" content="성인 지적장애인 평생교육에서 문해력·유추·자기표현·일상 전이를 연결하는 월간 학습 프로그램 날자꾸러미의 구성과 운영 원칙을 소개합니다."',
+    "Open Graph title" => 'property="og:title" content="성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가"',
+    "Open Graph description" => 'property="og:description" content="성인 지적장애인 평생교육 프로그램을 찾는 기관과 가족을 위해 문해력·유추·자기표현·일상 전이를 잇는 날자꾸러미의 구성과 운영 원칙을 소개합니다."',
     "Open Graph URL" => %(property="og:url" content="#{nalkku_lifelong_url}"),
     "published time" => 'property="article:published_time" content="2026-08-01T00:00:00+09:00"',
     "canonical URL" => %(rel="canonical" href="#{nalkku_lifelong_url}"),
@@ -588,11 +690,11 @@ literacy_support_post = SITE.join(literacy_support_path)
 if literacy_support_post.file?
   html = literacy_support_post.read
   {
-    "Open Graph title" => 'property="og:title" content="경도 지적장애 청소년·성인의 문해력 지원은 왜 필요한가"',
+    "Open Graph title" => 'property="og:title" content="경도 지적장애 문해력 교육, 청소년·성인에게 왜 필요한가"',
     "Open Graph URL" => %(property="og:url" content="#{literacy_support_url}"),
     "published time" => 'property="article:published_time" content="2026-07-14T00:00:00+09:00"',
     "canonical URL" => %(rel="canonical" href="#{literacy_support_url}"),
-    "JSON-LD dateModified" => '"dateModified":"2026-07-14T00:00:00+09:00"',
+    "JSON-LD dateModified" => '"dateModified":"2026-08-01T00:00:00+09:00"',
     "JSON-LD datePublished" => '"datePublished":"2026-07-14T00:00:00+09:00"',
     "JSON-LD mainEntityOfPage" => %("@id":"#{literacy_support_url}")
   }.each do |label, marker|
@@ -664,11 +766,11 @@ ai_learning_support_post = SITE.join(ai_learning_support_path)
 if ai_learning_support_post.file?
   html = ai_learning_support_post.read
   {
-    "Open Graph title" => 'property="og:title" content="AI는 지적장애인의 학습을 어떻게 도울 수 있는가"',
+    "Open Graph title" => 'property="og:title" content="특수교육 AI, 지적장애인의 학습을 어떻게 도울 수 있는가"',
     "Open Graph URL" => %(property="og:url" content="#{ai_learning_support_url}"),
     "published time" => 'property="article:published_time" content="2026-07-03T00:00:00+09:00"',
     "canonical URL" => %(rel="canonical" href="#{ai_learning_support_url}"),
-    "JSON-LD dateModified" => '"dateModified":"2026-07-03T00:00:00+09:00"',
+    "JSON-LD dateModified" => '"dateModified":"2026-08-01T00:00:00+09:00"',
     "JSON-LD datePublished" => '"datePublished":"2026-07-03T00:00:00+09:00"',
     "JSON-LD mainEntityOfPage" => %("@id":"#{ai_learning_support_url}")
   }.each do |label, marker|

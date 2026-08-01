@@ -23,7 +23,7 @@ permalink: /questions/
   <ul class="article-link-list">
     <li>
       {% capture analogy_post_url %}{% post_url 2026-06-15-why-analogy-matters %}{% endcapture %}
-      <a href="{{ analogy_post_url | relative_url }}">지적장애인에게 왜 유추력이 필요할까?</a>
+      <a href="{{ analogy_post_url | relative_url }}">지적장애인 유추 학습, 왜 필요하고 어떻게 가르칠까?</a>
       <span>유추의 뜻과 일상 적용, 학습 설계 원칙</span>
     </li>
   </ul>
