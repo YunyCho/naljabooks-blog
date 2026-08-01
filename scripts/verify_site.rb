@@ -20,6 +20,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "성인 지적장애인 평생교육은 학교에서 배운 내용을 반복하는 데서 끝나지 않는다",
+    anchors: %w[summary lifelong-learning nalkku-definition learning-cycle learning-tools levels-and-udl ai-and-paper outcomes honest-boundaries conclusion],
+    source_count: 4
+  },
   "archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인이 갑자기 활동을 거부하거나 화를 내고 자신을 때리면 장애 특성이나 문제행동으로 기록되기 쉽다",
@@ -186,8 +192,11 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때")
-    errors << "index.html: pain-and-sensory article is not the newest regular story"
+  unless first_regular_story&.include?("성인 지적장애인 평생교육, 날자꾸러미는 어떻게 설계하는가")
+    errors << "index.html: Nalkku lifelong-learning article is not the newest regular story"
+  end
+  unless story_list.include?("지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때")
+    errors << "index.html: pain-and-sensory article is missing from the right story list"
   end
   unless story_list.include?("지적장애인의 혼잣말을 문제행동으로만 보면 놓치는 것")
     errors << "index.html: private-speech article is missing from the right story list"
@@ -195,8 +204,8 @@ if home.file?
   unless story_list.include?("지적장애인의 “예”는 언제 진짜 동의가 아닌가")
     errors << "index.html: informed-agreement article is missing from the right story list"
   end
-  unless story_list.include?("말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유")
-    errors << "index.html: expression-support article is missing from the right story list"
+  if story_list.include?("말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유")
+    errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("경도 지적장애 청소년·성인의 문해력 지원은 왜 필요한가")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -292,7 +301,8 @@ if topics.file?
     "reading-rights literacy link" => "/naljabooks-blog/archive/reading-rights-and-literacy-support-for-intellectual-disabilities/",
     "expression-support literacy link" => "/naljabooks-blog/archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/",
     "informed-agreement literacy link" => "/naljabooks-blog/archive/when-yes-is-not-informed-agreement/",
-    "pain-and-sensory literacy link" => "/naljabooks-blog/archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/"
+    "pain-and-sensory literacy link" => "/naljabooks-blog/archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/",
+    "Nalkku lifelong-learning pillar link" => "/naljabooks-blog/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/"
   }.each do |label, marker|
     errors << "topics/index.html: missing #{label}" unless html.include?(marker)
   end
@@ -307,7 +317,7 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때",
+    "latest article" => "성인 지적장애인 평생교육, 날자꾸러미는 어떻게 설계하는가",
     "previous article" => "지적장애인 독서권과 문해력 지원의 차이",
     "old regular article" => "지적장애인에게 왜 유추력이 필요할까?",
     "home link" => "/naljabooks-blog/"
@@ -396,6 +406,29 @@ private_speech_path = "archive/private-speech-is-not-just-problem-behavior/index
 private_speech_url = "https://yunycho.github.io/naljabooks-blog/archive/private-speech-is-not-just-problem-behavior/"
 pain_and_sensory_path = "archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/index.html"
 pain_and_sensory_url = "https://yunycho.github.io/naljabooks-blog/archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/"
+nalkku_lifelong_path = "archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/index.html"
+nalkku_lifelong_url = "https://yunycho.github.io/naljabooks-blog/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/"
+
+nalkku_lifelong_post = SITE.join(nalkku_lifelong_path)
+if nalkku_lifelong_post.file?
+  html = nalkku_lifelong_post.read
+  {
+    "Open Graph title" => 'property="og:title" content="성인 지적장애인 평생교육, 날자꾸러미는 어떻게 설계하는가"',
+    "Open Graph description" => 'property="og:description" content="성인 지적장애인 평생교육에서 문해력·유추·자기표현·일상 전이를 연결하는 월간 학습 프로그램 날자꾸러미의 구성과 운영 원칙을 소개합니다."',
+    "Open Graph URL" => %(property="og:url" content="#{nalkku_lifelong_url}"),
+    "published time" => 'property="article:published_time" content="2026-08-01T00:00:00+09:00"',
+    "canonical URL" => %(rel="canonical" href="#{nalkku_lifelong_url}"),
+    "JSON-LD dateModified" => '"dateModified":"2026-08-01T00:00:00+09:00"',
+    "JSON-LD datePublished" => '"datePublished":"2026-08-01T00:00:00+09:00"',
+    "JSON-LD mainEntityOfPage" => %("@id":"#{nalkku_lifelong_url}")
+  }.each do |label, marker|
+    errors << "#{nalkku_lifelong_path}: missing #{label}" unless html.include?(marker)
+  end
+  article_body = html[%r{<div class="article-body">.*?</div>}m]
+  if article_body&.include?("발달장애")
+    errors << "#{nalkku_lifelong_path}: public article prose must use 지적장애인"
+  end
+end
 
 pain_and_sensory_post = SITE.join(pain_and_sensory_path)
 if pain_and_sensory_post.file?
@@ -470,6 +503,7 @@ if sitemap.file?
   errors << "sitemap.xml: missing informed-agreement article" unless sitemap_text.include?(informed_agreement_url)
   errors << "sitemap.xml: missing private-speech article" unless sitemap_text.include?(private_speech_url)
   errors << "sitemap.xml: missing pain-and-sensory article" unless sitemap_text.include?(pain_and_sensory_url)
+  errors << "sitemap.xml: missing Nalkku lifelong-learning article" unless sitemap_text.include?(nalkku_lifelong_url)
 end
 
 feed = SITE.join("feed.xml")
@@ -479,6 +513,7 @@ if feed.file?
   errors << "feed.xml: missing informed-agreement article" unless feed_text.include?(informed_agreement_url)
   errors << "feed.xml: missing private-speech article" unless feed_text.include?(private_speech_url)
   errors << "feed.xml: missing pain-and-sensory article" unless feed_text.include?(pain_and_sensory_url)
+  errors << "feed.xml: missing Nalkku lifelong-learning article" unless feed_text.include?(nalkku_lifelong_url)
   errors << "feed.xml: missing reading-rights article" unless feed_text.include?(reading_rights_url)
   errors << "feed.xml: missing mild intellectual disability literacy article" unless feed_text.include?(literacy_support_url)
   errors << "feed.xml: missing AI and paper learning materials article" unless feed_text.include?(ai_paper_url)

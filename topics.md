@@ -16,6 +16,7 @@ permalink: /topics/
     <h2>지적장애 학습권</h2>
     <p>지적장애 학습권은 배울 기회가 있는가를 넘어, 이해할 수 있는 자료와 자기 삶에 적용할 수 있는 활동이 함께 제공되는가를 묻는 질문입니다. 학습권은 정보 접근, 문해력 지원, 자기결정권과 연결됩니다.</p>
     <ul class="article-link-list">
+      <li><a href="{{ '/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/' | relative_url }}">성인 지적장애인 평생교육, 날자꾸러미는 어떻게 설계하는가</a><span>문해력·유추·자기표현·생활 전이를 잇는 월간 학습 구조</span></li>
       <li><a href="{{ '/archive/learning-rights-and-literacy-support-for-intellectual-disabilities/' | relative_url }}">지적장애인의 학습권은 문해력 지원에서 시작된다</a><span>학습권을 문해력, 쉬운 정보, 자기결정과 연결하는 기둥글</span></li>
       <li><a href="{{ '/archive/why-quality-of-life-matters-more-than-correct-answer-rate/' | relative_url }}">정답률보다 삶의 질 변화를 성과로 보는 이유</a><span>문해력 성과를 자기결정과 일상 참여로 넓혀 보는 기둥글</span></li>
       <li><a href="{{ '/archive/ai-must-benefit-people-with-intellectual-disabilities/' | relative_url }}">AI must benefit people with intellectual disabilities</a><span>기술과 권리의 기준을 먼저 세우는 선언문</span></li>
@@ -77,6 +78,7 @@ permalink: /topics/
     <h2>날자꾸러미는 이 질문들을 어떻게 다루나요?</h2>
     <p>날자꾸러미는 이 질문들을 실제 학습 활동으로 연결하는 프로그램입니다. 유추 질문, 읽기와 쓰기, 자기 경험 기록, 루틴 활동, AI 피드백을 함께 다루되, 모든 설명은 지적장애 청소년·성인의 이해와 선택을 넓히는 방향으로 검토합니다.</p>
     <ul class="article-link-list">
+      <li><a href="{{ '/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/' | relative_url }}">성인 지적장애인 평생교육, 날자꾸러미는 어떻게 설계하는가</a><span>날자꾸러미의 대상, 한 달의 흐름, 여섯 도구와 운영 원칙</span></li>
       <li><a href="{{ '/archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/' | relative_url }}">날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유</a><span>기술은 설계를 돕고 종이는 배움을 생활 속 기록으로 남긴다는 설명</span></li>
     </ul>
     <p>도서출판 날자의 제품 구성과 구독 안내는 <a href="https://naljabooks.com">공식 웹사이트</a>에서 확인할 수 있습니다.</p>
