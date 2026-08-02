@@ -22,6 +22,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/diagnostic-overshadowing-and-intellectual-disability/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "한 사람의 두드러진 진단이 다른 증상과 필요를 가려 버리는 판단의 오류를 말한다",
+    anchors: %w[summary definition original-study evidence risk consequences education-boundary nalkku conclusion],
+    source_count: 8
+  },
   "archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "성인 지적장애인 평생교육 프로그램은 학교에서 배운 내용을 반복하는 데서 끝나지 않아야 한다",
@@ -315,8 +321,11 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가")
-    errors << "index.html: Nalkku lifelong-learning article is not the newest regular story"
+  unless first_regular_story&.include?("진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때")
+    errors << "index.html: diagnostic-overshadowing article is not the newest regular story"
+  end
+  unless story_list.include?("성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가")
+    errors << "index.html: Nalkku lifelong-learning article is missing from the right story list"
   end
   unless story_list.include?("지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때")
     errors << "index.html: pain-and-sensory article is missing from the right story list"
@@ -324,8 +333,8 @@ if home.file?
   unless story_list.include?("지적장애인의 혼잣말을 문제행동으로만 보면 놓치는 것")
     errors << "index.html: private-speech article is missing from the right story list"
   end
-  unless story_list.include?("지적장애인의 “예”는 언제 진짜 동의가 아닌가")
-    errors << "index.html: informed-agreement article is missing from the right story list"
+  if story_list.include?("지적장애인의 “예”는 언제 진짜 동의가 아닌가")
+    errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -425,6 +434,7 @@ if topics.file?
     "expression-support literacy link" => "/naljabooks-blog/archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/",
     "informed-agreement literacy link" => "/naljabooks-blog/archive/when-yes-is-not-informed-agreement/",
     "pain-and-sensory literacy link" => "/naljabooks-blog/archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/",
+    "diagnostic-overshadowing link" => "/naljabooks-blog/archive/diagnostic-overshadowing-and-intellectual-disability/",
     "Nalkku lifelong-learning pillar link" => "/naljabooks-blog/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/",
     "developmental learning hub" => "발달장애 학습과 성장",
     "developmental scope" => "지적장애인과 자폐성장애인 등을 포괄하는 넓은 범주",
@@ -441,7 +451,7 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가",
+    "latest article" => "진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때",
     "previous article" => "지적장애인 독서권과 문해력 지원의 차이",
     "old regular article" => "지적장애인 유추 학습, 왜 필요하고 어떻게 가르칠까?",
     "home link" => "/naljabooks-blog/"
@@ -532,6 +542,7 @@ pain_and_sensory_path = "archive/pain-and-sensory-needs-mistaken-for-intellectua
 pain_and_sensory_url = "https://yunycho.github.io/naljabooks-blog/archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/"
 nalkku_lifelong_path = "archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/index.html"
 nalkku_lifelong_url = "https://yunycho.github.io/naljabooks-blog/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/"
+diagnostic_overshadowing_url = "https://yunycho.github.io/naljabooks-blog/archive/diagnostic-overshadowing-and-intellectual-disability/"
 
 nalkku_lifelong_post = SITE.join(nalkku_lifelong_path)
 if nalkku_lifelong_post.file?
@@ -624,6 +635,7 @@ if sitemap.file?
   errors << "sitemap.xml: missing private-speech article" unless sitemap_text.include?(private_speech_url)
   errors << "sitemap.xml: missing pain-and-sensory article" unless sitemap_text.include?(pain_and_sensory_url)
   errors << "sitemap.xml: missing Nalkku lifelong-learning article" unless sitemap_text.include?(nalkku_lifelong_url)
+  errors << "sitemap.xml: missing diagnostic-overshadowing article" unless sitemap_text.include?(diagnostic_overshadowing_url)
 end
 
 feed = SITE.join("feed.xml")
@@ -634,11 +646,14 @@ if feed.file?
   errors << "feed.xml: missing private-speech article" unless feed_text.include?(private_speech_url)
   errors << "feed.xml: missing pain-and-sensory article" unless feed_text.include?(pain_and_sensory_url)
   errors << "feed.xml: missing Nalkku lifelong-learning article" unless feed_text.include?(nalkku_lifelong_url)
+  errors << "feed.xml: missing diagnostic-overshadowing article" unless feed_text.include?(diagnostic_overshadowing_url)
   errors << "feed.xml: missing reading-rights article" unless feed_text.include?(reading_rights_url)
   errors << "feed.xml: missing mild intellectual disability literacy article" unless feed_text.include?(literacy_support_url)
   errors << "feed.xml: missing AI and paper learning materials article" unless feed_text.include?(ai_paper_url)
   errors << "feed.xml: missing human-reviewed AI learning materials article" unless feed_text.include?(human_review_ai_url)
-  errors << "feed.xml: missing AI-era open research article" unless feed_text.include?(ai_era_research_url)
+  if feed_text.include?(ai_era_research_url)
+    errors << "feed.xml: feed must contain only the latest 10 posts"
+  end
 end
 
 informed_agreement_post = SITE.join(informed_agreement_path)
