@@ -56,6 +56,7 @@ permalink: /topics/
     <h2>지적장애 문해력</h2>
     <p>지적장애 문해력은 글자를 읽는 능력만 뜻하지 않습니다. 글의 의미를 파악하고, 자기 경험과 연결하고, 필요한 선택과 행동으로 옮기는 과정까지 포함합니다.</p>
     <ul class="article-link-list">
+      <li><a href="{{ '/archive/diagnostic-overshadowing-and-intellectual-disability/' | relative_url }}">진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때</a><span>기존 진단이 건강·정신건강·학습 조건을 가리는 판단의 구조와 근거의 한계</span></li>
       <li><a href="{{ '/archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/' | relative_url }}">지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때</a><span>행동 변화 뒤의 통증·감각 조건을 묻는 건강 문해력과 표현 지원</span></li>
       <li><a href="{{ '/archive/when-yes-is-not-informed-agreement/' | relative_url }}">지적장애인의 “예”는 언제 진짜 동의가 아닌가</a><span>묵종을 줄이는 질문 방식과 자기결정·안전 문해력 지원</span></li>
       <li><a href="{{ '/archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/' | relative_url }}">말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유</a><span>표현 언어와 읽기이해를 구분하고 자기결정을 돕는 의사소통 지원</span></li>
@@ -71,6 +72,7 @@ permalink: /topics/
     <h2>유추 학습 지적장애</h2>
     <p>유추 학습은 한 상황에서 배운 관계를 다른 상황에 옮겨 보는 연습입니다. 지적장애 청소년·성인의 배움이 교재 안에서 끝나지 않으려면, 유추와 전이를 함께 설계해야 합니다.</p>
     <ul class="article-link-list">
+      <li><a href="{{ '/archive/diagnostic-overshadowing-and-intellectual-disability/' | relative_url }}">진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때</a><span>과제 실패를 고정된 능력 부족으로 단정하기 전에 작업기억과 제시 조건을 살피는 관점</span></li>
       <li><a href="{{ '/archive/why-analogy-matters/' | relative_url }}">지적장애인 유추 학습, 왜 필요하고 어떻게 가르칠까?</a><span>유추력이 일상 학습과 선택에 연결되는 이유</span></li>
       <li><a href="{{ '/archive/analogy-learning-and-transfer-to-daily-life/' | relative_url }}">유추 학습은 일상생활 전이에 어떻게 연결되는가</a><span>배운 내용을 새 상황에 적용하는 전이 설계</span></li>
     </ul>
