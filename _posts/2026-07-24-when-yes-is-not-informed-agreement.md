@@ -10,6 +10,10 @@ author:
   type: Organization
 category: "권리와 문해력"
 tags: ["지적장애", "묵종", "동의", "자기결정", "의사소통 지원", "안전 문해력", "날자꾸러미"]
+related_posts:
+  - title: "지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법"
+    url: "/archive/safety-literacy-against-counterfeit-friendship/"
+    description: "관계 속 경계와 위험 신호, 도움 요청을 구체적으로 연습하는 방법"
 toc:
   - id: summary
     title: "핵심 요약"

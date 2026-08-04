@@ -56,6 +56,7 @@ permalink: /topics/
     <h2>지적장애 문해력</h2>
     <p>지적장애 문해력은 글자를 읽는 능력만 뜻하지 않습니다. 글의 의미를 파악하고, 자기 경험과 연결하고, 필요한 선택과 행동으로 옮기는 과정까지 포함합니다.</p>
     <ul class="article-link-list">
+      <li><a href="{{ '/archive/safety-literacy-against-counterfeit-friendship/' | relative_url }}">지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법</a><span>관계의 상호성, 돈·집·몸의 경계와 도움 요청을 구체적으로 배우는 방법</span></li>
       <li><a href="{{ '/archive/diagnostic-overshadowing-and-intellectual-disability/' | relative_url }}">진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때</a><span>기존 진단이 건강·정신건강·학습 조건을 가리는 판단의 구조와 근거의 한계</span></li>
       <li><a href="{{ '/archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/' | relative_url }}">지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때</a><span>행동 변화 뒤의 통증·감각 조건을 묻는 건강 문해력과 표현 지원</span></li>
       <li><a href="{{ '/archive/when-yes-is-not-informed-agreement/' | relative_url }}">지적장애인의 “예”는 언제 진짜 동의가 아닌가</a><span>묵종을 줄이는 질문 방식과 자기결정·안전 문해력 지원</span></li>

@@ -22,6 +22,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/safety-literacy-against-counterfeit-friendship/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "친구라고 부르는 사람이 돈, 집, 물건이나 몸의 경계를 반복해서 침해한다면",
+    anchors: %w[summary definition evidence relationship-needs warning-signs boundaries response trusted-person safety-literacy conclusion],
+    source_count: 4
+  },
   "archive/diagnostic-overshadowing-and-intellectual-disability/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "한 사람의 두드러진 진단이 다른 증상과 필요를 가려 버리는 판단의 오류를 말한다",
@@ -150,6 +156,16 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-08-04-safety-literacy-against-counterfeit-friendship.md" => {
+    primary_query: "지적장애인 안전 문해력",
+    bridge_queries: ["발달장애 안전 교육", "발달장애인 관계 교육"],
+    related_urls: %w[
+      /archive/when-yes-is-not-informed-agreement/
+      /archive/analogy-learning-and-transfer-to-daily-life/
+      /archive/why-quality-of-life-matters-more-than-correct-answer-rate/
+    ],
+    updated: Date.new(2026, 8, 4)
+  },
   "_posts/2026-08-01-how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities.md" => {
     primary_query: "성인 지적장애인 평생교육 프로그램",
     bridge_queries: ["발달장애인 평생교육", "성인 발달장애 학습", "발달장애 평생교육 프로그램"],
@@ -248,11 +264,12 @@ SEO_PILLARS.each do |relative_path, expected|
   expected.fetch(:related_urls).each do |url|
     errors << "#{relative_path}: missing related post #{url}" unless related_urls.include?(url)
   end
-  unless data["updated"] == Date.new(2026, 8, 1)
-    errors << "#{relative_path}: updated must be 2026-08-01 for this SEO revision"
+  expected_updated = expected.fetch(:updated, Date.new(2026, 8, 1))
+  unless data["updated"] == expected_updated
+    errors << "#{relative_path}: updated must be #{expected_updated} for this SEO revision"
   end
-  unless data["last_modified_at"] == Date.new(2026, 8, 1)
-    errors << "#{relative_path}: last_modified_at must be 2026-08-01 for search metadata"
+  unless data["last_modified_at"] == expected_updated
+    errors << "#{relative_path}: last_modified_at must be #{expected_updated} for search metadata"
   end
 
   slug = File.basename(relative_path, ".md").sub(/^\d{4}-\d{2}-\d{2}-/, "")
@@ -261,7 +278,8 @@ SEO_PILLARS.each do |relative_path, expected|
     html = built_post.read
     errors << "#{built_post.relative_path_from(SITE)}: rendered h1 must include #{primary_query.inspect}" unless html.match?(%r{<h1>[^<]*#{Regexp.escape(primary_query)}[^<]*</h1>})
     errors << "#{built_post.relative_path_from(SITE)}: missing related-reading navigation" unless html.include?('class="related-reading"')
-    errors << "#{built_post.relative_path_from(SITE)}: revised JSON-LD dateModified must be 2026-08-01" unless html.include?('"dateModified":"2026-08-01T00:00:00+09:00"')
+    expected_modified = expected_updated.strftime("%Y-%m-%d")
+    errors << "#{built_post.relative_path_from(SITE)}: revised JSON-LD dateModified must be #{expected_modified}" unless html.include?(%("dateModified":"#{expected_modified}T00:00:00+09:00"))
     bridge_queries.each do |query|
       errors << "#{built_post.relative_path_from(SITE)}: missing rendered bridge query #{query.inspect}" unless html.include?(query)
     end
@@ -321,8 +339,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때")
-    errors << "index.html: diagnostic-overshadowing article is not the newest regular story"
+  unless first_regular_story&.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
+    errors << "index.html: safety-literacy article is not the newest regular story"
   end
   unless story_list.include?("성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가")
     errors << "index.html: Nalkku lifelong-learning article is missing from the right story list"
@@ -330,8 +348,11 @@ if home.file?
   unless story_list.include?("지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때")
     errors << "index.html: pain-and-sensory article is missing from the right story list"
   end
-  unless story_list.include?("지적장애인의 혼잣말을 문제행동으로만 보면 놓치는 것")
-    errors << "index.html: private-speech article is missing from the right story list"
+  unless story_list.include?("진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때")
+    errors << "index.html: diagnostic-overshadowing article is missing from the right story list"
+  end
+  if story_list.include?("지적장애인의 혼잣말을 문제행동으로만 보면 놓치는 것")
+    errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("지적장애인의 “예”는 언제 진짜 동의가 아닌가")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -435,6 +456,7 @@ if topics.file?
     "informed-agreement literacy link" => "/naljabooks-blog/archive/when-yes-is-not-informed-agreement/",
     "pain-and-sensory literacy link" => "/naljabooks-blog/archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/",
     "diagnostic-overshadowing link" => "/naljabooks-blog/archive/diagnostic-overshadowing-and-intellectual-disability/",
+    "safety-literacy link" => "/naljabooks-blog/archive/safety-literacy-against-counterfeit-friendship/",
     "Nalkku lifelong-learning pillar link" => "/naljabooks-blog/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/",
     "developmental learning hub" => "발달장애 학습과 성장",
     "developmental scope" => "지적장애인과 자폐성장애인 등을 포괄하는 넓은 범주",
@@ -451,7 +473,7 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때",
+    "latest article" => "지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법",
     "previous article" => "지적장애인 독서권과 문해력 지원의 차이",
     "old regular article" => "지적장애인 유추 학습, 왜 필요하고 어떻게 가르칠까?",
     "home link" => "/naljabooks-blog/"
@@ -543,6 +565,7 @@ pain_and_sensory_url = "https://yunycho.github.io/naljabooks-blog/archive/pain-a
 nalkku_lifelong_path = "archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/index.html"
 nalkku_lifelong_url = "https://yunycho.github.io/naljabooks-blog/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/"
 diagnostic_overshadowing_url = "https://yunycho.github.io/naljabooks-blog/archive/diagnostic-overshadowing-and-intellectual-disability/"
+safety_literacy_url = "https://yunycho.github.io/naljabooks-blog/archive/safety-literacy-against-counterfeit-friendship/"
 
 nalkku_lifelong_post = SITE.join(nalkku_lifelong_path)
 if nalkku_lifelong_post.file?
@@ -636,6 +659,7 @@ if sitemap.file?
   errors << "sitemap.xml: missing pain-and-sensory article" unless sitemap_text.include?(pain_and_sensory_url)
   errors << "sitemap.xml: missing Nalkku lifelong-learning article" unless sitemap_text.include?(nalkku_lifelong_url)
   errors << "sitemap.xml: missing diagnostic-overshadowing article" unless sitemap_text.include?(diagnostic_overshadowing_url)
+  errors << "sitemap.xml: missing safety-literacy article" unless sitemap_text.include?(safety_literacy_url)
 end
 
 feed = SITE.join("feed.xml")
@@ -647,11 +671,11 @@ if feed.file?
   errors << "feed.xml: missing pain-and-sensory article" unless feed_text.include?(pain_and_sensory_url)
   errors << "feed.xml: missing Nalkku lifelong-learning article" unless feed_text.include?(nalkku_lifelong_url)
   errors << "feed.xml: missing diagnostic-overshadowing article" unless feed_text.include?(diagnostic_overshadowing_url)
+  errors << "feed.xml: missing safety-literacy article" unless feed_text.include?(safety_literacy_url)
   errors << "feed.xml: missing reading-rights article" unless feed_text.include?(reading_rights_url)
   errors << "feed.xml: missing mild intellectual disability literacy article" unless feed_text.include?(literacy_support_url)
   errors << "feed.xml: missing AI and paper learning materials article" unless feed_text.include?(ai_paper_url)
-  errors << "feed.xml: missing human-reviewed AI learning materials article" unless feed_text.include?(human_review_ai_url)
-  if feed_text.include?(ai_era_research_url)
+  if feed_text.include?(human_review_ai_url)
     errors << "feed.xml: feed must contain only the latest 10 posts"
   end
 end
