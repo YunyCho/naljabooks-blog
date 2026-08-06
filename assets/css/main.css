@@ -849,6 +849,14 @@ a.eyebrow {
   font-size: 21px;
 }
 
+.translation-note {
+  margin-top: 22px;
+  padding-left: 16px;
+  color: var(--muted);
+  border-left: 3px solid var(--orange);
+  font-size: 15px;
+}
+
 .article-meta {
   display: flex;
   flex-wrap: wrap;

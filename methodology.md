@@ -1,5 +1,6 @@
 ---
 layout: default
+translation_key: methodology
 title: "자료와 정정 원칙"
 description: "날자 아카이브가 출처를 고르고, 일반 정보와 제품 관점을 구분하며, 글을 수정하고 사례를 보호하는 기준입니다."
 permalink: /methodology/

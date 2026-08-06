@@ -1,5 +1,6 @@
 ---
 layout: default
+translation_key: topics
 title: "발달장애 학습과 성장: 지적장애인의 배움과 권리 안내"
 description: "발달장애 학습, 발달장애 성장, 발달장애 문해력 교육과 발달장애 AI 교육을 지적장애인의 학습권·문해력·유추·쉬운 정보 글과 연결합니다."
 permalink: /topics/

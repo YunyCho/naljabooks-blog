@@ -1,4 +1,5 @@
 <!doctype html>
+{% assign translation_pair = site.data.translations[page.translation_key] %}
 <html lang="{{ page.lang | default: site.lang | default: 'ko-KR' }}">
   <head>
     <meta charset="utf-8">
@@ -6,15 +7,24 @@
     <meta name="google-site-verification" content="abnm5XbuGrXdD1fXgNHPSBJBbVW61VxotldMEjCxJpc">
     {% seo %}
     {% feed_meta %}
-    <link rel="alternate" type="application/feed+json" title="{{ site.title }} JSON Feed" href="{{ '/feed.json' | absolute_url }}">
+    {% if translation_pair %}
+      <link rel="alternate" hreflang="ko-KR" href="{{ translation_pair.ko | absolute_url }}">
+      <link rel="alternate" hreflang="en" href="{{ translation_pair.en | absolute_url }}">
+      <link rel="alternate" hreflang="x-default" href="{{ translation_pair.ko | absolute_url }}">
+    {% endif %}
+    {% if page.lang == "en" %}
+      <link rel="alternate" type="application/feed+json" title="Nalja Archive JSON Feed" href="{{ '/en/feed.json' | absolute_url }}">
+    {% else %}
+      <link rel="alternate" type="application/feed+json" title="{{ site.title }} JSON Feed" href="{{ '/feed.json' | absolute_url }}">
+    {% endif %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   </head>
   <body>
-    <a class="skip-link" href="#main-content">본문으로 바로가기</a>
-    {% include header.html %}
+    <a class="skip-link" href="#main-content">{% if page.lang == "en" %}Skip to content{% else %}본문으로 바로가기{% endif %}</a>
+    {% include header.html translation_pair=translation_pair %}
     <main id="main-content">
       {{ content }}
     </main>

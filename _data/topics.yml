@@ -1,27 +1,41 @@
 - id: developmental-learning
   title: "발달장애 학습과 성장"
   description: "발달장애 학습과 성장이라는 넓은 질문에서 출발해 지적장애인의 배움이 성인기 생활과 선택으로 이어지는 조건을 살펴봅니다."
+  title_en: "Learning and growth"
+  description_en: "We examine the conditions that help learning continue into adult life, everyday decisions, and participation for people with intellectual disabilities."
 
 - id: learning-rights
   title: "지적장애 학습권"
   description: "배울 기회를 넘어 이해할 수 있는 자료, 자기 삶에 적용할 수 있는 활동, 자기결정에 필요한 지원을 함께 다룹니다."
+  title_en: "The right to learn"
+  description_en: "We look beyond access to education to understandable materials, meaningful practice, and the support needed for self-determination."
 
 - id: ai-intellectual-disability
   title: "AI 시대 지적장애인"
   description: "AI가 자동화된 판단을 대신하기보다 지적장애인의 이해와 선택, 표현을 넓히도록 사용하는 원칙을 정리합니다."
+  title_en: "AI and intellectual disability"
+  description_en: "We set out principles for using AI to expand understanding, choice, and expression rather than automate decisions about people's lives."
 
 - id: literacy
   title: "지적장애 문해력"
   description: "글자를 읽는 능력을 넘어 의미를 파악하고 자기 경험과 연결해 필요한 선택과 행동으로 옮기는 과정을 다룹니다."
+  title_en: "Literacy and understanding"
+  description_en: "Literacy is treated as making meaning, connecting information with experience, and using it in choices and action—not only decoding words."
 
 - id: analogy-learning
   title: "유추 학습 지적장애"
   description: "한 상황에서 배운 관계를 다른 상황에 옮겨 보고, 배움이 교재 안에서 끝나지 않도록 전이를 설계하는 방법을 살펴봅니다."
+  title_en: "Analogy and transfer"
+  description_en: "We explore how learners can recognize a relationship in one situation and carry it into another, so learning does not stop on the page."
 
 - id: easy-information
   title: "쉬운 정보 읽기이해"
   description: "쉬운 정보가 접근의 문턱을 낮추는 일과, 그 의미를 자기 삶에서 사용할 수 있도록 읽기이해를 지원하는 일을 구분합니다."
+  title_en: "Easy information and comprehension"
+  description_en: "We distinguish making information easier to access from supporting people to understand and use its meaning in their own lives."
 
 - id: nalkku-program
   title: "날자꾸러미는 이 질문들을 어떻게 다루나요?"
   description: "날자꾸러미는 이 질문들을 실제 학습 활동으로 연결하는 프로그램입니다. 유추 질문, 읽기와 쓰기, 자기 경험 기록, 루틴 활동과 AI 피드백을 연결해 배운 것이 삶으로 이어지도록 설계합니다."
+  title_en: "How Nalkku puts these ideas into practice"
+  description_en: "Nalkku connects analogy questions, reading and writing, personal reflection, routines, and AI-supported feedback so that learning can carry into life."

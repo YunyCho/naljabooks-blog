@@ -17,6 +17,10 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+collections:
+  english:
+    output: true
+    permalink: /en/archive/:name/
 permalink: /archive/:title/
 timezone: Asia/Seoul
 future: false
@@ -36,6 +40,17 @@ defaults:
         url: "https://naljabooks.com"
         type: Organization
       category: "유추와 문해력"
+  - scope:
+      path: ""
+      type: english
+    values:
+      layout: post
+      lang: en
+      author:
+        name: "Nalja Books Editorial Team"
+        url: "https://naljabooks.com"
+        type: Organization
+      category: "Learning and Everyday Life"
 exclude:
   - docs
   - drafts

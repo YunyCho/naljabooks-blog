@@ -17,10 +17,13 @@ layout: null
 - JSON feed: {{ '/feed.json' | absolute_url }}
 - Content index: {{ '/content/index.json' | absolute_url }}
 - Full-text corpus: {{ '/llms-full.txt' | absolute_url }}
+- English index: {{ '/llms-en.txt' | absolute_url }}
+- English archive: {{ '/en/' | absolute_url }}
 
 ## 전체 글
 
-{% for post in site.posts %}
+{% assign all_articles = site.posts | concat: site.english | sort: "date" | reverse %}
+{% for post in all_articles %}
 ### {{ post.title }}
 
 - URL: {{ post.url | absolute_url }}

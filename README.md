@@ -75,11 +75,24 @@ sources:
 
 - `/llms.txt`: 전체 글의 제목, 요약, 주소와 메타데이터 목록
 - `/llms-full.txt`: 공개 글 본문과 출처를 모은 전체 텍스트
+- `/llms-en.txt`: 영어 글만 모은 AI용 색인
 - `/content/index.json`: 외부 도구가 읽을 수 있는 콘텐츠 목록
-- `/feed.json`: HTML과 일반 텍스트 본문을 포함한 JSON Feed
+- `/content/en/index.json`: 영어 글만 담은 콘텐츠 목록
+- `/feed.json`: 한국어 글의 HTML과 일반 텍스트 본문을 포함한 JSON Feed
+- `/en/feed.json`: 영어 글의 JSON Feed
 - `/feed.xml`: 구독 도구를 위한 RSS 피드
 
 주제 페이지와 관련 글도 각 글의 `topics`와 `related` 메타데이터를 기준으로 생성하므로 제목이나 설명을 여러 파일에 반복해서 적지 않습니다.
+
+## 영어 번역 운영
+
+한국어 글은 `_posts`, 영어 번역은 `_english`에서 관리합니다. 서로 같은 글에는 동일한 `translation_key`를 지정하고, 실제 한국어·영어 주소는 `_data/translations.yml` 한 곳에서 연결합니다. 영어 글에는 다음 번역 상태를 기록합니다.
+
+- `translation_status: ai-assisted` 또는 `human-reviewed`
+- `source_updated`: 번역이 따라간 한국어 원문의 `updated` 날짜
+- `translation_updated`: 영어 번역을 마지막으로 수정한 날짜
+
+한국어 원문의 `updated`가 바뀌었는데 영어 글의 `source_updated`가 따라가지 않으면 콘텐츠 검증이 실패합니다. 이때 영어 번역을 다시 확인한 뒤 두 날짜를 갱신합니다. 영어 페이지에는 한국어 원문이 기준 문서라는 안내와 언어 전환 링크가 표시됩니다.
 
 ## 편집·검색 전략
 

@@ -5,7 +5,8 @@ layout: null
 
 > 이 파일은 공개된 글의 본문과 출처를 하나의 텍스트 출력으로 제공합니다. 최신 주소와 메타데이터 목록은 {{ '/llms.txt' | absolute_url }} 에서 확인해 주세요.
 
-{% for post in site.posts %}
+{% assign all_articles = site.posts | concat: site.english | sort: "date" | reverse %}
+{% for post in all_articles %}
 ## {{ post.title }}
 
 - URL: {{ post.url | absolute_url }}

@@ -1,5 +1,6 @@
 ---
 layout: default
+translation_key: about
 title: "날자 아카이브 소개"
 description: "도서출판 날자와 날자꾸러미가 전문 글 아카이브를 운영하는 목적과 작성 주체를 소개합니다."
 permalink: /about/

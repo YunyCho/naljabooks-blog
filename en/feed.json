@@ -1,17 +1,18 @@
 ---
 layout: null
-permalink: /feed.json
+permalink: /en/feed.json
 ---
 {
   "version": "https://jsonfeed.org/version/1.1",
-  "title": {{ site.title | jsonify }},
-  "home_page_url": {% assign json_home_url = '/' | absolute_url %}{{ json_home_url | jsonify }},
-  "feed_url": {% assign json_feed_url = '/feed.json' | absolute_url %}{{ json_feed_url | jsonify }},
-  "description": {{ site.description | jsonify }},
-  "language": {{ site.lang | jsonify }},
+  "title": "Nalja Archive in English",
+  "home_page_url": {% assign english_home_url = '/en/' | absolute_url %}{{ english_home_url | jsonify }},
+  "feed_url": {% assign english_feed_url = '/en/feed.json' | absolute_url %}{{ english_feed_url | jsonify }},
+  "description": "Evidence-informed writing on intellectual disability, literacy, analogy, learning, rights, and AI.",
+  "language": "en",
   "items": [
-    {% assign korean_posts = site.posts | where_exp: "post", "post.lang != 'en'" %}
-    {% for post in korean_posts %}
+    {% assign legacy_english_posts = site.posts | where: "lang", "en" %}
+    {% assign english_articles = site.english | concat: legacy_english_posts | sort: "date" | reverse %}
+    {% for post in english_articles %}
       {
         "id": {% assign item_url = post.url | absolute_url %}{{ item_url | jsonify }},
         "url": {{ item_url | jsonify }},
@@ -21,10 +22,12 @@ permalink: /feed.json
         "content_text": {{ post.content | strip_html | jsonify }},
         "date_published": {{ post.date | date_to_xmlschema | jsonify }},
         "date_modified": {{ post.updated | date_to_xmlschema | jsonify }},
-        "language": {{ post.lang | default: site.lang | jsonify }},
+        "language": "en",
         "authors": [{{ post.author | jsonify }}],
         "tags": {{ post.tags | jsonify }},
         "_nalja": {
+          "translation_key": {{ post.translation_key | jsonify }},
+          "translation_status": {{ post.translation_status | jsonify }},
           "content_type": {{ post.content_type | jsonify }},
           "category": {{ post.category | jsonify }},
           "topics": {{ post.topics | jsonify }},
