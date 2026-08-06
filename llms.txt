@@ -5,11 +5,32 @@ layout: null
 
 > 도서출판 날자와 날자꾸러미가 지적장애인의 배움, 문해력, 유추와 일상 적용을 연구하고 기록하는 한국어 전문 글 아카이브입니다.
 
+## 안내
+
 - Home: {{ '/' | absolute_url }}
+- All articles: {{ '/archive/' | absolute_url }}
+- Topic guide: {{ '/topics/' | absolute_url }}
 - About: {{ '/about/' | absolute_url }}
 - Editorial and correction policy: {{ '/methodology/' | absolute_url }}
 - Questions: {{ '/questions/' | absolute_url }}
 - RSS feed: {{ '/feed.xml' | absolute_url }}
-- First article: {{ '/archive/why-analogy-matters/' | absolute_url }}
+- JSON feed: {{ '/feed.json' | absolute_url }}
+- Content index: {{ '/content/index.json' | absolute_url }}
+- Full-text corpus: {{ '/llms-full.txt' | absolute_url }}
 
-각 글의 주장과 설명은 화면에 표시된 작성일, 수정일, 출처 목록과 함께 읽어 주세요. 회사와 제품의 공식 정보는 https://naljabooks.com 을 기준으로 확인해 주세요.
+## 전체 글
+
+{% for post in site.posts %}
+### {{ post.title }}
+
+- URL: {{ post.url | absolute_url }}
+- Summary: {{ post.description }}
+- Published: {{ post.date | date: "%Y-%m-%d" }}
+- Updated: {{ post.updated | date: "%Y-%m-%d" }}
+- Language: {{ post.lang | default: site.lang }}
+- Content type: {{ post.content_type }}
+- Topics: {{ post.topics | join: ", " }}
+- Tags: {{ post.tags | join: ", " }}
+
+{% endfor %}
+각 글의 주장과 설명은 작성일, 수정일과 출처 목록을 함께 확인해 주세요. 회사와 제품의 공식 정보는 https://naljabooks.com 을 기준으로 확인해 주세요.

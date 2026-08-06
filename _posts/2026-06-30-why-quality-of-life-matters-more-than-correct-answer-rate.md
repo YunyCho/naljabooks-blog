@@ -1,15 +1,22 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "정답률보다 삶의 질 변화를 성과로 보는 이유"
 description: "지적장애 청소년·성인의 문해력 프로그램은 정답률뿐 아니라 자기결정, 참여, 관계, 자기표현 같은 삶의 질 변화를 함께 보아야 합니다."
 date: 2026-06-30
 updated: 2026-06-30
+last_modified_at: 2026-06-30
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "배움과 일상"
+topics:
+  - learning-rights
+  - developmental-learning
 tags: ["지적장애", "삶의 질", "성과 측정", "문해력", "자기결정", "날자꾸러미"]
+related: []
 toc:
   - id: summary
     title: "핵심 요약"
@@ -41,7 +48,6 @@ sources:
     organization: "American Association on Intellectual and Developmental Disabilities"
     url: "https://www.aaidd.org/intellectual-disability/definition"
 ---
-
 정답률은 중요하지만 충분하지 않다. 지적장애 청소년·성인을 위한 문해력 프로그램의 성과는 문제를 몇 개 맞혔는지뿐 아니라, 배운 것이 자기표현과 자기결정, 관계와 일상 참여로 이어졌는지를 함께 보아야 한다. 날자꾸러미가 삶의 질 변화를 성과로 보는 이유는 배운 것이 삶으로 이어지도록 하기 위해서다.
 
 ## 핵심 요약 {#summary}

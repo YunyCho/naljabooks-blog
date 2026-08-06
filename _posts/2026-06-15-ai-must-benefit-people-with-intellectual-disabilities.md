@@ -1,16 +1,23 @@
 ---
 layout: post
+lang: ko-KR
+content_type: declaration
 title: "AI must benefit people with intellectual disabilities"
 description: "AI는 지적장애인의 이해와 선택, 참여를 넓혀야 한다는 도서출판 날자의 선언과 AI가 지켜야 할 원칙을 설명합니다."
 date: 2026-06-15 19:30:00 +0900
 updated: 2026-06-15
+last_modified_at: 2026-06-15
 pinned: true
 author:
   name: "도서출판 날자 대표 조윤영"
   url: "https://naljabooks.com"
   type: Organization
 category: "AI와 접근성"
+topics:
+  - ai-intellectual-disability
+  - learning-rights
 tags: ["AI", "지적장애", "접근성", "자기결정", "도서출판 날자"]
+related: []
 toc:
   - id: mothers-question
     title: "엄마의 질문"

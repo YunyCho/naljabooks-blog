@@ -1,5 +1,7 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법"
 description: "지적장애인 안전 문해력은 관계를 막는 교육이 아닙니다. 친구 관계를 가장한 착취의 위험 신호와 경계, 도움 요청 방법을 설명하고 발달장애 안전 교육의 원칙을 살핍니다."
 date: 2026-08-04
@@ -10,22 +12,19 @@ author:
   url: "https://naljabooks.com"
   type: Organization
 category: "권리와 문해력"
+topics:
+  - literacy
+  - learning-rights
 tags: ["지적장애인 안전 문해력", "지적장애", "안전 문해력", "메이트 크라임", "자기결정", "관계 교육", "도움 요청", "발달장애 안전 교육", "발달장애인 관계 교육"]
 seo:
   primary_query: "지적장애인 안전 문해력"
   search_intent: "지적장애인이 친구 관계를 가장한 착취의 위험 신호를 알아차리고 경계를 지키며 도움을 요청하도록 지원하는 방법을 알고 싶다."
   secondary_queries: ["지적장애인 관계 교육", "지적장애인 착취 예방", "메이트 크라임 지적장애"]
   bridge_queries: ["발달장애 안전 교육", "발달장애인 관계 교육"]
-related_posts:
-  - title: "지적장애인의 ‘예’는 언제 진짜 동의가 아닌가"
-    url: "/archive/when-yes-is-not-informed-agreement/"
-    description: "거절·보류·답 변경을 포함해 동의를 확인하는 방법"
-  - title: "유추 학습은 일상생활 전이에 어떻게 연결되는가"
-    url: "/archive/analogy-learning-and-transfer-to-daily-life/"
-    description: "배운 경계 원칙을 새로운 관계 장면에 적용하는 설계"
-  - title: "정답률보다 삶의 질이 중요한 이유"
-    url: "/archive/why-quality-of-life-matters-more-than-correct-answer-rate/"
-    description: "관계와 자기결정을 학습 성과와 함께 보는 관점"
+related:
+  - when-yes-is-not-informed-agreement
+  - analogy-learning-and-transfer-to-daily-life
+  - why-quality-of-life-matters-more-than-correct-answer-rate
 toc:
   - id: summary
     title: "핵심 요약"
@@ -64,7 +63,6 @@ sources:
     organization: "American Association on Intellectual and Developmental Disabilities"
     url: "https://www.aaidd.org/intellectual-disability/definition"
 ---
-
 친구라고 부르는 사람이 돈, 집, 물건이나 몸의 경계를 반복해서 침해한다면 우정의 이름을 쓴 착취일 수 있다. **지적장애인 안전 문해력**은 모든 관계를 위험하다고 가르치는 일이 아니다. 좋은 관계의 상호성과 위험 신호를 구분하고, 거절하고, 믿을 수 있는 사람에게 확인을 요청하는 힘을 기르는 일이다.
 
 이 글은 지적장애인을 중심으로 다룬다. 발달장애 안전 교육, 발달장애인 관계 교육은 지적장애인과 자폐성장애인 등을 포괄하는 넓은 범주의 검색어이므로, 모든 발달장애인에게 같은 위험이나 지원 방법이 적용된다고 가정하지 않는다.

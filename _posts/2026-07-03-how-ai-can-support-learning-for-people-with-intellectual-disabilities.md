@@ -1,5 +1,7 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "특수교육 AI, 지적장애인의 학습을 어떻게 도울 수 있는가"
 description: "특수교육 AI와 발달장애 AI 교육을 찾는 독자를 위해 지적장애인의 개별화 학습자료, 반복 연습과 표현 지원에 활용하는 방법과 검토·책임 원칙을 설명합니다."
 date: 2026-07-03
@@ -10,22 +12,19 @@ author:
   url: "https://naljabooks.com"
   type: Organization
 category: "배움과 일상"
+topics:
+  - ai-intellectual-disability
+  - developmental-learning
 tags: ["특수교육 AI", "AI 교육", "지적장애", "학습지원", "접근성", "표현 지원", "날자꾸러미", "발달장애 AI 교육", "발달장애 AI 학습", "발달장애 특수교육 AI"]
 seo:
   primary_query: "특수교육 AI"
   search_intent: "교사와 지원자가 AI를 특수교육 학습자료와 개별화 지원에 안전하게 쓰는 방법을 찾는다."
   secondary_queries: ["지적장애 AI 교육", "AI 특수교육 학습자료", "특수교육 인공지능 활용"]
   bridge_queries: ["발달장애 AI 교육", "발달장애 AI 학습", "발달장애 특수교육 AI"]
-related_posts:
-  - title: "AI 교육자료를 사람이 검토해야 하는 이유"
-    url: "/archive/why-human-review-is-needed-for-ai-learning-materials/"
-    description: "AI가 만든 자료의 오류·난이도·성인 감수성을 검토하는 기준"
-  - title: "날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유"
-    url: "/archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/"
-    description: "AI 설계와 종이 활동을 사람 중심 지원으로 연결하는 구조"
-  - title: "AI 시대 전환과 지적장애인: 위험·기회·설계 원칙"
-    url: "/archive/ai-era-transition-and-intellectual-disability-open-research/"
-    description: "AI 전환의 권리·정책·교육 원칙을 다룬 장문 연구"
+related:
+  - why-human-review-is-needed-for-ai-learning-materials
+  - why-naljakkurumi-uses-ai-and-paper-learning-materials-together
+  - ai-era-transition-and-intellectual-disability-open-research
 toc:
   - id: summary
     title: "핵심 요약"
@@ -57,7 +56,6 @@ sources:
     organization: "Ledoyen et al."
     url: "https://arxiv.org/abs/2510.00691"
 ---
-
 특수교육 AI는 지적장애인의 학습을 대신하는 존재가 아니라, 더 개인화되고 반복 가능한 학습 환경을 만드는 보조 도구가 될 수 있다. 특수교육 AI와 지적장애 AI 교육을 찾는 현장에서 중요한 것은 기술 자체보다 학습자의 이해와 선택이다. 날자꾸러미는 AI를 자료 난이도 조절, 반복 질문, 표현 지원, 활동 기록에 활용하되, 배운 것이 삶으로 이어지도록 사람의 검토와 현장 조정을 함께 둔다.
 
 **발달장애 AI 교육**과 **발달장애 AI 학습**은 지적장애인과 자폐성장애인 등을 함께 포괄할 수 있는 넓은 표현이다. 이 글의 **발달장애 특수교육 AI** 논의는 그중 지적장애인의 개별화 학습자료와 표현 지원에 초점을 둔다. 자폐성장애를 포함한 다른 지원 요구에 그대로 일반화하지 않는다.

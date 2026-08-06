@@ -1,5 +1,7 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "경도 지적장애 문해력 교육, 청소년·성인에게 왜 필요한가"
 description: "경도 지적장애 문해력 교육과 발달장애 문해력 교육을 찾는 독자를 위해 청소년·성인의 자기결정, 일상 참여, 권리 접근과 생활 중심 지원 방법을 설명합니다."
 date: 2026-07-14
@@ -10,22 +12,20 @@ author:
   url: "https://naljabooks.com"
   type: Organization
 category: "권리와 문해력"
+topics:
+  - literacy
+  - learning-rights
+  - developmental-learning
 tags: ["경도 지적장애 문해력 교육", "경도 지적장애", "청소년", "성인", "문해력 지원", "평생교육", "자기결정", "날자꾸러미", "발달장애 문해력 교육", "발달장애 학습", "성인 발달장애 학습"]
 seo:
   primary_query: "경도 지적장애 문해력 교육"
   search_intent: "청소년·성인에게 문해력 교육이 필요한 이유와 생활 중심 지원 방법을 찾는다."
   secondary_queries: ["지적장애인 문해력 교육", "경도 지적장애 성인 문해력", "지적장애 문해력 지원"]
   bridge_queries: ["발달장애 문해력 교육", "발달장애 학습", "성인 발달장애 학습"]
-related_posts:
-  - title: "지적장애인 쉬운 정보, 읽기이해와 무엇이 다른가"
-    url: "/archive/easy-information-and-reading-comprehension/"
-    description: "읽기 쉬운 자료와 실제 이해를 돕는 활동의 차이"
-  - title: "지적장애인의 학습권은 문해력 지원에서 시작된다"
-    url: "/archive/learning-rights-and-literacy-support-for-intellectual-disabilities/"
-    description: "문해력을 학습권·자기결정·쉬운 정보와 연결하는 기둥글"
-  - title: "성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가"
-    url: "/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/"
-    description: "문해력과 일상 전이를 한 달의 학습 구조로 잇는 방법"
+related:
+  - easy-information-and-reading-comprehension
+  - learning-rights-and-literacy-support-for-intellectual-disabilities
+  - how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities
 toc:
   - id: summary
     title: "핵심 요약"
@@ -57,7 +57,6 @@ sources:
     organization: "Nilsson et al."
     url: "https://journals.sagepub.com/doi/10.1177/07419325251328644"
 ---
-
 경도 지적장애 문해력 교육은 청소년·성인의 학업 보충만을 뜻하지 않는다. 일상 대화가 가능해도 복잡한 글과 선택 상황에서는 읽기이해와 표현 지원이 필요할 수 있다. 문해력은 자기결정, 일상 참여, 관계 형성, 권리 접근을 가능하게 하는 생활 기반 능력이다. 날자꾸러미는 읽고 고르고 기록하는 활동을 연결해 배운 것이 삶으로 이어지도록 돕는다.
 
 **발달장애 문해력 교육**과 **발달장애 학습**은 지적장애인과 자폐성장애인 등을 함께 포괄할 수 있는 넓은 표현이다. 이 글은 그중 경도 지적장애 청소년·성인의 읽기이해와 표현 지원을 다룬다. 따라서 **성인 발달장애 학습** 전체에 같은 방법을 적용하기보다 개인의 특성과 지원 요구를 확인해야 한다.

@@ -1,5 +1,7 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가"
 description: "성인 지적장애인 평생교육 프로그램과 발달장애인 평생교육을 찾는 기관과 가족을 위해 문해력·유추·자기표현·일상 전이를 잇는 날자꾸러미의 구성과 운영 원칙을 소개합니다."
 date: 2026-08-01
@@ -10,22 +12,20 @@ author:
   url: "https://naljabooks.com"
   type: Organization
 category: "배움과 일상"
+topics:
+  - developmental-learning
+  - nalkku-program
+  - learning-rights
 tags: ["성인 지적장애인 평생교육 프로그램", "성인 지적장애", "평생교육", "날자꾸러미", "문해력 지원", "유추 학습", "일상 전이", "자기표현", "쉬운 정보", "AI 교육", "종이 학습지", "발달장애인 평생교육", "성인 발달장애 학습", "발달장애 평생교육 프로그램"]
 seo:
   primary_query: "성인 지적장애인 평생교육 프로그램"
   search_intent: "기관과 가족이 성인기의 생활 중심 평생교육 프로그램 구성과 운영 원칙을 찾는다."
   secondary_queries: ["지적장애인 평생교육 프로그램", "성인 지적장애인 학습 프로그램", "지적장애인 평생교육 학습지"]
   bridge_queries: ["발달장애인 평생교육", "성인 발달장애 학습", "발달장애 평생교육 프로그램"]
-related_posts:
-  - title: "경도 지적장애 문해력 교육, 청소년·성인에게 왜 필요한가"
-    url: "/archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/"
-    description: "평생교육의 기초가 되는 읽기이해·표현·권리 접근 지원"
-  - title: "지적장애인 유추 학습, 왜 필요하고 어떻게 가르칠까?"
-    url: "/archive/why-analogy-matters/"
-    description: "배운 원리를 새로운 사람·장소·과제에 연결하는 방법"
-  - title: "특수교육 AI, 지적장애인의 학습을 어떻게 도울 수 있는가"
-    url: "/archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/"
-    description: "개별화 자료와 반복 지원에 AI를 안전하게 쓰는 기준"
+related:
+  - why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults
+  - why-analogy-matters
+  - how-ai-can-support-learning-for-people-with-intellectual-disabilities
 toc:
   - id: summary
     title: "핵심 요약"
@@ -64,7 +64,6 @@ sources:
     year: "2003"
     url: "https://doi.org/10.1037/0022-0663.95.2.393"
 ---
-
 성인 지적장애인 평생교육 프로그램은 학교에서 배운 내용을 반복하는 데서 끝나지 않아야 한다. 읽고 이해한 것을 자기 말로 표현하고, 병원·카페·직장·복지관 같은 다른 생활 장면에서 다시 쓸 수 있어야 한다. 날자꾸러미는 이 과정을 문해력, 유추 학습, 자기표현과 일상 전이로 연결하는 월간 종이 학습 프로그램이다. 매달 생각을 펼치고 손으로 기록하며, 배운 것이 삶으로 이어지도록 돕는 구조를 만든다.
 
 **발달장애인 평생교육**은 지적장애인과 자폐성장애인 등을 함께 포괄할 수 있는 넓은 검색 표현이다. 이 글은 그중 기초적인 읽기와 쓰기가 가능한 성인 지적장애인을 중심으로 한다. **성인 발달장애 학습**이나 **발달장애 평생교육 프로그램**을 찾는 독자에게도 참고가 될 수 있지만, 모든 발달장애인의 학습 특성이 같다고 가정하지 않는다.

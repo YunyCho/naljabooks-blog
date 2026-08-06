@@ -19,9 +19,10 @@ bundle exec jekyll serve
 JEKYLL_ENV=production bundle exec jekyll build --trace
 ruby scripts/verify_site.rb
 ruby scripts/verify_pinned_home.rb
+ruby scripts/verify_content_schema.rb
 ```
 
-검증 스크립트는 초기 페이지와 글, title, description, canonical, `BlogPosting` 구조화 데이터, sitemap, RSS, robots, llms 파일과 `baseurl` 적용을 확인합니다.
+검증 스크립트는 초기 페이지와 글, title, description, canonical, `BlogPosting` 구조화 데이터, sitemap, RSS, robots, llms 파일과 `baseurl` 적용을 확인합니다. 콘텐츠 스키마 검증은 필수 메타데이터, 주제·관련 글 ID, 목차, 출처 연결과 Markdown 본문의 표현 독립성을 확인합니다.
 
 ## 글 작성
 
@@ -30,16 +31,21 @@ ruby scripts/verify_pinned_home.rb
 ```yaml
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "글 제목"
 description: "검색 결과와 공유 카드에 사용할 고유한 요약"
 date: 2026-06-15
 updated: 2026-06-15
+last_modified_at: 2026-06-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "유추와 문해력"
+topics: ["analogy-learning", "developmental-learning"]
 tags: ["유추력", "문해력"]
+related: ["analogy-learning-and-transfer-to-daily-life"]
 toc:
   - id: "section-id"
     title: "목차에 표시할 제목"
@@ -51,6 +57,10 @@ sources:
 ---
 ```
 
+`topics`에는 `_data/topics.yml`에 정의된 안정적인 ID를 사용합니다. `related`에는 제목이나 URL을 반복하지 않고 대상 글의 날짜를 제외한 파일명(slug)만 기록합니다. 관련 글을 지정하지 않을 때는 `related: []`로 두며, 화면에서는 첫 번째 주제가 같은 최신 글을 자동으로 제안합니다.
+
+`updated`는 화면과 기계용 출력에서 사용하는 수정일이고, `last_modified_at`은 검색용 구조화 데이터가 사용하는 수정일입니다. 두 값은 항상 같게 기록하며 콘텐츠 스키마 검증에서 불일치를 차단합니다.
+
 목차를 사용할 때는 본문의 제목에 같은 ID를 지정합니다.
 
 ```markdown
@@ -58,6 +68,18 @@ sources:
 ```
 
 수치와 연구 주장은 확인 가능한 원문과 연결합니다. 일반 교육 정보와 날자꾸러미의 제품·설계 관점을 구분하고, 효과를 보장하는 표현은 사용하지 않습니다.
+
+## 재사용 가능한 콘텐츠 출력
+
+하나의 Markdown 원본에서 다음 출력을 함께 생성합니다.
+
+- `/llms.txt`: 전체 글의 제목, 요약, 주소와 메타데이터 목록
+- `/llms-full.txt`: 공개 글 본문과 출처를 모은 전체 텍스트
+- `/content/index.json`: 외부 도구가 읽을 수 있는 콘텐츠 목록
+- `/feed.json`: HTML과 일반 텍스트 본문을 포함한 JSON Feed
+- `/feed.xml`: 구독 도구를 위한 RSS 피드
+
+주제 페이지와 관련 글도 각 글의 `topics`와 `related` 메타데이터를 기준으로 생성하므로 제목이나 설명을 여러 파일에 반복해서 적지 않습니다.
 
 ## 편집·검색 전략
 

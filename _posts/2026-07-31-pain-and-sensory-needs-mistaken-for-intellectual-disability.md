@@ -1,15 +1,22 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때"
 description: "지적장애인의 행동 변화 뒤에는 통증, 청각·시각 문제나 불편한 환경이 있을 수 있습니다. 장애 탓으로 단정하기 전에 직접 묻고 점검할 순서를 설명합니다."
 date: 2026-07-31
 updated: 2026-07-31
+last_modified_at: 2026-07-31
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "권리와 문해력"
+topics:
+  - literacy
+  - learning-rights
 tags: ["지적장애", "특수교육", "통증 표현", "감각 지원", "진단적 가림", "의사소통 지원", "건강 문해력", "쉬운 정보", "성장기록서", "날자꾸러미"]
+related: []
 toc:
   - id: summary
     title: "핵심 요약"
@@ -44,7 +51,6 @@ sources:
     year: "2011"
     url: "https://www.who.int/publications/i/item/9789241564182"
 ---
-
 지적장애인이 갑자기 활동을 거부하거나 화를 내고 자신을 때리면 장애 특성이나 문제행동으로 기록되기 쉽다. 하지만 치통이나 두통, 잘 들리지 않거나 잘 보이지 않는 상태, 눈부신 조명과 큰 소음 같은 몸과 감각의 문제가 행동 변화로 나타날 수 있다. 지적장애와 특수교육 현장에서 지능 탓으로 단정하기 전에 당사자에게 직접 묻고 통증, 감각, 환경과 의사소통 방식을 차례로 확인해야 한다. 쉬운 정보와 표현 지원을 활용한 건강 문해력은 몸의 느낌을 알리고 필요한 도움을 요청하는 권리와 연결된다.
 
 ## 핵심 요약 {#summary}

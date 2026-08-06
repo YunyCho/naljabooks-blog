@@ -1,15 +1,22 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "지적장애인 독서권과 문해력 지원의 차이"
 description: "지적장애인 독서권은 책과 쉬운 정보에 접근할 권리이고, 문해력 지원은 읽기이해와 자기표현을 거쳐 배운 것이 삶으로 이어지도록 돕는 과정입니다."
 date: 2026-07-18
 updated: 2026-07-18
+last_modified_at: 2026-07-18
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "권리와 문해력"
+topics:
+  - literacy
+  - learning-rights
 tags: ["지적장애", "독서권", "문해력 지원", "읽기 쉬운 책", "읽기이해", "자기결정", "날자꾸러미"]
+related: []
 toc:
   - id: summary
     title: "핵심 요약"
@@ -41,7 +48,6 @@ sources:
     organization: "국가법령정보센터"
     url: "https://www.law.go.kr/lsInfoP.do?lsId=012046"
 ---
-
 지적장애인 독서권과 문해력 지원은 연결되어 있지만 같은 말은 아니다. 독서권은 읽기 쉬운 책과 쉬운 정보에 접근하고 읽을 기회를 보장받는 권리의 문제다. 문해력 지원은 그 자료를 이해하고, 자기 생각으로 표현하고, 생활 속에서 사용할 수 있도록 돕는 교육의 문제다. 날자꾸러미는 두 과정을 연결해 배운 것이 삶으로 이어지도록 돕는다.
 
 ## 핵심 요약 {#summary}

@@ -1,15 +1,22 @@
 ---
 layout: post
+lang: ko-KR
+content_type: editorial
 title: "날꾸 학습자가 원하지만 말하지 못한 열 가지 감각"
 description: "배우고 싶지만 부담스럽지 않게 내 방식으로 시작하고 싶은 마음. 날꾸 학습자의 말로 드러나지 않은 열 가지 감각과 이를 존중하는 날자꾸러미의 설계 원칙을 소개합니다."
 date: 2026-06-22
 updated: 2026-06-22
+last_modified_at: 2026-06-22
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "날자꾸러미의 관점"
+topics:
+  - nalkku-program
+  - developmental-learning
 tags: ["날자꾸러미", "발달장애", "학습자 존중", "자기결정", "학습설계"]
+related: []
 toc:
   - id: can-start
     title: "1. 나도 할 수 있을 것 같은 감각"
@@ -34,7 +41,6 @@ toc:
   - id: conditions-for-learning
     title: "배움에 들어갈 수 있는 조건"
 ---
-
 > 나도 배우고 싶지만, 부담스럽지 않게 내 방식으로 시작하고 싶다.
 
 날꾸 학습자가 원하지만 말하지 못한 감각을 한 문장으로 옮기면 이렇다.

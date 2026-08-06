@@ -1,15 +1,22 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "지적장애인의 혼잣말을 문제행동으로만 보면 놓치는 것"
 description: "지적장애인의 혼잣말은 계획, 감정조절과 문제해결을 돕는 자기 대화일 수 있습니다. 혼잣말만으로 병리화하지 않고 맥락과 변화를 살펴야 하는 이유를 설명합니다."
 date: 2026-07-28
 updated: 2026-07-28
+last_modified_at: 2026-07-28
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "배움과 일상"
+topics:
+  - developmental-learning
+  - literacy
 tags: ["지적장애", "특수교육", "혼잣말", "자기 대화", "자기조절", "표현 지원", "일상 전이", "날자꾸러미"]
+related: []
 toc:
   - id: summary
     title: "핵심 요약"
@@ -44,7 +51,6 @@ sources:
     organization: "American Speech-Language-Hearing Association"
     url: "https://www.asha.org/practice-portal/clinical-topics/intellectual-disability/"
 ---
-
 지적장애인이 혼잣말을 하면 주변에서는 이상행동이나 고쳐야 할 습관으로 보기 쉽다. 그러나 소리 내어 하는 자기 대화는 할 일을 기억하고, 문제를 풀고, 감정을 가라앉히거나 하루의 사건을 정리하는 방법일 수 있다. 지적장애와 특수교육 현장에서 혼잣말만으로 병리를 판단하지 않고 언제, 무엇을 위해, 어떻게 달라졌는지를 살펴야 당사자의 표현 지원과 자기조절에 필요한 단서를 놓치지 않는다. 날자꾸러미는 이런 자기 안내를 일상 전이와 연결해 배운 것이 삶으로 이어지도록 돕는 학습 도구로 본다.
 
 ## 핵심 요약 {#summary}

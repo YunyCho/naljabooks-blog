@@ -49,16 +49,38 @@ layout: default
         {% include source-list.html sources=page.sources %}
       {% endif %}
 
-      {% if page.related_posts and page.related_posts.size > 0 %}
+      {% if page.related and page.related.size > 0 %}
         <nav class="related-reading" aria-labelledby="related-reading-title">
           <p class="eyebrow">함께 읽기</p>
           <h2 id="related-reading-title">이 주제를 더 깊이 읽어 보세요</h2>
           <ul class="article-link-list">
-            {% for related in page.related_posts %}
-              <li>
-                <a href="{{ related.url | relative_url }}">{{ related.title }}</a>
-                {% if related.description %}<span>{{ related.description }}</span>{% endif %}
-              </li>
+            {% for related_slug in page.related %}
+              {% assign related_matches = site.posts | where: "slug", related_slug %}
+              {% assign related_post = related_matches.first %}
+              {% if related_post %}
+                <li>
+                  <a href="{{ related_post.url | relative_url }}">{{ related_post.title }}</a>
+                  <span>{{ related_post.description }}</span>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </nav>
+      {% elsif page.topics and page.topics.size > 0 %}
+        {% assign primary_topic = page.topics.first %}
+        {% assign related_count = 0 %}
+        <nav class="related-reading" aria-labelledby="related-reading-title">
+          <p class="eyebrow">함께 읽기</p>
+          <h2 id="related-reading-title">이 주제를 더 깊이 읽어 보세요</h2>
+          <ul class="article-link-list">
+            {% for candidate in site.posts %}
+              {% if related_count < 3 and candidate.url != page.url and candidate.topics contains primary_topic %}
+                <li>
+                  <a href="{{ candidate.url | relative_url }}">{{ candidate.title }}</a>
+                  <span>{{ candidate.description }}</span>
+                </li>
+                {% assign related_count = related_count | plus: 1 %}
+              {% endif %}
             {% endfor %}
           </ul>
         </nav>

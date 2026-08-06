@@ -1,15 +1,22 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "쉬운 글만으로 충분하지 않은 이유"
 description: "쉬운 글은 접근성을 높이는 출발점이지만, 지적장애 청소년·성인의 실제 이해와 일상 적용을 위해서는 활동, 질문, 반복, 피드백이 함께 필요합니다."
 date: 2026-06-19
 updated: 2026-06-19
+last_modified_at: 2026-06-19
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "문해력과 쉬운 정보"
+topics:
+  - literacy
+  - easy-information
 tags: ["쉬운 글", "읽기이해", "문해력", "지적장애", "학습설계"]
+related: []
 toc:
   - id: summary
     title: "핵심 요약"
@@ -41,7 +48,6 @@ sources:
     organization: "CAST"
     url: "https://udlguidelines.cast.org/"
 ---
-
 쉬운 글은 꼭 필요하지만 충분하지 않다. 지적장애 청소년·성인의 문해력 지원에서는 문장을 쉽게 만드는 것만으로 실제 이해와 생활 적용이 자동으로 일어나지 않는다. 쉬운 글은 시작점이고, 그 다음에는 질문, 활동, 반복, 피드백, 자기표현이 필요하다.
 
 ## 핵심 요약 {#summary}

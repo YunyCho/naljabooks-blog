@@ -1,16 +1,21 @@
 ---
 layout: post
 lang: en
+content_type: essay
 title: "At the Edge of Intelligence, We Find What It Means to Be Human."
 description: "In the Age of AGI, What My Son Will Teach Humanity"
 date: 2026-06-19 08:00:00 +0900
 updated: 2026-06-19 08:00:00 +0900
+last_modified_at: 2026-06-19 08:00:00 +0900
 author:
   name: "조윤영"
   url: "https://naljabooks.com"
   type: Person
 category: "AI and Human Dignity"
+topics:
+  - ai-intellectual-disability
 tags: ["AGI", "intellectual disability", "humanity", "analogy", "Nalja Project"]
+related: []
 toc:
   - id: prologue
     title: "Prologue · Wild Strawberries and the Buddha"
@@ -27,7 +32,6 @@ toc:
   - id: epilogue
     title: "Epilogue · Dreaming of a Cognitive Rehabilitation Center"
 ---
-
 *Originally written in Korean and translated into English by the author. Also published on [Substack](https://naljabooks.substack.com/p/at-the-edge-of-intelligence-we-find).*
 
 ## Contents

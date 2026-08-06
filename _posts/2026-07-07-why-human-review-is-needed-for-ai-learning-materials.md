@@ -1,15 +1,21 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "AI 교육자료를 사람이 검토해야 하는 이유"
 description: "AI 교육자료 검토는 지적장애 학습자료와 쉬운 정보 AI 활용에서 정확성, 이해 가능성, 성인 존중, 안전성을 지키는 핵심 절차입니다."
 date: 2026-07-07
 updated: 2026-07-07
+last_modified_at: 2026-07-07
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "배움과 일상"
+topics:
+  - ai-intellectual-disability
 tags: ["AI 교육", "AI 교육자료 검토", "지적장애", "쉬운 정보", "접근성", "날자꾸러미"]
+related: []
 toc:
   - id: summary
     title: "핵심 요약"
@@ -41,7 +47,6 @@ sources:
     organization: "Säuberli et al."
     url: "https://arxiv.org/abs/2402.13094"
 ---
-
 AI 교육자료는 빠르게 만들 수 있지만, 지적장애인을 위한 학습자료에서는 사람이 반드시 검토해야 한다. 특수교육 AI와 쉬운 정보 AI를 찾는 현장에서 중요한 것은 더 많은 자료를 자동으로 만드는 속도만이 아니다. 정확성, 이해 가능성, 성인 존중, 안전성, 생활 맥락을 확인해야 배운 것이 삶으로 이어질 수 있다. 날자꾸러미는 AI를 초안 생성과 변형에 활용하되, 최종 자료는 사람의 판단과 검토 절차 안에서 다룬다.
 
 ## 핵심 요약 {#summary}
