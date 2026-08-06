@@ -2,6 +2,7 @@
 
 require "pathname"
 require "date"
+require "json"
 require "yaml"
 
 ROOT = Pathname.new(__dir__).join("..").expand_path
@@ -19,6 +20,9 @@ EXPECTED = %w[
   feed.xml
   robots.txt
   llms.txt
+  llms-full.txt
+  content/index.json
+  feed.json
 ].freeze
 
 POSTS = {
@@ -260,9 +264,10 @@ SEO_PILLARS.each do |relative_path, expected|
     errors << "#{relative_path}: intro must explain that 발달장애 is broader than the article's 지적장애 scope"
   end
 
-  related_urls = Array(data["related_posts"]).filter_map { |item| item.is_a?(Hash) ? item["url"] : nil }
+  related_slugs = Array(data["related"])
   expected.fetch(:related_urls).each do |url|
-    errors << "#{relative_path}: missing related post #{url}" unless related_urls.include?(url)
+    slug = url.split("/").reject(&:empty?).last
+    errors << "#{relative_path}: missing related post #{slug}" unless related_slugs.include?(slug)
   end
   expected_updated = expected.fetch(:updated, Date.new(2026, 8, 1))
   unless data["updated"] == expected_updated
@@ -304,6 +309,41 @@ end
 
 EXPECTED.each do |path|
   errors << "missing #{path}" unless SITE.join(path).file?
+end
+
+post_count = Dir.glob(ROOT.join("_posts/*.md")).length
+
+llms = SITE.join("llms.txt")
+if llms.file?
+  llms_text = llms.read
+  indexed_posts = llms_text.scan(/^### /).length
+  errors << "llms.txt: expected #{post_count} articles, found #{indexed_posts}" unless indexed_posts == post_count
+  errors << "llms.txt: missing full-text corpus link" unless llms_text.include?("/llms-full.txt")
+  errors << "llms.txt: missing content index link" unless llms_text.include?("/content/index.json")
+end
+
+llms_full = SITE.join("llms-full.txt")
+if llms_full.file?
+  full_text = llms_full.read
+  indexed_posts = full_text.scan(/^## /).length
+  errors << "llms-full.txt: expected #{post_count} articles, found #{indexed_posts}" unless indexed_posts == post_count
+  errors << "llms-full.txt: missing article sources" unless full_text.include?("### 출처")
+end
+
+{
+  "content/index.json" => "items",
+  "feed.json" => "items"
+}.each do |path, items_key|
+  file = SITE.join(path)
+  next unless file.file?
+
+  begin
+    payload = JSON.parse(file.read)
+    item_count = Array(payload[items_key]).length
+    errors << "#{path}: expected #{post_count} items, found #{item_count}" unless item_count == post_count
+  rescue JSON::ParserError => error
+    errors << "#{path}: invalid JSON (#{error.message})"
+  end
 end
 
 published_drafts = Dir.glob(SITE.join("naver-drafts/**/*"), File::FNM_DOTMATCH).reject do |path|

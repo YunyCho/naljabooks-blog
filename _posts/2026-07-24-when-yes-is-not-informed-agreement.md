@@ -1,19 +1,23 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "지적장애인의 “예”는 언제 진짜 동의가 아닌가"
 description: "지적장애인이 질문에 “예”라고 답했더라도 충분히 이해하고 선택한 동의인지 확인해야 합니다. 묵종을 줄이는 질문 방식과 자기결정 지원 원칙을 설명합니다."
 date: 2026-07-24
 updated: 2026-07-24
+last_modified_at: 2026-07-24
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "권리와 문해력"
+topics:
+  - literacy
+  - learning-rights
 tags: ["지적장애", "묵종", "동의", "자기결정", "의사소통 지원", "안전 문해력", "날자꾸러미"]
-related_posts:
-  - title: "지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법"
-    url: "/archive/safety-literacy-against-counterfeit-friendship/"
-    description: "관계 속 경계와 위험 신호, 도움 요청을 구체적으로 연습하는 방법"
+related:
+  - safety-literacy-against-counterfeit-friendship
 toc:
   - id: summary
     title: "핵심 요약"
@@ -47,7 +51,6 @@ sources:
     organization: "American Speech-Language-Hearing Association"
     url: "https://www.asha.org/practice-portal/clinical-topics/intellectual-disability/"
 ---
-
 지적장애인이 “예”라고 답했다고 해서 언제나 충분히 이해하고 자유롭게 선택한 것은 아니다. 질문한 사람이 원하는 답을 짐작했거나, 긴 설명을 따라가기 어려웠거나, 질문을 빨리 끝내고 싶어서 긍정했을 수도 있다. 지적장애인의 동의와 자기결정을 확인하려면 한 번의 예·아니오 답보다 쉬운 정보, 거절할 선택지와 다른 방식으로 다시 확인하는 과정이 필요하다. 날자꾸러미는 이런 의사소통 지원과 안전 문해력을 연결해 배운 것이 삶으로 이어지도록 돕는다.
 
 ## 핵심 요약 {#summary}

@@ -1,5 +1,7 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때"
 description: "진단 가림 현상의 뜻과 연구 근거, 한계를 살피고 지적장애인의 행동 변화를 건강·환경·학습 조건과 함께 해석해야 하는 이유를 설명합니다."
 date: 2026-08-03
@@ -10,22 +12,20 @@ author:
   url: "https://naljabooks.com"
   type: Organization
 category: "권리와 문해력"
+topics:
+  - literacy
+  - analogy-learning
+  - learning-rights
 tags: ["진단 가림 현상", "진단적 가림", "diagnostic overshadowing", "지적장애", "정신건강", "건강권", "행동 변화", "유추 학습", "작업기억", "동적 평가", "날자꾸러미"]
 seo:
   primary_query: "진단 가림 현상"
   search_intent: "진단 가림 현상의 뜻과 지적장애인에게 미치는 영향, 연구 근거와 교육적 함의를 알고 싶다."
   secondary_queries: ["진단적 가림", "diagnostic overshadowing 지적장애", "지적장애 행동 변화 원인"]
   bridge_queries: ["발달장애 건강권", "지적장애 유추 학습", "지적장애 학습 지원"]
-related_posts:
-  - title: "지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때"
-    url: "/archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/"
-    description: "행동 변화 뒤의 통증·감각·환경 조건을 확인하는 순서"
-  - title: "지적장애인 유추 학습, 왜 필요하고 어떻게 가르칠까?"
-    url: "/archive/why-analogy-matters/"
-    description: "유추 과제의 조건과 일상 전이를 돕는 설계 원칙"
-  - title: "말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유"
-    url: "/archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/"
-    description: "표현의 어려움과 이해의 한계를 구분하는 의사소통 지원"
+related:
+  - pain-and-sensory-needs-mistaken-for-intellectual-disability
+  - why-analogy-matters
+  - expression-does-not-define-understanding-for-people-with-intellectual-disabilities
 toc:
   - id: summary
     title: "핵심 요약"
@@ -79,7 +79,6 @@ sources:
     year: "2025"
     url: "https://doi.org/10.1037/pas0001367"
 ---
-
 지적장애인이 불안해하거나 갑자기 활동을 거부할 때, 우리는 그 변화를 어떻게 해석할까. “지적장애가 있으니까”, “원래 고집이 세니까”라는 설명으로 멈추면 정신건강 문제나 통증 같은 다른 원인을 놓칠 수 있다. **진단 가림 현상(diagnostic overshadowing)**은 한 사람의 두드러진 진단이 다른 증상과 필요를 가려 버리는 판단의 오류를 말한다.
 
 이 개념은 의료와 정신건강 영역에서 시작되었다. 교육 현장에도 비슷한 판단 구조가 나타날 수 있지만, 임상 연구를 곧바로 교육 효과의 근거로 옮겨서는 안 된다. 이 글은 진단 가림 현상의 연구 근거와 한계를 먼저 살피고, 날자꾸러미가 이 개념을 학습 설계에 어떻게 신중하게 연결하는지 설명한다.

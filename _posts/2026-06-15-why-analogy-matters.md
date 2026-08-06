@@ -1,5 +1,7 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "지적장애인 유추 학습, 왜 필요하고 어떻게 가르칠까?"
 description: "지적장애인 유추 학습의 뜻과 필요성을 발달장애 학습과 성장이라는 넓은 관심에 연결하고, 일상생활 전이와 선택을 돕는 질문법과 설계 원칙을 설명합니다."
 date: 2026-06-15
@@ -10,22 +12,19 @@ author:
   url: "https://naljabooks.com"
   type: Organization
 category: "유추와 문해력"
+topics:
+  - analogy-learning
+  - developmental-learning
 tags: ["지적장애인 유추 학습", "유추력", "문해력", "지적장애", "일상 전이", "발달장애 학습", "발달장애 성장", "발달장애 유추 학습"]
 seo:
   primary_query: "지적장애인 유추 학습"
   search_intent: "유추의 뜻과 필요성, 지적장애인에게 실제로 가르치는 방법을 찾는다."
   secondary_queries: ["지적장애 유추력", "지적장애인 유추 추론", "유추 학습 일상생활 전이"]
   bridge_queries: ["발달장애 학습", "발달장애 성장", "발달장애 유추 학습"]
-related_posts:
-  - title: "유추 학습은 일상생활 전이에 어떻게 연결되는가"
-    url: "/archive/analogy-learning-and-transfer-to-daily-life/"
-    description: "배운 원리를 새로운 상황에 옮기는 전이 설계"
-  - title: "성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가"
-    url: "/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/"
-    description: "유추를 문해력·자기표현·생활 적용과 잇는 월간 구조"
-  - title: "경도 지적장애 문해력 교육, 청소년·성인에게 왜 필요한가"
-    url: "/archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/"
-    description: "읽기이해와 표현을 생활 속 선택으로 연결하는 지원"
+related:
+  - analogy-learning-and-transfer-to-daily-life
+  - how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities
+  - why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults
 toc:
   - id: analogy
     title: "지적장애인 유추 학습이란"

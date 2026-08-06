@@ -1,15 +1,22 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "유추 학습은 일상생활 전이에 어떻게 연결되는가"
 description: "유추 학습은 한 상황에서 배운 관계를 다른 상황에 적용하게 하며, 지적장애 청소년·성인의 일상생활 전이를 지원하는 핵심 방법입니다."
 date: 2026-06-26
 updated: 2026-06-26
+last_modified_at: 2026-06-26
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "유추와 문해력"
+topics:
+  - analogy-learning
+  - developmental-learning
 tags: ["유추학습", "일상전이", "일반화", "문해력", "지적장애"]
+related: []
 toc:
   - id: summary
     title: "핵심 요약"
@@ -41,7 +48,6 @@ sources:
     organization: "ERIC"
     url: "https://eric.ed.gov/?id=EJ1142261"
 ---
-
 유추 학습은 일상생활 전이를 돕는 중요한 방법이다. 전이는 배운 지식이나 기술을 새로운 상황에서 다시 사용하는 것이다. 지적장애 청소년·성인에게 문해력 교육이 의미 있으려면, 교재 안에서 맞힌 답이 실제 생활의 선택과 행동으로 이어져야 한다.
 
 ## 핵심 요약 {#summary}

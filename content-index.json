@@ -1,0 +1,29 @@
+---
+layout: null
+permalink: /content/index.json
+---
+{
+  "version": "1.0",
+  "title": {{ site.title | jsonify }},
+  "description": {{ site.description | jsonify }},
+  "home_page_url": {% assign home_url = '/' | absolute_url %}{{ home_url | jsonify }},
+  "items": [
+    {% for post in site.posts %}
+      {
+        "id": {{ post.slug | jsonify }},
+        "url": {% assign post_url = post.url | absolute_url %}{{ post_url | jsonify }},
+        "title": {{ post.title | jsonify }},
+        "summary": {{ post.description | jsonify }},
+        "date_published": {{ post.date | date_to_xmlschema | jsonify }},
+        "date_modified": {{ post.updated | date_to_xmlschema | jsonify }},
+        "language": {{ post.lang | default: site.lang | jsonify }},
+        "content_type": {{ post.content_type | jsonify }},
+        "author": {{ post.author | jsonify }},
+        "category": {{ post.category | jsonify }},
+        "topics": {{ post.topics | jsonify }},
+        "tags": {{ post.tags | jsonify }},
+        "related": {{ post.related | default: empty | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}

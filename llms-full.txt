@@ -1,0 +1,35 @@
+---
+layout: null
+---
+# 날자 아카이브 전체 텍스트
+
+> 이 파일은 공개된 글의 본문과 출처를 하나의 텍스트 출력으로 제공합니다. 최신 주소와 메타데이터 목록은 {{ '/llms.txt' | absolute_url }} 에서 확인해 주세요.
+
+{% for post in site.posts %}
+## {{ post.title }}
+
+- URL: {{ post.url | absolute_url }}
+- Summary: {{ post.description }}
+- Published: {{ post.date | date: "%Y-%m-%d" }}
+- Updated: {{ post.updated | date: "%Y-%m-%d" }}
+- Author: {{ post.author.name | default: post.author }}
+- Language: {{ post.lang | default: site.lang }}
+- Content type: {{ post.content_type }}
+- Topics: {{ post.topics | join: ", " }}
+- Tags: {{ post.tags | join: ", " }}
+
+### 본문
+
+{{ post.content | strip_html }}
+
+{% if post.sources and post.sources.size > 0 %}
+### 출처
+
+{% for source in post.sources %}
+{{ forloop.index }}. {{ source.title }} — {{ source.organization }}{% if source.year %}, {{ source.year }}{% endif %}: {{ source.url }}
+{% endfor %}
+{% endif %}
+
+---
+
+{% endfor %}

@@ -1,15 +1,22 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "지적장애인의 학습권은 문해력 지원에서 시작된다"
 description: "지적장애인의 학습권을 배울 기회, 이해할 수 있는 자료, 표현할 수 있는 활동, 일상에서 사용할 수 있는 문해력 지원의 관점으로 정리합니다."
 date: 2026-06-26 01:00:00 +0900
 updated: 2026-06-26 01:00:00 +0900
+last_modified_at: 2026-06-26 01:00:00 +0900
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "권리와 문해력"
+topics:
+  - learning-rights
+  - literacy
 tags: ["지적장애", "학습권", "문해력", "쉬운 정보", "자기결정"]
+related: []
 toc:
   - id: summary
     title: "핵심 요약"
@@ -41,7 +48,6 @@ sources:
     organization: "국립장애인도서관"
     url: "https://nld.go.kr/upload/contents02/baldal_jumgbo.pdf"
 ---
-
 지적장애인의 학습권은 배울 기회를 넘어 이해하고 표현하고 선택할 권리와 연결된다. 그래서 학습권을 말할 때는 학교나 교실만 보아서는 부족하다. 읽을 수 있는 자료가 있는지, 이해를 돕는 활동이 있는지, 배운 내용을 일상에서 사용할 수 있는지까지 함께 보아야 한다.
 
 ## 핵심 요약 {#summary}

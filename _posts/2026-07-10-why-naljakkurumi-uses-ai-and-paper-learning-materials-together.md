@@ -1,15 +1,22 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유"
 description: "날자꾸러미는 AI 교육 설계와 종이 학습지를 함께 써서 지적장애 문해력, 유추 학습, 자기표현 기록이 생활로 이어지도록 돕습니다."
 date: 2026-07-10
 updated: 2026-07-10
+last_modified_at: 2026-07-10
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "배움과 일상"
+topics:
+  - ai-intellectual-disability
+  - nalkku-program
 tags: ["날자꾸러미", "AI 교육", "종이 학습지", "지적장애", "문해력", "AI-아날로그 융합 학습"]
+related: []
 toc:
   - id: summary
     title: "핵심 요약"
@@ -45,7 +52,6 @@ sources:
     year: "2024"
     url: "https://arxiv.org/abs/2407.20046"
 ---
-
 날자꾸러미가 AI와 종이 학습지를 함께 쓰는 이유는 기술과 아날로그가 서로 다른 역할을 하기 때문이다. AI 교육 도구는 개인화 설계와 반복 변형을 돕고, 종이 학습지는 지적장애 청소년·성인이 직접 읽고 쓰고 낭독하고 기록하는 경험을 만든다. 날자꾸러미의 방향은 AI-아날로그 융합 학습이다. 빠르게 많이 만드는 것보다, 배운 것이 삶으로 이어지도록 설계하고 확인하는 데 초점을 둔다.
 
 ## 핵심 요약 {#summary}

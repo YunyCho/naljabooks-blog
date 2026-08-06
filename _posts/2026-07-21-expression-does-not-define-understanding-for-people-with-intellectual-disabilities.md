@@ -1,15 +1,22 @@
 ---
 layout: post
+lang: ko-KR
+content_type: article
 title: "말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유"
 description: "지적장애인의 표현 언어와 읽기이해는 같은 수준으로 드러나지 않을 수 있습니다. 말로 나온 답만으로 이해 능력을 단정하지 않고 표현 지원과 기다림이 필요한 이유를 설명합니다."
 date: 2026-07-21
 updated: 2026-07-21
+last_modified_at: 2026-07-21
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "권리와 문해력"
+topics:
+  - literacy
+  - learning-rights
 tags: ["지적장애", "표현 언어", "읽기이해", "의사소통 지원", "자기결정", "날자꾸러미"]
+related: []
 toc:
   - id: summary
     title: "핵심 요약"
@@ -43,7 +50,6 @@ sources:
     year: "2022"
     url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9308010/"
 ---
-
 지적장애인이 질문에 짧게 답하거나 바로 말하지 못하면 주변에서는 이해하지 못했다고 판단하기 쉽다. 그러나 말로 표현하는 능력, 들은 내용을 이해하는 능력, 상황에 맞게 대화하는 능력은 언제나 같은 수준으로 나타나지 않는다. 지적장애인의 읽기이해와 자기결정을 제대로 지원하려면 말로 나온 답만 보는 대신 질문 방식, 기다리는 시간과 다른 표현 경로를 함께 살펴야 한다. 날자꾸러미는 여러 표현 방식을 연결해 배운 것이 삶으로 이어지도록 돕는다.
 
 ## 핵심 요약 {#summary}

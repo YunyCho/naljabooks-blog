@@ -1,15 +1,22 @@
 ---
 layout: post
+lang: ko-KR
+content_type: research
 title: "AI 시대 전환과 지적장애인: 위험·기회·설계 원칙"
 description: "AI 시대 지적장애인의 인지 접근성, 자기결정, 학습지원과 위험을 국제 연구와 한국 정책을 바탕으로 검토하고 포용적 AI 설계 원칙을 정리합니다."
 date: 2026-07-03 16:55:00 +0900
 updated: 2026-07-03 16:55:00 +0900
+last_modified_at: 2026-07-03 16:55:00 +0900
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
   type: Organization
 category: "AI와 권리"
+topics:
+  - ai-intellectual-disability
+  - learning-rights
 tags: ["AI 시대", "지적장애", "인지 접근성", "자기결정", "특수교육 AI", "날자꾸러미"]
+related: []
 toc:
   - id: summary
     title: "핵심 요약"
@@ -63,7 +70,6 @@ sources:
     organization: "Contemporary Educational Technology"
     url: "https://www.cedtech.net/download/bridging-gaps-with-technology-a-bibliometric-review-of-inclusive-education-through-educational-17980.pdf"
 ---
-
 ## 핵심 요약 {#summary}
 
 - 생성형 AI는 지적장애인의 학습과 표현을 지원할 잠재력이 있지만, 언어와 추상 중심의 인터페이스 자체가 새로운 장벽이 될 수 있다.
