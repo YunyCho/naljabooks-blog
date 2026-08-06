@@ -1,0 +1,38 @@
+---
+layout: default
+lang: en
+translation_key: home
+title: "Learning, dignity, and everyday life in the AI era"
+description: "Nalja Archive publishes evidence-informed essays on intellectual disability, literacy, analogy, learning, rights, and AI."
+permalink: /en/
+---
+{% assign legacy_english_posts = site.posts | where: "lang", "en" %}
+{% assign english_posts = site.english | concat: legacy_english_posts | sort: "date" | reverse %}
+
+<section class="page-hero page-shell reading-shell">
+  <p class="eyebrow">Nalja Archive in English</p>
+  <h1>Learning should carry<br>into everyday life.</h1>
+  <p>Nalja Archive shares research, educational perspectives, and practical questions about learning, literacy, rights, and AI for people with intellectual disabilities.</p>
+</section>
+
+<section class="archive-list-section page-shell" aria-labelledby="english-articles-title">
+  <header class="home-section-heading">
+    <p class="home-kicker">English articles</p>
+    <h2 id="english-articles-title">Read the archive</h2>
+    <p>English translations are linked to their Korean originals. The Korean article remains authoritative if wording differs.</p>
+  </header>
+  <div class="archive-list">
+    {% for post in english_posts %}
+      <article class="archive-list-item">
+        <div>
+          <p class="story-category">{{ post.category }}</p>
+          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          <p>{{ post.description }}</p>
+        </div>
+        <div class="archive-list-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>

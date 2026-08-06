@@ -1,29 +1,44 @@
 ---
 layout: default
 ---
-{% assign character_count = content | strip_html | strip_newlines | size %}
-{% assign reading_time = character_count | divided_by: 500 | plus: 1 %}
+{% assign is_english = false %}
+{% if page.lang == "en" %}{% assign is_english = true %}{% endif %}
+{% if is_english %}
+  {% assign word_count = content | number_of_words %}
+  {% assign reading_time = word_count | divided_by: 200 | plus: 1 %}
+  {% assign related_pool = site.english %}
+  {% assign legacy_english_posts = site.posts | where: "lang", "en" %}
+  {% assign related_pool = related_pool | concat: legacy_english_posts %}
+{% else %}
+  {% assign character_count = content | strip_html | strip_newlines | size %}
+  {% assign reading_time = character_count | divided_by: 500 | plus: 1 %}
+  {% assign related_pool = site.posts | where_exp: "candidate", "candidate.lang != 'en'" %}
+{% endif %}
 <article class="article">
   <header class="article-header page-shell reading-shell">
-    <a class="eyebrow" href="{{ '/' | relative_url }}">{{ page.category }}</a>
+    <a class="eyebrow" href="{% if is_english %}{{ '/en/topics/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}">{{ page.category }}</a>
     <h1>{{ page.title }}</h1>
     <p class="article-deck">{{ page.description }}</p>
+    {% if is_english and page.translation_key %}
+      {% assign article_translation = site.data.translations[page.translation_key] %}
+      <p class="translation-note">This English version was prepared from the Korean original. If wording differs, <a href="{{ article_translation.ko | relative_url }}">the Korean article</a> is authoritative.</p>
+    {% endif %}
     <dl class="article-meta">
       <div>
-        <dt>작성</dt>
+        <dt>{% if is_english %}Published{% else %}작성{% endif %}</dt>
         <dd>{{ page.date | date: "%Y.%m.%d" }}</dd>
       </div>
       <div>
-        <dt>수정</dt>
+        <dt>{% if is_english %}Updated{% else %}수정{% endif %}</dt>
         <dd>{{ page.updated | date: "%Y.%m.%d" }}</dd>
       </div>
       <div>
-        <dt>글쓴이</dt>
+        <dt>{% if is_english %}Author{% else %}글쓴이{% endif %}</dt>
         <dd>{{ page.author.name | default: page.author }}</dd>
       </div>
       <div>
-        <dt>읽는 시간</dt>
-        <dd>약 {{ reading_time }}분</dd>
+        <dt>{% if is_english %}Reading time{% else %}읽는 시간{% endif %}</dt>
+        <dd>{% if is_english %}About {{ reading_time }} min{% else %}약 {{ reading_time }}분{% endif %}</dd>
       </div>
     </dl>
   </header>
@@ -31,7 +46,7 @@ layout: default
   <div class="article-layout page-shell">
     {% if page.toc and page.toc.size > 0 %}
       <aside class="table-of-contents" aria-labelledby="toc-title">
-        <p id="toc-title" class="toc-title">이 글의 순서</p>
+        <p id="toc-title" class="toc-title">{% if is_english %}In this article{% else %}이 글의 순서{% endif %}</p>
         <ol>
           {% for item in page.toc %}
             <li><a href="#{{ item.id }}">{{ item.title }}</a></li>
@@ -51,11 +66,11 @@ layout: default
 
       {% if page.related and page.related.size > 0 %}
         <nav class="related-reading" aria-labelledby="related-reading-title">
-          <p class="eyebrow">함께 읽기</p>
-          <h2 id="related-reading-title">이 주제를 더 깊이 읽어 보세요</h2>
+          <p class="eyebrow">{% if is_english %}Related reading{% else %}함께 읽기{% endif %}</p>
+          <h2 id="related-reading-title">{% if is_english %}Explore this topic further{% else %}이 주제를 더 깊이 읽어 보세요{% endif %}</h2>
           <ul class="article-link-list">
             {% for related_slug in page.related %}
-              {% assign related_matches = site.posts | where: "slug", related_slug %}
+              {% assign related_matches = related_pool | where: "slug", related_slug %}
               {% assign related_post = related_matches.first %}
               {% if related_post %}
                 <li>
@@ -70,10 +85,10 @@ layout: default
         {% assign primary_topic = page.topics.first %}
         {% assign related_count = 0 %}
         <nav class="related-reading" aria-labelledby="related-reading-title">
-          <p class="eyebrow">함께 읽기</p>
-          <h2 id="related-reading-title">이 주제를 더 깊이 읽어 보세요</h2>
+          <p class="eyebrow">{% if is_english %}Related reading{% else %}함께 읽기{% endif %}</p>
+          <h2 id="related-reading-title">{% if is_english %}Explore this topic further{% else %}이 주제를 더 깊이 읽어 보세요{% endif %}</h2>
           <ul class="article-link-list">
-            {% for candidate in site.posts %}
+            {% for candidate in related_pool %}
               {% if related_count < 3 and candidate.url != page.url and candidate.topics contains primary_topic %}
                 <li>
                   <a href="{{ candidate.url | relative_url }}">{{ candidate.title }}</a>
@@ -87,20 +102,29 @@ layout: default
       {% endif %}
 
       <aside class="method-note">
-        <h2>이 글을 작성한 기준</h2>
-        {% if page.sources and page.sources.size > 0 %}
-          <p>일반 교육 정보와 날자꾸러미의 관점을 구분하고, 확인 가능한 원문을 출처로 연결했습니다.</p>
+        <h2>{% if is_english %}How this article was prepared{% else %}이 글을 작성한 기준{% endif %}</h2>
+        {% if is_english %}
+          {% if page.sources and page.sources.size > 0 %}
+            <p>We distinguish general educational information from Nalkku's perspective and link to verifiable primary sources.</p>
+          {% else %}
+            <p>This article reflects the author's perspective and experience, with general information distinguished from Nalkku's own explanation.</p>
+          {% endif %}
+          <a href="{{ '/en/methodology/' | relative_url }}">Read the editorial and correction policy</a>
         {% else %}
-          <p>이 글은 글쓴이의 관점과 경험을 바탕으로 작성했습니다. 일반 정보와 날자꾸러미의 설명을 구분합니다.</p>
+          {% if page.sources and page.sources.size > 0 %}
+            <p>일반 교육 정보와 날자꾸러미의 관점을 구분하고, 확인 가능한 원문을 출처로 연결했습니다.</p>
+          {% else %}
+            <p>이 글은 글쓴이의 관점과 경험을 바탕으로 작성했습니다. 일반 정보와 날자꾸러미의 설명을 구분합니다.</p>
+          {% endif %}
+          <a href="{{ '/methodology/' | relative_url }}">자료와 정정 원칙 보기</a>
         {% endif %}
-        <a href="{{ '/methodology/' | relative_url }}">자료와 정정 원칙 보기</a>
       </aside>
 
       <section class="article-cta" aria-labelledby="article-cta-title">
-        <p class="eyebrow">다음으로</p>
-        <h2 id="article-cta-title">날자꾸러미가 궁금하신가요?</h2>
-        <p>제품과 운영 주체에 관한 공식 정보는 도서출판 날자 웹사이트에서 확인할 수 있습니다.</p>
-        <a class="button" href="https://naljabooks.com">날자꾸러미 보러 가기</a>
+        <p class="eyebrow">{% if is_english %}Next{% else %}다음으로{% endif %}</p>
+        <h2 id="article-cta-title">{% if is_english %}Curious about Nalkku?{% else %}날자꾸러미가 궁금하신가요?{% endif %}</h2>
+        <p>{% if is_english %}Visit the Nalja Books website for official information about the program and its publisher.{% else %}제품과 운영 주체에 관한 공식 정보는 도서출판 날자 웹사이트에서 확인할 수 있습니다.{% endif %}</p>
+        <a class="button" href="https://naljabooks.com">{% if is_english %}Visit Nalkku{% else %}날자꾸러미 보러 가기{% endif %}</a>
       </section>
     </div>
   </div>

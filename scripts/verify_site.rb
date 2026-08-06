@@ -21,8 +21,15 @@ EXPECTED = %w[
   robots.txt
   llms.txt
   llms-full.txt
+  llms-en.txt
   content/index.json
+  content/en/index.json
   feed.json
+  en/feed.json
+  en/index.html
+  en/about/index.html
+  en/methodology/index.html
+  en/topics/index.html
 ].freeze
 
 POSTS = {
@@ -312,12 +319,19 @@ EXPECTED.each do |path|
 end
 
 post_count = Dir.glob(ROOT.join("_posts/*.md")).length
+english_collection_count = Dir.glob(ROOT.join("_english/*.md")).length
+legacy_english_count = Dir.glob(ROOT.join("_posts/*.md")).count do |path|
+  File.read(path)[/^lang:\s*en\s*$/, 0]
+end
+english_count = english_collection_count + legacy_english_count
+korean_count = post_count - legacy_english_count
+all_content_count = post_count + english_collection_count
 
 llms = SITE.join("llms.txt")
 if llms.file?
   llms_text = llms.read
   indexed_posts = llms_text.scan(/^### /).length
-  errors << "llms.txt: expected #{post_count} articles, found #{indexed_posts}" unless indexed_posts == post_count
+  errors << "llms.txt: expected #{all_content_count} articles, found #{indexed_posts}" unless indexed_posts == all_content_count
   errors << "llms.txt: missing full-text corpus link" unless llms_text.include?("/llms-full.txt")
   errors << "llms.txt: missing content index link" unless llms_text.include?("/content/index.json")
 end
@@ -326,24 +340,69 @@ llms_full = SITE.join("llms-full.txt")
 if llms_full.file?
   full_text = llms_full.read
   indexed_posts = full_text.scan(/^## /).length
-  errors << "llms-full.txt: expected #{post_count} articles, found #{indexed_posts}" unless indexed_posts == post_count
+  errors << "llms-full.txt: expected #{all_content_count} articles, found #{indexed_posts}" unless indexed_posts == all_content_count
   errors << "llms-full.txt: missing article sources" unless full_text.include?("### 출처")
 end
 
+llms_en = SITE.join("llms-en.txt")
+if llms_en.file?
+  english_text = llms_en.read
+  indexed_posts = english_text.scan(/^### /).length
+  errors << "llms-en.txt: expected #{english_count} articles, found #{indexed_posts}" unless indexed_posts == english_count
+  errors << "llms-en.txt: missing Korean-original links" unless english_text.include?("Korean original:")
+end
+
 {
-  "content/index.json" => "items",
-  "feed.json" => "items"
-}.each do |path, items_key|
+  "content/index.json" => all_content_count,
+  "feed.json" => korean_count,
+  "content/en/index.json" => english_count,
+  "en/feed.json" => english_count
+}.each do |path, expected_count|
   file = SITE.join(path)
   next unless file.file?
 
   begin
     payload = JSON.parse(file.read)
-    item_count = Array(payload[items_key]).length
-    errors << "#{path}: expected #{post_count} items, found #{item_count}" unless item_count == post_count
+    item_count = Array(payload["items"]).length
+    errors << "#{path}: expected #{expected_count} items, found #{item_count}" unless item_count == expected_count
   rescue JSON::ParserError => error
     errors << "#{path}: invalid JSON (#{error.message})"
   end
+end
+
+english_home = SITE.join("en/index.html")
+if english_home.file?
+  html = english_home.read
+  errors << "en/index.html: document language must be English" unless html.include?('<html lang="en">')
+  errors << "en/index.html: missing English archive identity" unless html.include?("Nalja Archive in English")
+  errors << "en/index.html: missing Korean language switch" unless html.include?('lang="ko">한국어</a>')
+  article_count = html.scan(%r{<article class="archive-list-item">}).length
+  errors << "en/index.html: expected #{english_count} English articles, found #{article_count}" unless article_count == english_count
+end
+
+ENGLISH_TRANSLATIONS = {
+  "ai-must-benefit-people-with-intellectual-disabilities" => "ai-must-benefit-people-with-intellectual-disabilities",
+  "why-analogy-matters" => "why-analogy-matters",
+  "how-ai-can-support-learning-for-people-with-intellectual-disabilities" => "how-ai-can-support-learning-for-people-with-intellectual-disabilities",
+  "how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities" => "how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities"
+}.freeze
+
+ENGLISH_TRANSLATIONS.each do |english_slug, korean_slug|
+  path = SITE.join("en/archive", english_slug, "index.html")
+  unless path.file?
+    errors << "missing en/archive/#{english_slug}/index.html"
+    next
+  end
+
+  html = path.read
+  korean_url = "#{BASEURL}/archive/#{korean_slug}/"
+  english_url = "#{BASEURL}/en/archive/#{english_slug}/"
+  errors << "#{path.relative_path_from(SITE)}: document language must be English" unless html.include?('<html lang="en">')
+  errors << "#{path.relative_path_from(SITE)}: missing Korean alternate" unless html.include?(%(hreflang="ko-KR" href="https://yunycho.github.io#{korean_url}"))
+  errors << "#{path.relative_path_from(SITE)}: missing English alternate" unless html.include?(%(hreflang="en" href="https://yunycho.github.io#{english_url}"))
+  errors << "#{path.relative_path_from(SITE)}: missing translation note" unless html.include?("the Korean article</a> is authoritative")
+  errors << "#{path.relative_path_from(SITE)}: Korean article URL missing" unless html.include?(%(href="#{korean_url}"))
+  errors << "#{path.relative_path_from(SITE)}: missing English editorial policy" unless html.include?("Read the editorial and correction policy")
 end
 
 published_drafts = Dir.glob(SITE.join("naver-drafts/**/*"), File::FNM_DOTMATCH).reject do |path|
@@ -551,10 +610,13 @@ POSTS.each do |path, expectations|
     errors << "#{path}: source section must not be rendered"
   end
   if expectations.fetch(:requires_sources, true)
-    unless html.include?("확인 가능한 원문을 출처로 연결했습니다")
+    unless html.include?("확인 가능한 원문을 출처로 연결했습니다") ||
+           html.include?("link to verifiable primary sources")
       errors << "#{path}: sourced method note is missing"
     end
-  elsif !html.include?("글쓴이의 관점과 경험을 바탕으로 작성했습니다")
+  elsif !html.include?("글쓴이의 관점과 경험을 바탕으로 작성했습니다") &&
+        !html.include?("reflects the author&#39;s perspective and experience") &&
+        !html.include?("reflects the author's perspective and experience")
     errors << "#{path}: perspective method note is missing"
   end
 
@@ -969,7 +1031,7 @@ if sitemap.file?
 end
 
 source_files = Dir.glob(
-  ROOT.join("{*.md,*.html,_posts/*,_includes/*,_layouts/*,robots.txt,llms.txt}")
+  ROOT.join("{*.md,*.html,_posts/*,_english/*,en/*,_includes/*,_layouts/*,robots.txt,llms*.txt,content*.json}")
 )
 source_files.each do |file|
   content = File.read(file)

@@ -1,0 +1,36 @@
+---
+layout: null
+---
+# Nalja Archive in English
+
+> Evidence-informed writing on intellectual disability, literacy, analogy, learning, rights, and AI from Nalja Books and Nalkku.
+
+## Navigation
+
+- English archive: {{ '/en/' | absolute_url }}
+- Topics: {{ '/en/topics/' | absolute_url }}
+- About: {{ '/en/about/' | absolute_url }}
+- Editorial and correction policy: {{ '/en/methodology/' | absolute_url }}
+- JSON feed: {{ '/en/feed.json' | absolute_url }}
+- English content index: {{ '/content/en/index.json' | absolute_url }}
+- Korean archive: {{ '/' | absolute_url }}
+- Complete multilingual index: {{ '/llms.txt' | absolute_url }}
+
+## Articles
+
+{% assign legacy_english_posts = site.posts | where: "lang", "en" %}
+{% assign english_articles = site.english | concat: legacy_english_posts | sort: "date" | reverse %}
+{% for post in english_articles %}
+### {{ post.title }}
+
+- URL: {{ post.url | absolute_url }}
+- Summary: {{ post.description }}
+- Published: {{ post.date | date: "%Y-%m-%d" }}
+- Updated: {{ post.updated | date: "%Y-%m-%d" }}
+- Content type: {{ post.content_type }}
+- Topics: {{ post.topics | join: ", " }}
+- Tags: {{ post.tags | join: ", " }}
+{% if post.translation_key %}- Korean original: {{ site.data.translations[post.translation_key].ko | absolute_url }}{% endif %}
+
+{% endfor %}
+English translations should be read with their Korean originals and the editorial policy. If wording differs, the Korean article is authoritative.

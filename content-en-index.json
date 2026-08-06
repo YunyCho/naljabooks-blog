@@ -1,15 +1,16 @@
 ---
 layout: null
-permalink: /content/index.json
+permalink: /content/en/index.json
 ---
 {
   "version": "1.0",
-  "title": {{ site.title | jsonify }},
-  "description": {{ site.description | jsonify }},
-  "home_page_url": {% assign home_url = '/' | absolute_url %}{{ home_url | jsonify }},
+  "title": "Nalja Archive in English",
+  "description": "Evidence-informed English articles from Nalja Books and Nalkku.",
+  "home_page_url": {% assign english_home_url = '/en/' | absolute_url %}{{ english_home_url | jsonify }},
   "items": [
-    {% assign all_articles = site.posts | concat: site.english | sort: "date" | reverse %}
-    {% for post in all_articles %}
+    {% assign legacy_english_posts = site.posts | where: "lang", "en" %}
+    {% assign english_articles = site.english | concat: legacy_english_posts | sort: "date" | reverse %}
+    {% for post in english_articles %}
       {
         "id": {{ post.slug | jsonify }},
         "url": {% assign post_url = post.url | absolute_url %}{{ post_url | jsonify }},
@@ -17,7 +18,7 @@ permalink: /content/index.json
         "summary": {{ post.description | jsonify }},
         "date_published": {{ post.date | date_to_xmlschema | jsonify }},
         "date_modified": {{ post.updated | date_to_xmlschema | jsonify }},
-        "language": {{ post.lang | default: site.lang | jsonify }},
+        "language": "en",
         "content_type": {{ post.content_type | jsonify }},
         "translation_key": {{ post.translation_key | jsonify }},
         "translation_status": {{ post.translation_status | jsonify }},

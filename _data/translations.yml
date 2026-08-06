@@ -1,0 +1,24 @@
+home:
+  ko: "/"
+  en: "/en/"
+about:
+  ko: "/about/"
+  en: "/en/about/"
+methodology:
+  ko: "/methodology/"
+  en: "/en/methodology/"
+topics:
+  ko: "/topics/"
+  en: "/en/topics/"
+ai-must-benefit:
+  ko: "/archive/ai-must-benefit-people-with-intellectual-disabilities/"
+  en: "/en/archive/ai-must-benefit-people-with-intellectual-disabilities/"
+why-analogy-matters:
+  ko: "/archive/why-analogy-matters/"
+  en: "/en/archive/why-analogy-matters/"
+ai-learning-support:
+  ko: "/archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/"
+  en: "/en/archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/"
+nalkku-lifelong-learning:
+  ko: "/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/"
+  en: "/en/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/"

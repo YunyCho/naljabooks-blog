@@ -1,18 +1,38 @@
 <header class="site-header">
   <div class="page-shell header-inner">
-    <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="날자 아카이브 홈">
+    {% assign is_english = false %}
+    {% if page.lang == "en" %}{% assign is_english = true %}{% endif %}
+    <a class="site-brand" href="{% if is_english %}{{ '/en/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" aria-label="{% if is_english %}Nalja Archive home{% else %}날자 아카이브 홈{% endif %}">
       <img class="brand-logo" src="{{ '/assets/images/nalkku-logo.svg' | relative_url }}" alt="" width="59" height="45">
       <span>
-        <strong>{{ site.title }}</strong>
+        <strong>{% if is_english %}Nalja Archive{% else %}{{ site.title }}{% endif %}</strong>
       </span>
     </a>
-    <nav class="site-nav" aria-label="주요 메뉴">
-      <a href="{{ '/' | relative_url }}">글</a>
-      <a href="{{ '/topics/' | relative_url }}">주제</a>
-      <a href="{{ '/about/' | relative_url }}">소개</a>
-      <a href="{{ '/methodology/' | relative_url }}">자료 원칙</a>
-      <a href="{{ '/questions/' | relative_url }}">질문 안내</a>
-      <a class="nav-external" href="https://naljabooks.com">날자꾸러미<span aria-hidden="true"> ↗</span></a>
+    <nav class="site-nav" aria-label="{% if is_english %}Main navigation{% else %}주요 메뉴{% endif %}">
+      {% if is_english %}
+        <a href="{{ '/en/' | relative_url }}">Articles</a>
+        <a href="{{ '/en/topics/' | relative_url }}">Topics</a>
+        <a href="{{ '/en/about/' | relative_url }}">About</a>
+        <a href="{{ '/en/methodology/' | relative_url }}">Editorial policy</a>
+        {% if include.translation_pair %}
+          <a class="language-switch" href="{{ include.translation_pair.ko | relative_url }}" lang="ko">한국어</a>
+        {% else %}
+          <a class="language-switch" href="{{ '/' | relative_url }}" lang="ko">한국어</a>
+        {% endif %}
+        <a class="nav-external" href="https://naljabooks.com">Nalkku<span aria-hidden="true"> ↗</span></a>
+      {% else %}
+        <a href="{{ '/' | relative_url }}">글</a>
+        <a href="{{ '/topics/' | relative_url }}">주제</a>
+        <a href="{{ '/about/' | relative_url }}">소개</a>
+        <a href="{{ '/methodology/' | relative_url }}">자료 원칙</a>
+        <a href="{{ '/questions/' | relative_url }}">질문 안내</a>
+        {% if include.translation_pair %}
+          <a class="language-switch" href="{{ include.translation_pair.en | relative_url }}" lang="en">English</a>
+        {% else %}
+          <a class="language-switch" href="{{ '/en/' | relative_url }}" lang="en">English</a>
+        {% endif %}
+        <a class="nav-external" href="https://naljabooks.com">날자꾸러미<span aria-hidden="true"> ↗</span></a>
+      {% endif %}
     </nav>
   </div>
 </header>
