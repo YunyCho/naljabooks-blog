@@ -30,6 +30,7 @@ EXPECTED = %w[
   en/about/index.html
   en/methodology/index.html
   en/topics/index.html
+  d16572b6a4c3cec49332e841d46eb2f2.txt
 ].freeze
 
 POSTS = {
@@ -142,7 +143,7 @@ POSTS = {
     anchors: %w[can-start age-respect ask-me-first my-choice my-story everyday-life visible-traces gentle-connection begin-again something-for-me conditions-for-learning]
   },
   "archive/at-the-edge-of-intelligence-we-find-what-it-means-to-be-human/index.html" => {
-    author: "조윤영",
+    author: "Yunyoung Cho",
     author_type: "Person",
     requires_sources: false,
     required_text: "At the edge of intelligence, we will at last discover the heart.",
@@ -376,8 +377,25 @@ if english_home.file?
   errors << "en/index.html: document language must be English" unless html.include?('<html lang="en">')
   errors << "en/index.html: missing English archive identity" unless html.include?("Nalja Archive in English")
   errors << "en/index.html: missing Korean language switch" unless html.include?('lang="ko">한국어</a>')
+  errors << "en/index.html: English author metadata is missing" unless html.include?('"name":"Nalja Books and Nalkku Editorial Team"')
+  errors << "en/index.html: English publisher metadata is missing" unless html.include?('"publisher":{"@type":"Organization"') && html.include?('"name":"Nalja Books and Nalkku Editorial Team"')
+  errors << "en/index.html: English organization description is missing" unless html.include?("The editorial team behind Nalja Archive")
+  errors << "en/index.html: Korean organization metadata remains" if html.include?('"name":"도서출판 날자 · 날자꾸러미 편집부"')
   article_count = html.scan(%r{<article class="archive-list-item">}).length
   errors << "en/index.html: expected #{english_count} English articles, found #{article_count}" unless article_count == english_count
+end
+
+Dir.glob(SITE.join("en/**/*.html")).each do |path|
+  html = File.read(path)
+  relative = Pathname.new(path).relative_path_from(SITE)
+  errors << "#{relative}: missing English organization entity" unless html.include?('"@id": "https://yunycho.github.io/naljabooks-blog/en/about/#organization"')
+  errors << "#{relative}: Korean organization metadata remains" if html.include?('"name":"도서출판 날자 · 날자꾸러미 편집부"')
+end
+
+indexnow_key = SITE.join("d16572b6a4c3cec49332e841d46eb2f2.txt")
+if indexnow_key.file?
+  expected_key = "d16572b6a4c3cec49332e841d46eb2f2"
+  errors << "IndexNow key file: unexpected content" unless indexnow_key.read.strip == expected_key
 end
 
 ENGLISH_TRANSLATIONS = {
@@ -1002,6 +1020,8 @@ if english_essay.file?
     "JSON-LD dateModified" => '"dateModified":"2026-06-19T08:00:00+09:00"',
     "JSON-LD datePublished" => '"datePublished":"2026-06-19T08:00:00+09:00"',
     "JSON-LD mainEntityOfPage" => %("@id":"#{english_essay_url}"),
+    "English author name" => '"name":"Yunyoung Cho"',
+    "English organization entity" => '"@id": "https://yunycho.github.io/naljabooks-blog/en/about/#organization"',
     "parallel publication note" => 'Originally written in Korean and translated into English by the author. Also published on <a href="https://naljabooks.substack.com/p/at-the-edge-of-intelligence-we-find">Substack</a>.'
   }.each do |label, marker|
     errors << "#{english_essay_path}: missing #{label}" unless html.include?(marker)

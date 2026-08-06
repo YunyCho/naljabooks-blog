@@ -1,0 +1,20 @@
+{% assign english_organization_id = '/en/about/#organization' | absolute_url %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": {{ english_organization_id | jsonify }},
+  "name": "Nalja Books and Nalkku Editorial Team",
+  "alternateName": "Nalja Books",
+  "url": "https://naljabooks.com",
+  "description": "The editorial team behind Nalja Archive, publishing evidence-informed work on intellectual disability, literacy, analogy, learning, rights, and AI.",
+  "knowsAbout": [
+    "Intellectual disability",
+    "Literacy",
+    "Analogy learning",
+    "Learning transfer",
+    "Learning rights",
+    "Artificial intelligence in education"
+  ]
+}
+</script>

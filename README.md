@@ -94,6 +94,14 @@ sources:
 
 한국어 원문의 `updated`가 바뀌었는데 영어 글의 `source_updated`가 따라가지 않으면 콘텐츠 검증이 실패합니다. 이때 영어 번역을 다시 확인한 뒤 두 날짜를 갱신합니다. 영어 페이지에는 한국어 원문이 기준 문서라는 안내와 언어 전환 링크가 표시됩니다.
 
+영어 페이지의 구조화 데이터에는 `Nalja Books and Nalkku Editorial Team`을 기본 작성자·출판 주체로 사용합니다. 개인 저자가 있는 글은 영어 저자명을 표시하며, 모든 영어 페이지에 Nalja Books의 영문 조직 설명과 전문 분야를 별도 `Organization` 데이터로 제공합니다.
+
+## IndexNow 자동 제출
+
+`main` 브랜치에 공개 콘텐츠가 반영되면 `.github/workflows/indexnow.yml`이 같은 커밋의 GitHub Pages 배포 완료를 기다립니다. 이후 이번 커밋에서 추가·수정·삭제된 공개 URL만 `api.indexnow.org`에 제출합니다. 공통 레이아웃·설정·데이터 변경으로 모든 페이지가 바뀐 경우에는 배포된 sitemap의 URL 전체를 제출합니다.
+
+IndexNow 소유권 키는 사이트에 공개되어야 하는 프로토콜 키이며 비밀번호가 아닙니다. 키 파일은 `/d16572b6a4c3cec49332e841d46eb2f2.txt`에서 제공됩니다. 수동 재실행은 GitHub Actions의 **Submit changed URLs to IndexNow → Run workflow**에서 할 수 있습니다.
+
 ## 편집·검색 전략
 
 날자 아카이브는 검색량이 큰 키워드만 좇지 않고, 사람들이 이미 찾는 말과 날자꾸러미가 만들어 가는 언어를 연결하는 방식으로 운영합니다. 자동 게시와 수동 발행 모두 [편집·검색 전략](docs/editorial-search-strategy.md)을 기준으로 기둥글 여부, `/topics/` 연결, 색인 요청 필요성을 판단합니다.

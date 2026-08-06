@@ -8,7 +8,7 @@ date: 2026-06-19 08:00:00 +0900
 updated: 2026-06-19 08:00:00 +0900
 last_modified_at: 2026-06-19 08:00:00 +0900
 author:
-  name: "조윤영"
+  name: "Yunyoung Cho"
   url: "https://naljabooks.com"
   type: Person
 category: "AI and Human Dignity"

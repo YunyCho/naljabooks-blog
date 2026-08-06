@@ -1,0 +1,73 @@
+name: Submit changed URLs to IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "_config.yml"
+      - "_data/**"
+      - "_english/**"
+      - "_includes/**"
+      - "_layouts/**"
+      - "_posts/**"
+      - "about.md"
+      - "archive.md"
+      - "index.html"
+      - "methodology.md"
+      - "questions.md"
+      - "topics.md"
+      - "en/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow-submission
+  cancel-in-progress: true
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+      INDEXNOW_KEY: d16572b6a4c3cec49332e841d46eb2f2
+      INDEXNOW_SITE_URL: https://yunycho.github.io/naljabooks-blog
+      INDEXNOW_SITEMAP_URL: https://yunycho.github.io/naljabooks-blog/sitemap.xml
+    steps:
+      - name: Check out published commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Wait for the matching Pages deployment
+        shell: bash
+        run: |
+          for attempt in {1..120}; do
+            state="$(gh api "repos/${GITHUB_REPOSITORY}/pages/builds/latest" --jq '[.status, .commit] | @tsv' 2>/dev/null || true)"
+            status="${state%%$'\t'*}"
+            commit="${state#*$'\t'}"
+            if [[ "$status" == "built" && "$commit" == "$GITHUB_SHA" ]]; then
+              echo "Pages deployment for $GITHUB_SHA is live."
+              exit 0
+            fi
+            echo "Waiting for Pages deployment (attempt $attempt/120: ${status:-unavailable} ${commit:-unknown})"
+            sleep 10
+          done
+          echo "Timed out waiting for the Pages deployment." >&2
+          exit 1
+
+      - name: Select changed public URLs
+        shell: bash
+        run: |
+          before_sha="${{ github.event.before }}"
+          if [[ -z "$before_sha" || "$before_sha" == "0000000000000000000000000000000000000000" ]]; then
+            before_sha="$(git rev-parse "${GITHUB_SHA}^")"
+          fi
+          ruby scripts/indexnow_urls.rb "$before_sha" "$GITHUB_SHA" > "$RUNNER_TEMP/indexnow-urls.txt"
+          echo "Selected URLs:"
+          sed -n '1,200p' "$RUNNER_TEMP/indexnow-urls.txt"
+
+      - name: Submit URLs to IndexNow
+        run: ruby scripts/submit_indexnow.rb "$RUNNER_TEMP/indexnow-urls.txt"
