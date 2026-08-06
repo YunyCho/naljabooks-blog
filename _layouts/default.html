@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="abnm5XbuGrXdD1fXgNHPSBJBbVW61VxotldMEjCxJpc">
     {% seo %}
+    {% if page.lang == "en" %}
+      {% include english-organization-schema.html %}
+    {% endif %}
     {% feed_meta %}
     {% if translation_pair %}
       <link rel="alternate" hreflang="ko-KR" href="{{ translation_pair.ko | absolute_url }}">

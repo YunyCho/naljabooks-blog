@@ -31,6 +31,13 @@ defaults:
     values:
       image: "/assets/images/share-default.svg"
   - scope:
+      path: "en"
+    values:
+      author:
+        name: "Nalja Books and Nalkku Editorial Team"
+        url: "https://naljabooks.com"
+        type: Organization
+  - scope:
       path: ""
       type: posts
     values:
@@ -47,7 +54,7 @@ defaults:
       layout: post
       lang: en
       author:
-        name: "Nalja Books Editorial Team"
+        name: "Nalja Books and Nalkku Editorial Team"
         url: "https://naljabooks.com"
         type: Organization
       category: "Learning and Everyday Life"
