@@ -24,6 +24,7 @@ seo:
   secondary_queries: ["지적장애인 평생교육 프로그램", "성인 지적장애인 학습 프로그램", "지적장애인 평생교육 학습지"]
   bridge_queries: ["발달장애인 평생교육", "성인 발달장애 학습", "발달장애 평생교육 프로그램"]
 related:
+  - what-adults-with-developmental-disabilities-want-to-learn
   - why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults
   - why-analogy-matters
   - how-ai-can-support-learning-for-people-with-intellectual-disabilities
