@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "힌트의 목적은 정답을 대신 주는 것이 아니라",
+    anchors: %w[summary definition readiness choose-procedure fade-step observe dependency checklist conclusion],
+    source_count: 4
+  },
   "archive/adult-respectful-learning-materials-for-intellectual-disabilities/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "쉬운 학습자료와 유아적인 학습자료는 같은 말이 아니다",
@@ -180,6 +186,16 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-08-14-how-and-when-to-fade-prompts-for-intellectual-disability-learning.md" => {
+    primary_query: "지적장애인 힌트 줄이기",
+    bridge_queries: ["발달장애 학습 힌트", "발달장애 프롬프트 페이딩"],
+    related_urls: %w[
+      /archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/
+      /archive/adult-respectful-learning-materials-for-intellectual-disabilities/
+      /archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/
+    ],
+    updated: Date.new(2026, 8, 14)
+  },
   "_posts/2026-08-11-adult-respectful-learning-materials-for-intellectual-disabilities.md" => {
     primary_query: "성인 지적장애인 학습자료",
     bridge_queries: ["발달장애인 학습자료", "성인 발달장애 학습", "발달장애 평생교육 자료"],
@@ -488,8 +504,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("성인 지적장애인 학습자료를 유아적으로 만들지 않는 기준")
-    errors << "index.html: adult-respectful learning materials article is not the newest regular story"
+  unless first_regular_story&.include?("지적장애인 힌트 줄이기: 학습에서 언제, 어떻게 줄여야 할까")
+    errors << "index.html: prompt-fading article is not the newest regular story"
   end
   unless story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: safety-literacy article is missing from the right story list"
@@ -497,8 +513,8 @@ if home.file?
   unless story_list.include?("성인 발달장애인 평생교육 수요: 무엇을 배우고 싶어 하는가")
     errors << "index.html: education-demand article is missing from the right story list"
   end
-  unless story_list.include?("진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때")
-    errors << "index.html: diagnostic-overshadowing article is missing from the right story list"
+  if story_list.include?("진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때")
+    errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -611,6 +627,7 @@ if topics.file?
     "safety-literacy link" => "/naljabooks-blog/archive/safety-literacy-against-counterfeit-friendship/",
     "education-demand link" => "/naljabooks-blog/archive/what-adults-with-developmental-disabilities-want-to-learn/",
     "adult-respectful learning materials link" => "/naljabooks-blog/archive/adult-respectful-learning-materials-for-intellectual-disabilities/",
+    "prompt-fading link" => "/naljabooks-blog/archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/",
     "Nalkku lifelong-learning pillar link" => "/naljabooks-blog/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/",
     "developmental learning hub" => "발달장애 학습과 성장",
     "developmental scope" => "지적장애인과 자폐성장애인 등을 포괄하는 넓은 범주",
@@ -627,7 +644,7 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "latest article" => "성인 지적장애인 학습자료를 유아적으로 만들지 않는 기준",
+    "latest article" => "지적장애인 힌트 줄이기: 학습에서 언제, 어떻게 줄여야 할까",
     "previous article" => "지적장애인 독서권과 문해력 지원의 차이",
     "old regular article" => "지적장애인 유추 학습, 왜 필요하고 어떻게 가르칠까?",
     "home link" => "/naljabooks-blog/"
@@ -725,6 +742,7 @@ diagnostic_overshadowing_url = "https://yunycho.github.io/naljabooks-blog/archiv
 safety_literacy_url = "https://yunycho.github.io/naljabooks-blog/archive/safety-literacy-against-counterfeit-friendship/"
 education_demand_url = "https://yunycho.github.io/naljabooks-blog/archive/what-adults-with-developmental-disabilities-want-to-learn/"
 adult_respectful_materials_url = "https://yunycho.github.io/naljabooks-blog/archive/adult-respectful-learning-materials-for-intellectual-disabilities/"
+prompt_fading_url = "https://yunycho.github.io/naljabooks-blog/archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/"
 
 nalkku_lifelong_post = SITE.join(nalkku_lifelong_path)
 if nalkku_lifelong_post.file?
@@ -821,6 +839,7 @@ if sitemap.file?
   errors << "sitemap.xml: missing safety-literacy article" unless sitemap_text.include?(safety_literacy_url)
   errors << "sitemap.xml: missing education-demand article" unless sitemap_text.include?(education_demand_url)
   errors << "sitemap.xml: missing adult-respectful learning materials article" unless sitemap_text.include?(adult_respectful_materials_url)
+  errors << "sitemap.xml: missing prompt-fading article" unless sitemap_text.include?(prompt_fading_url)
 end
 
 feed = SITE.join("feed.xml")
@@ -835,7 +854,7 @@ if feed.file?
   errors << "feed.xml: missing safety-literacy article" unless feed_text.include?(safety_literacy_url)
   errors << "feed.xml: missing education-demand article" unless feed_text.include?(education_demand_url)
   errors << "feed.xml: missing adult-respectful learning materials article" unless feed_text.include?(adult_respectful_materials_url)
-  errors << "feed.xml: missing reading-rights article" unless feed_text.include?(reading_rights_url)
+  errors << "feed.xml: missing prompt-fading article" unless feed_text.include?(prompt_fading_url)
   if feed_text.include?(literacy_support_url)
     errors << "feed.xml: feed must contain only the latest 10 posts"
   end

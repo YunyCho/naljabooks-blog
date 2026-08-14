@@ -1,0 +1,156 @@
+---
+layout: post
+lang: ko-KR
+content_type: article
+title: "지적장애인 힌트 줄이기: 학습에서 언제, 어떻게 줄여야 할까"
+description: "지적장애인 힌트 줄이기와 발달장애 프롬프트 페이딩을 설명합니다. 독립 시도, 최소 도움, 시간지연과 기록으로 학습 지원을 조절하는 기준입니다."
+date: 2026-08-14
+updated: 2026-08-14
+last_modified_at: 2026-08-14
+author:
+  name: "도서출판 날자 · 날자꾸러미 편집부"
+  url: "https://naljabooks.com"
+  type: Organization
+category: "배움과 일상"
+topics:
+  - developmental-learning
+  - learning-rights
+tags: ["지적장애인 힌트 줄이기", "프롬프트 페이딩", "지적장애인 학습 지원", "최소 도움", "시간지연", "체계적 교수", "발달장애 학습 힌트", "발달장애 프롬프트 페이딩"]
+seo:
+  primary_query: "지적장애인 힌트 줄이기"
+  search_intent: "지적장애인 학습에서 도움 의존을 만들지 않으면서 힌트를 언제, 어떤 순서로 줄여야 하는지 알고 싶다."
+  secondary_queries: ["프롬프트 페이딩 방법", "지적장애인 학습 힌트", "학습 도움 줄이는 방법"]
+  bridge_queries: ["발달장애 학습 힌트", "발달장애 프롬프트 페이딩"]
+related:
+  - how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities
+  - adult-respectful-learning-materials-for-intellectual-disabilities
+  - why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults
+toc:
+  - id: summary
+    title: "핵심 요약"
+  - id: definition
+    title: "힌트를 줄인다는 뜻"
+  - id: readiness
+    title: "줄이기 전에 확인할 것"
+  - id: choose-procedure
+    title: "과제에 맞는 절차 고르기"
+  - id: fade-step
+    title: "한 단계씩 줄이는 방법"
+  - id: observe
+    title: "정답보다 함께 기록할 것"
+  - id: dependency
+    title: "힌트 의존이 보일 때"
+  - id: checklist
+    title: "지원인 확인표"
+  - id: conclusion
+    title: "결론"
+sources:
+  - title: "A Decision-Making Tool for Evaluating and Selecting Prompting Strategies"
+    organization: "Behavior Analysis in Practice"
+    year: "2023"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9177132/"
+  - title: "The Effect of Systematic Prompting on the Acquisition of Two Muscle-Strengthening Exercises by Adults with Moderate Disabilities"
+    organization: "Behavior Analysis in Practice"
+    year: "2021"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7962583/"
+  - title: "System of Least Prompts: Children and Students with Intellectual Disability"
+    organization: "What Works Clearinghouse, Institute of Education Sciences"
+    year: "2018"
+    url: "https://ies.ed.gov/ncee/wwc/Docs/InterventionReports/wwc_slp_101818.pdf"
+  - title: "Constant time delay to teach reading to students with intellectual disability and autism: a review"
+    organization: "International Journal of Developmental Disabilities"
+    year: "2023"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10071948/"
+---
+힌트의 목적은 정답을 대신 주는 것이 아니라 학습자가 과제의 자연스러운 단서만 보고 반응하도록 돕는 데 있다. 그래서 **지적장애인 힌트 줄이기**는 도움을 갑자기 끊는 일이 아니다. 어떤 도움으로 성공했는지 관찰하고, 독립적으로 할 기회를 남기면서 가장 약한 도움으로 옮기는 계획이다.
+
+**발달장애 학습 힌트**와 **발달장애 프롬프트 페이딩**은 지적장애인과 자폐성장애인 등을 함께 포괄할 수 있는 넓은 표현이다. 이 글은 지적장애 학습자를 다룬 연구를 중심으로 설명한다. 다른 발달장애 학습자에게 같은 절차를 그대로 적용할 수 있다고 가정하지 않는다.
+
+## 핵심 요약 {#summary}
+
+- 먼저 목표 행동과 과제의 자연 단서를 정한다. 무엇을 독립적으로 해야 하는지가 불분명하면 힌트도 줄일 수 없다.
+- 쉬운 과제에는 최소 도움부터 늘리는 절차가, 새롭거나 오류 비용이 큰 과제에는 강한 도움으로 성공시킨 뒤 줄이는 절차가 맞을 수 있다.
+- 기다리는 시간, 힌트 단계와 다음 단계로 옮기는 기준을 미리 정하되 모든 학습자에게 같은 초 수나 정답률을 적용하지 않는다.
+- 정답 여부와 함께 필요한 힌트 수준, 시작까지 걸린 시간과 다른 사람·장소에서도 수행하는지를 기록한다.
+- 힌트가 없으면 멈춘다면 학습자 탓으로 돌리지 말고 단서, 과제 단계와 페이딩 속도를 다시 설계한다.
+
+## 힌트를 줄인다는 뜻 {#definition}
+
+프롬프트는 지시만으로 목표 반응이 나오기 어려울 때 더하는 보조 단서다. 말로 알려 주기, 손짓, 보기, 시범과 신체적 안내가 여기에 포함될 수 있다. **프롬프트 페이딩**은 이 보조 단서를 계획적으로 약하게 하거나 늦춰, 반응을 과제 자체의 자연 단서로 옮기는 절차다.[1](#source-1)
+
+예를 들어 세탁기 사용의 목표가 “지원인의 손짓을 따라 누르기”라면 손짓이 계속 필요해도 성공으로 보일 수 있다. 반면 목표가 “세탁기의 표시를 보고 시작 버튼 누르기”라면 손짓은 임시 도움이어야 한다. 먼저 최종적으로 남길 자연 단서를 정해야 한다.
+
+## 줄이기 전에 확인할 것 {#readiness}
+
+힌트가 많다는 이유만으로 곧바로 줄여서는 안 된다. 다음을 먼저 확인한다.
+
+1. **목표가 관찰 가능한가:** “이해한다”보다 “표지판을 보고 맞는 문을 고른다”처럼 쓴다.
+2. **과제가 나뉘어 있는가:** 여러 단계 과제라면 어느 단계에서 막히는지 구분한다.
+3. **힌트가 실제로 도움이 되는가:** 말 힌트를 이해하지 못하는 사람에게 말을 더 길게 하는 것은 강한 도움이 아니다.
+4. **신체·감각·의사소통 장벽이 없는가:** 보지 못한 단서, 들리지 않은 지시나 표현할 방법의 부족을 학습 실패로 해석하지 않는다.
+5. **틀렸을 때의 비용이 안전한가:** 위험한 기기 사용처럼 오류 비용이 큰 과제는 독립 시행을 무리하게 늘리지 않는다.
+
+힌트의 형태는 학습자의 이미 갖춘 기술과 불편 요인, 현장에서 실행 가능한 자원을 함께 보고 골라야 한다.[1](#source-1)
+
+## 과제에 맞는 절차 고르기 {#choose-procedure}
+
+모든 힌트를 같은 방향으로 줄이지 않는다.
+
+- **최소 도움부터 늘리기(least-to-most):** 먼저 독립 반응 기회를 주고, 필요할 때 말·손짓·시범처럼 도움을 단계적으로 늘린다. 이미 일부 할 수 있는 과제에서 필요한 최소 도움을 찾기 좋다. 지적장애인을 대상으로 한 운동 과제 연구에서도 이 절차를 개인별 조정하며 사용했다.[2](#source-2)
+- **강한 도움부터 줄이기(most-to-least):** 새 기술을 처음 배우거나 반복 오류를 줄여야 할 때, 성공 가능성이 큰 도움으로 시작해 점차 약하게 한다.
+- **시간지연:** 처음에는 목표 단서 뒤에 곧바로 힌트를 주고, 이후 독립 반응을 기다리는 간격을 둔다. 지적장애 학생의 읽기 연구 검토에서는 일정한 시간지연이 기능적 단어와 학업 단어 교수에 사용됐지만, 연구마다 대상과 절차가 달랐다.[4](#source-4)
+
+미국 What Works Clearinghouse의 최소 도움 체계 검토에는 지적장애 학생의 의사소통, 읽기이해, 독립생활과 수학 과제가 포함되어 있다. 다만 포함 연구 다수가 단일사례 설계 기준을 ‘유보 조건으로 충족’했으므로, 한 절차가 누구에게나 가장 좋다고 단정해서는 안 된다.[3](#source-3)
+
+## 한 단계씩 줄이는 방법 {#fade-step}
+
+실행 순서는 짧게 만들 수 있다.
+
+1. 자연 단서와 목표 행동을 한 문장으로 적는다.
+2. 사용할 힌트를 약한 것부터 강한 것까지 배열한다.
+3. 독립 반응을 관찰할 기다림과 다음 힌트로 옮길 조건을 정한다.
+4. 맞으면 같은 조건에서 다시 할 기회를 주고, 틀리거나 반응이 없으면 계획한 다음 힌트를 준다.
+5. 같은 단계에서 성공이 반복되면 더 약한 힌트나 더 긴 지연을 시험한다.
+6. 사람, 자료나 장소가 바뀌어도 되는지 확인한다.
+
+연구에서 3초나 5초 같은 간격을 사용한 사례는 있지만 과제와 참여자가 서로 다르다.[3](#source-3) 이를 모든 지적장애인에게 적용할 표준 대기시간으로 받아들이면 안 된다. 평소 반응 속도와 과제 특성을 보고 기다림을 정하고, 너무 빨리 개입했는지 함께 기록한다.
+
+## 정답보다 함께 기록할 것 {#observe}
+
+정답률만 기록하면 “혼자 한 정답”과 “전면 지원을 받은 정답”이 같아진다. 최소한 다음 네 가지를 구분한다.
+
+- 독립 수행인지, 어떤 힌트 뒤의 수행인지
+- 과제를 시작하기까지 얼마나 기다렸는지
+- 어느 단계에서 오류나 멈춤이 반복됐는지
+- 다른 자료, 사람이나 장소에서도 같은 기술을 썼는지
+
+한 번의 성공만으로 힌트를 없애거나, 한 번의 실패만으로 다시 강한 도움에 고정하지 않는다. 여러 번의 짧은 기록을 보고 다음 시도에서 한 요소만 바꾸면 무엇이 도움이 됐는지 판단하기 쉽다.
+
+## 힌트 의존이 보일 때 {#dependency}
+
+지원인이 가까이 오거나 특정 말을 할 때까지 기다린다면 힌트 의존 가능성을 살핀다. 해결은 “이제 혼자 해”라고 압박하는 것이 아니다.
+
+- 자연 단서가 눈에 띄는지 확인한다.
+- 지시와 힌트를 매번 같은 말로 길게 겹치지 않는다.
+- 독립 반응 기회를 실제로 기다렸는지 기록한다.
+- 한 번에 힌트의 강도, 길이 또는 위치 중 하나만 줄인다.
+- 실패가 늘면 이전 단계로 돌아가 성공을 회복하고 과제를 더 작게 나눈다.
+
+프롬프트를 추가했다면 궁극적으로 줄이는 계획도 필요하며, 효과가 없는 절차를 오래 반복하면 뒤의 학습까지 방해할 수 있다.[1](#source-1) 동시에 필요한 접근성 도구까지 없애는 것을 독립이라고 부르면 안 된다. 안경, 의사소통 도구, 일정표처럼 일상에서 계속 쓰는 지원은 자연스러운 도구일 수 있다.
+
+## 지원인 확인표 {#checklist}
+
+1. 최종적으로 학습자가 보거나 들어야 할 자연 단서를 정했는가?
+2. 목표 행동과 과제 단계를 관찰 가능하게 적었는가?
+3. 학습자에게 맞고 불편하지 않은 힌트를 골랐는가?
+4. 독립 반응을 기다릴 기회를 실제로 주었는가?
+5. 다음 힌트와 줄이는 기준을 시작 전에 정했는가?
+6. 정답과 필요한 힌트 수준을 따로 기록했는가?
+7. 다른 사람·자료·장소에서도 수행하는지 확인했는가?
+8. 필요한 접근성 도구를 독립의 반대말로 취급하지 않았는가?
+
+학습자료 전체의 존중 기준은 [성인 지적장애인 학습자료를 유아적으로 만들지 않는 기준]({{ '/archive/adult-respectful-learning-materials-for-intellectual-disabilities/' | relative_url }})에서, 생활 중심 목표와 기록 원칙은 [성인 지적장애인 평생교육 프로그램 구성]({{ '/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/' | relative_url }})에서 이어서 볼 수 있다. 읽기 과제를 명시적으로 가르치는 이유는 [경도 지적장애 문해력 교육 글]({{ '/archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/' | relative_url }})에서 설명한다.
+
+## 결론 {#conclusion}
+
+지적장애인 학습에서 힌트를 줄이는 기준은 달력이나 고정된 정답률이 아니다. 목표가 무엇인지, 어떤 힌트 뒤에 성공했는지, 자연 단서만으로 다시 할 수 있는지를 관찰하는 것이 기준이다. 도움을 갑자기 끊지 않고 한 요소씩 조절하며, 필요한 접근성 지원은 남겨 둔다. 좋은 페이딩은 지원을 없애는 기술이 아니라 학습자가 스스로 반응할 기회를 더 정확하게 만드는 일이다.
