@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/self-determination-education-beyond-offering-choices/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "선택지를 주는 것은 자기결정 교육의 시작이지만 끝은 아니다",
+    anchors: %w[summary distinction cycle support practice record checklist conclusion],
+    source_count: 4
+  },
   "archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "힌트의 목적은 정답을 대신 주는 것이 아니라",
@@ -186,6 +192,16 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-08-18-self-determination-education-beyond-offering-choices.md" => {
+    primary_query: "발달장애인 자기결정 교육",
+    bridge_queries: ["발달장애 선택 교육", "지적장애인 자기결정 지원"],
+    related_urls: %w[
+      /archive/when-yes-is-not-informed-agreement/
+      /archive/what-adults-with-developmental-disabilities-want-to-learn/
+      /archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/
+    ],
+    updated: Date.new(2026, 8, 18)
+  },
   "_posts/2026-08-14-how-and-when-to-fade-prompts-for-intellectual-disability-learning.md" => {
     primary_query: "지적장애인 힌트 줄이기",
     bridge_queries: ["발달장애 학습 힌트", "발달장애 프롬프트 페이딩"],
@@ -504,11 +520,11 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인 힌트 줄이기: 학습에서 언제, 어떻게 줄여야 할까")
-    errors << "index.html: prompt-fading article is not the newest regular story"
+  unless first_regular_story&.include?("발달장애인 자기결정 교육, 선택지만 주면 충분할까")
+    errors << "index.html: self-determination article is not the newest regular story"
   end
-  unless story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
-    errors << "index.html: safety-literacy article is missing from the right story list"
+  if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
+    errors << "index.html: story list must show only latest 4 regular posts"
   end
   unless story_list.include?("성인 발달장애인 평생교육 수요: 무엇을 배우고 싶어 하는가")
     errors << "index.html: education-demand article is missing from the right story list"
@@ -628,6 +644,7 @@ if topics.file?
     "education-demand link" => "/naljabooks-blog/archive/what-adults-with-developmental-disabilities-want-to-learn/",
     "adult-respectful learning materials link" => "/naljabooks-blog/archive/adult-respectful-learning-materials-for-intellectual-disabilities/",
     "prompt-fading link" => "/naljabooks-blog/archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/",
+    "self-determination education link" => "/naljabooks-blog/archive/self-determination-education-beyond-offering-choices/",
     "Nalkku lifelong-learning pillar link" => "/naljabooks-blog/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/",
     "developmental learning hub" => "발달장애 학습과 성장",
     "developmental scope" => "지적장애인과 자폐성장애인 등을 포괄하는 넓은 범주",
@@ -743,6 +760,7 @@ safety_literacy_url = "https://yunycho.github.io/naljabooks-blog/archive/safety-
 education_demand_url = "https://yunycho.github.io/naljabooks-blog/archive/what-adults-with-developmental-disabilities-want-to-learn/"
 adult_respectful_materials_url = "https://yunycho.github.io/naljabooks-blog/archive/adult-respectful-learning-materials-for-intellectual-disabilities/"
 prompt_fading_url = "https://yunycho.github.io/naljabooks-blog/archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/"
+self_determination_education_url = "https://yunycho.github.io/naljabooks-blog/archive/self-determination-education-beyond-offering-choices/"
 
 nalkku_lifelong_post = SITE.join(nalkku_lifelong_path)
 if nalkku_lifelong_post.file?
@@ -840,12 +858,12 @@ if sitemap.file?
   errors << "sitemap.xml: missing education-demand article" unless sitemap_text.include?(education_demand_url)
   errors << "sitemap.xml: missing adult-respectful learning materials article" unless sitemap_text.include?(adult_respectful_materials_url)
   errors << "sitemap.xml: missing prompt-fading article" unless sitemap_text.include?(prompt_fading_url)
+  errors << "sitemap.xml: missing self-determination education article" unless sitemap_text.include?(self_determination_education_url)
 end
 
 feed = SITE.join("feed.xml")
 if feed.file?
   feed_text = feed.read
-  errors << "feed.xml: missing expression-support article" unless feed_text.include?(expression_support_url)
   errors << "feed.xml: missing informed-agreement article" unless feed_text.include?(informed_agreement_url)
   errors << "feed.xml: missing private-speech article" unless feed_text.include?(private_speech_url)
   errors << "feed.xml: missing pain-and-sensory article" unless feed_text.include?(pain_and_sensory_url)
@@ -855,6 +873,7 @@ if feed.file?
   errors << "feed.xml: missing education-demand article" unless feed_text.include?(education_demand_url)
   errors << "feed.xml: missing adult-respectful learning materials article" unless feed_text.include?(adult_respectful_materials_url)
   errors << "feed.xml: missing prompt-fading article" unless feed_text.include?(prompt_fading_url)
+  errors << "feed.xml: missing self-determination education article" unless feed_text.include?(self_determination_education_url)
   if feed_text.include?(literacy_support_url)
     errors << "feed.xml: feed must contain only the latest 10 posts"
   end
