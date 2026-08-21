@@ -120,6 +120,9 @@
 
 새 글 `/archive/why-self-advocate-review-must-start-at-planning/`의 대표 비브랜드 검색어는 `지적장애인 당사자 검수`다. 검색 의도는 지적장애인을 위한 정보나 사업을 만들 때 당사자 검수를 언제 시작하고 어떤 절차·지원·보상을 마련해야 하는지 찾는 것이다. 근거는 Inclusion International과 Down Syndrome International의 Listen Include Respect 공식 가이드와 유엔 장애인권리위원회 일반논평 제7호다. 공식 원문 외에 권한과 맥락이 확인된 외부 연결 기회는 찾지 못했다.
 
+- Google Search Console: 올바른 URL 접두어 속성에서 아직 알려지지 않은 URL로 확인했고 요청 버튼은 `다시 요청` 상태로 바뀌었다. 이어서 reCAPTCHA가 나타나 자동 처리를 중단하고 Chrome 탭을 사용자 인계용으로 보존했다.
+- Bing: GitHub IndexNow 작업은 성공했다. Bing Webmaster Tools 로그인 세션이 없어 URL 검사와 수동 제출은 확인하지 못했다.
+
 - 14일 검토: 2026-09-04
 - 28일 검토: 2026-09-18
 - 56일 검토: 2026-10-16
