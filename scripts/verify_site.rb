@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/why-self-advocate-review-must-start-at-planning/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "지적장애인 당사자 검수는 완성된 원고의 마지막 오탈자 확인이 아니다",
+    anchors: %w[summary final-check limits planning process meetings payment scope checklist conclusion],
+    source_count: 3
+  },
   "archive/self-determination-education-beyond-offering-choices/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "선택지를 주는 것은 자기결정 교육의 시작이지만 끝은 아니다",
@@ -192,6 +198,16 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-08-21-why-self-advocate-review-must-start-at-planning.md" => {
+    primary_query: "지적장애인 당사자 검수",
+    bridge_queries: ["지적장애인 공동설계", "발달장애인 당사자 참여"],
+    related_urls: %w[
+      /archive/adult-respectful-learning-materials-for-intellectual-disabilities/
+      /archive/easy-information-and-reading-comprehension/
+      /archive/when-yes-is-not-informed-agreement/
+    ],
+    updated: Date.new(2026, 8, 21)
+  },
   "_posts/2026-08-18-self-determination-education-beyond-offering-choices.md" => {
     primary_query: "발달장애인 자기결정 교육",
     bridge_queries: ["발달장애 선택 교육", "지적장애인 자기결정 지원"],
@@ -520,14 +536,14 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("발달장애인 자기결정 교육, 선택지만 주면 충분할까")
-    errors << "index.html: self-determination article is not the newest regular story"
+  unless first_regular_story&.include?("지적장애인 당사자 검수, 왜 기획 단계부터 시작해야 할까")
+    errors << "index.html: self-advocate review article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
-  unless story_list.include?("성인 발달장애인 평생교육 수요: 무엇을 배우고 싶어 하는가")
-    errors << "index.html: education-demand article is missing from the right story list"
+  if story_list.include?("성인 발달장애인 평생교육 수요: 무엇을 배우고 싶어 하는가")
+    errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -645,6 +661,7 @@ if topics.file?
     "adult-respectful learning materials link" => "/naljabooks-blog/archive/adult-respectful-learning-materials-for-intellectual-disabilities/",
     "prompt-fading link" => "/naljabooks-blog/archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/",
     "self-determination education link" => "/naljabooks-blog/archive/self-determination-education-beyond-offering-choices/",
+    "self-advocate review link" => "/naljabooks-blog/archive/why-self-advocate-review-must-start-at-planning/",
     "Nalkku lifelong-learning pillar link" => "/naljabooks-blog/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/",
     "developmental learning hub" => "발달장애 학습과 성장",
     "developmental scope" => "지적장애인과 자폐성장애인 등을 포괄하는 넓은 범주",
@@ -749,6 +766,7 @@ expression_support_path = "archive/expression-does-not-define-understanding-for-
 expression_support_url = "https://yunycho.github.io/naljabooks-blog/archive/expression-does-not-define-understanding-for-people-with-intellectual-disabilities/"
 informed_agreement_path = "archive/when-yes-is-not-informed-agreement/index.html"
 informed_agreement_url = "https://yunycho.github.io/naljabooks-blog/archive/when-yes-is-not-informed-agreement/"
+self_advocate_review_url = "https://yunycho.github.io/naljabooks-blog/archive/why-self-advocate-review-must-start-at-planning/"
 private_speech_path = "archive/private-speech-is-not-just-problem-behavior/index.html"
 private_speech_url = "https://yunycho.github.io/naljabooks-blog/archive/private-speech-is-not-just-problem-behavior/"
 pain_and_sensory_path = "archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/index.html"
@@ -850,6 +868,7 @@ if sitemap.file?
   errors << "sitemap.xml: missing reading-rights article" unless sitemap_text.include?(reading_rights_url)
   errors << "sitemap.xml: missing expression-support article" unless sitemap_text.include?(expression_support_url)
   errors << "sitemap.xml: missing informed-agreement article" unless sitemap_text.include?(informed_agreement_url)
+  errors << "sitemap.xml: missing self-advocate review article" unless sitemap_text.include?(self_advocate_review_url)
   errors << "sitemap.xml: missing private-speech article" unless sitemap_text.include?(private_speech_url)
   errors << "sitemap.xml: missing pain-and-sensory article" unless sitemap_text.include?(pain_and_sensory_url)
   errors << "sitemap.xml: missing Nalkku lifelong-learning article" unless sitemap_text.include?(nalkku_lifelong_url)
@@ -864,7 +883,7 @@ end
 feed = SITE.join("feed.xml")
 if feed.file?
   feed_text = feed.read
-  errors << "feed.xml: missing informed-agreement article" unless feed_text.include?(informed_agreement_url)
+  errors << "feed.xml: missing self-advocate review article" unless feed_text.include?(self_advocate_review_url)
   errors << "feed.xml: missing private-speech article" unless feed_text.include?(private_speech_url)
   errors << "feed.xml: missing pain-and-sensory article" unless feed_text.include?(pain_and_sensory_url)
   errors << "feed.xml: missing Nalkku lifelong-learning article" unless feed_text.include?(nalkku_lifelong_url)
