@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/intellectual-disability-safety-education-needs-practice/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "지적장애인 안전 교육은 위험한 상황을 설명하는 데서 끝나면 안 된다",
+    anchors: %w[summary knowledge-action practice routine varied-situations support-network limits checklist conclusion],
+    source_count: 3
+  },
   "archive/why-self-advocate-review-must-start-at-planning/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인 당사자 검수는 완성된 원고의 마지막 오탈자 확인이 아니다",
@@ -198,6 +204,16 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-08-25-intellectual-disability-safety-education-needs-practice.md" => {
+    primary_query: "지적장애인 안전 교육",
+    bridge_queries: ["발달장애 안전 교육", "발달장애인 범죄 예방 교육"],
+    related_urls: %w[
+      /archive/safety-literacy-against-counterfeit-friendship/
+      /archive/when-yes-is-not-informed-agreement/
+      /archive/analogy-learning-and-transfer-to-daily-life/
+    ],
+    updated: Date.new(2026, 8, 25)
+  },
   "_posts/2026-08-21-why-self-advocate-review-must-start-at-planning.md" => {
     primary_query: "지적장애인 당사자 검수",
     bridge_queries: ["지적장애인 공동설계", "발달장애인 당사자 참여"],
@@ -536,8 +552,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인 당사자 검수, 왜 기획 단계부터 시작해야 할까")
-    errors << "index.html: self-advocate review article is not the newest regular story"
+  unless first_regular_story&.include?("지적장애인 안전 교육, 설명보다 연습이 중요한 이유")
+    errors << "index.html: safety education practice article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -767,6 +783,7 @@ expression_support_url = "https://yunycho.github.io/naljabooks-blog/archive/expr
 informed_agreement_path = "archive/when-yes-is-not-informed-agreement/index.html"
 informed_agreement_url = "https://yunycho.github.io/naljabooks-blog/archive/when-yes-is-not-informed-agreement/"
 self_advocate_review_url = "https://yunycho.github.io/naljabooks-blog/archive/why-self-advocate-review-must-start-at-planning/"
+intellectual_disability_safety_education_url = "https://yunycho.github.io/naljabooks-blog/archive/intellectual-disability-safety-education-needs-practice/"
 private_speech_path = "archive/private-speech-is-not-just-problem-behavior/index.html"
 private_speech_url = "https://yunycho.github.io/naljabooks-blog/archive/private-speech-is-not-just-problem-behavior/"
 pain_and_sensory_path = "archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/index.html"
@@ -869,6 +886,7 @@ if sitemap.file?
   errors << "sitemap.xml: missing expression-support article" unless sitemap_text.include?(expression_support_url)
   errors << "sitemap.xml: missing informed-agreement article" unless sitemap_text.include?(informed_agreement_url)
   errors << "sitemap.xml: missing self-advocate review article" unless sitemap_text.include?(self_advocate_review_url)
+  errors << "sitemap.xml: missing safety education practice article" unless sitemap_text.include?(intellectual_disability_safety_education_url)
   errors << "sitemap.xml: missing private-speech article" unless sitemap_text.include?(private_speech_url)
   errors << "sitemap.xml: missing pain-and-sensory article" unless sitemap_text.include?(pain_and_sensory_url)
   errors << "sitemap.xml: missing Nalkku lifelong-learning article" unless sitemap_text.include?(nalkku_lifelong_url)
@@ -884,7 +902,7 @@ feed = SITE.join("feed.xml")
 if feed.file?
   feed_text = feed.read
   errors << "feed.xml: missing self-advocate review article" unless feed_text.include?(self_advocate_review_url)
-  errors << "feed.xml: missing private-speech article" unless feed_text.include?(private_speech_url)
+  errors << "feed.xml: missing safety education practice article" unless feed_text.include?(intellectual_disability_safety_education_url)
   errors << "feed.xml: missing pain-and-sensory article" unless feed_text.include?(pain_and_sensory_url)
   errors << "feed.xml: missing Nalkku lifelong-learning article" unless feed_text.include?(nalkku_lifelong_url)
   errors << "feed.xml: missing diagnostic-overshadowing article" unless feed_text.include?(diagnostic_overshadowing_url)

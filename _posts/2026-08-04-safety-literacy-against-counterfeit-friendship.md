@@ -22,6 +22,7 @@ seo:
   secondary_queries: ["지적장애인 관계 교육", "지적장애인 착취 예방", "메이트 크라임 지적장애"]
   bridge_queries: ["발달장애 안전 교육", "발달장애인 관계 교육"]
 related:
+  - intellectual-disability-safety-education-needs-practice
   - when-yes-is-not-informed-agreement
   - analogy-learning-and-transfer-to-daily-life
   - why-quality-of-life-matters-more-than-correct-answer-rate
