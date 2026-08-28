@@ -773,6 +773,7 @@ POSTS.each do |path, expectations|
   end
 
   errors << "#{path}: raw Kramdown attribute syntax is visible" if html.include?("{:#")
+  errors << "#{path}: raw Markdown emphasis syntax is visible" if html.include?("**")
 end
 
 easy_text_path = "archive/why-easy-text-alone-is-not-enough/index.html"
