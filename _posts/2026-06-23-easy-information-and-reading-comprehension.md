@@ -23,6 +23,7 @@ seo:
   secondary_queries: ["지적장애인 읽기 쉬운 자료", "지적장애인 알기 쉬운 정보", "쉬운 정보 읽기이해"]
   bridge_queries: ["발달장애인 쉬운 정보", "발달장애 읽기 자료", "발달장애 문해력"]
 related:
+  - adult-developmental-disability-reading-program-beyond-decoding
   - why-self-advocate-review-must-start-at-planning
   - why-easy-text-alone-is-not-enough
   - why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults

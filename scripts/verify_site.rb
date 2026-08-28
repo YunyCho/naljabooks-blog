@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/adult-developmental-disability-reading-program-beyond-decoding/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "성인 발달장애인 독서 프로그램은 문장을 소리 내어 읽고 문제에 답하는 활동만을 뜻하지 않는다",
+    anchors: %w[summary goals adult-learning wordless-books pictures adult-respect outcomes checklist conclusion],
+    source_count: 4
+  },
   "archive/intellectual-disability-safety-education-needs-practice/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인 안전 교육은 위험한 상황을 설명하는 데서 끝나면 안 된다",
@@ -204,6 +210,17 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-08-28-adult-developmental-disability-reading-program-beyond-decoding.md" => {
+    primary_query: "성인 발달장애인 독서 프로그램",
+    bridge_queries: ["발달장애 평생교육 프로그램", "발달장애인 문해력 교육"],
+    related_urls: %w[
+      /archive/reading-rights-and-literacy-support-for-intellectual-disabilities/
+      /archive/adult-respectful-learning-materials-for-intellectual-disabilities/
+      /archive/easy-information-and-reading-comprehension/
+      /archive/what-adults-with-developmental-disabilities-want-to-learn/
+    ],
+    updated: Date.new(2026, 8, 28)
+  },
   "_posts/2026-08-25-intellectual-disability-safety-education-needs-practice.md" => {
     primary_query: "지적장애인 안전 교육",
     bridge_queries: ["발달장애 안전 교육", "발달장애인 범죄 예방 교육"],
@@ -552,8 +569,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인 안전 교육, 설명보다 연습이 중요한 이유")
-    errors << "index.html: safety education practice article is not the newest regular story"
+  unless first_regular_story&.include?("성인 발달장애인 독서 프로그램, 글을 읽어야만 참여할 수 있을까")
+    errors << "index.html: adult developmental disability reading program article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -678,6 +695,7 @@ if topics.file?
     "prompt-fading link" => "/naljabooks-blog/archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/",
     "self-determination education link" => "/naljabooks-blog/archive/self-determination-education-beyond-offering-choices/",
     "self-advocate review link" => "/naljabooks-blog/archive/why-self-advocate-review-must-start-at-planning/",
+    "adult developmental disability reading program link" => "/naljabooks-blog/archive/adult-developmental-disability-reading-program-beyond-decoding/",
     "Nalkku lifelong-learning pillar link" => "/naljabooks-blog/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/",
     "developmental learning hub" => "발달장애 학습과 성장",
     "developmental scope" => "지적장애인과 자폐성장애인 등을 포괄하는 넓은 범주",
@@ -796,6 +814,7 @@ education_demand_url = "https://yunycho.github.io/naljabooks-blog/archive/what-a
 adult_respectful_materials_url = "https://yunycho.github.io/naljabooks-blog/archive/adult-respectful-learning-materials-for-intellectual-disabilities/"
 prompt_fading_url = "https://yunycho.github.io/naljabooks-blog/archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/"
 self_determination_education_url = "https://yunycho.github.io/naljabooks-blog/archive/self-determination-education-beyond-offering-choices/"
+adult_reading_program_url = "https://yunycho.github.io/naljabooks-blog/archive/adult-developmental-disability-reading-program-beyond-decoding/"
 
 nalkku_lifelong_post = SITE.join(nalkku_lifelong_path)
 if nalkku_lifelong_post.file?
@@ -896,6 +915,7 @@ if sitemap.file?
   errors << "sitemap.xml: missing adult-respectful learning materials article" unless sitemap_text.include?(adult_respectful_materials_url)
   errors << "sitemap.xml: missing prompt-fading article" unless sitemap_text.include?(prompt_fading_url)
   errors << "sitemap.xml: missing self-determination education article" unless sitemap_text.include?(self_determination_education_url)
+  errors << "sitemap.xml: missing adult reading program article" unless sitemap_text.include?(adult_reading_program_url)
 end
 
 feed = SITE.join("feed.xml")
@@ -903,7 +923,7 @@ if feed.file?
   feed_text = feed.read
   errors << "feed.xml: missing self-advocate review article" unless feed_text.include?(self_advocate_review_url)
   errors << "feed.xml: missing safety education practice article" unless feed_text.include?(intellectual_disability_safety_education_url)
-  errors << "feed.xml: missing pain-and-sensory article" unless feed_text.include?(pain_and_sensory_url)
+  errors << "feed.xml: missing adult reading program article" unless feed_text.include?(adult_reading_program_url)
   errors << "feed.xml: missing Nalkku lifelong-learning article" unless feed_text.include?(nalkku_lifelong_url)
   errors << "feed.xml: missing diagnostic-overshadowing article" unless feed_text.include?(diagnostic_overshadowing_url)
   errors << "feed.xml: missing safety-literacy article" unless feed_text.include?(safety_literacy_url)

@@ -23,6 +23,7 @@ seo:
   secondary_queries: ["지적장애인 학습지 만들기", "성인 지적장애 교육자료", "연령에 맞는 쉬운 학습자료"]
   bridge_queries: ["발달장애인 학습자료", "성인 발달장애 학습", "발달장애 평생교육 자료"]
 related:
+  - adult-developmental-disability-reading-program-beyond-decoding
   - why-self-advocate-review-must-start-at-planning
   - how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities
   - why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults

@@ -16,7 +16,8 @@ topics:
   - literacy
   - learning-rights
 tags: ["지적장애", "독서권", "문해력 지원", "읽기 쉬운 책", "읽기이해", "자기결정", "날자꾸러미"]
-related: []
+related:
+  - adult-developmental-disability-reading-program-beyond-decoding
 toc:
   - id: summary
     title: "핵심 요약"
