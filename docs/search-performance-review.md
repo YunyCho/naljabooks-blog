@@ -206,7 +206,7 @@
 - 공식 원문 인용 외에 권한과 맥락이 확인된 자연스러운 외부 연결 기회는 찾지 못했다.
 - RED 검증에서 새 글·topics·홈 최신순·세 되돌아오는 링크 누락을 확인한 뒤 구현했다. production Jekyll build, 연구초안·사이트·고정홈 검증, 13개 Ruby 테스트 55개 단언과 diff 검사가 통과했다. 커밋 `bca5353`을 `main`에 푸시했고 콘텐츠 검증, GitHub Pages, IndexNow와 Naver 초안 워크플로가 성공했다.
 - 공개 홈페이지·글·canonical·게시일·수정일·출처 4건·topics·sitemap·feed·세 되돌아오는 링크를 확인했다.
-- Google Search Console: 올바른 URL 접두어 속성에서 `Google에는 아직 알려지지 않은 URL`로 확인했다. 색인 생성 요청 버튼까지 준비했으나 외부 제출 직전 승인을 기다린다.
+- Google Search Console: 올바른 URL 접두어 속성에서 `Google에는 아직 알려지지 않은 URL`로 확인했다. 사용자 승인 후 `색인 생성 요청됨`과 `URL이 우선순위 크롤링 대기열에 추가되었습니다` 메시지를 확인했다. reCAPTCHA는 보이는 퍼즐 없이 보호 iframe으로만 표시됐다.
 - Bing: IndexNow 제출은 성공했다. Bing Webmaster Tools는 로그인되지 않아 URL 검사와 수동 제출은 진행하지 않았다.
 - 이번 실행 앞부분의 2026-06-17~2026-08-29 Search Console 검토 이후 새 데이터는 생기지 않아 검색 성과 변화를 추가로 평가하지 않았다.
 - 14일 검토: 2026-09-15
