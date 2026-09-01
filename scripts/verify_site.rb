@@ -816,6 +816,23 @@ adult_respectful_materials_url = "https://yunycho.github.io/naljabooks-blog/arch
 prompt_fading_url = "https://yunycho.github.io/naljabooks-blog/archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/"
 self_determination_education_url = "https://yunycho.github.io/naljabooks-blog/archive/self-determination-education-beyond-offering-choices/"
 adult_reading_program_url = "https://yunycho.github.io/naljabooks-blog/archive/adult-developmental-disability-reading-program-beyond-decoding/"
+ai_learning_support_relative_url = "/naljabooks-blog/archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/"
+self_determination_education_relative_url = "/naljabooks-blog/archive/self-determination-education-beyond-offering-choices/"
+
+{
+  ai_era_research_path => [ai_learning_support_relative_url],
+  human_review_ai_path => [ai_learning_support_relative_url],
+  ai_paper_path => [ai_learning_support_relative_url],
+  informed_agreement_path => [self_determination_education_relative_url]
+}.each do |source_path, target_urls|
+  source_page = SITE.join(source_path)
+  next unless source_page.file?
+
+  html = source_page.read
+  target_urls.each do |target_url|
+    errors << "#{source_path}: missing discovery link to #{target_url}" unless html.include?(target_url)
+  end
+end
 
 nalkku_lifelong_post = SITE.join(nalkku_lifelong_path)
 if nalkku_lifelong_post.file?

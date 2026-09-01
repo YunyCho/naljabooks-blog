@@ -16,7 +16,8 @@ topics:
   - ai-intellectual-disability
   - learning-rights
 tags: ["AI 시대", "지적장애", "인지 접근성", "자기결정", "특수교육 AI", "날자꾸러미"]
-related: []
+related:
+  - how-ai-can-support-learning-for-people-with-intellectual-disabilities
 toc:
   - id: summary
     title: "핵심 요약"
@@ -249,4 +250,3 @@ AI 전환이 모든 사람에게 같은 속도, 같은 방향으로 오지 않�
 30. 한국장애인개발원 (2022). 디지털 시대 장애인 정보격차 해소를 위한 방안 마련 연구. https://www.koddi.or.kr/data/research01_view.jsp?brdNum=7415173
 
 ※ 일부 문헌(13, 17, 19, 20, 21, 8)은 저자명을 원문에서 직접 확인하지 못해 저널·연도·링크로 표기했다. 인용 시 원문에서 저자를 확인할 것을 권한다.
-

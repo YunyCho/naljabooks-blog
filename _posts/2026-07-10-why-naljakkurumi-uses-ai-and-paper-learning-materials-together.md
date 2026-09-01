@@ -16,7 +16,8 @@ topics:
   - ai-intellectual-disability
   - nalkku-program
 tags: ["날자꾸러미", "AI 교육", "종이 학습지", "지적장애", "문해력", "AI-아날로그 융합 학습"]
-related: []
+related:
+  - how-ai-can-support-learning-for-people-with-intellectual-disabilities
 toc:
   - id: summary
     title: "핵심 요약"

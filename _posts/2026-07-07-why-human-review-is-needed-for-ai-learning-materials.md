@@ -15,7 +15,8 @@ category: "배움과 일상"
 topics:
   - ai-intellectual-disability
 tags: ["AI 교육", "AI 교육자료 검토", "지적장애", "쉬운 정보", "접근성", "날자꾸러미"]
-related: []
+related:
+  - how-ai-can-support-learning-for-people-with-intellectual-disabilities
 toc:
   - id: summary
     title: "핵심 요약"

@@ -18,6 +18,7 @@ topics:
 tags: ["지적장애", "묵종", "동의", "자기결정", "의사소통 지원", "안전 문해력", "날자꾸러미"]
 related:
   - safety-literacy-against-counterfeit-friendship
+  - self-determination-education-beyond-offering-choices
 toc:
   - id: summary
     title: "핵심 요약"
