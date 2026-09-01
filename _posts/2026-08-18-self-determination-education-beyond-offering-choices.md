@@ -22,6 +22,7 @@ seo:
   secondary_queries: ["발달장애 자기결정 프로그램", "지적장애인 선택 교육", "자기결정 교육 방법"]
   bridge_queries: ["발달장애 선택 교육", "지적장애인 자기결정 지원"]
 related:
+  - intellectual-disability-learning-motivation-challenge-and-retry
   - when-yes-is-not-informed-agreement
   - what-adults-with-developmental-disabilities-want-to-learn
   - how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities

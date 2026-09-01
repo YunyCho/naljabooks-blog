@@ -22,6 +22,7 @@ seo:
   secondary_queries: ["프롬프트 페이딩 방법", "지적장애인 학습 힌트", "학습 도움 줄이는 방법"]
   bridge_queries: ["발달장애 학습 힌트", "발달장애 프롬프트 페이딩"]
 related:
+  - intellectual-disability-learning-motivation-challenge-and-retry
   - how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities
   - adult-respectful-learning-materials-for-intellectual-disabilities
   - why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults

@@ -16,7 +16,8 @@ topics:
   - learning-rights
   - developmental-learning
 tags: ["지적장애", "삶의 질", "성과 측정", "문해력", "자기결정", "날자꾸러미"]
-related: []
+related:
+  - intellectual-disability-learning-motivation-challenge-and-retry
 toc:
   - id: summary
     title: "핵심 요약"
