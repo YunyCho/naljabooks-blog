@@ -14,7 +14,7 @@
 - 공식·연구 원문 외에 권한과 맥락이 확인된 자연스러운 외부 연결 기회는 찾지 못했다.
 - RED 검증에서 새 글·홈 최신순·topics 누락을 확인한 뒤 구현했다. production 빌드, 연구초안·사이트·고정홈 검증, 13개 Ruby 테스트 55개 단언과 diff 검사가 통과했다.
 - 커밋 `a93f3f6`을 `main`에 푸시했고 콘텐츠 검증, GitHub Pages, IndexNow와 네이버 초안 워크플로가 성공했다. 공개 홈페이지·글·canonical·게시일·수정일·출처 4건·topics·sitemap·feed·세 되돌아오는 링크를 확인했다.
-- Google Search Console은 올바른 URL 접두어 속성에서 `Google에는 아직 알려지지 않은 URL`로 확인했다. 색인 생성 요청은 외부 제출 직전 사용자 확인이 필요한 단계라 버튼을 누르지 않고 Chrome 탭을 보존했다.
+- Google Search Console은 올바른 URL 접두어 속성에서 `Google에는 아직 알려지지 않은 URL`로 확인했다. 사용자 승인 후 색인 생성 요청을 제출했고 버튼이 `다시 요청` 상태로 바뀌어 접수를 확인했다. reCAPTCHA는 보이는 퍼즐 없이 보호 iframe으로만 표시됐다.
 - Bing은 IndexNow 제출에 성공했지만 Webmaster Tools는 로그인되지 않아 URL 검사와 수동 제출을 확인하지 못했다.
 - 14일 검토: 2026-09-18
 - 28일 검토: 2026-10-02
