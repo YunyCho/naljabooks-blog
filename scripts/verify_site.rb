@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/developmental-disability-money-management-education-beyond-calculation/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "발달장애인 돈 관리 교육은 동전과 지폐를 구분하거나 계산 문제를 푸는 데서 끝나지 않는다",
+    anchors: %w[summary scope concepts opportunities purchasing support record checklist conclusion],
+    source_count: 4
+  },
   "archive/intellectual-disability-learning-motivation-challenge-and-retry/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인 학습 동기를 지키는 방법은 실패를 모두 없애거나 어려운 과제를 그대로 견디게 하는 것 가운데 하나를 고르는 일이 아니다",
@@ -216,6 +222,16 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-09-04-developmental-disability-money-management-education-beyond-calculation.md" => {
+    primary_query: "발달장애인 돈 관리 교육",
+    bridge_queries: ["지적장애인 돈 관리", "발달장애 금융 교육"],
+    related_urls: %w[
+      /archive/what-adults-with-developmental-disabilities-want-to-learn/
+      /archive/self-determination-education-beyond-offering-choices/
+      /archive/analogy-learning-and-transfer-to-daily-life/
+    ],
+    updated: Date.new(2026, 9, 4)
+  },
   "_posts/2026-09-01-intellectual-disability-learning-motivation-challenge-and-retry.md" => {
     primary_query: "지적장애인 학습 동기",
     bridge_queries: ["발달장애 학습 동기", "발달장애 학습"],
@@ -585,8 +601,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인 학습 동기, 쉬운 성공만 반복하면 될까")
-    errors << "index.html: intellectual disability learning motivation article is not the newest regular story"
+  unless first_regular_story&.include?("발달장애인 돈 관리 교육, 계산 연습만 하면 될까")
+    errors << "index.html: developmental disability money management article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -713,6 +729,7 @@ if topics.file?
     "self-advocate review link" => "/naljabooks-blog/archive/why-self-advocate-review-must-start-at-planning/",
     "adult developmental disability reading program link" => "/naljabooks-blog/archive/adult-developmental-disability-reading-program-beyond-decoding/",
     "learning motivation article link" => "/naljabooks-blog/archive/intellectual-disability-learning-motivation-challenge-and-retry/",
+    "money management education link" => "/naljabooks-blog/archive/developmental-disability-money-management-education-beyond-calculation/",
     "Nalkku lifelong-learning pillar link" => "/naljabooks-blog/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/",
     "developmental learning hub" => "발달장애 학습과 성장",
     "developmental scope" => "지적장애인과 자폐성장애인 등을 포괄하는 넓은 범주",
@@ -835,6 +852,7 @@ prompt_fading_url = "https://yunycho.github.io/naljabooks-blog/archive/how-and-w
 self_determination_education_url = "https://yunycho.github.io/naljabooks-blog/archive/self-determination-education-beyond-offering-choices/"
 adult_reading_program_url = "https://yunycho.github.io/naljabooks-blog/archive/adult-developmental-disability-reading-program-beyond-decoding/"
 learning_motivation_url = "https://yunycho.github.io/naljabooks-blog/archive/intellectual-disability-learning-motivation-challenge-and-retry/"
+money_management_url = "https://yunycho.github.io/naljabooks-blog/archive/developmental-disability-money-management-education-beyond-calculation/"
 prompt_fading_path = "archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/index.html"
 self_determination_education_path = "archive/self-determination-education-beyond-offering-choices/index.html"
 ai_learning_support_relative_url = "/naljabooks-blog/archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/"
@@ -960,6 +978,7 @@ if sitemap.file?
   errors << "sitemap.xml: missing self-determination education article" unless sitemap_text.include?(self_determination_education_url)
   errors << "sitemap.xml: missing adult reading program article" unless sitemap_text.include?(adult_reading_program_url)
   errors << "sitemap.xml: missing learning motivation article" unless sitemap_text.include?(learning_motivation_url)
+  errors << "sitemap.xml: missing money management education article" unless sitemap_text.include?(money_management_url)
 end
 
 feed = SITE.join("feed.xml")
@@ -969,12 +988,15 @@ if feed.file?
   errors << "feed.xml: missing safety education practice article" unless feed_text.include?(intellectual_disability_safety_education_url)
   errors << "feed.xml: missing adult reading program article" unless feed_text.include?(adult_reading_program_url)
   errors << "feed.xml: missing learning motivation article" unless feed_text.include?(learning_motivation_url)
-  errors << "feed.xml: missing diagnostic-overshadowing article" unless feed_text.include?(diagnostic_overshadowing_url)
+  errors << "feed.xml: missing money management education article" unless feed_text.include?(money_management_url)
   errors << "feed.xml: missing safety-literacy article" unless feed_text.include?(safety_literacy_url)
   errors << "feed.xml: missing education-demand article" unless feed_text.include?(education_demand_url)
   errors << "feed.xml: missing adult-respectful learning materials article" unless feed_text.include?(adult_respectful_materials_url)
   errors << "feed.xml: missing prompt-fading article" unless feed_text.include?(prompt_fading_url)
   errors << "feed.xml: missing self-determination education article" unless feed_text.include?(self_determination_education_url)
+  if feed_text.include?(diagnostic_overshadowing_url)
+    errors << "feed.xml: feed must contain only the latest 10 posts"
+  end
   if feed_text.include?(literacy_support_url)
     errors << "feed.xml: feed must contain only the latest 10 posts"
   end

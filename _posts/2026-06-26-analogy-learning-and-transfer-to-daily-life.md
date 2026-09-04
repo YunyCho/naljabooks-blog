@@ -16,7 +16,8 @@ topics:
   - analogy-learning
   - developmental-learning
 tags: ["유추학습", "일상전이", "일반화", "문해력", "지적장애"]
-related: []
+related:
+  - developmental-disability-money-management-education-beyond-calculation
 toc:
   - id: summary
     title: "핵심 요약"

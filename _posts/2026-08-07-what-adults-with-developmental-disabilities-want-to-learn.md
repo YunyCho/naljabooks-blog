@@ -22,6 +22,7 @@ seo:
   secondary_queries: ["발달장애인 배우고 싶은 것", "발달장애인 평생교육 프로그램", "성인 발달장애인 교육"]
   bridge_queries: ["발달장애인 평생교육", "성인 발달장애 학습", "발달장애인 교육 수요"]
 related:
+  - developmental-disability-money-management-education-beyond-calculation
   - how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities
   - self-determination-education-beyond-offering-choices
   - why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults
