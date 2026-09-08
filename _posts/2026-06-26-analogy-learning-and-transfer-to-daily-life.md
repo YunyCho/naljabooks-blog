@@ -17,6 +17,7 @@ topics:
   - developmental-learning
 tags: ["유추학습", "일상전이", "일반화", "문해력", "지적장애"]
 related:
+  - intellectual-disability-review-spacing-and-retrieval
   - developmental-disability-money-management-education-beyond-calculation
 toc:
   - id: summary

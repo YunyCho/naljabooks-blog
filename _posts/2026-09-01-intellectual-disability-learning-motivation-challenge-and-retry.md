@@ -22,6 +22,7 @@ seo:
   secondary_queries: ["지적장애 학습 실패", "지적장애 학습 자신감", "지적장애 과제 난이도"]
   bridge_queries: ["발달장애 학습 동기", "발달장애 학습"]
 related:
+  - intellectual-disability-review-spacing-and-retrieval
   - how-and-when-to-fade-prompts-for-intellectual-disability-learning
   - self-determination-education-beyond-offering-choices
   - why-quality-of-life-matters-more-than-correct-answer-rate

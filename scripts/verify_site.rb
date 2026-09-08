@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/intellectual-disability-review-spacing-and-retrieval/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "지적장애인 복습 방법을 정할 때는 같은 문제를 몇 번 풀었는지보다",
+    anchors: %w[summary distinction evidence routine interval support record checklist conclusion],
+    source_count: 2
+  },
   "archive/developmental-disability-money-management-education-beyond-calculation/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "발달장애인 돈 관리 교육은 동전과 지폐를 구분하거나 계산 문제를 푸는 데서 끝나지 않는다",
@@ -222,6 +228,16 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-09-08-intellectual-disability-review-spacing-and-retrieval.md" => {
+    primary_query: "지적장애인 복습 방법",
+    bridge_queries: ["발달장애 반복학습", "발달장애 학습"],
+    related_urls: %w[
+      /archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/
+      /archive/intellectual-disability-learning-motivation-challenge-and-retry/
+      /archive/analogy-learning-and-transfer-to-daily-life/
+    ],
+    updated: Date.new(2026, 9, 8)
+  },
   "_posts/2026-09-04-developmental-disability-money-management-education-beyond-calculation.md" => {
     primary_query: "발달장애인 돈 관리 교육",
     bridge_queries: ["지적장애인 돈 관리", "발달장애 금융 교육"],
@@ -601,8 +617,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("발달장애인 돈 관리 교육, 계산 연습만 하면 될까")
-    errors << "index.html: developmental disability money management article is not the newest regular story"
+  unless first_regular_story&.include?("지적장애인 복습 방법, 같은 문제를 계속 풀면 기억에 남을까")
+    errors << "index.html: review spacing article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -989,12 +1005,14 @@ if feed.file?
   errors << "feed.xml: missing adult reading program article" unless feed_text.include?(adult_reading_program_url)
   errors << "feed.xml: missing learning motivation article" unless feed_text.include?(learning_motivation_url)
   errors << "feed.xml: missing money management education article" unless feed_text.include?(money_management_url)
-  errors << "feed.xml: missing safety-literacy article" unless feed_text.include?(safety_literacy_url)
   errors << "feed.xml: missing education-demand article" unless feed_text.include?(education_demand_url)
   errors << "feed.xml: missing adult-respectful learning materials article" unless feed_text.include?(adult_respectful_materials_url)
   errors << "feed.xml: missing prompt-fading article" unless feed_text.include?(prompt_fading_url)
   errors << "feed.xml: missing self-determination education article" unless feed_text.include?(self_determination_education_url)
   if feed_text.include?(diagnostic_overshadowing_url)
+    errors << "feed.xml: feed must contain only the latest 10 posts"
+  end
+  if feed_text.include?(safety_literacy_url)
     errors << "feed.xml: feed must contain only the latest 10 posts"
   end
   if feed_text.include?(literacy_support_url)
@@ -1286,6 +1304,16 @@ if ROOT.join(EASY_TEXT_SOURCE).file?
   if source_body.include?("발달장애")
     errors << "#{EASY_TEXT_SOURCE}: public article prose must use 지적장애인"
   end
+end
+
+review_slug = "intellectual-disability-review-spacing-and-retrieval"
+review_link = "#{BASEURL}/archive/#{review_slug}/"
+%w[topics/index.html sitemap.xml feed.xml].each do |path|
+  errors << "#{path}: missing review spacing article" unless SITE.join(path).read.include?(review_link)
+end
+%w[how-and-when-to-fade-prompts-for-intellectual-disability-learning intellectual-disability-learning-motivation-challenge-and-retry analogy-learning-and-transfer-to-daily-life].each do |slug|
+  path = SITE.join("archive", slug, "index.html")
+  errors << "#{slug}: missing review spacing backlink" unless path.file? && path.read.include?(review_link)
 end
 
 if errors.empty?
