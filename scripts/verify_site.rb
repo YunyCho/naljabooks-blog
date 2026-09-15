@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/intellectual-disability-online-form-accessibility/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "지적장애인 온라인 신청 지원은 입력을 대신 끝내는 것만으로 충분하지 않다",
+    anchors: %w[summary scope steps errors memory help practice checklist conclusion],
+    source_count: 4
+  },
   "archive/intellectual-disability-review-spacing-and-retrieval/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인 복습 방법을 정할 때는 같은 문제를 몇 번 풀었는지보다",
@@ -228,6 +234,16 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-09-15-intellectual-disability-online-form-accessibility.md" => {
+    primary_query: "지적장애인 온라인 신청 지원",
+    bridge_queries: ["발달장애 디지털 접근성", "발달장애 학습"],
+    related_urls: %w[
+      /archive/easy-information-and-reading-comprehension/
+      /archive/self-determination-education-beyond-offering-choices/
+      /archive/why-self-advocate-review-must-start-at-planning/
+    ],
+    updated: Date.new(2026, 9, 15)
+  },
   "_posts/2026-09-08-intellectual-disability-review-spacing-and-retrieval.md" => {
     primary_query: "지적장애인 복습 방법",
     bridge_queries: ["발달장애 반복학습", "발달장애 학습"],
@@ -617,8 +633,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인 복습 방법, 같은 문제를 계속 풀면 기억에 남을까")
-    errors << "index.html: review spacing article is not the newest regular story"
+  unless first_regular_story&.include?("지적장애인 온라인 신청 지원, 입력을 대신해 주면 끝일까")
+    errors << "index.html: online form article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -1005,7 +1021,7 @@ if feed.file?
   errors << "feed.xml: missing adult reading program article" unless feed_text.include?(adult_reading_program_url)
   errors << "feed.xml: missing learning motivation article" unless feed_text.include?(learning_motivation_url)
   errors << "feed.xml: missing money management education article" unless feed_text.include?(money_management_url)
-  errors << "feed.xml: missing education-demand article" unless feed_text.include?(education_demand_url)
+  errors << "feed.xml: education-demand article should leave the latest 10" if feed_text.include?(education_demand_url)
   errors << "feed.xml: missing adult-respectful learning materials article" unless feed_text.include?(adult_respectful_materials_url)
   errors << "feed.xml: missing prompt-fading article" unless feed_text.include?(prompt_fading_url)
   errors << "feed.xml: missing self-determination education article" unless feed_text.include?(self_determination_education_url)
@@ -1314,6 +1330,15 @@ end
 %w[how-and-when-to-fade-prompts-for-intellectual-disability-learning intellectual-disability-learning-motivation-challenge-and-retry analogy-learning-and-transfer-to-daily-life].each do |slug|
   path = SITE.join("archive", slug, "index.html")
   errors << "#{slug}: missing review spacing backlink" unless path.file? && path.read.include?(review_link)
+end
+
+form_link = "#{BASEURL}/archive/intellectual-disability-online-form-accessibility/"
+%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+  errors << "#{path}: missing online form article" unless SITE.join(path).read.include?(form_link)
+end
+%w[easy-information-and-reading-comprehension self-determination-education-beyond-offering-choices why-self-advocate-review-must-start-at-planning].each do |slug|
+  path = SITE.join("archive", slug, "index.html")
+  errors << "#{slug}: missing online form backlink" unless path.file? && path.read.include?(form_link)
 end
 
 if errors.empty?
