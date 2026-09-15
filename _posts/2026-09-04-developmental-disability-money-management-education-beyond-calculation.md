@@ -2,11 +2,11 @@
 layout: post
 lang: ko-KR
 content_type: article
-title: "발달장애인 돈 관리 교육, 계산 연습만 하면 될까"
+title: "발달장애인 돈 관리 교육: 계산을 실제 구매 판단으로 잇기"
 description: "발달장애인 돈 관리 교육을 실제 구매 판단, 예산 확인, 선택과 도움 요청으로 연결하는 방법을 설명합니다. 지적장애인 돈 관리와 발달장애 금융 교육의 근거와 한계도 함께 살핍니다."
 date: 2026-09-04
-updated: 2026-09-04
-last_modified_at: 2026-09-04
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

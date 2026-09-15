@@ -2,11 +2,11 @@
 layout: post
 lang: ko-KR
 content_type: article
-title: "유추 학습은 일상생활 전이에 어떻게 연결되는가"
+title: "유추 학습과 일상생활 전이: 배운 관계를 생활에 연결하는 방법"
 description: "유추 학습은 한 상황에서 배운 관계를 다른 상황에 적용하게 하며, 지적장애 청소년·성인의 일상생활 전이를 지원하는 핵심 방법입니다."
 date: 2026-06-26
-updated: 2026-06-26
-last_modified_at: 2026-06-26
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

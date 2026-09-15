@@ -2,11 +2,11 @@
 layout: post
 lang: ko-KR
 content_type: article
-title: "지적장애인의 “예”는 언제 진짜 동의가 아닌가"
+title: "지적장애인의 동의: 진짜 동의를 확인하는 기준"
 description: "지적장애인이 질문에 “예”라고 답했더라도 충분히 이해하고 선택한 동의인지 확인해야 합니다. 묵종을 줄이는 질문 방식과 자기결정 지원 원칙을 설명합니다."
 date: 2026-07-24
-updated: 2026-07-24
-last_modified_at: 2026-07-24
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

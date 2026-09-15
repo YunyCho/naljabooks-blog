@@ -2,11 +2,11 @@
 layout: post
 lang: ko-KR
 content_type: article
-title: "지적장애인 쉬운 정보, 읽기이해와 무엇이 다른가"
+title: "지적장애인 쉬운 정보와 읽기이해: 접근과 의미 이해의 차이"
 description: "지적장애인 쉬운 정보와 발달장애인 쉬운 정보를 찾는 독자를 위해, 쉬운 자료 제작과 의미를 이해해 자기 상황에 적용하도록 돕는 문해력 지원의 차이를 설명합니다."
 date: 2026-06-23
-updated: 2026-08-01
-last_modified_at: 2026-08-01
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

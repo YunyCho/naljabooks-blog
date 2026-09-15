@@ -2,11 +2,11 @@
 layout: post
 lang: ko-KR
 content_type: article
-title: "경도 지적장애 문해력 교육, 청소년·성인에게 왜 필요한가"
+title: "경도 지적장애 문해력 교육: 청소년·성인의 학습권을 위한 지원"
 description: "경도 지적장애 문해력 교육과 발달장애 문해력 교육을 찾는 독자를 위해 청소년·성인의 자기결정, 일상 참여, 권리 접근과 생활 중심 지원 방법을 설명합니다."
 date: 2026-07-14
-updated: 2026-08-01
-last_modified_at: 2026-08-01
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

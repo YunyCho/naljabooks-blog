@@ -2,11 +2,11 @@
 layout: post
 lang: ko-KR
 content_type: article
-title: "지적장애인 학습 동기, 쉬운 성공만 반복하면 될까"
+title: "지적장애인 학습 동기: 도전과 재도전을 설계하는 기준"
 description: "지적장애인 학습 동기와 발달장애 학습 동기를 위해 풀 수 없는 반복 실패를 피하고, 도전 난이도·재도전·구체적인 전략 피드백을 설계하는 방법을 설명합니다."
 date: 2026-09-01
-updated: 2026-09-01
-last_modified_at: 2026-09-01
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

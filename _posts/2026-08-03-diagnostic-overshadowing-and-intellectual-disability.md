@@ -2,11 +2,11 @@
 layout: post
 lang: ko-KR
 content_type: article
-title: "진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때"
+title: "진단 가림 현상: 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때"
 description: "진단 가림 현상의 뜻과 연구 근거, 한계를 살피고 지적장애인의 행동 변화를 건강·환경·학습 조건과 함께 해석해야 하는 이유를 설명합니다."
 date: 2026-08-03
-updated: 2026-08-03
-last_modified_at: 2026-08-03
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

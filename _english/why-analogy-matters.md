@@ -4,13 +4,13 @@ lang: en
 content_type: article
 translation_key: why-analogy-matters
 translation_status: ai-assisted
-source_updated: 2026-08-01
-translation_updated: 2026-08-06
+source_updated: 2026-09-15
+translation_updated: 2026-09-15
 title: "Why analogy learning matters for people with intellectual disabilities"
 description: "What analogy learning means, why transfer into everyday life matters, and how educators can design comparison, expression, and practice with appropriate support."
 date: 2026-06-15
-updated: 2026-08-01
-last_modified_at: 2026-08-01
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "Nalja Books and Nalkku Editorial Team"
   url: "https://naljabooks.com"

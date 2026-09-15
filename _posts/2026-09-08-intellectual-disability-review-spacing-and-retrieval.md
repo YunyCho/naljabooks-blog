@@ -2,11 +2,11 @@
 layout: post
 lang: ko-KR
 content_type: article
-title: "지적장애인 복습 방법, 같은 문제를 계속 풀면 기억에 남을까"
+title: "지적장애인 복습 방법: 간격과 인출로 기억을 확인하기"
 description: "지적장애인 복습 방법을 다시 읽기, 기억에서 꺼내기, 간격을 둔 연습으로 나누어 설명합니다. 발달장애 반복학습을 계획할 때 참고할 근거의 범위와 지원·복습 간격을 조절하는 기준을 살핍니다."
 date: 2026-09-08
-updated: 2026-09-08
-last_modified_at: 2026-09-08
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

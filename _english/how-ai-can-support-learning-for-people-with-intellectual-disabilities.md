@@ -4,13 +4,13 @@ lang: en
 content_type: article
 translation_key: ai-learning-support
 translation_status: ai-assisted
-source_updated: 2026-08-01
-translation_updated: 2026-08-06
+source_updated: 2026-09-15
+translation_updated: 2026-09-15
 title: "How AI can support learning for people with intellectual disabilities"
 description: "Practical ways AI can assist with personalized materials, repeated practice, expression, and accessibility—while human review and responsibility remain essential."
 date: 2026-07-03
-updated: 2026-08-01
-last_modified_at: 2026-08-01
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "Nalja Books and Nalkku Editorial Team"
   url: "https://naljabooks.com"

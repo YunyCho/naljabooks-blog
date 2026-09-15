@@ -2,11 +2,11 @@
 layout: post
 lang: ko-KR
 content_type: article
-title: "지적장애인 힌트 줄이기: 학습에서 언제, 어떻게 줄여야 할까"
+title: "지적장애인 힌트 줄이기: 독립 시도와 최소 도움의 기준"
 description: "지적장애인 힌트 줄이기와 발달장애 프롬프트 페이딩을 설명합니다. 독립 시도, 최소 도움, 시간지연과 기록으로 학습 지원을 조절하는 기준입니다."
 date: 2026-08-14
-updated: 2026-08-14
-last_modified_at: 2026-08-14
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

@@ -3,11 +3,11 @@ layout: post
 lang: ko-KR
 content_type: article
 translation_key: nalkku-lifelong-learning
-title: "성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가"
+title: "성인 지적장애인 평생교육 프로그램: 생활 중심 설계 원칙"
 description: "성인 지적장애인 평생교육 프로그램과 발달장애인 평생교육을 찾는 기관과 가족을 위해 문해력·유추·자기표현·일상 전이를 잇는 날자꾸러미의 구성과 운영 원칙을 소개합니다."
 date: 2026-08-01
-updated: 2026-08-01
-last_modified_at: 2026-08-01
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

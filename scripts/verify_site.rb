@@ -252,7 +252,7 @@ SEO_PILLARS = {
       /archive/intellectual-disability-learning-motivation-challenge-and-retry/
       /archive/analogy-learning-and-transfer-to-daily-life/
     ],
-    updated: Date.new(2026, 9, 8)
+    updated: Date.new(2026, 9, 15)
   },
   "_posts/2026-09-04-developmental-disability-money-management-education-beyond-calculation.md" => {
     primary_query: "발달장애인 돈 관리 교육",
@@ -262,7 +262,7 @@ SEO_PILLARS = {
       /archive/self-determination-education-beyond-offering-choices/
       /archive/analogy-learning-and-transfer-to-daily-life/
     ],
-    updated: Date.new(2026, 9, 4)
+    updated: Date.new(2026, 9, 15)
   },
   "_posts/2026-09-01-intellectual-disability-learning-motivation-challenge-and-retry.md" => {
     primary_query: "지적장애인 학습 동기",
@@ -272,7 +272,7 @@ SEO_PILLARS = {
       /archive/self-determination-education-beyond-offering-choices/
       /archive/why-quality-of-life-matters-more-than-correct-answer-rate/
     ],
-    updated: Date.new(2026, 9, 1)
+    updated: Date.new(2026, 9, 15)
   },
   "_posts/2026-08-28-adult-developmental-disability-reading-program-beyond-decoding.md" => {
     primary_query: "성인 발달장애인 독서 프로그램",
@@ -283,7 +283,7 @@ SEO_PILLARS = {
       /archive/easy-information-and-reading-comprehension/
       /archive/what-adults-with-developmental-disabilities-want-to-learn/
     ],
-    updated: Date.new(2026, 8, 28)
+    updated: Date.new(2026, 9, 15)
   },
   "_posts/2026-08-25-intellectual-disability-safety-education-needs-practice.md" => {
     primary_query: "지적장애인 안전 교육",
@@ -303,7 +303,7 @@ SEO_PILLARS = {
       /archive/easy-information-and-reading-comprehension/
       /archive/when-yes-is-not-informed-agreement/
     ],
-    updated: Date.new(2026, 8, 21)
+    updated: Date.new(2026, 9, 15)
   },
   "_posts/2026-08-18-self-determination-education-beyond-offering-choices.md" => {
     primary_query: "발달장애인 자기결정 교육",
@@ -313,7 +313,7 @@ SEO_PILLARS = {
       /archive/what-adults-with-developmental-disabilities-want-to-learn/
       /archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/
     ],
-    updated: Date.new(2026, 8, 18)
+    updated: Date.new(2026, 9, 15)
   },
   "_posts/2026-08-14-how-and-when-to-fade-prompts-for-intellectual-disability-learning.md" => {
     primary_query: "지적장애인 힌트 줄이기",
@@ -323,7 +323,7 @@ SEO_PILLARS = {
       /archive/adult-respectful-learning-materials-for-intellectual-disabilities/
       /archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/
     ],
-    updated: Date.new(2026, 8, 14)
+    updated: Date.new(2026, 9, 15)
   },
   "_posts/2026-08-11-adult-respectful-learning-materials-for-intellectual-disabilities.md" => {
     primary_query: "성인 지적장애인 학습자료",
@@ -343,7 +343,7 @@ SEO_PILLARS = {
       /archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/
       /archive/learning-rights-and-literacy-support-for-intellectual-disabilities/
     ],
-    updated: Date.new(2026, 8, 7)
+    updated: Date.new(2026, 9, 15)
   },
   "_posts/2026-08-04-safety-literacy-against-counterfeit-friendship.md" => {
     primary_query: "지적장애인 안전 문해력",
@@ -362,7 +362,8 @@ SEO_PILLARS = {
       /archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/
       /archive/why-analogy-matters/
       /archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/
-    ]
+    ],
+    updated: Date.new(2026, 9, 15)
   },
   "_posts/2026-07-14-why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults.md" => {
     primary_query: "경도 지적장애 문해력 교육",
@@ -371,7 +372,8 @@ SEO_PILLARS = {
       /archive/easy-information-and-reading-comprehension/
       /archive/learning-rights-and-literacy-support-for-intellectual-disabilities/
       /archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/
-    ]
+    ],
+    updated: Date.new(2026, 9, 15)
   },
   "_posts/2026-06-15-why-analogy-matters.md" => {
     primary_query: "지적장애인 유추 학습",
@@ -380,7 +382,8 @@ SEO_PILLARS = {
       /archive/analogy-learning-and-transfer-to-daily-life/
       /archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/
       /archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/
-    ]
+    ],
+    updated: Date.new(2026, 9, 15)
   },
   "_posts/2026-06-23-easy-information-and-reading-comprehension.md" => {
     primary_query: "지적장애인 쉬운 정보",
@@ -389,7 +392,8 @@ SEO_PILLARS = {
       /archive/why-easy-text-alone-is-not-enough/
       /archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/
       /archive/reading-rights-and-literacy-support-for-intellectual-disabilities/
-    ]
+    ],
+    updated: Date.new(2026, 9, 15)
   },
   "_posts/2026-07-03-how-ai-can-support-learning-for-people-with-intellectual-disabilities.md" => {
     primary_query: "특수교육 AI",
@@ -398,7 +402,8 @@ SEO_PILLARS = {
       /archive/why-human-review-is-needed-for-ai-learning-materials/
       /archive/why-naljakkurumi-uses-ai-and-paper-learning-materials-together/
       /archive/ai-era-transition-and-intellectual-disability-open-research/
-    ]
+    ],
+    updated: Date.new(2026, 9, 15)
   }
 }.freeze
 
@@ -633,16 +638,16 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인 온라인 신청 지원, 입력을 대신해 주면 끝일까")
+  unless first_regular_story&.include?("지적장애인 온라인 신청 지원: 입력 대행을 넘어 신청을 마치는 과정")
     errors << "index.html: online form article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
-  if story_list.include?("성인 발달장애인 평생교육 수요: 무엇을 배우고 싶어 하는가")
+  if story_list.include?("성인 발달장애인 평생교육 수요: 2025 조사로 본 배움의 우선순위")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
-  if story_list.include?("진단 가림 현상이란? 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때")
+  if story_list.include?("진단 가림 현상: 지적장애인의 다른 어려움을 장애 탓으로 돌릴 때")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("지적장애인의 통증과 감각 문제가 지능 탓으로 오인될 때")
@@ -651,13 +656,13 @@ if home.file?
   if story_list.include?("지적장애인의 혼잣말을 문제행동으로만 보면 놓치는 것")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
-  if story_list.include?("지적장애인의 “예”는 언제 진짜 동의가 아닌가")
+  if story_list.include?("지적장애인의 동의: 진짜 동의를 확인하는 기준")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("말로 표현된 것만으로 지적장애인의 이해를 판단하면 안 되는 이유")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
-  if story_list.include?("경도 지적장애 문해력 교육, 청소년·성인에게 왜 필요한가")
+  if story_list.include?("경도 지적장애 문해력 교육: 청소년·성인의 학습권을 위한 지원")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("지적장애인 독서권과 문해력 지원의 차이")
@@ -669,7 +674,7 @@ if home.file?
   if story_list.include?("AI 시대 전환과 지적장애인: 위험·기회·설계 원칙")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
-  if story_list.include?("특수교육 AI, 지적장애인의 학습을 어떻게 도울 수 있는가")
+  if story_list.include?("특수교육 AI: 지적장애인 학습을 돕는 기준")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
   if story_list.include?("정답률보다 삶의 질 변화를 성과로 보는 이유")
@@ -695,7 +700,7 @@ if home.file?
   unless html.scan(%(href="#{declaration_path}")).length == 1
     errors << "index.html: pinned declaration must appear exactly once"
   end
-  if story_list.include?("유추 학습은 일상생활 전이에 어떻게 연결되는가")
+  if story_list.include?("유추 학습과 일상생활 전이: 배운 관계를 생활에 연결하는 방법")
     errors << "index.html: story list must show only latest 4 regular posts"
   end
 
@@ -778,10 +783,10 @@ if archive.file?
   {
     "archive heading" => "전체 글",
     "pinned declaration" => "AI must benefit people with intellectual disabilities",
-    "newest learning motivation article" => "지적장애인 학습 동기, 쉬운 성공만 반복하면 될까",
-    "latest article" => "지적장애인 힌트 줄이기: 학습에서 언제, 어떻게 줄여야 할까",
+    "newest learning motivation article" => "지적장애인 학습 동기: 도전과 재도전을 설계하는 기준",
+    "latest article" => "지적장애인 힌트 줄이기: 독립 시도와 최소 도움의 기준",
     "previous article" => "지적장애인 독서권과 문해력 지원의 차이",
-    "old regular article" => "지적장애인 유추 학습, 왜 필요하고 어떻게 가르칠까?",
+    "old regular article" => "지적장애인 유추 학습: 필요성과 지도 원칙",
     "home link" => "/naljabooks-blog/"
   }.each do |label, marker|
     errors << "archive/index.html: missing #{label}" unless html.include?(marker)
@@ -913,12 +918,12 @@ nalkku_lifelong_post = SITE.join(nalkku_lifelong_path)
 if nalkku_lifelong_post.file?
   html = nalkku_lifelong_post.read
   {
-    "Open Graph title" => 'property="og:title" content="성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가"',
+    "Open Graph title" => 'property="og:title" content="성인 지적장애인 평생교육 프로그램: 생활 중심 설계 원칙"',
     "Open Graph description" => 'property="og:description" content="성인 지적장애인 평생교육 프로그램과 발달장애인 평생교육을 찾는 기관과 가족을 위해 문해력·유추·자기표현·일상 전이를 잇는 날자꾸러미의 구성과 운영 원칙을 소개합니다."',
     "Open Graph URL" => %(property="og:url" content="#{nalkku_lifelong_url}"),
     "published time" => 'property="article:published_time" content="2026-08-01T00:00:00+09:00"',
     "canonical URL" => %(rel="canonical" href="#{nalkku_lifelong_url}"),
-    "JSON-LD dateModified" => '"dateModified":"2026-08-01T00:00:00+09:00"',
+    "JSON-LD dateModified" => '"dateModified":"2026-09-15T00:00:00+09:00"',
     "JSON-LD datePublished" => '"datePublished":"2026-08-01T00:00:00+09:00"',
     "JSON-LD mainEntityOfPage" => %("@id":"#{nalkku_lifelong_url}")
   }.each do |label, marker|
@@ -1046,12 +1051,12 @@ informed_agreement_post = SITE.join(informed_agreement_path)
 if informed_agreement_post.file?
   html = informed_agreement_post.read
   {
-    "Open Graph title" => 'property="og:title" content="지적장애인의 “예”는 언제 진짜 동의가 아닌가"',
+    "Open Graph title" => 'property="og:title" content="지적장애인의 동의: 진짜 동의를 확인하는 기준"',
     "Open Graph description" => 'property="og:description" content="지적장애인이 질문에 “예”라고 답했더라도 충분히 이해하고 선택한 동의인지 확인해야 합니다. 묵종을 줄이는 질문 방식과 자기결정 지원 원칙을 설명합니다."',
     "Open Graph URL" => %(property="og:url" content="#{informed_agreement_url}"),
     "published time" => 'property="article:published_time" content="2026-07-24T00:00:00+09:00"',
     "canonical URL" => %(rel="canonical" href="#{informed_agreement_url}"),
-    "JSON-LD dateModified" => '"dateModified":"2026-07-24T00:00:00+09:00"',
+    "JSON-LD dateModified" => '"dateModified":"2026-09-15T00:00:00+09:00"',
     "JSON-LD datePublished" => '"datePublished":"2026-07-24T00:00:00+09:00"',
     "JSON-LD mainEntityOfPage" => %("@id":"#{informed_agreement_url}")
   }.each do |label, marker|
@@ -1109,11 +1114,11 @@ literacy_support_post = SITE.join(literacy_support_path)
 if literacy_support_post.file?
   html = literacy_support_post.read
   {
-    "Open Graph title" => 'property="og:title" content="경도 지적장애 문해력 교육, 청소년·성인에게 왜 필요한가"',
+    "Open Graph title" => 'property="og:title" content="경도 지적장애 문해력 교육: 청소년·성인의 학습권을 위한 지원"',
     "Open Graph URL" => %(property="og:url" content="#{literacy_support_url}"),
     "published time" => 'property="article:published_time" content="2026-07-14T00:00:00+09:00"',
     "canonical URL" => %(rel="canonical" href="#{literacy_support_url}"),
-    "JSON-LD dateModified" => '"dateModified":"2026-08-01T00:00:00+09:00"',
+    "JSON-LD dateModified" => '"dateModified":"2026-09-15T00:00:00+09:00"',
     "JSON-LD datePublished" => '"datePublished":"2026-07-14T00:00:00+09:00"',
     "JSON-LD mainEntityOfPage" => %("@id":"#{literacy_support_url}")
   }.each do |label, marker|
@@ -1181,11 +1186,11 @@ ai_learning_support_post = SITE.join(ai_learning_support_path)
 if ai_learning_support_post.file?
   html = ai_learning_support_post.read
   {
-    "Open Graph title" => 'property="og:title" content="특수교육 AI, 지적장애인의 학습을 어떻게 도울 수 있는가"',
+    "Open Graph title" => 'property="og:title" content="특수교육 AI: 지적장애인 학습을 돕는 기준"',
     "Open Graph URL" => %(property="og:url" content="#{ai_learning_support_url}"),
     "published time" => 'property="article:published_time" content="2026-07-03T00:00:00+09:00"',
     "canonical URL" => %(rel="canonical" href="#{ai_learning_support_url}"),
-    "JSON-LD dateModified" => '"dateModified":"2026-08-01T00:00:00+09:00"',
+    "JSON-LD dateModified" => '"dateModified":"2026-09-15T00:00:00+09:00"',
     "JSON-LD datePublished" => '"datePublished":"2026-07-03T00:00:00+09:00"',
     "JSON-LD mainEntityOfPage" => %("@id":"#{ai_learning_support_url}")
   }.each do |label, marker|
@@ -1230,11 +1235,11 @@ analogy_transfer_post = SITE.join(analogy_transfer_path)
 if analogy_transfer_post.file?
   html = analogy_transfer_post.read
   {
-    "Open Graph title" => 'property="og:title" content="유추 학습은 일상생활 전이에 어떻게 연결되는가"',
+    "Open Graph title" => 'property="og:title" content="유추 학습과 일상생활 전이: 배운 관계를 생활에 연결하는 방법"',
     "Open Graph URL" => %(property="og:url" content="#{analogy_transfer_url}"),
     "published time" => 'property="article:published_time" content="2026-06-26T00:00:00+09:00"',
     "canonical URL" => %(rel="canonical" href="#{analogy_transfer_url}"),
-    "JSON-LD dateModified" => '"dateModified":"2026-06-26T00:00:00+09:00"',
+    "JSON-LD dateModified" => '"dateModified":"2026-09-15T00:00:00+09:00"',
     "JSON-LD datePublished" => '"datePublished":"2026-06-26T00:00:00+09:00"',
     "JSON-LD mainEntityOfPage" => %("@id":"#{analogy_transfer_url}")
   }.each do |label, marker|

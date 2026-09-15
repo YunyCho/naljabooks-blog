@@ -3,11 +3,11 @@ layout: post
 lang: ko-KR
 content_type: article
 translation_key: why-analogy-matters
-title: "지적장애인 유추 학습, 왜 필요하고 어떻게 가르칠까?"
+title: "지적장애인 유추 학습: 필요성과 지도 원칙"
 description: "지적장애인 유추 학습의 뜻과 필요성을 발달장애 학습과 성장이라는 넓은 관심에 연결하고, 일상생활 전이와 선택을 돕는 질문법과 설계 원칙을 설명합니다."
 date: 2026-06-15
-updated: 2026-08-01
-last_modified_at: 2026-08-01
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

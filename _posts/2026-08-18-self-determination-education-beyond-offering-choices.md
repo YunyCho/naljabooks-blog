@@ -2,11 +2,11 @@
 layout: post
 lang: ko-KR
 content_type: article
-title: "발달장애인 자기결정 교육, 선택지만 주면 충분할까"
+title: "발달장애인 자기결정 교육: 선택을 목표와 실행으로 잇기"
 description: "발달장애인 자기결정 교육과 지적장애인 자기결정 지원을 설명합니다. 선택을 목표 설정·계획·실행·점검과 다시 선택할 기회로 잇는 방법입니다."
 date: 2026-08-18
-updated: 2026-08-18
-last_modified_at: 2026-08-18
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
@@ -133,7 +133,7 @@ sources:
 7. 완료 여부와 필요한 지원 수준을 따로 기록했는가?
 8. 다음 생활 장면에서 다시 선택해 볼 기회를 만들었는가?
 
-동의를 확인하는 질문법은 [지적장애인의 “예”는 언제 진짜 동의가 아닌가]({{ '/archive/when-yes-is-not-informed-agreement/' | relative_url }})에서, 조사에서 확인된 교육 희망은 [성인 발달장애인 평생교육 수요]({{ '/archive/what-adults-with-developmental-disabilities-want-to-learn/' | relative_url }})에서 볼 수 있다. 생활 목표와 기록을 평생교육 프로그램에 연결하는 방법은 [성인 지적장애인 평생교육 프로그램 구성]({{ '/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/' | relative_url }})에서 이어진다.
+동의를 확인하는 질문법은 [지적장애인의 동의: 진짜 동의를 확인하는 기준]({{ '/archive/when-yes-is-not-informed-agreement/' | relative_url }})에서, 조사에서 확인된 교육 희망은 [성인 발달장애인 평생교육 수요]({{ '/archive/what-adults-with-developmental-disabilities-want-to-learn/' | relative_url }})에서 볼 수 있다. 생활 목표와 기록을 평생교육 프로그램에 연결하는 방법은 [성인 지적장애인 평생교육 프로그램 구성]({{ '/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/' | relative_url }})에서 이어진다.
 
 ## 결론 {#conclusion}
 

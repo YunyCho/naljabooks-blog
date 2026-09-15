@@ -2,11 +2,11 @@
 layout: post
 lang: ko-KR
 content_type: article
-title: "성인 발달장애인 평생교육 수요: 무엇을 배우고 싶어 하는가"
+title: "성인 발달장애인 평생교육 수요: 2025 조사로 본 배움의 우선순위"
 description: "성인 발달장애인 평생교육 수요를 2025년 발달장애인 일과 삶 실태조사의 당사자·보호자 응답으로 살핍니다. 취미, 일, 생활기술과 문해교육 수치를 응답 대상에 맞게 설명합니다."
 date: 2026-08-07
-updated: 2026-08-07
-last_modified_at: 2026-08-07
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

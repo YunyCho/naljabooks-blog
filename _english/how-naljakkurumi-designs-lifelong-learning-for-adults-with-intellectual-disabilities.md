@@ -4,13 +4,13 @@ lang: en
 content_type: article
 translation_key: nalkku-lifelong-learning
 translation_status: ai-assisted
-source_updated: 2026-08-01
-translation_updated: 2026-08-06
+source_updated: 2026-09-15
+translation_updated: 2026-09-15
 title: "How Nalkku designs lifelong learning for adults with intellectual disabilities"
 description: "Nalkku's monthly paper-based program connects literacy, analogy, self-expression, and transfer into everyday life for adults with intellectual disabilities."
 date: 2026-08-01
-updated: 2026-08-01
-last_modified_at: 2026-08-01
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "Nalja Books and Nalkku Editorial Team"
   url: "https://naljabooks.com"

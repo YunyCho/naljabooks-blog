@@ -2,11 +2,11 @@
 layout: post
 lang: ko-KR
 content_type: article
-title: "성인 발달장애인 독서 프로그램, 글을 읽어야만 참여할 수 있을까"
+title: "성인 발달장애인 독서 프로그램: 읽기 너머의 참여 설계"
 description: "성인 발달장애인 독서 프로그램을 읽기 점수 향상에만 두지 않고 그림 읽기, 이야기 선택, 자기표현과 공동 읽기로 넓히는 설계 원칙을 연구의 가능성과 한계를 구분해 설명합니다."
 date: 2026-08-28
-updated: 2026-08-28
-last_modified_at: 2026-08-28
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

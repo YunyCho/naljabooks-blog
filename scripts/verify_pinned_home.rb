@@ -7,7 +7,7 @@ require "tmpdir"
 
 ROOT = Pathname.new(__dir__).join("..").expand_path
 DECLARATION_PATH = "/naljabooks-blog/archive/ai-must-benefit-people-with-intellectual-disabilities/"
-ANALOGY_TITLE = "지적장애인 유추 학습, 왜 필요하고 어떻게 가르칠까?"
+ANALOGY_TITLE = "지적장애인 유추 학습: 필요성과 지도 원칙"
 FIXTURES = [
   {
     path: ROOT.join("_posts/2099-12-31-pinned-home-newer-fixture-#{Process.pid}.md"),
@@ -91,7 +91,7 @@ begin
       errors << "index.html: older fixture post is not second in the story list"
     end
     older_fixture_position = story_list.index(FIXTURES[1][:title])
-    latest_article_position = story_list.index("성인 지적장애인 평생교육 프로그램, 날자꾸러미는 어떻게 설계하는가")
+    latest_article_position = story_list.index("성인 지적장애인 평생교육 프로그램: 생활 중심 설계 원칙")
     if older_fixture_position && latest_article_position && latest_article_position <= older_fixture_position
       errors << "index.html: latest real article must follow both fixture posts"
     end

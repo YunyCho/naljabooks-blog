@@ -3,11 +3,11 @@ layout: post
 lang: ko-KR
 content_type: article
 translation_key: ai-learning-support
-title: "특수교육 AI, 지적장애인의 학습을 어떻게 도울 수 있는가"
+title: "특수교육 AI: 지적장애인 학습을 돕는 기준"
 description: "특수교육 AI와 발달장애 AI 교육을 찾는 독자를 위해 지적장애인의 개별화 학습자료, 반복 연습과 표현 지원에 활용하는 방법과 검토·책임 원칙을 설명합니다."
 date: 2026-07-03
-updated: 2026-08-01
-last_modified_at: 2026-08-01
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"

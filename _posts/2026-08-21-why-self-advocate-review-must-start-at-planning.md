@@ -2,11 +2,11 @@
 layout: post
 lang: ko-KR
 content_type: article
-title: "지적장애인 당사자 검수, 왜 기획 단계부터 시작해야 할까"
+title: "지적장애인 당사자 검수: 기획 단계부터 참여하는 과정"
 description: "지적장애인 당사자 검수와 발달장애인 당사자 참여를 최종 확인에 그치지 않고 목적·형식·내용·접근 가능한 회의·정당한 보상까지 잇는 방법을 설명합니다."
 date: 2026-08-21
-updated: 2026-08-21
-last_modified_at: 2026-08-21
+updated: 2026-09-15
+last_modified_at: 2026-09-15
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
@@ -128,7 +128,7 @@ Listen Include Respect는 지적장애인을 정보 제작의 자문가로 대�
 9. 당사자 검수와 편집·사실·법률 검토의 역할을 구분했는가?
 10. 최종 결과물이 실제 독자가 찾고 질문하고 피드백할 수 있는 곳에 놓였는가?
 
-성인에게 맞는 말투와 디자인은 [성인 지적장애인 학습자료를 유아적으로 만들지 않는 기준]({{ '/archive/adult-respectful-learning-materials-for-intellectual-disabilities/' | relative_url }})에서, 쉬운 정보와 실제 이해의 차이는 [지적장애인 쉬운 정보와 읽기이해]({{ '/archive/easy-information-and-reading-comprehension/' | relative_url }})에서 이어서 볼 수 있다. 질문에 맞춰 답하게 만들지 않는 방법은 [지적장애인의 “예”는 언제 진짜 동의가 아닌가]({{ '/archive/when-yes-is-not-informed-agreement/' | relative_url }})에서 설명한다.
+성인에게 맞는 말투와 디자인은 [성인 지적장애인 학습자료를 유아적으로 만들지 않는 기준]({{ '/archive/adult-respectful-learning-materials-for-intellectual-disabilities/' | relative_url }})에서, 쉬운 정보와 실제 이해의 차이는 [지적장애인 쉬운 정보와 읽기이해]({{ '/archive/easy-information-and-reading-comprehension/' | relative_url }})에서 이어서 볼 수 있다. 질문에 맞춰 답하게 만들지 않는 방법은 [지적장애인의 동의: 진짜 동의를 확인하는 기준]({{ '/archive/when-yes-is-not-informed-agreement/' | relative_url }})에서 설명한다.
 
 ## 결론 {#conclusion}
 
