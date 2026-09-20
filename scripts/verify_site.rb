@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/intellectual-disability-self-advocacy-organizations-abroad/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "해외 지적장애인 자기옹호 단체를 찾을 때는 단체 이름보다 누가 결정하는지부터 봐야 한다",
+    anchors: %w[summary definition criteria sabe people-first epsa global-network learning-rights checklist conclusion],
+    source_count: 8
+  },
   "archive/intellectual-disability-online-form-accessibility/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인 온라인 신청 지원은 입력을 대신 끝내는 것만으로 충분하지 않다",
@@ -234,6 +240,16 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-09-20-intellectual-disability-self-advocacy-organizations-abroad.md" => {
+    primary_query: "지적장애인 자기옹호 단체",
+    bridge_queries: ["발달장애인 인권 단체", "지적장애인 학습권"],
+    related_urls: %w[
+      /archive/why-self-advocate-review-must-start-at-planning/
+      /archive/self-determination-education-beyond-offering-choices/
+      /archive/learning-rights-and-literacy-support-for-intellectual-disabilities/
+    ],
+    updated: Date.new(2026, 9, 20)
+  },
   "_posts/2026-09-15-intellectual-disability-online-form-accessibility.md" => {
     primary_query: "지적장애인 온라인 신청 지원",
     bridge_queries: ["발달장애 디지털 접근성", "발달장애 학습"],
@@ -303,7 +319,7 @@ SEO_PILLARS = {
       /archive/easy-information-and-reading-comprehension/
       /archive/when-yes-is-not-informed-agreement/
     ],
-    updated: Date.new(2026, 9, 15)
+    updated: Date.new(2026, 9, 20)
   },
   "_posts/2026-08-18-self-determination-education-beyond-offering-choices.md" => {
     primary_query: "발달장애인 자기결정 교육",
@@ -313,7 +329,7 @@ SEO_PILLARS = {
       /archive/what-adults-with-developmental-disabilities-want-to-learn/
       /archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/
     ],
-    updated: Date.new(2026, 9, 15)
+    updated: Date.new(2026, 9, 20)
   },
   "_posts/2026-08-14-how-and-when-to-fade-prompts-for-intellectual-disability-learning.md" => {
     primary_query: "지적장애인 힌트 줄이기",
@@ -638,8 +654,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인 온라인 신청 지원: 입력 대행을 넘어 신청을 마치는 과정")
-    errors << "index.html: online form article is not the newest regular story"
+  unless first_regular_story&.include?("해외 지적장애인 자기옹호 단체: 누가 결정하고 무엇을 배우는가")
+    errors << "index.html: self-advocacy organizations article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -1027,7 +1043,7 @@ if feed.file?
   errors << "feed.xml: missing learning motivation article" unless feed_text.include?(learning_motivation_url)
   errors << "feed.xml: missing money management education article" unless feed_text.include?(money_management_url)
   errors << "feed.xml: education-demand article should leave the latest 10" if feed_text.include?(education_demand_url)
-  errors << "feed.xml: missing adult-respectful learning materials article" unless feed_text.include?(adult_respectful_materials_url)
+  errors << "feed.xml: adult-respectful learning materials article should leave the latest 10" if feed_text.include?(adult_respectful_materials_url)
   errors << "feed.xml: missing prompt-fading article" unless feed_text.include?(prompt_fading_url)
   errors << "feed.xml: missing self-determination education article" unless feed_text.include?(self_determination_education_url)
   if feed_text.include?(diagnostic_overshadowing_url)
@@ -1344,6 +1360,15 @@ end
 %w[easy-information-and-reading-comprehension self-determination-education-beyond-offering-choices why-self-advocate-review-must-start-at-planning].each do |slug|
   path = SITE.join("archive", slug, "index.html")
   errors << "#{slug}: missing online form backlink" unless path.file? && path.read.include?(form_link)
+end
+
+self_advocacy_organizations_link = "#{BASEURL}/archive/intellectual-disability-self-advocacy-organizations-abroad/"
+%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+  errors << "#{path}: missing self-advocacy organizations article" unless SITE.join(path).read.include?(self_advocacy_organizations_link)
+end
+%w[why-self-advocate-review-must-start-at-planning self-determination-education-beyond-offering-choices learning-rights-and-literacy-support-for-intellectual-disabilities].each do |slug|
+  path = SITE.join("archive", slug, "index.html")
+  errors << "#{slug}: missing self-advocacy organizations backlink" unless path.file? && path.read.include?(self_advocacy_organizations_link)
 end
 
 if errors.empty?

@@ -5,8 +5,8 @@ content_type: article
 title: "발달장애인 자기결정 교육: 선택을 목표와 실행으로 잇기"
 description: "발달장애인 자기결정 교육과 지적장애인 자기결정 지원을 설명합니다. 선택을 목표 설정·계획·실행·점검과 다시 선택할 기회로 잇는 방법입니다."
 date: 2026-08-18
-updated: 2026-09-15
-last_modified_at: 2026-09-15
+updated: 2026-09-20
+last_modified_at: 2026-09-20
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
@@ -22,6 +22,7 @@ seo:
   secondary_queries: ["발달장애 자기결정 프로그램", "지적장애인 선택 교육", "자기결정 교육 방법"]
   bridge_queries: ["발달장애 선택 교육", "지적장애인 자기결정 지원"]
 related:
+  - intellectual-disability-self-advocacy-organizations-abroad
   - intellectual-disability-online-form-accessibility
   - developmental-disability-money-management-education-beyond-calculation
   - intellectual-disability-learning-motivation-challenge-and-retry

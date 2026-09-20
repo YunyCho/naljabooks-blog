@@ -5,8 +5,8 @@ content_type: article
 title: "지적장애인의 학습권은 문해력 지원에서 시작된다"
 description: "지적장애인의 학습권을 배울 기회, 이해할 수 있는 자료, 표현할 수 있는 활동, 일상에서 사용할 수 있는 문해력 지원의 관점으로 정리합니다."
 date: 2026-06-26 01:00:00 +0900
-updated: 2026-06-26 01:00:00 +0900
-last_modified_at: 2026-06-26 01:00:00 +0900
+updated: 2026-09-20
+last_modified_at: 2026-09-20
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
@@ -16,7 +16,8 @@ topics:
   - learning-rights
   - literacy
 tags: ["지적장애", "학습권", "문해력", "쉬운 정보", "자기결정"]
-related: []
+related:
+  - intellectual-disability-self-advocacy-organizations-abroad
 toc:
   - id: summary
     title: "핵심 요약"

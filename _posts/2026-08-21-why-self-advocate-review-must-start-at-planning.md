@@ -5,8 +5,8 @@ content_type: article
 title: "지적장애인 당사자 검수: 기획 단계부터 참여하는 과정"
 description: "지적장애인 당사자 검수와 발달장애인 당사자 참여를 최종 확인에 그치지 않고 목적·형식·내용·접근 가능한 회의·정당한 보상까지 잇는 방법을 설명합니다."
 date: 2026-08-21
-updated: 2026-09-15
-last_modified_at: 2026-09-15
+updated: 2026-09-20
+last_modified_at: 2026-09-20
 author:
   name: "도서출판 날자 · 날자꾸러미 편집부"
   url: "https://naljabooks.com"
@@ -20,6 +20,7 @@ seo:
   secondary_queries: ["지적장애인 쉬운 정보 검수", "지적장애인 공동설계 방법", "당사자 참여 검토 절차"]
   bridge_queries: ["지적장애인 공동설계", "발달장애인 당사자 참여"]
 related:
+  - intellectual-disability-self-advocacy-organizations-abroad
   - intellectual-disability-online-form-accessibility
   - adult-respectful-learning-materials-for-intellectual-disabilities
   - easy-information-and-reading-comprehension
