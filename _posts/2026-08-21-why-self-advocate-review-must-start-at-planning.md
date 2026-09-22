@@ -20,6 +20,7 @@ seo:
   secondary_queries: ["지적장애인 쉬운 정보 검수", "지적장애인 공동설계 방법", "당사자 참여 검토 절차"]
   bridge_queries: ["지적장애인 공동설계", "발달장애인 당사자 참여"]
 related:
+  - intellectual-disability-inclusive-meeting-support
   - intellectual-disability-self-advocacy-organizations-abroad
   - intellectual-disability-online-form-accessibility
   - adult-respectful-learning-materials-for-intellectual-disabilities

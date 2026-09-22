@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/intellectual-disability-inclusive-meeting-support/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "지적장애인 회의 참여 지원은 초대장을 보내는 순간부터 시작된다",
+    anchors: %w[summary scope before during support after example checklist conclusion],
+    source_count: 4
+  },
   "archive/intellectual-disability-self-advocacy-organizations-abroad/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "해외 지적장애인 자기옹호 단체를 찾을 때는 단체 이름보다 누가 결정하는지부터 봐야 한다",
@@ -240,6 +246,16 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-09-22-intellectual-disability-inclusive-meeting-support.md" => {
+    primary_query: "지적장애인 회의 참여 지원",
+    bridge_queries: ["발달장애인 회의", "자기옹호"],
+    related_urls: %w[
+      /archive/why-self-advocate-review-must-start-at-planning/
+      /archive/intellectual-disability-self-advocacy-organizations-abroad/
+      /archive/self-determination-education-beyond-offering-choices/
+    ],
+    updated: Date.new(2026, 9, 22)
+  },
   "_posts/2026-09-20-intellectual-disability-self-advocacy-organizations-abroad.md" => {
     primary_query: "지적장애인 자기옹호 단체",
     bridge_queries: ["발달장애인 인권 단체", "지적장애인 학습권"],
@@ -654,8 +670,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("해외 지적장애인 자기옹호 단체: 누가 결정하고 무엇을 배우는가")
-    errors << "index.html: self-advocacy organizations article is not the newest regular story"
+  unless first_regular_story&.include?("지적장애인 회의 참여 지원은 사전 준비와 후속 조치까지 이어져야 한다")
+    errors << "index.html: inclusive meeting article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -1044,7 +1060,7 @@ if feed.file?
   errors << "feed.xml: missing money management education article" unless feed_text.include?(money_management_url)
   errors << "feed.xml: education-demand article should leave the latest 10" if feed_text.include?(education_demand_url)
   errors << "feed.xml: adult-respectful learning materials article should leave the latest 10" if feed_text.include?(adult_respectful_materials_url)
-  errors << "feed.xml: missing prompt-fading article" unless feed_text.include?(prompt_fading_url)
+  errors << "feed.xml: prompt-fading article should leave the latest 10" if feed_text.include?(prompt_fading_url)
   errors << "feed.xml: missing self-determination education article" unless feed_text.include?(self_determination_education_url)
   if feed_text.include?(diagnostic_overshadowing_url)
     errors << "feed.xml: feed must contain only the latest 10 posts"
@@ -1369,6 +1385,15 @@ end
 %w[why-self-advocate-review-must-start-at-planning self-determination-education-beyond-offering-choices learning-rights-and-literacy-support-for-intellectual-disabilities].each do |slug|
   path = SITE.join("archive", slug, "index.html")
   errors << "#{slug}: missing self-advocacy organizations backlink" unless path.file? && path.read.include?(self_advocacy_organizations_link)
+end
+
+meeting_link = "#{BASEURL}/archive/intellectual-disability-inclusive-meeting-support/"
+%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+  errors << "#{path}: missing inclusive meeting article" unless SITE.join(path).read.include?(meeting_link)
+end
+%w[why-self-advocate-review-must-start-at-planning intellectual-disability-self-advocacy-organizations-abroad self-determination-education-beyond-offering-choices].each do |slug|
+  path = SITE.join("archive", slug, "index.html")
+  errors << "#{slug}: missing inclusive meeting backlink" unless path.file? && path.read.include?(meeting_link)
 end
 
 if errors.empty?

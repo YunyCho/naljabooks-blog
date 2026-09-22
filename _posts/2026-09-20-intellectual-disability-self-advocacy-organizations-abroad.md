@@ -20,6 +20,7 @@ seo:
   secondary_queries: ["해외 지적장애인 인권 단체", "지적장애인 당사자 단체", "피플퍼스트 해외 단체"]
   bridge_queries: ["발달장애인 인권 단체", "지적장애인 학습권"]
 related:
+  - intellectual-disability-inclusive-meeting-support
   - why-self-advocate-review-must-start-at-planning
   - self-determination-education-beyond-offering-choices
   - learning-rights-and-literacy-support-for-intellectual-disabilities
