@@ -1,0 +1,167 @@
+---
+layout: booklet
+lang: ko-KR
+content_type: article
+title: "AI가 지적장애에게"
+description: "AI와 지적장애인의 배움과 삶을 다룬 그림 소책자를 원래의 지면 디자인으로 읽어 보세요."
+date: 2026-10-01 00:01:00 +0900
+updated: 2026-10-01
+last_modified_at: 2026-10-01
+author:
+  name: "도서출판 날자 · 날자꾸러미 편집부"
+  url: "https://naljabooks.com"
+  type: Organization
+category: "AI와 접근성"
+topics:
+  - ai-intellectual-disability
+tags: ["AI", "지적장애", "접근성"]
+related: []
+toc: []
+sources: []
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI가 지적장애에게</title>
+<meta name="description" content="AI와 지적장애인의 배움과 삶을 다룬 그림 소책자를 원래의 지면 디자인으로 읽어 보세요.">
+<link rel="canonical" href="https://yunycho.github.io/naljabooks-blog/archive/ai-to-people-with-intellectual-disabilities-ko/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700;900&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1A1A1A; --soft:#6B665E; --line:#D9D2C4; --paper:#FFFFFF; --desk:#8A8377; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { background:var(--desk); }
+  body { font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif; color:var(--ink);
+         padding:24px 16px 60px; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html[lang=en] .serif, html[lang=en] h1, html[lang=en] h2, html[lang=en] h3, html[lang=en] .body, html[lang=en] .sub, html[lang=en] .toc li, html[lang=en] .closing { font-family:'Noto Serif','Noto Serif KR',Georgia,serif; }
+  html[lang=en] .cover h1 { font-size:4.6cqw; } html[lang=en] .cover h1 .k { font-size:5.6cqw; line-height:1.12; }
+  html[lang=en] .toc .tn { width:46px; white-space:nowrap; }
+  .serif, h1, h2, h3, .body { font-family:'Noto Serif KR','AppleMyungjo',serif; }
+
+  .pg { width:148mm; height:210mm; max-width:100%; background:var(--paper); margin:0 auto 10mm;
+        position:relative; overflow:hidden; padding:18mm 15mm 16mm;
+        display:flex; flex-direction:column; box-shadow:0 3px 14px rgba(0,0,0,.28); }
+  .blank .folio { display:none; }
+  .folio { position:absolute; top:7mm; right:9mm; font-size:9px; color:var(--soft); letter-spacing:.05em; }
+
+  /* 앞표지 */
+  .cover { padding:0; background:#fff; container-type:inline-size; }
+  .cover .art { position:absolute; left:0; bottom:0; height:100%; mix-blend-mode:multiply; }
+  .cover h1 { position:absolute; left:53%; top:6.4%; font-size:5.4cqw; font-weight:900; letter-spacing:-.02em; line-height:1.15; }
+  .cover h1 span { display:block; } .cover h1 .k { font-size:7.4cqw; }
+  .cover .sub { position:absolute; left:53%; top:33%; font-family:'Noto Serif KR',serif; font-size:2.35cqw; line-height:1.6; color:var(--soft); }
+  .cover .logo { position:absolute; right:9.5%; bottom:6.3%; width:18.5%; height:auto; }
+
+  /* 차례 */
+  .toc-h { font-size:20px; font-weight:600; margin-bottom:12mm; }
+  .toc { list-style:none; }
+  .toc li { display:flex; align-items:center; gap:10px; font-family:'Noto Serif KR',serif;
+            font-size:14px; padding:4.2mm 0; border-bottom:1px solid var(--line); }
+  .toc .dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+  .toc .tn { color:var(--soft); font-size:12px; width:26px; }
+
+  /* 장 표지 — 걱친식 색면 */
+  .chapter { padding:24mm 16mm; }
+  .chapter .folio { color:inherit; opacity:.6; }
+  .chap-no { font-size:13px; letter-spacing:.15em; opacity:.75; }
+  .chapter h2 { font-size:26px; font-weight:600; line-height:1.4; margin-top:3mm; max-width:100mm; word-break:keep-all; }
+
+  /* 아이디어 면 */
+  .idea .kicker { font-size:11px; color:var(--soft); letter-spacing:.12em; }
+  .idea h3 { font-size:21px; font-weight:600; line-height:1.4; margin-top:2mm; word-break:keep-all; }
+  .fig { margin:9mm 0 8mm; aspect-ratio:4/3; width:100%; display:flex; align-items:center; justify-content:center; }
+  .fig.tall { aspect-ratio:auto; }
+  .fig img { max-width:100%; max-height:100%; object-fit:contain; }
+  .fig .ph { display:none; }
+  .fig.empty { border:1.5px dashed var(--line); border-radius:6px; }
+  .fig.empty .ph { display:block; padding:8mm; font-size:11px; line-height:1.7; color:var(--soft); text-align:center; word-break:keep-all; }
+  .fig.empty .ph b { display:block; font-size:10px; letter-spacing:.12em; margin-bottom:2mm; color:#A39C90; }
+  .idea .body { font-size:15px; line-height:1.6; word-break:keep-all; max-width:108mm; }
+  /* 배치 네 가지 */
+  .v0 .fig { margin:8mm 0 6mm; }
+  .v1 .txt { margin-bottom:auto; } .v1 .body { margin-top:5mm; } .v1 .fig { margin:0 0 6mm; }
+  .v2 { justify-content:flex-start; } .v2 .fig { margin:4mm 0 9mm; } .v2 .body { margin-top:4mm; }
+  .v3 .fig { margin:8mm 0 6mm; } .v3 .body { margin-left:auto; max-width:78mm; }
+
+  /* 마지막 면 — 여백을 더 넓게 */
+  .finale { padding:26mm 18mm 22mm; }
+  .finale h3 { font-size:23px; }
+  .finale .fig { margin:12mm 0 12mm; }
+  .finale .body { font-size:16px; line-height:1.7; }
+
+  /* 뒤표지 */
+  .back { padding:0 16mm 13mm; }
+  .back-mid { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding-top:8mm; }
+  .dots { display:flex; gap:7px; }
+  .dots i { width:7px; height:7px; border-radius:50%; display:block; }
+  .closing { font-family:'Noto Serif KR',serif; font-size:15px; line-height:1.9; margin-top:9mm; white-space:nowrap; }
+  .back-title { font-size:10.5px; letter-spacing:.14em; color:var(--soft); margin-top:7mm; }
+  .imprint { border-top:1px solid var(--line); padding-top:5mm; display:flex; align-items:center; justify-content:space-between; }
+  .imprint .logo { height:7.5mm; }
+  .imprint-t { display:flex; flex-direction:column; align-items:flex-end; gap:1.2mm; font-size:8.5px; color:var(--soft); letter-spacing:.02em; }
+
+  /* 폰 화면 — 지면 비율 유지하며 축소 */
+  @media screen and (max-width:600px) {
+    body { padding:16px 16px 40px; }
+    .pg { width:100%; height:auto; aspect-ratio:148/210; padding:10% 9% 9%; }
+    .closing { font-size:3.6vw; }
+    .chapter h2 { font-size:21px; } .idea h3 { font-size:18px; }
+    .idea .body { font-size:14px; line-height:1.6; }
+  }
+
+  @page { size:148mm 210mm; margin:0; }
+  @media print {
+    html, body { background:none; padding:0; }
+    .pg { margin:0; box-shadow:none; page-break-after:always; break-after:page; }
+    .fig.empty { border-color:#EEE; } .fig.empty .ph { visibility:hidden; }
+  }
+</style>
+</head>
+<body>
+<section class="pg cover"><img class="art" src="/naljabooks-blog/booklets/assets/삽화/00.png" alt=""><h1><span>AI가</span><span class="k">지적장애</span><span>에게</span></h1><p class="sub">함께 그려 보는<br>서른한 가지 내일</p><img class="logo" src="/naljabooks-blog/booklets/assets/도서출판_날자_로고.png" alt="도서출판 날자"></section>
+<section class="pg blank"></section>
+<section class="pg toc"><span class="folio">3</span><h2 class="toc-h">차례</h2><ol class="toc"><li><span class="dot" style="background:#D2B47C"></span><span class="tn">1장</span>목소리가 세상에 나가는 방식</li><li><span class="dot" style="background:#A9CBE4"></span><span class="tn">2장</span>세상이 그들에게 맞춰지는 것</li><li><span class="dot" style="background:#D78FC9"></span><span class="tn">3장</span>거꾸로, 그들이 세상과 AI를 가르친다</li><li><span class="dot" style="background:#B5D195"></span><span class="tn">4장</span>일과 경제</li><li><span class="dot" style="background:#F1B891"></span><span class="tn">5장</span>관계와 연결</li><li><span class="dot" style="background:#86C3B9"></span><span class="tn">6장</span>권리와 시민</li><li><span class="dot" style="background:#3F4A78"></span><span class="tn">7장</span>먼 미래</li></ol></section>
+<section class="pg chapter" style="background:#D2B47C;color:#1A1A1A"><span class="folio">4</span><div class="chap-in"><p class="chap-no">1장</p><h2>목소리가 세상에 나가는 방식</h2></div></section>
+<section class="pg idea v0"><span class="folio">5</span><p class="kicker">01</p><h3>내 말투 그대로 번역기</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/01.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 01</b>휴대폰에 대고 말하는 청년. 화면의 말풍선 끝에 그 사람만의 말버릇 &quot;~거든요!&quot;가 그대로 남아 있다.</figcaption></figure><p class="body">문장은 다듬되 말버릇, 유머, 리듬은 살려서 &quot;딱 그 사람이 한 말&quot;로 들리게 해요.</p></section>
+<section class="pg idea v1"><span class="folio">6</span><div class="txt"><p class="kicker">02</p><h3>내 목소리로 낭독한 오디오북</h3><p class="body">자기 음성을 복제해서 자기가 쓴 책을 자기 목소리로 들려줘요.</p></div><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/02.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 02</b>버스에서 이어폰을 낀 할머니가 미소 짓고, 무릎 위 책 표지에 쓴 사람의 얼굴이 있다.</figcaption></figure></section>
+<section class="pg idea v2"><span class="folio">7</span><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/03.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 03</b>작은 책상과 마이크 앞에 앉은 앵커. 앞에 놓인 원고에 큰 글씨 몇 줄.</figcaption></figure><div class="txt"><p class="kicker">03</p><h3>당사자 앵커 뉴스채널</h3><p class="body">발달장애인이 기획하고 진행하는 쉬운 뉴스예요. AI는 대본, 자막, 편집을 맡아요.</p></div></section>
+<section class="pg idea v3"><span class="folio">8</span><p class="kicker">04</p><h3>작사·작곡가</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/04.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 04</b>눈을 감고 흥얼거리는 사람, 옆 노트북 화면에 음표 파형.</figcaption></figure><p class="body">흥얼거림과 몇 마디 말로 완성된 노래를 만들어 음원을 발매해요.</p></section>
+<section class="pg idea v0"><span class="folio">9</span><p class="kicker">05</p><h3>내 삶 웹툰</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/05.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 05</b>식탁 위에 펼친 태블릿, 네 칸 만화 속 주인공이 화면 밖의 본인과 같은 얼굴.</figcaption></figure><p class="body">하루 동안 한 말과 찍은 사진이 매주 한 편의 웹툰이 돼요.</p></section>
+<section class="pg idea v1"><span class="folio">10</span><div class="txt"><p class="kicker">06</p><h3>무발화 번역</h3><p class="body">몸짓, 표정, 소리, 그림을 문장으로 옮겨요. 말이 없던 사람이 처음으로 &quot;문장&quot;을 갖게 돼요.</p></div><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/06.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 06</b>크레파스 그림을 내미는 아이, 그 옆 화면에 한 줄 문장이 떠오르고 엄마가 입을 가리고 있다.</figcaption></figure></section>
+<section class="pg chapter" style="background:#A9CBE4;color:#1A1A1A"><span class="folio">11</span><div class="chap-in"><p class="chap-no">2장</p><h2>세상이 그들에게 맞춰지는 것</h2></div></section>
+<section class="pg idea v2"><span class="folio">12</span><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/07.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 07</b>안경을 쓰고 식당 메뉴판을 보는 사람. 렌즈 안에만 그림 메뉴가 비친다.</figcaption></figure><div class="txt"><p class="kicker">07</p><h3>쉬운 세상 안경</h3><p class="body">스마트글래스로 간판, 메뉴판, 계약서를 보면 쉬운 말과 그림으로 바뀌어 보여요.</p></div></section>
+<section class="pg idea v3"><span class="folio">13</span><p class="kicker">08</p><h3>귓속 코치</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/08.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 08</b>회사 휴게실에서 동료와 함께 웃는 사람, 한쪽 귀에 작은 이어폰.</figcaption></figure><p class="body">대화 중에 이어폰으로 &quot;지금 저 사람 농담이야&quot;, &quot;여기서 고맙다고 하면 좋아&quot; 하고 속삭여 줘요.</p></section>
+<section class="pg idea v0"><span class="folio">14</span><p class="kicker">09</p><h3>모든 웹사이트에 &#x27;나 모드&#x27;</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/09.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 09</b>노트북 화면에 버튼 세 개만 크게 떠 있고, 그 앞에서 혼자 이체를 마친 사람이 기지개를 켠다.</figcaption></figure><p class="body">은행, 정부24, 쇼핑몰이 그 사람에게 맞는 난이도와 속도로 자동 재구성돼요.</p></section>
+<section class="pg idea v1"><span class="folio">15</span><div class="txt"><p class="kicker">10</p><h3>쉬운 판결문, 쉬운 공약집</h3><p class="body">법원과 선거 자료가 발표되는 즉시 개인 맞춤판이 나와요.</p></div><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/10.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 10</b>투표소 앞 줄에 선 사람이 손에 쥔 얇은 종이를 확인한다.</figcaption></figure></section>
+<section class="pg idea v2"><span class="folio">16</span><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/11.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 11</b>거실에서 VR 기기를 쓰고 허리 숙여 인사하는 사람. 발밑에 &#x27;첫 출근&#x27; 메모.</figcaption></figure><div class="txt"><p class="kicker">11</p><h3>인생 리허설 VR</h3><p class="body">첫 출근, 첫 이사, 첫 병원을 미리 열 번 살아 봐요.</p></div></section>
+<section class="pg chapter" style="background:#D78FC9;color:#1A1A1A"><span class="folio">17</span><div class="chap-in"><p class="chap-no">3장</p><h2>거꾸로, 그들이 세상과 AI를 가르친다</h2></div></section>
+<section class="pg idea v3"><span class="folio">18</span><p class="kicker">12</p><h3>AI의 &#x27;이해 심판&#x27;</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/12.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 12</b>긴 테이블에 앉은 심사단, 한 사람이 &quot;어려워요&quot; 카드를 들고 있고 맞은편 양복 차림 사람들이 받아 적는다.</figcaption></figure><p class="body">전 세계 AI 회사가 &quot;우리 설명이 정말 이해되는가&quot;를 당사자 심사단에게 받는 구조예요. 이 사람들이 이해하면 노인, 아이, 외국인도 다 이해해요.</p></section>
+<section class="pg idea v0"><span class="folio">19</span><p class="kicker">13</p><h3>돌봄로봇의 선생님</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/13.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 13</b>로봇 옆에서 컵을 드는 시범을 보이는 사람, 로봇이 같은 자세를 따라 한다.</figcaption></figure><p class="body">로봇에게 &quot;나는 이렇게 도와줘야 편해&quot;를 가르치는 직업이에요.</p></section>
+<section class="pg idea v1"><span class="folio">20</span><div class="txt"><p class="kicker">14</p><h3>다정한 AI의 원형</h3><p class="body">서두르지 않고, 반복을 귀찮아하지 않고, 솔직한 태도를 당사자와의 대화 데이터에서 배운 AI 성격이에요. 결국 모두가 쓰는 AI가 더 친절해져요.</p></div><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/14.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 14</b>지하철 안 여러 사람이 각자 휴대폰을 보며 편안한 얼굴. 모두의 화면에 같은 말 &quot;천천히 해도 돼요&quot;.</figcaption></figure></section>
+<section class="pg idea v2"><span class="folio">21</span><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/15.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 15</b>칠판 앞에서 &quot;시간은 버스 시간표 같아요&quot;라고 설명하는 사람, 강의실을 가득 채운 청중.</figcaption></figure><div class="txt"><p class="kicker">15</p><h3>사고방식 자체가 자산</h3><p class="body">구체적인 경험으로 추상을 이해하는 그들의 방식이 &quot;좋은 설명&quot;의 세계 표준이 돼요.</p></div></section>
+<section class="pg chapter" style="background:#B5D195;color:#1A1A1A"><span class="folio">22</span><div class="chap-in"><p class="chap-no">4장</p><h2>일과 경제</h2></div></section>
+<section class="pg idea v3"><span class="folio">23</span><p class="kicker">16</p><h3>AI 직원을 둔 1인 사장</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/16.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 16</b>작은 카페 카운터 뒤, 앞치마를 두른 사장이 태블릿에서 &quot;좋아요&quot; 버튼을 누른다.</figcaption></figure><p class="body">굿즈샵, 카페, 유튜브 채널 운영을 에이전트가 뒷받침해요. 사장은 결정만 해요.</p></section>
+<section class="pg idea v0"><span class="folio">24</span><p class="kicker">17</p><h3>캐릭터와 IP 주인</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/17.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 17</b>편의점 진열대의 과자 봉지에 그려진 캐릭터를 가리키며 친구에게 자랑하는 사람.</figcaption></figure><p class="body">자기가 만든 캐릭터가 라이선싱돼서 로열티가 들어와요.</p></section>
+<section class="pg idea v1"><span class="folio">25</span><div class="txt"><p class="kicker">18</p><h3>데이터 배당 기본소득</h3><p class="body">내 기록과 목소리가 쓰일 때마다 수입이 생겨요.</p></div><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/18.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 18</b>휴대폰 알림 &quot;이번 달 배당금이 들어왔어요&quot;를 보고 엄지를 드는 사람.</figcaption></figure></section>
+<section class="pg idea v2"><span class="folio">26</span><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/19.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 19</b>헤드셋을 쓰고 손을 흔드는 사람, 모니터 속 아바타가 똑같이 손을 흔든다.</figcaption></figure><div class="txt"><p class="kicker">19</p><h3>가상세계 직업</h3><p class="body">게임 속 NPC 연기자나 메타버스 안내원이에요. 몸이 아니라 개성이 경쟁력이 돼요.</p></div></section>
+<section class="pg idea v3"><span class="folio">27</span><p class="kicker">20</p><h3>업무 쪼개기 AI</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/20.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 20</b>도서관 서가에서 책을 제자리에 꽂는 직원. 수레에 번호 카드가 순서대로 붙어 있다.</figcaption></figure><p class="body">어떤 직장이든 그 사람이 할 수 있는 단위로 일을 재구성해 줘요.</p></section>
+<section class="pg chapter" style="background:#F1B891;color:#1A1A1A"><span class="folio">28</span><div class="chap-in"><p class="chap-no">5장</p><h2>관계와 연결</h2></div></section>
+<section class="pg idea v0"><span class="folio">29</span><p class="kicker">21</p><h3>세계 당사자 네트워크</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/21.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 21</b>화상 통화 화면에 세 나라 사람이 웃고 있다. 각자 다른 언어의 말풍선.</figcaption></figure><p class="body">실시간 통역으로 한국, 브라질, 핀란드의 발달장애인이 친구가 되고 국제 자기옹호 연대를 만들어요.</p></section>
+<section class="pg idea v1"><span class="folio">30</span><div class="txt"><p class="kicker">22</p><h3>가족 오해 통역기</h3><p class="body">엄마의 잔소리와 내 속마음을 서로 알아듣는 말로 바꿔 줘요.</p></div><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/22.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 22</b>식탁에 마주 앉은 엄마와 자녀, 가운데 휴대폰. 둘 다 조금 쑥스러운 얼굴.</figcaption></figure></section>
+<section class="pg idea v2"><span class="folio">31</span><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/23.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 23</b>공원 벤치에 앉은 두 사람, 한 사람이 조심스럽게 음료를 건넨다.</figcaption></figure><div class="txt"><p class="kicker">23</p><h3>친구·연애 매칭과 데이트 코치</h3><p class="body">관계를 시작하고 이어 가는 걸 도와줘요.</p></div></section>
+<section class="pg idea v3"><span class="folio">32</span><p class="kicker">24</p><h3>기억 앨범</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/24.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 24</b>소파에 나란히 앉은 친구들이 태블릿 속 바닷가 사진을 가리키며 웃는다.</figcaption></figure><p class="body">함께한 사람들과 순간을 기억해 줘서 &quot;그때 우리 거기 갔었잖아&quot;를 같이 말할 수 있어요.</p></section>
+<section class="pg chapter" style="background:#86C3B9;color:#1A1A1A"><span class="folio">33</span><div class="chap-in"><p class="chap-no">6장</p><h2>권리와 시민</h2></div></section>
+<section class="pg idea v0"><span class="folio">34</span><p class="kicker">25</p><h3>개인 AI 보좌관</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/25.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 25</b>주민센터 창구 앞, 휴대폰을 보며 또박또박 말하는 사람. 창구 직원이 고개를 끄덕인다.</figcaption></figure><p class="body">민원, 이의신청, 계약 검토, 권리 안내를 옆에서 해 줘요.</p></section>
+<section class="pg idea v1"><span class="folio">35</span><div class="txt"><p class="kicker">26</p><h3>당사자 정치인</h3><p class="body">출마하고, 의정 활동을 AI 보좌진이 받쳐 줘요.</p></div><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/26.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 26</b>연단에서 원고 없이 말하는 사람, 가슴에 달린 이름표.</figcaption></figure></section>
+<section class="pg idea v2"><span class="folio">36</span><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/27.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 27</b>회의실 벽 화면에 작은 사람 그림 수천 개, 그중 몇이 손을 들고 있다.</figcaption></figure><div class="txt"><p class="kicker">27</p><h3>정책 시뮬레이터</h3><p class="body">새 제도를 만들 때 당사자 수천 명의 가상 삶에 먼저 돌려 보고 결정해요.</p></div></section>
+<section class="pg chapter" style="background:#3F4A78;color:#F7F4EC"><span class="folio">37</span><div class="chap-in"><p class="chap-no">7장</p><h2>먼 미래</h2></div></section>
+<section class="pg idea v3"><span class="folio">38</span><p class="kicker">28</p><h3>평생 동반자</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/28.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 28</b>같은 창가 의자에 앉은 한 사람의 세 나이(소년·중년·노년)가 겹쳐 그려져 있다.</figcaption></figure><p class="body">한 사람을 60년 동안 기억하고 이해하는 AI예요. 부모가 떠나도 &quot;나를 아는 존재&quot;가 끊기지 않아요.</p></section>
+<section class="pg idea v0"><span class="folio">39</span><p class="kicker">29</p><h3>부모의 지혜가 남는 AI</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/29.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 29</b>부엌에서 혼자 된장국을 끓이는 중년, 벽에 붙은 엄마 손글씨 메모와 스피커.</figcaption></figure><p class="body">엄마가 어떻게 판단했는지를 배운 조언자예요.</p></section>
+<section class="pg idea v1"><span class="folio">40</span><div class="txt"><p class="kicker">30</p><h3>생각을 바로 표현</h3><p class="body">뇌-컴퓨터 인터페이스로 말이나 글을 거치지 않고 생각을 표현해요.</p></div><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/30.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 30</b>눈을 감은 사람 머리 위로 떠오른 가느다란 선이 문장이 되어 흘러간다.</figcaption></figure></section>
+<section class="pg idea finale"><span class="folio">41</span><p class="kicker">31</p><h3>&#x27;지적장애&#x27; 범주의 소멸</h3><figure class="fig"><img src="/naljabooks-blog/booklets/assets/삽화/31.png" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"><figcaption class="ph"><b>삽화 31</b>거리의 여러 사람. 누구는 안경을, 누구는 이어폰을 끼고 있고, 아무도 누가 누군지 구분되지 않는다. 앞표지 뒷모습과 짝이 되는 앞모습.</figcaption></figure><p class="body">안경이 근시를 장애가 아니게 만들었듯, 인지 보조가 공기처럼 당연해지면 &quot;지능이 낮다&quot;는 구분 자체가 의미를 잃어요. 남는 건 개성, 취향, 경험의 차이뿐이에요.</p></section>
+<section class="pg blank"><span class="folio">42</span></section>
+<section class="pg back"><div class="back-mid"><div class="dots"><i style="background:#D2B47C"></i><i style="background:#A9CBE4"></i><i style="background:#D78FC9"></i><i style="background:#B5D195"></i><i style="background:#F1B891"></i><i style="background:#86C3B9"></i><i style="background:#3F4A78"></i></div><p class="closing">&quot;지능이 낮다&quot;는 구분 자체가 의미를 잃어요.</p><p class="back-title">AI가 지적장애에게</p></div><div class="imprint"><img class="logo" src="/naljabooks-blog/booklets/assets/도서출판_날자_로고.png" alt="도서출판 날자"><div class="imprint-t"><span>www.naljabooks.com</span><span>© 2026 도서출판 날자. All rights reserved.</span></div></div></section>
+</body>
+</html>

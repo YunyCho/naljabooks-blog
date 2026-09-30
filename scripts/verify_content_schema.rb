@@ -27,7 +27,7 @@ if topic_ids.size != topic_data.size
 end
 
 documents = { "ko" => {}, "en" => {} }
-content_sources = Dir.glob(POSTS.join("*.md")).sort.map { |path| [path, "posts"] }
+content_sources = Dir.glob(POSTS.join("*.{md,html}")).sort.map { |path| [path, "posts"] }
 content_sources += Dir.glob(ENGLISH.join("*.md")).sort.map { |path| [path, "english"] }
 
 content_sources.each do |path, collection|
@@ -47,7 +47,7 @@ content_sources.each do |path, collection|
     aliases: true
   ) || {}
   body = raw.sub(/\A---\s*\n.*?\n---\s*(?:\n|\z)/m, "")
-  slug = source.basename(".md").to_s.sub(/^\d{4}-\d{2}-\d{2}-/, "")
+  slug = source.basename(source.extname).to_s.sub(/^\d{4}-\d{2}-\d{2}-/, "")
   language = data["lang"] == "en" ? "en" : "ko"
 
   errors << "#{relative}: duplicate #{language} slug #{slug}" if documents[language].key?(slug)
@@ -55,11 +55,12 @@ content_sources.each do |path, collection|
 
   REQUIRED_FIELDS.each do |field|
     value = data[field]
-    missing = value.nil? || (value.respond_to?(:empty?) && value.empty?)
+    missing = value.nil? || (value.respond_to?(:empty?) && value.empty? && !(field == "toc" && source.extname == ".html"))
     errors << "#{relative}: missing #{field}" if missing
   end
 
-  errors << "#{relative}: layout must be post" unless data["layout"] == "post"
+  expected_layout = source.extname == ".html" ? "booklet" : "post"
+  errors << "#{relative}: layout must be #{expected_layout}" unless data["layout"] == expected_layout
   unless CONTENT_TYPES.include?(data["content_type"])
     errors << "#{relative}: content_type must be one of #{CONTENT_TYPES.join(', ')}"
   end
@@ -120,7 +121,9 @@ content_sources.each do |path, collection|
     end
   end
 
-  if body.match?(/<\/?[a-z][^>]*>/i)
+  if source.extname == ".html"
+    errors << "#{relative}: booklet must be a complete HTML document" unless body.include?("<!DOCTYPE html>") && body.include?('class="pg cover"')
+  elsif body.match?(/<\/?[a-z][^>]*>/i)
     errors << "#{relative}: inline HTML keeps content tied to one presentation"
   end
 end
