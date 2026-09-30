@@ -4,7 +4,7 @@ lang: en
 content_type: article
 title: "AI, to People with Intellectual Disabilities"
 description: "Read the original illustrated booklet on how AI should benefit people with intellectual disabilities."
-date: 2026-10-01 12:00:00 +0900
+date: 2026-10-01
 updated: 2026-10-01
 last_modified_at: 2026-10-01
 author:

@@ -4,7 +4,7 @@ lang: ko-KR
 content_type: article
 title: "AI가 지적장애에게"
 description: "AI와 지적장애인의 배움과 삶을 다룬 그림 소책자를 원래의 지면 디자인으로 읽어 보세요."
-date: 2026-10-01 12:01:00 +0900
+date: 2026-10-01
 updated: 2026-10-01
 last_modified_at: 2026-10-01
 author:
