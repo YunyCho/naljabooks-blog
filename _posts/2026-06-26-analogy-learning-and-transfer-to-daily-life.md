@@ -17,6 +17,7 @@ topics:
   - developmental-learning
 tags: ["유추학습", "일상전이", "일반화", "문해력", "지적장애"]
 related:
+  - intellectual-disability-self-instruction-for-multi-step-tasks
   - intellectual-disability-review-spacing-and-retrieval
   - developmental-disability-money-management-education-beyond-calculation
 toc:
@@ -97,4 +98,4 @@ sources:
 
 ## 결론 {#conclusion}
 
-유추 학습은 일상생활 전이를 위한 사고 연습이다. 글 속 관계를 자기 생활의 관계로 옮기는 과정이 반복될 때, 문해력은 실제 생활의 판단과 선택으로 이어진다. 날자꾸러미가 유추를 핵심 원리로 삼는 이유는 배움이 교재 안에서 끝나지 않게 하기 위해서다.
+유추 학습은 일상생활 전이를 위한 사고 연습이다. 글 속 관계를 자기 생활의 관계로 옮기는 과정이 반복될 때, 문해력은 실제 생활의 판단과 선택으로 이어진다. 다단계 생활 과제에서 각 단계를 스스로 확인하도록 돕는 방법은 [지적장애인 다단계 과제 학습 글]({{ '/archive/intellectual-disability-self-instruction-for-multi-step-tasks/' | relative_url }})에서 이어 본다. 날자꾸러미가 유추를 핵심 원리로 삼는 이유는 배움이 교재 안에서 끝나지 않게 하기 위해서다.

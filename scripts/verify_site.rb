@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/intellectual-disability-self-instruction-for-multi-step-tasks/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "지적장애인이 여러 단계의 일을 배울 때 필요한 것은",
+    anchors: %w[summary scope self-instruction task-map practice support record limits checklist conclusion],
+    source_count: 2
+  },
   "archive/intellectual-disability-inclusive-meeting-support/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인 회의 참여 지원은 초대장을 보내는 순간부터 시작된다",
@@ -246,6 +252,16 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-10-13-intellectual-disability-self-instruction-for-multi-step-tasks.md" => {
+    primary_query: "지적장애인 다단계 과제 학습",
+    bridge_queries: ["발달장애 생활기술 교육", "지적장애인 자기지시"],
+    related_urls: %w[
+      /archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/
+      /archive/intellectual-disability-review-spacing-and-retrieval/
+      /archive/analogy-learning-and-transfer-to-daily-life/
+    ],
+    updated: Date.new(2026, 10, 13)
+  },
   "_posts/2026-09-22-intellectual-disability-inclusive-meeting-support.md" => {
     primary_query: "지적장애인 회의 참여 지원",
     bridge_queries: ["발달장애인 회의", "자기옹호"],
@@ -671,8 +687,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("AI가 지적장애에게")
-    errors << "index.html: Korean booklet is not the newest regular story"
+  unless first_regular_story&.include?("지적장애인 다단계 과제 학습")
+    errors << "index.html: self-instruction article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -908,6 +924,7 @@ informed_agreement_path = "archive/when-yes-is-not-informed-agreement/index.html
 informed_agreement_url = "https://yunycho.github.io/naljabooks-blog/archive/when-yes-is-not-informed-agreement/"
 self_advocate_review_url = "https://yunycho.github.io/naljabooks-blog/archive/why-self-advocate-review-must-start-at-planning/"
 intellectual_disability_safety_education_url = "https://yunycho.github.io/naljabooks-blog/archive/intellectual-disability-safety-education-needs-practice/"
+self_instruction_url = "https://yunycho.github.io/naljabooks-blog/archive/intellectual-disability-self-instruction-for-multi-step-tasks/"
 private_speech_path = "archive/private-speech-is-not-just-problem-behavior/index.html"
 private_speech_url = "https://yunycho.github.io/naljabooks-blog/archive/private-speech-is-not-just-problem-behavior/"
 pain_and_sensory_path = "archive/pain-and-sensory-needs-mistaken-for-intellectual-disability/index.html"
@@ -1056,13 +1073,13 @@ if feed.file?
   feed_text = feed.read
   errors << "feed.xml: missing Korean booklet" unless feed_text.include?("#{BASEURL}/archive/ai-to-people-with-intellectual-disabilities-ko/")
   errors << "feed.xml: missing English booklet" unless feed_text.include?("#{BASEURL}/archive/ai-to-people-with-intellectual-disabilities/")
-  errors << "feed.xml: missing safety education practice article" unless feed_text.include?(intellectual_disability_safety_education_url)
+  errors << "feed.xml: missing self-instruction article" unless feed_text.include?(self_instruction_url)
   errors << "feed.xml: missing adult reading program article" unless feed_text.include?(adult_reading_program_url)
   errors << "feed.xml: missing learning motivation article" unless feed_text.include?(learning_motivation_url)
   errors << "feed.xml: missing money management education article" unless feed_text.include?(money_management_url)
   errors << "feed.xml: education-demand article should leave the latest 10" if feed_text.include?(education_demand_url)
   errors << "feed.xml: adult-respectful learning materials article should leave the latest 10" if feed_text.include?(adult_respectful_materials_url)
-  errors << "feed.xml: prompt-fading article should leave the latest 10" if feed_text.include?(prompt_fading_url)
+  errors << "feed.xml: safety education practice article should leave the latest 10" if feed_text.include?(intellectual_disability_safety_education_url)
   if feed_text.include?(diagnostic_overshadowing_url)
     errors << "feed.xml: feed must contain only the latest 10 posts"
   end
@@ -1380,7 +1397,7 @@ end
 end
 
 self_advocacy_organizations_link = "#{BASEURL}/archive/intellectual-disability-self-advocacy-organizations-abroad/"
-%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+%w[topics/index.html sitemap.xml feed.xml].each do |path|
   errors << "#{path}: missing self-advocacy organizations article" unless SITE.join(path).read.include?(self_advocacy_organizations_link)
 end
 %w[why-self-advocate-review-must-start-at-planning self-determination-education-beyond-offering-choices learning-rights-and-literacy-support-for-intellectual-disabilities].each do |slug|
@@ -1391,6 +1408,15 @@ end
 meeting_link = "#{BASEURL}/archive/intellectual-disability-inclusive-meeting-support/"
 %w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
   errors << "#{path}: missing inclusive meeting article" unless SITE.join(path).read.include?(meeting_link)
+end
+
+self_instruction_link = "#{BASEURL}/archive/intellectual-disability-self-instruction-for-multi-step-tasks/"
+%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+  errors << "#{path}: missing self-instruction article" unless SITE.join(path).read.include?(self_instruction_link)
+end
+%w[how-and-when-to-fade-prompts-for-intellectual-disability-learning intellectual-disability-review-spacing-and-retrieval analogy-learning-and-transfer-to-daily-life].each do |slug|
+  path = SITE.join("archive", slug, "index.html")
+  errors << "#{slug}: missing self-instruction backlink" unless path.file? && path.read.include?(self_instruction_link)
 end
 %w[why-self-advocate-review-must-start-at-planning intellectual-disability-self-advocacy-organizations-abroad self-determination-education-beyond-offering-choices].each do |slug|
   path = SITE.join("archive", slug, "index.html")

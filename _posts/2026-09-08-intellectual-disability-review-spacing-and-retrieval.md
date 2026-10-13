@@ -20,6 +20,7 @@ seo:
   secondary_queries: ["지적장애 반복학습 방법", "지적장애인 학습 복습 간격", "지적장애인 기억 유지 학습"]
   bridge_queries: ["발달장애 반복학습", "발달장애 학습"]
 related:
+  - intellectual-disability-self-instruction-for-multi-step-tasks
   - how-and-when-to-fade-prompts-for-intellectual-disability-learning
   - intellectual-disability-learning-motivation-challenge-and-retry
   - analogy-learning-and-transfer-to-daily-life
@@ -108,7 +109,7 @@ Cepeda 등의 언어 회상 과제 메타분석은 184편에 포함된 317개 �
 
 기록에는 날짜, 지난 연습 이후의 간격, 질문, 응답 방식, 실제 반응, 제공한 도움과 다음 확인 시점을 남긴다. 가령 ‘성공’ 하나로 묶는 대신 ‘설명 직후 선택지에서 맞힘’과 ‘다음 만남에서 상황 단서를 듣고 말함’을 구별한다. 점수를 진단이나 능력의 고정 평가로 사용하지 않는다.
 
-그 뒤에는 당사자가 원하는 생활 장면을 별도로 정해 본다. 예약 안내에서 날짜를 찾는 것처럼 실제 사용을 확인할 질문을 만들 수 있다. 새 상황으로 연결하는 설계는 [유추 학습과 일상생활 전이 글]({{ '/archive/analogy-learning-and-transfer-to-daily-life/' | relative_url }})에서 더 살펴볼 수 있다.
+그 뒤에는 당사자가 원하는 생활 장면을 별도로 정해 본다. 예약 안내에서 날짜를 찾는 것처럼 실제 사용을 확인할 질문을 만들 수 있다. 새 상황으로 연결하는 설계는 [유추 학습과 일상생활 전이 글]({{ '/archive/analogy-learning-and-transfer-to-daily-life/' | relative_url }})에서, 여러 단계에서 필요한 단서를 스스로 확인하는 방법은 [지적장애인 다단계 과제 학습 글]({{ '/archive/intellectual-disability-self-instruction-for-multi-step-tasks/' | relative_url }})에서 더 살펴볼 수 있다.
 
 ## 복습 계획 점검표 {#checklist}
 

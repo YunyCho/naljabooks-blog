@@ -22,6 +22,7 @@ seo:
   secondary_queries: ["프롬프트 페이딩 방법", "지적장애인 학습 힌트", "학습 도움 줄이는 방법"]
   bridge_queries: ["발달장애 학습 힌트", "발달장애 프롬프트 페이딩"]
 related:
+  - intellectual-disability-self-instruction-for-multi-step-tasks
   - intellectual-disability-review-spacing-and-retrieval
   - intellectual-disability-learning-motivation-challenge-and-retry
   - how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities
@@ -151,7 +152,7 @@ sources:
 7. 다른 사람·자료·장소에서도 수행하는지 확인했는가?
 8. 필요한 접근성 도구를 독립의 반대말로 취급하지 않았는가?
 
-학습자료 전체의 존중 기준은 [성인 지적장애인 학습자료를 유아적으로 만들지 않는 기준]({{ '/archive/adult-respectful-learning-materials-for-intellectual-disabilities/' | relative_url }})에서, 생활 중심 목표와 기록 원칙은 [성인 지적장애인 평생교육 프로그램 구성]({{ '/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/' | relative_url }})에서 이어서 볼 수 있다. 읽기 과제를 명시적으로 가르치는 이유는 [경도 지적장애 문해력 교육 글]({{ '/archive/why-literacy-support-is-needed-for-mild-intellectual-disability-youth-and-adults/' | relative_url }})에서 설명한다.
+학습자료 전체의 존중 기준은 [성인 지적장애인 학습자료를 유아적으로 만들지 않는 기준]({{ '/archive/adult-respectful-learning-materials-for-intellectual-disabilities/' | relative_url }})에서, 생활 중심 목표와 기록 원칙은 [성인 지적장애인 평생교육 프로그램 구성]({{ '/archive/how-naljakkurumi-designs-lifelong-learning-for-adults-with-intellectual-disabilities/' | relative_url }})에서 이어서 볼 수 있다. 여러 단계를 지원 없이 진행하도록 돕는 자기지시는 [지적장애인 다단계 과제 학습 글]({{ '/archive/intellectual-disability-self-instruction-for-multi-step-tasks/' | relative_url }})에서 이어서 다룬다.
 
 ## 결론 {#conclusion}
 
