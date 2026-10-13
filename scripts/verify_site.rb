@@ -36,7 +36,7 @@ EXPECTED = %w[
 POSTS = {
   "archive/intellectual-disability-self-instruction-for-multi-step-tasks/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
-    required_text: "지적장애인이 여러 단계의 일을 배울 때 필요한 것은",
+    required_text: "지적장애인이 여러 순서가 이어지는 일을 배울 때 필요한 것은",
     anchors: %w[summary scope self-instruction task-map practice support record limits checklist conclusion],
     source_count: 2
   },
@@ -253,7 +253,7 @@ POSTS = {
 
 SEO_PILLARS = {
   "_posts/2026-10-13-intellectual-disability-self-instruction-for-multi-step-tasks.md" => {
-    primary_query: "지적장애인 다단계 과제 학습",
+    primary_query: "지적장애인 생활 과제 배우기",
     bridge_queries: ["발달장애 생활기술 교육", "지적장애인 자기지시"],
     related_urls: %w[
       /archive/how-and-when-to-fade-prompts-for-intellectual-disability-learning/
@@ -687,8 +687,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인 다단계 과제 학습")
-    errors << "index.html: self-instruction article is not the newest regular story"
+  unless first_regular_story&.include?("지적장애인 생활 과제 배우기")
+    errors << "index.html: life-task article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
