@@ -59,6 +59,7 @@ defaults:
         type: Organization
       category: "Learning and Everyday Life"
 exclude:
+  - 글감.md
   - docs
   - drafts
   - naver-drafts

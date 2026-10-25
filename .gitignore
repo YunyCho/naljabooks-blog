@@ -4,3 +4,5 @@ _site/
 .jekyll-metadata
 .bundle/
 vendor/
+/글감.md
+/docs/local-editorial/
