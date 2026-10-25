@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/intellectual-disability-and-autism-differences/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "같은 사람을 두고 서로 다른 장애 이름을 들으면",
+    anchors: %w[summary intellectual-disability autism comparison korean-law together observation support conclusion],
+    source_count: 7
+  },
   "archive/intellectual-disability-self-instruction-for-multi-step-tasks/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "지적장애인이 여러 순서가 이어지는 일을 배울 때 필요한 것은",
@@ -252,6 +258,17 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-10-25-intellectual-disability-and-autism-differences.md" => {
+    primary_query: "지적장애와 자폐 차이",
+    bridge_queries: ["발달장애 이해"],
+    scope_explanation: "발달장애 이해를 위한 이 글은 지적장애와 자폐를 함께 다루며, 어느 한쪽의 특성을 다른 쪽 전체에 일반화하지 않습니다.",
+    related_urls: %w[
+      /archive/diagnostic-overshadowing-and-intellectual-disability/
+      /archive/adult-respectful-learning-materials-for-intellectual-disabilities/
+      /archive/learning-rights-and-literacy-support-for-intellectual-disabilities/
+    ],
+    updated: Date.new(2026, 10, 25)
+  },
   "_posts/2026-10-13-intellectual-disability-self-instruction-for-multi-step-tasks.md" => {
     primary_query: "지적장애인 생활 과제 배우기",
     bridge_queries: ["발달장애 생활기술 교육", "지적장애인 자기지시"],
@@ -504,7 +521,9 @@ SEO_PILLARS.each do |relative_path, expected|
     errors << "#{relative_path}: intro must include bridge query #{query.inspect}" unless intro.include?(query)
   end
   errors << "#{relative_path}: description must connect the developmental-disability bridge" unless data["description"].to_s.include?("발달장애")
-  unless intro.include?("지적장애인과 자폐성장애인") && intro.include?("넓은")
+  if expected[:scope_explanation]
+    errors << "#{relative_path}: intro must explain the article's population scope" unless intro.include?(expected[:scope_explanation])
+  elsif !intro.include?("지적장애인과 자폐성장애인") || !intro.include?("넓은")
     errors << "#{relative_path}: intro must explain that 발달장애 is broader than the article's 지적장애 scope"
   end
 
@@ -695,8 +714,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애인 생활 과제 배우기")
-    errors << "index.html: life-task article is not the newest regular story"
+  unless first_regular_story&.include?("지적장애와 자폐는 어떻게 다를까?")
+    errors << "index.html: intellectual-disability and autism article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -1082,7 +1101,7 @@ if feed.file?
   errors << "feed.xml: missing Korean booklet" unless feed_text.include?("#{BASEURL}/archive/ai-to-people-with-intellectual-disabilities-ko/")
   errors << "feed.xml: missing English booklet" unless feed_text.include?("#{BASEURL}/archive/ai-to-people-with-intellectual-disabilities/")
   errors << "feed.xml: missing self-instruction article" unless feed_text.include?(self_instruction_url)
-  errors << "feed.xml: missing adult reading program article" unless feed_text.include?(adult_reading_program_url)
+  errors << "feed.xml: adult reading program article should leave the latest 10" if feed_text.include?(adult_reading_program_url)
   errors << "feed.xml: missing learning motivation article" unless feed_text.include?(learning_motivation_url)
   errors << "feed.xml: missing money management education article" unless feed_text.include?(money_management_url)
   errors << "feed.xml: education-demand article should leave the latest 10" if feed_text.include?(education_demand_url)
@@ -1414,9 +1433,10 @@ end
 end
 
 meeting_link = "#{BASEURL}/archive/intellectual-disability-inclusive-meeting-support/"
-%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+%w[topics/index.html sitemap.xml feed.xml].each do |path|
   errors << "#{path}: missing inclusive meeting article" unless SITE.join(path).read.include?(meeting_link)
 end
+errors << "index.html: inclusive meeting article should leave the latest 4" if SITE.join("index.html").read.include?(meeting_link)
 
 self_instruction_link = "#{BASEURL}/archive/intellectual-disability-self-instruction-for-multi-step-tasks/"
 %w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
@@ -1429,6 +1449,15 @@ end
 %w[why-self-advocate-review-must-start-at-planning intellectual-disability-self-advocacy-organizations-abroad self-determination-education-beyond-offering-choices].each do |slug|
   path = SITE.join("archive", slug, "index.html")
   errors << "#{slug}: missing inclusive meeting backlink" unless path.file? && path.read.include?(meeting_link)
+end
+
+differences_link = "#{BASEURL}/archive/intellectual-disability-and-autism-differences/"
+%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+  errors << "#{path}: missing intellectual-disability and autism article" unless SITE.join(path).read.include?(differences_link)
+end
+%w[diagnostic-overshadowing-and-intellectual-disability adult-respectful-learning-materials-for-intellectual-disabilities learning-rights-and-literacy-support-for-intellectual-disabilities].each do |slug|
+  path = SITE.join("archive", slug, "index.html")
+  errors << "#{slug}: missing intellectual-disability and autism backlink" unless path.file? && path.read.include?(differences_link)
 end
 
 if errors.empty?

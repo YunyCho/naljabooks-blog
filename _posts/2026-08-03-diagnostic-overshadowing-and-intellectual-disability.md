@@ -23,6 +23,7 @@ seo:
   secondary_queries: ["진단적 가림", "diagnostic overshadowing 지적장애", "지적장애 행동 변화 원인"]
   bridge_queries: ["발달장애 건강권", "지적장애 유추 학습", "지적장애 학습 지원"]
 related:
+  - intellectual-disability-and-autism-differences
   - pain-and-sensory-needs-mistaken-for-intellectual-disability
   - why-analogy-matters
   - expression-does-not-define-understanding-for-people-with-intellectual-disabilities
