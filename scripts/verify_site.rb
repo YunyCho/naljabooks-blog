@@ -455,6 +455,10 @@ SEO_PILLARS = {
   }
 }.freeze
 
+# Preserve keyword-in-title checks for published articles under the old policy.
+# New articles may use question or sentence titles without the exact SEO query.
+TITLE_POLICY_START_DATE = Date.new(2026, 10, 25)
+
 errors = []
 
 SEO_PILLARS.each do |relative_path, expected|
@@ -472,6 +476,7 @@ SEO_PILLARS.each do |relative_path, expected|
   primary_query = expected.fetch(:primary_query)
   bridge_queries = expected.fetch(:bridge_queries)
   intro = body.split(/^##\s/, 2).first.to_s
+  require_query_in_title = data["date"].is_a?(Date) && data["date"] < TITLE_POLICY_START_DATE
 
   errors << "#{relative_path}: seo.primary_query must be #{primary_query.inspect}" unless seo["primary_query"] == primary_query
   if seo["search_intent"].to_s.strip.empty?
@@ -484,12 +489,13 @@ SEO_PILLARS.each do |relative_path, expected|
     errors << "#{relative_path}: seo.bridge_queries must be #{bridge_queries.inspect}"
   end
 
-  {
-    "title" => data["title"].to_s,
+  query_fields = {
     "description" => data["description"].to_s,
     "tags" => Array(data["tags"]).join(" "),
     "intro" => intro
-  }.each do |field, value|
+  }
+  query_fields["title"] = data["title"].to_s if require_query_in_title
+  query_fields.each do |field, value|
     errors << "#{relative_path}: #{field} must include primary query #{primary_query.inspect}" unless value.include?(primary_query)
   end
 
@@ -519,7 +525,9 @@ SEO_PILLARS.each do |relative_path, expected|
   built_post = SITE.join("archive", slug, "index.html")
   if built_post.file?
     html = built_post.read
-    errors << "#{built_post.relative_path_from(SITE)}: rendered h1 must include #{primary_query.inspect}" unless html.match?(%r{<h1>[^<]*#{Regexp.escape(primary_query)}[^<]*</h1>})
+    if require_query_in_title && !html.match?(%r{<h1>[^<]*#{Regexp.escape(primary_query)}[^<]*</h1>})
+      errors << "#{built_post.relative_path_from(SITE)}: rendered h1 must include #{primary_query.inspect}"
+    end
     errors << "#{built_post.relative_path_from(SITE)}: missing related-reading navigation" unless html.include?('class="related-reading"')
     expected_modified = expected_updated.strftime("%Y-%m-%d")
     errors << "#{built_post.relative_path_from(SITE)}: revised JSON-LD dateModified must be #{expected_modified}" unless html.include?(%("dateModified":"#{expected_modified}T00:00:00+09:00"))
