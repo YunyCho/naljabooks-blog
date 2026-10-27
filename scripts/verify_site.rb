@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/ai-chatbot-safety-with-support/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "AI 챗봇은 궁금한 말을 정리하거나",
+    anchors: %w[summary scope purpose facts privacy choice pause routine conclusion],
+    source_count: 5
+  },
   "archive/intellectual-disability-and-autism-differences/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "같은 사람을 두고 서로 다른 장애 이름을 들으면",
@@ -258,6 +264,17 @@ POSTS = {
 }.freeze
 
 SEO_PILLARS = {
+  "_posts/2026-10-28-ai-chatbot-safety-with-support.md" => {
+    primary_query: "지적장애인 AI 챗봇",
+    bridge_queries: ["발달장애 AI 안전", "발달장애 디지털 접근성"],
+    scope_explanation: "이 글은 그중 지적장애인이 가족·지원자와 대화형 AI를 사용할 때의 지원을 중심으로 하며, 다른 사람에게 같은 방식이 맞는다고 일반화하지 않습니다.",
+    related_urls: %w[
+      /archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/
+      /archive/why-human-review-is-needed-for-ai-learning-materials/
+      /archive/self-determination-education-beyond-offering-choices/
+    ],
+    updated: Date.new(2026, 10, 28)
+  },
   "_posts/2026-10-25-intellectual-disability-and-autism-differences.md" => {
     primary_query: "지적장애와 자폐 차이",
     bridge_queries: ["발달장애 이해"],
@@ -714,8 +731,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("지적장애와 자폐는 어떻게 다를까?")
-    errors << "index.html: intellectual-disability and autism article is not the newest regular story"
+  unless first_regular_story&.include?("AI 챗봇을 함께 쓸 때, 먼저 확인할 다섯 가지")
+    errors << "index.html: AI chatbot safety article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -1102,7 +1119,7 @@ if feed.file?
   errors << "feed.xml: missing English booklet" unless feed_text.include?("#{BASEURL}/archive/ai-to-people-with-intellectual-disabilities/")
   errors << "feed.xml: missing self-instruction article" unless feed_text.include?(self_instruction_url)
   errors << "feed.xml: adult reading program article should leave the latest 10" if feed_text.include?(adult_reading_program_url)
-  errors << "feed.xml: missing learning motivation article" unless feed_text.include?(learning_motivation_url)
+  errors << "feed.xml: learning motivation article should leave the latest 10" if feed_text.include?(learning_motivation_url)
   errors << "feed.xml: missing money management education article" unless feed_text.include?(money_management_url)
   errors << "feed.xml: education-demand article should leave the latest 10" if feed_text.include?(education_demand_url)
   errors << "feed.xml: adult-respectful learning materials article should leave the latest 10" if feed_text.include?(adult_respectful_materials_url)
@@ -1454,6 +1471,15 @@ end
 differences_link = "#{BASEURL}/archive/intellectual-disability-and-autism-differences/"
 %w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
   errors << "#{path}: missing intellectual-disability and autism article" unless SITE.join(path).read.include?(differences_link)
+end
+
+ai_chatbot_link = "#{BASEURL}/archive/ai-chatbot-safety-with-support/"
+%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+  errors << "#{path}: missing AI chatbot safety article" unless SITE.join(path).read.include?(ai_chatbot_link)
+end
+%w[how-ai-can-support-learning-for-people-with-intellectual-disabilities why-human-review-is-needed-for-ai-learning-materials self-determination-education-beyond-offering-choices].each do |slug|
+  path = SITE.join("archive", slug, "index.html")
+  errors << "#{slug}: missing AI chatbot safety backlink" unless path.file? && path.read.include?(ai_chatbot_link)
 end
 %w[diagnostic-overshadowing-and-intellectual-disability adult-respectful-learning-materials-for-intellectual-disabilities learning-rights-and-literacy-support-for-intellectual-disabilities].each do |slug|
   path = SITE.join("archive", slug, "index.html")

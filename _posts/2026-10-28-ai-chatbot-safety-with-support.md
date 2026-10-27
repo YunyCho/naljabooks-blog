@@ -1,0 +1,145 @@
+---
+layout: post
+lang: ko-KR
+content_type: article
+title: "AI 챗봇을 함께 쓸 때, 먼저 확인할 다섯 가지"
+description: "지적장애인 AI 챗봇을 가족·지원자와 함께 사용할 때 사실 확인, 개인정보, 선택권, 위험 신호를 점검합니다. 발달장애 AI 안전과 발달장애 디지털 접근성의 실천 기준을 안내합니다."
+date: 2026-10-28
+updated: 2026-10-28
+last_modified_at: 2026-10-28
+author:
+  name: "도서출판 날자 · 날자꾸러미 편집부"
+  url: "https://naljabooks.com"
+  type: Organization
+category: "AI와 권리"
+topics:
+  - ai-intellectual-disability
+  - learning-rights
+tags: ["지적장애인 AI 챗봇", "발달장애 AI 안전", "발달장애 디지털 접근성", "AI 리터러시", "자기결정", "개인정보"]
+seo:
+  primary_query: "지적장애인 AI 챗봇"
+  search_intent: "가족과 지원자가 지적장애인이 대화형 AI를 안전하게 함께 쓰도록 돕는 방법을 찾는다."
+  secondary_queries: ["AI 챗봇 안전하게 쓰기", "발달장애 AI 사용 지원"]
+  bridge_queries: ["발달장애 AI 안전", "발달장애 디지털 접근성"]
+related:
+  - how-ai-can-support-learning-for-people-with-intellectual-disabilities
+  - why-human-review-is-needed-for-ai-learning-materials
+  - self-determination-education-beyond-offering-choices
+toc:
+  - id: summary
+    title: "핵심 요약"
+  - id: scope
+    title: "함께 쓴다는 뜻"
+  - id: purpose
+    title: "1. 먼저 할 일을 정한다"
+  - id: facts
+    title: "2. 중요한 답은 다른 곳에서 확인한다"
+  - id: privacy
+    title: "3. 개인 이야기는 줄여서 말한다"
+  - id: choice
+    title: "4. 답을 고르는 사람은 당사자다"
+  - id: pause
+    title: "5. 불편하거나 위험하면 멈춘다"
+  - id: routine
+    title: "함께 쓰는 짧은 순서"
+  - id: conclusion
+    title: "도움을 곁에 두되, 결정을 빼앗지 않기"
+sources:
+  - title: "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile"
+    organization: "National Institute of Standards and Technology (NIST)"
+    year: "2024"
+    url: "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf"
+  - title: "Recommendation on the Ethics of Artificial Intelligence"
+    organization: "UNESCO"
+    year: "2021"
+    url: "https://www.unesco.org/en/legal-affairs/recommendation-ethics-artificial-intelligence"
+  - title: "General comment No. 1 (Article 12: Equal recognition before the law)"
+    organization: "UN Committee on the Rights of Persons with Disabilities"
+    year: "2014"
+    url: "https://docstore.ohchr.org/SelfServices/FilesHandler.ashx?enc=Bp6OrEzlKfwJGS8ZwwExP67dRavke6dQwMqf20yoV3xROfBfxBaYFWNXry0kbocROXDjnUTGjWX8kNEJdhC5FQ%3D%3D"
+  - title: "Terms of Use"
+    organization: "OpenAI"
+    year: "2026"
+    url: "https://openai.com/policies/row-terms-of-use/"
+  - title: "How ChatGPT learns about the world while protecting privacy"
+    organization: "OpenAI"
+    year: "2026"
+    url: "https://openai.com/index/how-chatgpt-protects-privacy/"
+---
+
+AI 챗봇은 궁금한 말을 정리하거나, 긴 안내를 다시 설명받거나, 연습 문제를 만들어 볼 때 도움이 될 수 있습니다. 하지만 그럴듯한 답을 곧바로 믿거나, 개인 이야기를 자세히 넣거나, 챗봇의 말을 대신 결정으로 삼는 순간에는 도움이 부담이 될 수 있습니다.
+
+**지적장애인 AI 챗봇**을 쓸 때는 혼자 잘 쓰게 만드는 것보다, 당사자가 무엇을 하려는지 말하고 함께 확인하는 순서를 만드는 일이 먼저입니다. **발달장애 AI 안전**과 **발달장애 디지털 접근성**은 지적장애인과 자폐성장애인 등을 포괄하는 넓은 범주에서 함께 논의될 수 있습니다. 이 글은 그중 지적장애인이 가족·지원자와 대화형 AI를 사용할 때의 지원을 중심으로 하며, 다른 사람에게 같은 방식이 맞는다고 일반화하지 않습니다.
+
+## 핵심 요약 {#summary}
+
+- AI 챗봇에는 한 번에 한 가지 일을 부탁하고, 답을 받은 뒤에는 당사자의 생각을 먼저 묻습니다.
+- 건강·돈·법률·계약·위기처럼 생활에 큰 영향을 주는 답은 챗봇 답만으로 결정하지 않고 공식 정보나 담당자에게 다시 확인합니다.
+- 이름, 주소, 연락처, 계정 정보, 다른 사람의 사적인 이야기는 넣지 않는 쪽을 기본으로 합니다.
+- 지원자는 답을 고르는 사람이 아니라, 질문을 이해하고 확인하도록 돕는 사람입니다.
+- 불안해지거나 누군가에게 해를 끼치라는 답이 나오면 화면을 멈추고 믿을 만한 사람·기관에 연결합니다.
+
+## 함께 쓴다는 뜻 {#scope}
+
+함께 쓴다는 말은 옆에서 화면을 계속 감시한다는 뜻이 아닙니다. 당사자가 해 보고 싶은 일을 정하고, 필요한 때에 설명을 듣고, 답을 믿어도 되는지 함께 확인하는 방식입니다.
+
+장애인의 의사결정 지원은 그 사람 대신 답을 고르는 일이 되어서는 안 됩니다. 유엔 장애인권리위원회의 일반논평도 지원이 당사자의 권리·의사·선호를 존중해야 하며 대리결정이 되어서는 안 된다고 설명합니다.[3](#source-3) 챗봇을 함께 쓸 때도 이 기준을 적용할 수 있습니다.
+
+## 1. 먼저 할 일을 정한다 {#purpose}
+
+챗봇을 열기 전에 “오늘 이걸로 무엇을 해 볼까?”라고 묻습니다. 예를 들어 긴 안내문에서 준비물을 찾기, 모르는 낱말을 쉬운 말로 다시 듣기, 친구에게 보낼 메시지 초안을 생각해 보기처럼 목표를 하나로 좁힐 수 있습니다.
+
+질문은 짧고 구체적으로 만듭니다. “내가 이해하기 쉽게 세 문장으로 설명해 줘”, “답을 바로 말하지 말고 첫 번째 힌트만 줘”처럼 부탁할 수 있습니다. 답을 받은 뒤에는 “이 말이 무슨 뜻인 것 같아?”, “우리 상황에 맞을까?”를 먼저 물어봅니다. 챗봇이 말한 내용을 당사자의 말로 다시 말해 보는 시간이 있어야, 챗봇의 답을 복사하는 대신 이해를 확인할 수 있습니다.
+
+## 2. 중요한 답은 다른 곳에서 확인한다 {#facts}
+
+생성형 AI는 사실처럼 보이지만 틀리거나 근거를 알 수 없는 내용을 만들 수 있습니다. NIST는 이를 ‘confabulation’ 위험으로 다루며, 상황에 맞는 사람의 검토를 제안합니다.[1](#source-1) 따라서 챗봇은 첫 설명이나 질문 연습에는 쓸 수 있어도, 중요한 결정을 끝내는 곳은 아닙니다.
+
+다음 주제는 특히 챗봇 답을 그대로 따르지 않습니다.
+
+- 약·증상·치료처럼 건강에 관한 일
+- 송금·대출·투자·구매처럼 돈이 걸린 일
+- 계약·신청·권리처럼 법률이나 행정에 관한 일
+- 누군가가 지금 위협하거나 다칠 수 있는 일
+
+이때는 답에 적힌 출처를 직접 열어 공식 기관인지 확인하거나, 담당 기관·전문가·긴급 도움을 받을 수 있는 사람에게 다시 묻습니다. AI가 찾아준 정보가 맞는지 확인하는 과정은 당사자가 질문하고 비교하는 연습이 될 수 있습니다.
+
+## 3. 개인 이야기는 줄여서 말한다 {#privacy}
+
+챗봇에게는 이름, 집 주소, 전화번호, 주민등록번호, 계정 비밀번호, 사진 속 개인정보를 넣지 않는 것을 기본으로 합니다. 다른 사람의 사적인 이야기도 허락 없이 자세히 넣지 않습니다. 필요한 경우에는 “친구”, “우리 동네”, “한 기관”처럼 바꿔 말해도 충분히 질문할 수 있습니다.
+
+서비스마다 저장·학습·삭제 방식과 설정이 다릅니다. 예를 들어 ChatGPT는 대화가 모델 개선에 쓰이는지를 설정에서 관리할 수 있고, 임시 대화는 기록과 메모에 남지 않지만 안전을 위해 최대 30일 보관될 수 있다고 안내합니다.[5](#source-5) 그래서 서비스를 쓰기 전에는 함께 개인정보 설정과 최신 이용 안내를 확인하고, 민감한 이야기는 애초에 입력하지 않는 편이 안전합니다.
+
+## 4. 답을 고르는 사람은 당사자다 {#choice}
+
+챗봇은 선택지를 정리할 수 있지만, 무엇이 중요한지 대신 정할 수는 없습니다. 지원자는 “어느 답이 마음에 들어?”, “빠진 선택은 없을까?”, “이 답을 따르면 좋은 점과 걱정되는 점은 무엇일까?”처럼 당사자가 비교하도록 도울 수 있습니다.
+
+UNESCO도 AI 활용에서 인간의 감독, 개인정보 보호, 이용자가 정보에 근거해 결정할 수 있는 교육을 중요한 원칙으로 제시합니다.[2](#source-2) 이 원칙은 지원자가 챗봇보다 더 많은 답을 말하라는 뜻이 아닙니다. 질문을 고르고, 모르는 점을 말하고, “아직 결정하지 않을래”라고 말할 자리를 남기는 뜻입니다.
+
+미성년자가 특정 서비스를 쓸 때는 그 서비스의 연령·보호자 동의 조건도 확인해야 합니다. 가령 OpenAI의 일반 이용약관은 이용자가 최소 13세이거나 자기 나라에서 동의할 수 있는 최저 연령이어야 하며, 18세 미만은 부모나 법정대리인의 허락이 필요하다고 밝힙니다.[4](#source-4) 이 조건은 모든 챗봇에 똑같이 적용되는 규칙이 아니므로, 쓰려는 서비스의 현재 약관을 따로 확인합니다.
+
+## 5. 불편하거나 위험하면 멈춘다 {#pause}
+
+챗봇의 답 때문에 겁이 나거나, 누군가를 해치라는 말이 나오거나, 비밀번호·돈·사진을 보내라고 하면 바로 멈춥니다. 화면을 닫고 혼자 해결하려 하지 말고, 미리 정한 믿을 만한 사람에게 보여 줍니다. 긴급하게 위험한 상황이면 지역의 긴급 도움을 이용합니다.
+
+“챗봇은 사람처럼 말하지만 사람은 아니고, 틀릴 수 있다”는 문장을 함께 정해 두는 것도 좋습니다. 챗봇과 대화가 즐거워도 실제 관계와 도움을 대신하게 하지 않는 기준입니다. 지원자는 사용 시간을 일방적으로 빼앗기보다, 쉬는 시간과 도움을 청할 사람을 함께 정할 수 있습니다.
+
+## 함께 쓰는 짧은 순서 {#routine}
+
+처음에는 아래 다섯 문장을 종이에 적거나 휴대전화 메모에 두고 함께 써 볼 수 있습니다.
+
+1. **내가 지금 하려는 일은 무엇인가?**
+2. **개인정보 없이 질문할 수 있는가?**
+3. **챗봇 답에서 내가 이해한 말은 무엇인가?**
+4. **중요한 답을 어디에서 다시 확인할까?**
+5. **불편하거나 위험하면 누구에게 보여 줄까?**
+
+이 순서는 시험이나 규칙표가 아닙니다. 당사자가 자기 질문을 지키면서 도움을 받기 위한 안전장치입니다. 처음에는 가족·지원자가 읽어 주고, 익숙해지면 당사자가 한 항목씩 고를 수 있습니다.
+
+AI가 학습자료를 만들 때의 사람 검토는 [AI 교육자료를 사람이 검토해야 하는 이유]({{ '/archive/why-human-review-is-needed-for-ai-learning-materials/' | relative_url }})에서, AI를 학습의 보조 도구로 쓰는 기준은 [특수교육 AI: 지적장애인 학습을 돕는 기준]({{ '/archive/how-ai-can-support-learning-for-people-with-intellectual-disabilities/' | relative_url }})에서 이어 읽을 수 있습니다. 선택을 배우는 과정은 [선택지를 주는 것만으로는 충분하지 않은 이유]({{ '/archive/self-determination-education-beyond-offering-choices/' | relative_url }})와도 연결됩니다.
+
+## 도움을 곁에 두되, 결정을 빼앗지 않기 {#conclusion}
+
+AI 챗봇을 안전하게 함께 쓴다는 것은 모든 위험을 없애거나 사용을 막는 일이 아닙니다. 당사자가 질문할 수 있게 하고, 중요한 답은 다시 확인하고, 개인정보와 선택권을 지키며, 불편할 때 멈출 수 있게 하는 일입니다.
+
+좋은 지원은 챗봇이 대신 답하게 만드는 데 있지 않습니다. 당사자가 자기 삶에 필요한 질문을 더 잘 묻고, 답을 비교하고, 자기 말로 결정할 수 있도록 곁에 있는 데 있습니다.

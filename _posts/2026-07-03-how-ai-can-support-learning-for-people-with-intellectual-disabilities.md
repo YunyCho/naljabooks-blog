@@ -23,6 +23,7 @@ seo:
   secondary_queries: ["지적장애 AI 교육", "AI 특수교육 학습자료", "특수교육 인공지능 활용"]
   bridge_queries: ["발달장애 AI 교육", "발달장애 AI 학습", "발달장애 특수교육 AI"]
 related:
+  - ai-chatbot-safety-with-support
   - why-human-review-is-needed-for-ai-learning-materials
   - why-naljakkurumi-uses-ai-and-paper-learning-materials-together
   - ai-era-transition-and-intellectual-disability-open-research
