@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/microsoft-inclusive-design/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "어떤 사람이 서비스를 이용하다가 중간에 멈췄습니다.",
+    anchors: %w[principles mismatch cognition examples accessibility questions],
+    source_count: 8
+  },
   "archive/ai-chatbot-safety-with-support/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "AI 챗봇은 궁금한 말을 정리하거나",
@@ -731,8 +737,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("AI 챗봇을 함께 쓸 때, 먼저 확인할 다섯 가지")
-    errors << "index.html: AI chatbot safety article is not the newest regular story"
+  unless first_regular_story&.include?("사람이 제품에 맞춰야 할까요? Microsoft 포용 디자인이 던지는 질문")
+    errors << "index.html: Microsoft inclusive design article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -1120,7 +1126,8 @@ if feed.file?
   errors << "feed.xml: missing self-instruction article" unless feed_text.include?(self_instruction_url)
   errors << "feed.xml: adult reading program article should leave the latest 10" if feed_text.include?(adult_reading_program_url)
   errors << "feed.xml: learning motivation article should leave the latest 10" if feed_text.include?(learning_motivation_url)
-  errors << "feed.xml: missing money management education article" unless feed_text.include?(money_management_url)
+  errors << "feed.xml: missing Microsoft inclusive design article" unless feed_text.include?("#{BASEURL}/archive/microsoft-inclusive-design/")
+  errors << "feed.xml: money management education article should leave the latest 10" if feed_text.include?(money_management_url)
   errors << "feed.xml: education-demand article should leave the latest 10" if feed_text.include?(education_demand_url)
   errors << "feed.xml: adult-respectful learning materials article should leave the latest 10" if feed_text.include?(adult_respectful_materials_url)
   errors << "feed.xml: safety education practice article should leave the latest 10" if feed_text.include?(intellectual_disability_safety_education_url)
