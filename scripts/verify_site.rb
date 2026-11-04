@@ -34,6 +34,14 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/the-wish-to-learn-that-my-child-and-i-share/index.html" => {
+    author: "조윤영",
+    author_type: "Person",
+    requires_sources: false,
+    required_text: "배우고 싶고, 성장하고 싶고, 그걸 누군가 알아주었으면 하는 마음",
+    anchors: %w[summary familiar-heart learning person uncertainty one-more],
+    source_count: 0
+  },
   "archive/microsoft-inclusive-design/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "어떤 사람이 서비스를 이용하다가 중간에 멈췄습니다.",
@@ -737,8 +745,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("사람이 제품에 맞춰야 할까요? Microsoft 포용 디자인이 던지는 질문")
-    errors << "index.html: Microsoft inclusive design article is not the newest regular story"
+  unless first_regular_story&.include?("배우고 싶은 마음에서, 나와 아이는 닮아 있었다")
+    errors << "index.html: learning perspective essay is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -1430,7 +1438,7 @@ end
 
 review_slug = "intellectual-disability-review-spacing-and-retrieval"
 review_link = "#{BASEURL}/archive/#{review_slug}/"
-%w[topics/index.html sitemap.xml feed.xml].each do |path|
+%w[topics/index.html sitemap.xml].each do |path|
   errors << "#{path}: missing review spacing article" unless SITE.join(path).read.include?(review_link)
 end
 %w[how-and-when-to-fade-prompts-for-intellectual-disability-learning intellectual-disability-learning-motivation-challenge-and-retry analogy-learning-and-transfer-to-daily-life].each do |slug|
@@ -1463,7 +1471,7 @@ end
 errors << "index.html: inclusive meeting article should leave the latest 4" if SITE.join("index.html").read.include?(meeting_link)
 
 self_instruction_link = "#{BASEURL}/archive/intellectual-disability-self-instruction-for-multi-step-tasks/"
-%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+%w[topics/index.html sitemap.xml feed.xml].each do |path|
   errors << "#{path}: missing self-instruction article" unless SITE.join(path).read.include?(self_instruction_link)
 end
 %w[how-and-when-to-fade-prompts-for-intellectual-disability-learning intellectual-disability-review-spacing-and-retrieval analogy-learning-and-transfer-to-daily-life].each do |slug|
@@ -1492,6 +1500,24 @@ end
   path = SITE.join("archive", slug, "index.html")
   errors << "#{slug}: missing intellectual-disability and autism backlink" unless path.file? && path.read.include?(differences_link)
 end
+
+perspective_link = "#{BASEURL}/archive/the-wish-to-learn-that-my-child-and-i-share/"
+%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+  errors << "#{path}: missing learning perspective essay" unless SITE.join(path).read.include?(perspective_link)
+end
+%w[learning-rights-and-literacy-support-for-intellectual-disabilities adult-respectful-learning-materials-for-intellectual-disabilities].each do |slug|
+  path = SITE.join("archive", slug, "index.html")
+  errors << "#{slug}: missing learning perspective backlink" unless path.file? && path.read.include?(perspective_link)
+end
+feed_entry_ids = SITE.join("feed.xml").read.scan(%r{<entry\b[^>]*>.*?<id>(.*?)</id>}m).flatten
+errors << "feed.xml: expected 10 article entries" unless feed_entry_ids.length == 10
+unless feed_entry_ids.first == "https://yunycho.github.io#{perspective_link.chomp('/')}"
+  errors << "feed.xml: learning perspective essay must be the newest entry"
+end
+if feed_entry_ids.include?("https://yunycho.github.io#{review_link.chomp('/')}")
+  errors << "feed.xml: review spacing article should leave the latest 10 entries"
+end
+errors << "index.html: self-instruction article should leave the latest 4" if SITE.join("index.html").read.include?(self_instruction_link)
 
 if errors.empty?
   puts "Site verification passed"

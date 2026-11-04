@@ -17,6 +17,7 @@ topics:
   - literacy
 tags: ["지적장애", "학습권", "문해력", "쉬운 정보", "자기결정"]
 related:
+  - the-wish-to-learn-that-my-child-and-i-share
   - intellectual-disability-and-autism-differences
   - intellectual-disability-self-advocacy-organizations-abroad
 toc:
