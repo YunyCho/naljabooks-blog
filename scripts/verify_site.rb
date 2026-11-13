@@ -34,6 +34,13 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/why-nalkku-makes-paper-worksheets/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    requires_sources: false,
+    required_text: "배움에는 멈추는 시간이 필요합니다.",
+    anchors: %w[summary pace marks comparison conversation access conclusion],
+    source_count: 0
+  },
   "archive/the-wish-to-learn-that-my-child-and-i-share/index.html" => {
     author: "조윤영",
     author_type: "Person",
@@ -745,8 +752,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("배우고 싶은 마음에서, 나와 아이는 닮아 있었다")
-    errors << "index.html: learning perspective essay is not the newest regular story"
+  unless first_regular_story&.include?("날꾸가 종이학습지를 만드는 이유")
+    errors << "index.html: paper worksheets editorial is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -1447,9 +1454,10 @@ end
 end
 
 form_link = "#{BASEURL}/archive/intellectual-disability-online-form-accessibility/"
-%w[topics/index.html sitemap.xml feed.xml].each do |path|
+%w[topics/index.html sitemap.xml].each do |path|
   errors << "#{path}: missing online form article" unless SITE.join(path).read.include?(form_link)
 end
+errors << "feed.xml: online form article should leave the latest 10" if SITE.join("feed.xml").read.include?(form_link)
 %w[easy-information-and-reading-comprehension self-determination-education-beyond-offering-choices why-self-advocate-review-must-start-at-planning].each do |slug|
   path = SITE.join("archive", slug, "index.html")
   errors << "#{slug}: missing online form backlink" unless path.file? && path.read.include?(form_link)
@@ -1484,9 +1492,10 @@ end
 end
 
 differences_link = "#{BASEURL}/archive/intellectual-disability-and-autism-differences/"
-%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+%w[topics/index.html sitemap.xml feed.xml].each do |path|
   errors << "#{path}: missing intellectual-disability and autism article" unless SITE.join(path).read.include?(differences_link)
 end
+errors << "index.html: intellectual-disability and autism article should leave the latest 4" if SITE.join("index.html").read.include?(differences_link)
 
 ai_chatbot_link = "#{BASEURL}/archive/ai-chatbot-safety-with-support/"
 %w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
@@ -1511,8 +1520,12 @@ end
 end
 feed_entry_ids = SITE.join("feed.xml").read.scan(%r{<entry\b[^>]*>.*?<id>(.*?)</id>}m).flatten
 errors << "feed.xml: expected 10 article entries" unless feed_entry_ids.length == 10
-unless feed_entry_ids.first == "https://yunycho.github.io#{perspective_link.chomp('/')}"
-  errors << "feed.xml: learning perspective essay must be the newest entry"
+paper_link = "#{BASEURL}/archive/why-nalkku-makes-paper-worksheets/"
+%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+  errors << "#{path}: missing paper worksheets editorial" unless SITE.join(path).read.include?(paper_link)
+end
+unless feed_entry_ids.first == "https://yunycho.github.io#{paper_link.chomp('/')}"
+  errors << "feed.xml: paper worksheets editorial must be the newest entry"
 end
 if feed_entry_ids.include?("https://yunycho.github.io#{review_link.chomp('/')}")
   errors << "feed.xml: review spacing article should leave the latest 10 entries"
