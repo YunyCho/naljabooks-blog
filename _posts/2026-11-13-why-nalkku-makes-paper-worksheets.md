@@ -3,7 +3,7 @@ layout: post
 lang: ko-KR
 content_type: editorial
 title: "날꾸가 종이학습지를 만드는 이유"
-description: "종이학습지의 장점을 자기 속도로 읽기, 생각 표시하기, 장면 비교하기, 함께 대화하기에서 찾습니다. 날꾸가 종이 위에 마련하려는 배움의 자리를 설명합니다."
+description: "노르웨이의 아이패드 교육을 다룬 영상에서 출발해 종이학습지의 장점을 돌아봅니다. 화면 읽기에 관한 노르웨이 정부의 설명과 날꾸가 마련하려는 읽기·표현·대화의 자리를 연결합니다."
 date: 2026-11-13
 updated: 2026-11-13
 last_modified_at: 2026-11-13
@@ -24,6 +24,8 @@ related:
   - why-naljakkurumi-uses-ai-and-paper-learning-materials-together
   - adult-respectful-learning-materials-for-intellectual-disabilities
 toc:
+  - id: norway
+    title: "노르웨이의 아이패드 영상이 던진 질문"
   - id: summary
     title: "종이 위에 마련하고 싶은 네 가지"
   - id: pace
@@ -38,7 +40,27 @@ toc:
     title: "종이를 편하게 쓰기 위한 조건"
   - id: conclusion
     title: "읽고, 멈추고, 생각하고, 말할 자리"
+sources:
+  - title: "아이패드 무상 지급 10년 후, 벌어진 충격적인 결말"
+    organization: "YouTube Shorts · 독자에게 소개하는 영상"
+    url: "https://www.youtube.com/shorts/GU4IQxE5XqA"
+  - title: "Safe upbringing in a digital society — §2.2.4 Screens at school"
+    organization: "노르웨이 아동가족부"
+    year: "2025"
+    url: "https://www.regjeringen.no/en/documents/meld.-st.-32-20242025/id3108037/?ch=2"
 ---
+
+## 노르웨이의 아이패드 영상이 던진 질문 {#norway}
+
+“아이패드 무상 지급 10년 후, 벌어진 충격적인 결말.” 노르웨이의 디지털 교육을 다룬 짧은 영상입니다. 아이패드를 일찍 보급한 교육과 이후 읽기·어휘력에 대한 우려, 종이로 돌아가려는 움직임을 연결해 소개합니다. 먼저 [영상을 함께 보셔도 좋겠습니다](https://www.youtube.com/shorts/GU4IQxE5XqA).[1](#source-1)
+
+이 영상에서 붙잡고 싶은 질문은 이것입니다. 더 편리한 기기를 제공하면 읽고 이해하는 경험도 저절로 좋아질까요? 날꾸가 종이학습지를 만드는 이유를 설명할 때에도 이 질문을 먼저 꺼내고 싶습니다.
+
+노르웨이 정부의 설명에도 살펴볼 대목이 있습니다. 2025년 정부 백서는 학교의 화면 사용을 다루면서, 초·중등 및 고등교육 학생의 화면 읽기에서 종이 읽기보다 읽기이해가 낮게 나타난 연구들을 소개합니다. 특히 길고 연결된 설명문을 화면으로 읽는 데 주의가 필요하다는 화면사용위원회의 견해를 전합니다.[2](#source-2)
+
+동시에 백서는 디지털 기술을 수업에 효과적으로 활용하면 맞춤형 지도와 다양한 교수 방법에 도움이 될 수 있다고 설명합니다. 이 자료에서 얻을 수 있는 질문은 “디지털을 모두 없앨까?”보다 “어떤 배움에 어떤 매체를 쓸까?”에 가깝습니다.[2](#source-2)
+
+영상은 이 문제를 생각하게 한 출발점으로 소개합니다. 영상 속 ‘2016년부터 다섯 살 모두에게 지급’이라는 보급 범위나 ‘그 결과 10년 뒤 능력이 하락했다’는 인과 설명까지 이 백서가 입증하는 것은 아닙니다. 여기서는 공식 자료가 다루는 화면 읽기의 한계와, 그에 비추어 돌아본 날꾸의 설계 생각을 연결하려 합니다.
 
 배움에는 멈추는 시간이 필요합니다. 낯선 단어 앞에서 잠시 머물고, 앞 문장으로 돌아가고, “이건 무슨 뜻일까?” 하고 묻는 시간입니다.
 

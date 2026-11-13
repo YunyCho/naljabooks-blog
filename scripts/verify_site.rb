@@ -36,10 +36,9 @@ EXPECTED = %w[
 POSTS = {
   "archive/why-nalkku-makes-paper-worksheets/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
-    requires_sources: false,
-    required_text: "배움에는 멈추는 시간이 필요합니다.",
-    anchors: %w[summary pace marks comparison conversation access conclusion],
-    source_count: 0
+    required_text: "노르웨이의 아이패드 영상이 던진 질문",
+    anchors: %w[norway summary pace marks comparison conversation access conclusion],
+    source_count: 2
   },
   "archive/the-wish-to-learn-that-my-child-and-i-share/index.html" => {
     author: "조윤영",
