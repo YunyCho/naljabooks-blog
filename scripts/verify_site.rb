@@ -36,8 +36,8 @@ EXPECTED = %w[
 POSTS = {
   "archive/why-nalkku-makes-paper-worksheets/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
-    required_text: "노르웨이의 아이패드 영상이 던진 질문",
-    anchors: %w[norway summary pace marks comparison conversation access conclusion],
+    required_text: "전통적인 배움의 방식을 기본교육에서 중요하게 여기는 생각",
+    anchors: %w[norway summary hands effort access conclusion],
     source_count: 2
   },
   "archive/the-wish-to-learn-that-my-child-and-i-share/index.html" => {
