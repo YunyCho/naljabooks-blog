@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/ai-portrayals-of-intellectual-disability/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "이야기의 긍정적인 분위기와 그 안에 담긴 편향을 함께 살폈다",
+    anchors: %w[summary study findings limits perspective conclusion],
+    source_count: 4
+  },
   "archive/why-nalkku-makes-paper-worksheets/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "전통적인 배움의 방식을 기본교육에서 중요하게 여기는 생각",
@@ -751,8 +757,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("날꾸가 종이학습지를 만드는 이유")
-    errors << "index.html: paper worksheets editorial is not the newest regular story"
+  unless first_regular_story&.include?("AI는 지적장애인을 어떤 사람으로 그리고 있을까?")
+    errors << "index.html: AI portrayals article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -1497,7 +1503,7 @@ end
 errors << "index.html: intellectual-disability and autism article should leave the latest 4" if SITE.join("index.html").read.include?(differences_link)
 
 ai_chatbot_link = "#{BASEURL}/archive/ai-chatbot-safety-with-support/"
-%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+%w[topics/index.html sitemap.xml feed.xml].each do |path|
   errors << "#{path}: missing AI chatbot safety article" unless SITE.join(path).read.include?(ai_chatbot_link)
 end
 %w[how-ai-can-support-learning-for-people-with-intellectual-disabilities why-human-review-is-needed-for-ai-learning-materials self-determination-education-beyond-offering-choices].each do |slug|
@@ -1519,12 +1525,20 @@ end
 end
 feed_entry_ids = SITE.join("feed.xml").read.scan(%r{<entry\b[^>]*>.*?<id>(.*?)</id>}m).flatten
 errors << "feed.xml: expected 10 article entries" unless feed_entry_ids.length == 10
+ai_portrayals_link = "#{BASEURL}/archive/ai-portrayals-of-intellectual-disability/"
+%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+  errors << "#{path}: missing AI portrayals article" unless SITE.join(path).read.include?(ai_portrayals_link)
+end
+%w[the-wish-to-learn-that-my-child-and-i-share why-human-review-is-needed-for-ai-learning-materials self-determination-education-beyond-offering-choices].each do |slug|
+  path = SITE.join("archive", slug, "index.html")
+  errors << "#{slug}: missing AI portrayals backlink" unless path.file? && path.read.include?(ai_portrayals_link)
+end
+unless feed_entry_ids.first == "https://yunycho.github.io#{ai_portrayals_link.chomp('/')}"
+  errors << "feed.xml: AI portrayals article must be the newest entry"
+end
 paper_link = "#{BASEURL}/archive/why-nalkku-makes-paper-worksheets/"
 %w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
   errors << "#{path}: missing paper worksheets editorial" unless SITE.join(path).read.include?(paper_link)
-end
-unless feed_entry_ids.first == "https://yunycho.github.io#{paper_link.chomp('/')}"
-  errors << "feed.xml: paper worksheets editorial must be the newest entry"
 end
 if feed_entry_ids.include?("https://yunycho.github.io#{review_link.chomp('/')}")
   errors << "feed.xml: review spacing article should leave the latest 10 entries"

@@ -23,6 +23,7 @@ seo:
 related:
   - learning-rights-and-literacy-support-for-intellectual-disabilities
   - adult-respectful-learning-materials-for-intellectual-disabilities
+  - ai-portrayals-of-intellectual-disability
 toc:
   - id: summary
     title: "이 글에 담은 질문"

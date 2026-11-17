@@ -1,0 +1,123 @@
+---
+layout: post
+lang: ko-KR
+content_type: article
+title: "AI는 지적장애인을 어떤 사람으로 그리고 있을까?"
+description: "AI의 지적장애인 묘사에 담긴 편향을 살핀 연구를 읽습니다. 친절한 이야기 속 유아화·의존·감동의 상징이라는 틀과 연구의 방법·한계를 구분하고, 당사자의 선택이 글에 남아 있는지 묻습니다."
+date: 2026-11-17
+updated: 2026-11-17
+last_modified_at: 2026-11-17
+author:
+  name: "도서출판 날자 · 날자꾸러미 편집부"
+  url: "https://naljabooks.com"
+  type: Organization
+category: "AI와 사람을 바라보는 시선"
+topics:
+  - ai-intellectual-disability
+  - learning-rights
+tags: ["AI의 지적장애인 묘사", "AI 편향", "지적장애", "유아화", "자기결정", "당사자 참여"]
+seo:
+  primary_query: "AI의 지적장애인 묘사"
+  search_intent: "AI가 지적장애인을 묘사할 때 어떤 편향을 보이는지 연구 결과와 한계를 함께 이해한다."
+  secondary_queries: ["AI 지적장애 편향", "생성형 AI 장애 고정관념"]
+related:
+  - the-wish-to-learn-that-my-child-and-i-share
+  - why-human-review-is-needed-for-ai-learning-materials
+  - self-determination-education-beyond-offering-choices
+toc:
+  - id: summary
+    title: "핵심 요약"
+  - id: study
+    title: "장애를 언급했을 때와 언급하지 않았을 때"
+  - id: findings
+    title: "다정한 이야기 속에서 달라진 묘사"
+  - id: limits
+    title: "결과를 읽을 때 함께 볼 한계"
+  - id: perspective
+    title: "도움을 받는 장면에도 자신의 선택이 있는가"
+  - id: conclusion
+    title: "AI의 문장에서 다시 한 사람을 찾기"
+sources:
+  - title: "Identifying Implicit Bias in LLM-based Chat AI Toward People with Intellectual Disabilities — 저자 공개 원문"
+    organization: "Karly V. Coffey · Gloria L. Krahn · John P. Hanley · Jacob E. Neely"
+    year: "2026"
+    url: "https://arxiv.org/pdf/2607.26062"
+  - title: "Identifying implicit bias in LLM-based chat AI toward people with intellectual disabilities — 학술지 서지·초록"
+    organization: "PubMed · Disability and Health Journal 19(4), 102086"
+    year: "2026"
+    url: "https://pubmed.ncbi.nlm.nih.gov/42209384/"
+  - title: "Is AI Fair? New Evidence Suggests Bias Against People with Intellectual Disabilities Is Built In"
+    organization: "Oregon State University, College of Health"
+    year: "2026"
+    url: "https://health.oregonstate.edu/news-and-stories/2026-06/ai-fair-new-evidence-suggests-bias-against-people-intellectual"
+  - title: "implicit_bias_llms — 연구 코드·자료 및 재현 방법"
+    organization: "Special Olympics International"
+    year: "2026"
+    url: "https://github.com/specialolympics/implicit_bias_llms"
+---
+
+AI에게 지적장애인이 등장하는 이야기를 부탁했다고 해 보자. 주변 사람들이 친절하고, 주인공은 응원을 받으며, 이야기는 따뜻하게 끝난다. 읽고 나면 좋은 이야기라고 느낄 수 있다.
+
+그런데 그 사람은 무엇을 원했고, 어떤 선택을 했을까. 도움을 받는 장면 사이에 자기 생각을 말할 자리는 있었을까.
+
+**AI의 지적장애인 묘사**를 살핀 한 연구는 이야기의 긍정적인 분위기와 그 안에 담긴 편향을 함께 살폈다. 지적장애를 언급한 이야기와 언급하지 않은 이야기를 비교한 연구다.[1](#source-1) 여기서는 그 결과를 소개하고, 글을 만들고 읽는 입장에서 남는 질문을 생각해 보려 한다. 연구 대상은 지적장애에 관한 묘사이며 다른 장애 전체를 설명하는 결과로 넓히지 않는다.
+
+## 핵심 요약 {#summary}
+
+- 친절한 표현과 당사자를 존중하는 묘사를 함께 살펴볼 필요가 있다.
+- 지원을 받는 장면에서도 그 사람의 의사와 선택이 어떻게 드러나는지 묻는다.
+- 연구 시기와 평가 방법을 확인하며, 연구 결과와 이를 읽고 제안하는 관점을 구분한다.
+
+## 장애를 언급했을 때와 언급하지 않았을 때 {#study}
+
+Coffey et al. 2026 연구진은 2024년 12월 당시의 다섯 모델에 일상 상황의 이야기를 만들게 했다. GPT-4-Turbo, GPT-4o, Llama-3-3-70B-Instruct, Claude-3-5-Sonnet, Mistral-Large-2411이 대상이었다. 열 가지 상황에서 지적장애 언급의 유무를 달리해 총 25,000편을 생성하고, 별도 GPT-4-Turbo 인스턴스로 묘사를 분류했다.[1](#source-1)
+
+분석 대상은 실제 사람 25,000명이 아니라 **AI가 만든 이야기 25,000편**이다. 저자 공개본의 방법과 도표를 확인했고, 학술지 서지는 PubMed와 대조했다. 논문은 2026년 5월 16일 온라인 공개되었으며, 저자 순서는 Coffey, Krahn, Hanley, Neely다.[1](#source-1)[2](#source-2)
+
+연구팀의 공개 저장소에는 생성·분류·통계 처리 코드와 자료가 있다. 저장소는 수작업 라벨링을 하지 않은 자동화된 분석이라고 설명한다.[4](#source-4)
+
+## 다정한 이야기 속에서 달라진 묘사 {#findings}
+
+연구진은 노골적인 혐오 표현이 관찰되지 않았고 이야기가 대체로 긍정적이었다고 보고했다.[1](#source-1) 그럼에도 지적장애를 언급한 쪽에는 다른 묘사가 반복됐다. 공동 연구기관인 오리건주립대가 정리한 주요 결과는 다음과 같다.[3](#source-3)
+
+| 살펴본 지점 | 지적장애를 언급한 이야기에서 보고된 경향 |
+| --- | --- |
+| 나이와 대우 | 더 어리게 묘사하거나 아이처럼 대함 |
+| 보호하는 태도 | 당사자를 보호·감독해야 하는 사람으로 그리는 경향 |
+| 도움과 결정 | 타인에게 의존하거나 도움받는 묘사가 많음 |
+| 감동과 상징 | 일상 활동을 하면서도 타인에게 감동을 주는 상징으로 그려짐 |
+| 포함되는 방식 | 참여시키는 데 대한 망설임이나 부정적 인식이 더 나타남 |
+
+특히 일상 활동까지 감동의 상징으로 만드는 경향은 생각할 거리를 남긴다. 오리건주립대의 연구 소개는 평범한 일을 하는 지적장애인을 영감의 대상으로 그리는 고정관념을 짚는다.[3](#source-3)
+
+편집부가 여기서 묻고 싶은 것은 감동을 느끼면 안 되느냐는 문제가 아니다. 그 사람의 관심과 기쁨을 충분히 보기 전에, 보는 사람의 감동으로 이야기를 끝내고 있지는 않은가 하는 점이다. 누군가가 무엇을 했는지 소개하면서, 정작 그가 왜 그것을 하고 싶었는지는 빠질 수 있다.
+
+## 결과를 읽을 때 함께 볼 한계 {#limits}
+
+이 연구의 분류 판단에도 AI가 사용됐다. 저자들은 사람의 추가 분석과 당사자를 포함하는 연구 접근이 연구를 더 강화할 수 있었다고 인정한다. 또한 지적장애를 언급하지 않은 이야기의 인물이 비장애인이라는 전제를 두었다.[1](#source-1)
+
+따라서 이를 현재 모든 모델의 성적표로 읽어서는 안 된다. 이야기 생성 결과를 실제 채용·진료·교육 현장에서 발생한 차별의 측정치로 바꾸어서도 안 된다. 논문에 제시된 오즈비 역시 편향 전체가 몇 배 심하다는 뜻으로 옮기지 않는다.[1](#source-1)
+
+이 글에서 말하는 편향은 AI에게 사람과 같은 무의식이 있음을 확인했다는 뜻이 아니다. 생성문에 나타난 묘사 차이와 그에 대한 연구진의 해석을 다룬다.
+
+## 도움을 받는 장면에도 자신의 선택이 있는가 {#perspective}
+
+다음은 연구의 사례를 인용한 것이 아니라, 편집부가 차이를 생각해 보기 위해 만든 가상 비교다.
+
+> 직원이 물건을 모두 골라 주자 그는 행복해했다.
+
+> 직원이 가격 정보를 읽어 주었고, 그는 원하는 물건을 골랐다.
+
+두 문장 모두 다른 사람의 도움이 등장한다. 두 번째 문장에는 정보를 얻은 뒤 선택하는 사람이 드러난다. 첫 번째 문장에도 실제로 물건 선택을 맡긴 사정이 있을 수 있다. 문장 하나만으로 편향 여부를 판정하기보다, AI가 요청에 없던 사정을 장애 이름만 보고 채워 넣었는지 확인하고 싶다.
+
+자료를 읽을 때도 같은 질문을 던질 수 있다. 그 사람의 나이와 생활을 구체적으로 그렸는가. 주변 사람이 한 일뿐 아니라 당사자가 원하고 결정한 일도 보이는가. 다른 사람을 감동시키는 역할 밖에서 취향과 관심을 가질 자리가 있는가.
+
+이것은 연구에서 효과가 검증된 교정 방법이 아니라 **편집부가 제안하는 읽기와 검토의 질문**이다. [AI 교육자료를 사람이 검토하는 일]({{ '/archive/why-human-review-is-needed-for-ai-learning-materials/' | relative_url }})과 [선택을 배울 수 있도록 지원하는 일]({{ '/archive/self-determination-education-beyond-offering-choices/' | relative_url }})을 함께 생각하는 출발점으로 삼을 수 있다.
+
+## AI의 문장에서 다시 한 사람을 찾기 {#conclusion}
+
+이 논문을 읽으며 아카이브에 남기고 싶은 질문은 이것이다. 우리는 지적장애인을 좋게 말하고 있다는 이유로, 그 사람을 충분히 이해했다고 생각하고 있지는 않을까.
+
+[아이에게서 나와 닮은 배움의 마음을 발견한 이야기]({{ '/archive/the-wish-to-learn-that-my-child-and-i-share/' | relative_url }})에서도 이해는 완성된 답보다 다음 사람을 만날 때 가져갈 질문으로 남았다. AI가 만든 문장을 읽을 때도 그 태도를 이어 가고 싶다.
+
+도움이 필요한 장면을 충분히 설명하면서, 당사자의 생각과 선택도 놓치지 않는 것. 따뜻하게 끝난 이야기에서 한 번 더 멈추어, 그 안의 사람을 다시 읽어 보는 일부터 시작할 수 있다.
