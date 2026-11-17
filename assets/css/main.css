@@ -947,6 +947,57 @@ a.eyebrow {
   color: #2f1d17;
 }
 
+.article-body table {
+  width: 100%;
+  margin: 32px 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  border-top: 2px solid var(--orange-dark);
+  font-size: 0.94em;
+  line-height: 1.65;
+}
+
+.article-body th,
+.article-body td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.article-body th {
+  background: var(--cream-deep);
+  font-weight: 800;
+}
+
+.article-body th + th,
+.article-body td + td {
+  border-left: 1px solid var(--line);
+}
+
+.article-body th:first-child,
+.article-body td:first-child {
+  width: 28%;
+}
+
+.article-body tbody tr:nth-child(even) {
+  background: var(--paper);
+}
+
+@media (max-width: 640px) {
+  .article-body th,
+  .article-body td {
+    padding: 10px;
+  }
+
+  .article-body th:first-child,
+  .article-body td:first-child {
+    width: 32%;
+  }
+}
+
 .article-body blockquote {
   margin: 42px 0;
   padding: 28px 32px;
