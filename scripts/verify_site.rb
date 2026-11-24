@@ -34,6 +34,12 @@ EXPECTED = %w[
 ].freeze
 
 POSTS = {
+  "archive/well-intentioned-words-and-intellectual-disability-stigma/index.html" => {
+    author: "도서출판 날자 · 날자꾸러미 편집부",
+    required_text: "좋은 뜻이었다는 설명만으로 그 경험이 사라지지는 않는다",
+    anchors: %w[summary scope research language help questions practice conclusion],
+    source_count: 3
+  },
   "archive/ai-portrayals-of-intellectual-disability/index.html" => {
     author: "도서출판 날자 · 날자꾸러미 편집부",
     required_text: "이야기의 긍정적인 분위기와 그 안에 담긴 편향을 함께 살폈다",
@@ -757,8 +763,8 @@ if home.file?
   story_list = html[%r{<div class="story-list"[^>]*>.*?</div>}m].to_s
   first_regular_story = story_list.match(%r{<article class="story-list-item">.*?</article>}m)&.to_s
 
-  unless first_regular_story&.include?("AI는 지적장애인을 어떤 사람으로 그리고 있을까?")
-    errors << "index.html: AI portrayals article is not the newest regular story"
+  unless first_regular_story&.include?("선의의 말이 낙인이 될 때, 다시 물어볼 것")
+    errors << "index.html: well-intentioned words article is not the newest regular story"
   end
   if story_list.include?("지적장애인 안전 문해력: 친구라는 이름의 착취를 알아차리는 법")
     errors << "index.html: story list must show only latest 4 regular posts"
@@ -1469,7 +1475,7 @@ errors << "feed.xml: online form article should leave the latest 10" if SITE.joi
 end
 
 self_advocacy_organizations_link = "#{BASEURL}/archive/intellectual-disability-self-advocacy-organizations-abroad/"
-%w[topics/index.html sitemap.xml feed.xml].each do |path|
+%w[topics/index.html sitemap.xml].each do |path|
   errors << "#{path}: missing self-advocacy organizations article" unless SITE.join(path).read.include?(self_advocacy_organizations_link)
 end
 %w[why-self-advocate-review-must-start-at-planning self-determination-education-beyond-offering-choices learning-rights-and-literacy-support-for-intellectual-disabilities].each do |slug|
@@ -1478,7 +1484,7 @@ end
 end
 
 meeting_link = "#{BASEURL}/archive/intellectual-disability-inclusive-meeting-support/"
-%w[topics/index.html sitemap.xml feed.xml].each do |path|
+%w[topics/index.html sitemap.xml].each do |path|
   errors << "#{path}: missing inclusive meeting article" unless SITE.join(path).read.include?(meeting_link)
 end
 errors << "index.html: inclusive meeting article should leave the latest 4" if SITE.join("index.html").read.include?(meeting_link)
@@ -1525,6 +1531,14 @@ end
 end
 feed_entry_ids = SITE.join("feed.xml").read.scan(%r{<entry\b[^>]*>.*?<id>(.*?)</id>}m).flatten
 errors << "feed.xml: expected 10 article entries" unless feed_entry_ids.length == 10
+well_intentioned_words_link = "#{BASEURL}/archive/well-intentioned-words-and-intellectual-disability-stigma/"
+%w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
+  errors << "#{path}: missing well-intentioned words article" unless SITE.join(path).read.include?(well_intentioned_words_link)
+end
+%w[adult-respectful-learning-materials-for-intellectual-disabilities self-determination-education-beyond-offering-choices why-self-advocate-review-must-start-at-planning].each do |slug|
+  path = SITE.join("archive", slug, "index.html")
+  errors << "#{slug}: missing well-intentioned words backlink" unless path.file? && path.read.include?(well_intentioned_words_link)
+end
 ai_portrayals_link = "#{BASEURL}/archive/ai-portrayals-of-intellectual-disability/"
 %w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
   errors << "#{path}: missing AI portrayals article" unless SITE.join(path).read.include?(ai_portrayals_link)
@@ -1533,8 +1547,8 @@ end
   path = SITE.join("archive", slug, "index.html")
   errors << "#{slug}: missing AI portrayals backlink" unless path.file? && path.read.include?(ai_portrayals_link)
 end
-unless feed_entry_ids.first == "https://yunycho.github.io#{ai_portrayals_link.chomp('/')}"
-  errors << "feed.xml: AI portrayals article must be the newest entry"
+unless feed_entry_ids.first == "https://yunycho.github.io#{well_intentioned_words_link.chomp('/')}"
+  errors << "feed.xml: well-intentioned words article must be the newest entry"
 end
 paper_link = "#{BASEURL}/archive/why-nalkku-makes-paper-worksheets/"
 %w[index.html topics/index.html sitemap.xml feed.xml].each do |path|
@@ -1544,6 +1558,8 @@ if feed_entry_ids.include?("https://yunycho.github.io#{review_link.chomp('/')}")
   errors << "feed.xml: review spacing article should leave the latest 10 entries"
 end
 errors << "index.html: self-instruction article should leave the latest 4" if SITE.join("index.html").read.include?(self_instruction_link)
+errors << "feed.xml: self-advocacy organizations article should leave the latest 10" if SITE.join("feed.xml").read.include?(self_advocacy_organizations_link)
+errors << "feed.xml: inclusive meeting article should leave the latest 10" if SITE.join("feed.xml").read.include?(meeting_link)
 
 if errors.empty?
   puts "Site verification passed"
